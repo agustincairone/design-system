@@ -16,7 +16,7 @@ import type { DayOption } from "@/components/outfit/date-strip"
 export function PFieldLabel({ children, right }: { children: React.ReactNode; right?: React.ReactNode }) {
   return (
     <div className="mb-2 flex items-center">
-      <p className="eyebrow">{children}</p>
+      <p className="eyebrow-plain">{children}</p>
       {right && <span className="ml-auto text-xs text-muted-foreground">{right}</span>}
     </div>
   )
