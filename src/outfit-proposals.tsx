@@ -178,8 +178,8 @@ export function PConfirmSheet({ open, onClose, title, question, detail, confirmL
         <p className="text-sm text-muted-foreground">{detail}</p>
       </div>
       <div className="flex gap-2">
-        <Button variant="secondary" size="lg" className="flex-1" onClick={onClose}>Volver</Button>
-        <Button variant="destructive" size="lg" className="flex-1" onClick={onConfirm}>{confirmLabel}</Button>
+        <Button variant="secondary" className="flex-1" onClick={onClose}>Volver</Button>
+        <Button variant="destructive" className="flex-1" onClick={onConfirm}>{confirmLabel}</Button>
       </div>
     </PBottomSheet>
   )

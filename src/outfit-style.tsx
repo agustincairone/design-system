@@ -148,17 +148,17 @@ export function OutfitStyle() {
           <>
             <div className="flex flex-col gap-3 rounded-box-s bg-card p-box-s">
             <div className="flex gap-2">
-              <Button variant="destructive-outline" size="lg" className="flex-1">Cancelar</Button>
-              <Button variant="secondary" size="lg" className="flex-1">Omitir</Button>
-              <Button size="lg" className="flex-1">Siguiente</Button>
+              <Button variant="destructive-outline" className="flex-1">Cancelar</Button>
+              <Button variant="secondary" className="flex-1">Omitir</Button>
+              <Button className="flex-1">Siguiente</Button>
             </div>
             <div className="flex gap-2">
-              <Button variant="secondary" size="lg" className="flex-1">Volver</Button>
-              <Button variant="destructive" size="lg" className="flex-1">Eliminar</Button>
-              <Button size="lg" disabled className="flex-1">Guardar</Button>
+              <Button variant="secondary" className="flex-1">Volver</Button>
+              <Button variant="destructive" className="flex-1">Eliminar</Button>
+              <Button disabled className="flex-1">Guardar</Button>
             </div>
-            <Button variant="outline" size="lg" className="w-full border-dashed"><Plus className="size-4" /> Agregar nueva prenda</Button>
-            <div className="flex items-center gap-3"><Button variant="outline" size="icon-sm" aria-label="Anterior"><ChevronLeft className="size-4" /></Button><span className="title-box">Zapatillas</span></div>
+            <Button variant="outline" className="w-full border-dashed"><Plus className="size-4" /> Agregar nueva prenda</Button>
+            <div className="flex items-center gap-3"><Button variant="outline" size="icon-sm" aria-label="Anterior"><ChevronLeft className="size-4" /></Button><span className="text-sm font-medium">Zapatillas</span></div>
             </div>
           </>
         }
@@ -263,7 +263,7 @@ export function OutfitStyle() {
         <div className="rounded-box-m bg-inset p-box-m"><PItemRow item={ITEMS[0]} /></div>
       </PBottomSheet>
       <PConfirmSheet open={sheet1 === "confirm"} onClose={() => setSheet1(null)} title="Eliminar outfit" question="¿Estás seguro que querés eliminar este outfit?" detail="Recordá que podés volver a cargarlo nuevamente." confirmLabel="Eliminar" onConfirm={() => setSheet1(null)} />
-      <PCenterModal open={sheet1 === "modal"} onClose={() => setSheet1(null)} title="Nueva prenda" subtitle="Zapatillas" footer={<Button size="lg" className="w-full" onClick={() => setSheet1(null)}>Agregar prenda</Button>}>
+      <PCenterModal open={sheet1 === "modal"} onClose={() => setSheet1(null)} title="Nueva prenda" subtitle="Zapatillas" footer={<Button className="w-full" onClick={() => setSheet1(null)}>Agregar prenda</Button>}>
         <div><PFieldLabel>Marca</PFieldLabel><PInputAdd value={text1} onChange={setText1} onAdd={() => setText1("")} placeholder="Agregar marca..." /></div>
       </PCenterModal>
       <div style={{ fontFamily: OUTFIT_FONT }}>
