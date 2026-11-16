@@ -108,6 +108,7 @@ import { Stepper } from "@/components/controls/stepper"
 import { TileGroup } from "@/components/controls/tile-group"
 import { IconTile } from "@/components/controls/icon-tile"
 import { FieldColumn } from "@/components/controls/field-column"
+import { OutfitStyle } from "@/outfit-style"
 
 // ---------------------------------------------------------------------------
 
@@ -1022,6 +1023,14 @@ export function App() {
                 </AlertDescription>
               </Alert>
             </div>
+          </Section>
+
+          <Section
+            id="estilo-outfit"
+            title="Estilo outfit"
+            description="Los componentes de outfit-tracker, copiados tal cual de la app. Al lado, el equivalente del sistema cuando existe, para elegir con cuál quedarnos o dejar los dos estilos."
+          >
+            <OutfitStyle />
           </Section>
 
           <Section

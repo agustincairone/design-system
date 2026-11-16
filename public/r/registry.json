@@ -668,6 +668,64 @@
         "@ds/badge",
         "@ds/controls"
       ]
+    },
+    {
+      "name": "outfit",
+      "type": "registry:block",
+      "title": "Estilo outfit",
+      "description": "Componentes originales de outfit-tracker (tabs, chips, botones, fichas de prenda, hojas, barra de abajo).",
+      "files": [
+        {
+          "path": "registry/ds/outfit/palette.ts",
+          "type": "registry:component",
+          "target": "components/outfit/palette.ts"
+        },
+        {
+          "path": "registry/ds/outfit/tab-bar.tsx",
+          "type": "registry:component",
+          "target": "components/outfit/tab-bar.tsx"
+        },
+        {
+          "path": "registry/ds/outfit/chips.tsx",
+          "type": "registry:component",
+          "target": "components/outfit/chips.tsx"
+        },
+        {
+          "path": "registry/ds/outfit/action-button.tsx",
+          "type": "registry:component",
+          "target": "components/outfit/action-button.tsx"
+        },
+        {
+          "path": "registry/ds/outfit/item-card.tsx",
+          "type": "registry:component",
+          "target": "components/outfit/item-card.tsx"
+        },
+        {
+          "path": "registry/ds/outfit/color-swatches.tsx",
+          "type": "registry:component",
+          "target": "components/outfit/color-swatches.tsx"
+        },
+        {
+          "path": "registry/ds/outfit/date-strip.tsx",
+          "type": "registry:component",
+          "target": "components/outfit/date-strip.tsx"
+        },
+        {
+          "path": "registry/ds/outfit/sheets.tsx",
+          "type": "registry:component",
+          "target": "components/outfit/sheets.tsx"
+        },
+        {
+          "path": "registry/ds/outfit/bottom-nav.tsx",
+          "type": "registry:component",
+          "target": "components/outfit/bottom-nav.tsx"
+        },
+        {
+          "path": "registry/ds/outfit/misc.tsx",
+          "type": "registry:component",
+          "target": "components/outfit/misc.tsx"
+        }
+      ]
     }
   ]
 }
