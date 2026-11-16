@@ -1,0 +1,11 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fonttest-b",
+  "css": {
+    "@font-face": {
+      "font-family": "Test B",
+      "src": "local(Arial)"
+    }
+  },
+  "type": "registry:theme"
+}

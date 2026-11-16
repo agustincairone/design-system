@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brand-loop",
+  "title": "Acento de LOOP",
+  "description": "Acento naranja 600 para LOOP.",
+  "cssVars": {
+    "light": {
+      "brand": "oklch(64.6% 0.222 41.116)",
+      "brand-foreground": "oklch(100% 0 0)",
+      "brand-text": "oklch(64.6% 0.222 41.116)",
+      "primary": "oklch(64.6% 0.222 41.116)",
+      "primary-foreground": "oklch(100% 0 0)",
+      "ring": "oklch(64.6% 0.222 41.116)",
+      "chart-1": "oklch(64.6% 0.222 41.116)",
+      "sidebar-primary": "oklch(64.6% 0.222 41.116)",
+      "sidebar-primary-foreground": "oklch(100% 0 0)",
+      "sidebar-ring": "oklch(64.6% 0.222 41.116)",
+      "brand-strong": "oklch(55.3% 0.195 38.402)"
+    },
+    "dark": {
+      "brand": "oklch(64.6% 0.222 41.116)",
+      "brand-foreground": "oklch(100% 0 0)",
+      "brand-text": "oklch(64.6% 0.222 41.116)",
+      "primary": "oklch(64.6% 0.222 41.116)",
+      "primary-foreground": "oklch(100% 0 0)",
+      "ring": "oklch(64.6% 0.222 41.116)",
+      "chart-1": "oklch(64.6% 0.222 41.116)",
+      "sidebar-primary": "oklch(64.6% 0.222 41.116)",
+      "sidebar-primary-foreground": "oklch(100% 0 0)",
+      "sidebar-ring": "oklch(64.6% 0.222 41.116)",
+      "brand-strong": "oklch(55.3% 0.195 38.402)"
+    }
+  },
+  "type": "registry:theme"
+}

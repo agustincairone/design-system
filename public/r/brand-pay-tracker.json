@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brand-pay-tracker",
+  "title": "Acento de pay-tracker (provisorio)",
+  "description": "Color de acento #22c55e para pay-tracker.",
+  "cssVars": {
+    "light": {
+      "brand": "#22c55e",
+      "brand-foreground": "#0a0a0a",
+      "brand-text": "oklch(0.398 0.106 149.6)",
+      "primary": "#22c55e",
+      "primary-foreground": "#0a0a0a",
+      "ring": "#22c55e",
+      "chart-1": "#22c55e",
+      "sidebar-primary": "#22c55e",
+      "sidebar-primary-foreground": "#0a0a0a",
+      "sidebar-ring": "#22c55e",
+      "brand-strong": "#15803d"
+    },
+    "dark": {
+      "brand": "#22c55e",
+      "brand-foreground": "#0a0a0a",
+      "brand-text": "#22c55e",
+      "primary": "#22c55e",
+      "primary-foreground": "#0a0a0a",
+      "ring": "#22c55e",
+      "chart-1": "#22c55e",
+      "sidebar-primary": "#22c55e",
+      "sidebar-primary-foreground": "#0a0a0a",
+      "sidebar-ring": "#22c55e",
+      "brand-strong": "#15803d"
+    }
+  },
+  "type": "registry:theme"
+}

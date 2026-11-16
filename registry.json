@@ -1,0 +1,673 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "ds",
+  "homepage": "http://localhost:5174",
+  "items": [
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Tema base",
+      "description": "Base stone (gris cálido) en claro y oscuro, tipografías Geist / Geist Mono / Geist Pixel Circle / Doto, formas redondeadas.",
+      "dependencies": [
+        "@fontsource-variable/geist",
+        "@fontsource-variable/geist-mono",
+        "@fontsource-variable/doto"
+      ],
+      "cssVars": {
+        "theme": {
+          "font-sans": "'Geist Variable', ui-sans-serif, system-ui, sans-serif",
+          "font-mono": "'Geist Mono Variable', ui-monospace, monospace",
+          "font-heading": "var(--font-sans)",
+          "font-clock": "'Geist Pixel Circle', 'Geist Mono Variable', ui-monospace, monospace",
+          "font-readout": "'Doto Variable', 'Geist Mono Variable', ui-monospace, monospace",
+          "color-brand": "var(--brand)",
+          "color-brand-foreground": "var(--brand-foreground)",
+          "color-brand-text": "var(--brand-text)",
+          "color-brand-strong": "var(--brand-strong)",
+          "radius-box-s": "12px",
+          "radius-box-m": "16px",
+          "radius-box-l": "16px",
+          "spacing-box-s": "12px",
+          "spacing-box-m": "16px",
+          "spacing-box-l": "20px",
+          "color-inset": "var(--inset)",
+          "spacing-box-gap": "8px",
+          "spacing-section": "40px"
+        },
+        "light": {
+          "background": "oklch(92.3% 0.003 48.717)",
+          "foreground": "oklch(21.6% 0.006 56.043)",
+          "card": "oklch(100% 0 0)",
+          "card-foreground": "oklch(21.6% 0.006 56.043)",
+          "popover": "oklch(100% 0 0)",
+          "popover-foreground": "oklch(21.6% 0.006 56.043)",
+          "secondary": "oklch(97% 0.001 106.424)",
+          "secondary-foreground": "oklch(21.6% 0.006 56.043)",
+          "muted": "oklch(97% 0.001 106.424)",
+          "muted-foreground": "oklch(55.3% 0.013 58.071)",
+          "accent": "oklch(97% 0.001 106.424)",
+          "accent-foreground": "oklch(21.6% 0.006 56.043)",
+          "destructive": "oklch(57.7% 0.245 27.325)",
+          "border": "oklch(86.9% 0.005 56.366)",
+          "input": "oklch(86.9% 0.005 56.366)",
+          "radius": "1rem",
+          "chart-2": "oklch(21.6% 0.006 56.043)",
+          "chart-3": "oklch(55.3% 0.013 58.071)",
+          "chart-4": "oklch(86.9% 0.005 56.366)",
+          "chart-5": "oklch(57.7% 0.245 27.325)",
+          "sidebar": "oklch(97% 0.001 106.424)",
+          "sidebar-foreground": "oklch(21.6% 0.006 56.043)",
+          "sidebar-accent": "oklch(92.3% 0.003 48.717)",
+          "sidebar-accent-foreground": "oklch(21.6% 0.006 56.043)",
+          "sidebar-border": "oklch(86.9% 0.005 56.366)",
+          "brand": "oklch(21.6% 0.006 56.043)",
+          "brand-foreground": "oklch(98.5% 0.001 106.423)",
+          "brand-text": "oklch(21.6% 0.006 56.043)",
+          "primary": "oklch(21.6% 0.006 56.043)",
+          "primary-foreground": "oklch(98.5% 0.001 106.423)",
+          "ring": "oklch(70.9% 0.01 56.259)",
+          "chart-1": "oklch(21.6% 0.006 56.043)",
+          "sidebar-primary": "oklch(21.6% 0.006 56.043)",
+          "sidebar-primary-foreground": "oklch(98.5% 0.001 106.423)",
+          "sidebar-ring": "oklch(70.9% 0.01 56.259)",
+          "brand-strong": "oklch(37.4% 0.01 67.558)",
+          "inset": "oklch(97% 0.001 106.424)"
+        },
+        "dark": {
+          "background": "oklch(14.7% 0.004 49.25)",
+          "foreground": "oklch(97% 0.001 106.424)",
+          "card": "oklch(21.6% 0.006 56.043)",
+          "card-foreground": "oklch(97% 0.001 106.424)",
+          "popover": "oklch(21.6% 0.006 56.043)",
+          "popover-foreground": "oklch(97% 0.001 106.424)",
+          "secondary": "oklch(26.8% 0.007 34.298)",
+          "secondary-foreground": "oklch(97% 0.001 106.424)",
+          "muted": "oklch(26.8% 0.007 34.298)",
+          "muted-foreground": "oklch(70.9% 0.01 56.259)",
+          "accent": "oklch(26.8% 0.007 34.298)",
+          "accent-foreground": "oklch(97% 0.001 106.424)",
+          "destructive": "oklch(63.7% 0.237 25.331)",
+          "border": "oklch(26.8% 0.007 34.298)",
+          "input": "oklch(37.4% 0.01 67.558)",
+          "chart-2": "oklch(97% 0.001 106.424)",
+          "chart-3": "oklch(70.9% 0.01 56.259)",
+          "chart-4": "oklch(37.4% 0.01 67.558)",
+          "chart-5": "oklch(63.7% 0.237 25.331)",
+          "sidebar": "oklch(21.6% 0.006 56.043)",
+          "sidebar-foreground": "oklch(97% 0.001 106.424)",
+          "sidebar-accent": "oklch(26.8% 0.007 34.298)",
+          "sidebar-accent-foreground": "oklch(97% 0.001 106.424)",
+          "sidebar-border": "oklch(26.8% 0.007 34.298)",
+          "brand": "oklch(97% 0.001 106.424)",
+          "brand-foreground": "oklch(21.6% 0.006 56.043)",
+          "brand-text": "oklch(97% 0.001 106.424)",
+          "primary": "oklch(97% 0.001 106.424)",
+          "primary-foreground": "oklch(21.6% 0.006 56.043)",
+          "ring": "oklch(44.4% 0.011 73.639)",
+          "chart-1": "oklch(97% 0.001 106.424)",
+          "sidebar-primary": "oklch(97% 0.001 106.424)",
+          "sidebar-primary-foreground": "oklch(21.6% 0.006 56.043)",
+          "sidebar-ring": "oklch(44.4% 0.011 73.639)",
+          "brand-strong": "oklch(86.9% 0.005 56.366)",
+          "inset": "oklch(14.7% 0.004 49.25)"
+        }
+      },
+      "css": {
+        "@import \"@fontsource-variable/geist\"": {},
+        "@import \"@fontsource-variable/geist-mono\"": {},
+        "@import \"@fontsource-variable/doto\"": {},
+        "@import \"./styles/geist-pixel-circle.css\"": {},
+        "@utility eyebrow": {
+          "font-family": "var(--font-mono)",
+          "font-size": "0.6875rem",
+          "line-height": "1rem",
+          "letter-spacing": "0.14em",
+          "text-transform": "uppercase",
+          "color": "var(--muted-foreground)"
+        },
+        "@utility live-number": {
+          "font-variant-numeric": "tabular-nums",
+          "letter-spacing": "0.02em"
+        },
+        "@utility dot": {
+          "width": "4px",
+          "height": "4px",
+          "border-radius": "9999px",
+          "flex-shrink": "0"
+        },
+        "@utility title-page": {
+          "font-family": "var(--font-sans)",
+          "font-size": "40px",
+          "font-weight": "600",
+          "line-height": "1",
+          "letter-spacing": "-0.05em"
+        },
+        "@utility title-box": {
+          "font-family": "var(--font-sans)",
+          "font-size": "20px",
+          "font-weight": "600",
+          "line-height": "1.2",
+          "letter-spacing": "-0.03em"
+        },
+        "@layer base": {
+          "body": {
+            "@apply bg-background text-foreground antialiased": {}
+          },
+          "::selection": {
+            "background": "color-mix(in oklch, var(--brand) 30%, transparent)"
+          }
+        }
+      },
+      "files": [
+        {
+          "path": "registry/ds/fonts/geist-pixel-circle.css",
+          "type": "registry:file",
+          "target": "src/styles/geist-pixel-circle.css"
+        }
+      ]
+    },
+    {
+      "name": "theme-toggle",
+      "type": "registry:component",
+      "title": "Selector de tema",
+      "description": "Proveedor de tema (Automático / Claro / Oscuro) y la píldora para elegirlo.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/theme/theme-provider.tsx",
+          "type": "registry:component",
+          "target": "components/theme-provider.tsx"
+        },
+        {
+          "path": "registry/ds/theme/theme-toggle.tsx",
+          "type": "registry:component",
+          "target": "components/theme-toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "brand-loop",
+      "type": "registry:theme",
+      "title": "Acento de LOOP",
+      "description": "Acento naranja 600 para LOOP.",
+      "cssVars": {
+        "light": {
+          "brand": "oklch(64.6% 0.222 41.116)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(64.6% 0.222 41.116)",
+          "primary": "oklch(64.6% 0.222 41.116)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(64.6% 0.222 41.116)",
+          "chart-1": "oklch(64.6% 0.222 41.116)",
+          "sidebar-primary": "oklch(64.6% 0.222 41.116)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(64.6% 0.222 41.116)",
+          "brand-strong": "oklch(55.3% 0.195 38.402)"
+        },
+        "dark": {
+          "brand": "oklch(64.6% 0.222 41.116)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(64.6% 0.222 41.116)",
+          "primary": "oklch(64.6% 0.222 41.116)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(64.6% 0.222 41.116)",
+          "chart-1": "oklch(64.6% 0.222 41.116)",
+          "sidebar-primary": "oklch(64.6% 0.222 41.116)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(64.6% 0.222 41.116)",
+          "brand-strong": "oklch(55.3% 0.195 38.402)"
+        }
+      }
+    },
+    {
+      "name": "brand-pay-tracker",
+      "type": "registry:theme",
+      "title": "Acento de pay-tracker (provisorio)",
+      "description": "Color de acento #22c55e para pay-tracker.",
+      "cssVars": {
+        "light": {
+          "brand": "#22c55e",
+          "brand-foreground": "#0a0a0a",
+          "brand-text": "oklch(0.398 0.106 149.6)",
+          "primary": "#22c55e",
+          "primary-foreground": "#0a0a0a",
+          "ring": "#22c55e",
+          "chart-1": "#22c55e",
+          "sidebar-primary": "#22c55e",
+          "sidebar-primary-foreground": "#0a0a0a",
+          "sidebar-ring": "#22c55e",
+          "brand-strong": "#15803d"
+        },
+        "dark": {
+          "brand": "#22c55e",
+          "brand-foreground": "#0a0a0a",
+          "brand-text": "#22c55e",
+          "primary": "#22c55e",
+          "primary-foreground": "#0a0a0a",
+          "ring": "#22c55e",
+          "chart-1": "#22c55e",
+          "sidebar-primary": "#22c55e",
+          "sidebar-primary-foreground": "#0a0a0a",
+          "sidebar-ring": "#22c55e",
+          "brand-strong": "#15803d"
+        }
+      }
+    },
+    {
+      "name": "brand-outfit-tracker",
+      "type": "registry:theme",
+      "title": "Acento de outfit-tracker (provisorio)",
+      "description": "Color de acento #ec4899 para outfit-tracker.",
+      "cssVars": {
+        "light": {
+          "brand": "#ec4899",
+          "brand-foreground": "#0a0a0a",
+          "brand-text": "oklch(0.361 0.116 354.3)",
+          "primary": "#ec4899",
+          "primary-foreground": "#0a0a0a",
+          "ring": "#ec4899",
+          "chart-1": "#ec4899",
+          "sidebar-primary": "#ec4899",
+          "sidebar-primary-foreground": "#0a0a0a",
+          "sidebar-ring": "#ec4899",
+          "brand-strong": "#be185d"
+        },
+        "dark": {
+          "brand": "#ec4899",
+          "brand-foreground": "#0a0a0a",
+          "brand-text": "#ec4899",
+          "primary": "#ec4899",
+          "primary-foreground": "#0a0a0a",
+          "ring": "#ec4899",
+          "chart-1": "#ec4899",
+          "sidebar-primary": "#ec4899",
+          "sidebar-primary-foreground": "#0a0a0a",
+          "sidebar-ring": "#ec4899",
+          "brand-strong": "#be185d"
+        }
+      }
+    },
+    {
+      "name": "toaster",
+      "type": "registry:ui",
+      "title": "Notificaciones",
+      "description": "Avisos emergentes (sonner) conectados al selector de tema.",
+      "dependencies": [
+        "sonner",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@ds/theme-toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/sonner.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/sonner.tsx"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Botón",
+      "description": "Botón de shadcn, con los links en el color de texto de la app (legible en modo claro).",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Etiqueta",
+      "description": "Etiqueta de shadcn, con los links en el color de texto de la app (legible en modo claro).",
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/badge.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/badge.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "toggle",
+      "description": "Botón que se prende y apaga, en forma de píldora.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/toggle.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toggle.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "toggle-group",
+      "description": "Grupo de opciones en píldora.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@ds/toggle"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/toggle-group.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/toggle-group.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "tabs",
+      "description": "Pestañas en píldora.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/tabs.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/tabs.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "input",
+      "description": "Campo de texto amplio y redondeado.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "textarea",
+      "description": "Texto largo, redondeado.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/textarea.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/textarea.tsx"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "select",
+      "description": "Selector redondeado.",
+      "dependencies": [
+        "radix-ui",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/select.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/select.tsx"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "card",
+      "description": "Tarjeta sin borde, muy redondeada.",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/card.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Slider único del sistema: línea de 2px, punto de 16px, color de la app.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/slider.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/slider.tsx"
+        }
+      ]
+    },
+    {
+      "name": "controls",
+      "type": "registry:block",
+      "title": "Controles",
+      "description": "Campo-slider, stepper, selector segmentado, fichas, número + slider y reparto entre dos. Sirven en cualquier app.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@ds/slider"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/controls/field-slider.tsx",
+          "type": "registry:component",
+          "target": "components/controls/field-slider.tsx"
+        },
+        {
+          "path": "registry/ds/controls/stepper.tsx",
+          "type": "registry:component",
+          "target": "components/controls/stepper.tsx"
+        },
+        {
+          "path": "registry/ds/controls/segmented.tsx",
+          "type": "registry:component",
+          "target": "components/controls/segmented.tsx"
+        },
+        {
+          "path": "registry/ds/controls/number-slider.tsx",
+          "type": "registry:component",
+          "target": "components/controls/number-slider.tsx"
+        },
+        {
+          "path": "registry/ds/controls/split-slider.tsx",
+          "type": "registry:component",
+          "target": "components/controls/split-slider.tsx"
+        },
+        {
+          "path": "registry/ds/controls/tile-group.tsx",
+          "type": "registry:component",
+          "target": "components/controls/tile-group.tsx"
+        },
+        {
+          "path": "registry/ds/controls/icon-tile.tsx",
+          "type": "registry:component",
+          "target": "components/controls/icon-tile.tsx"
+        },
+        {
+          "path": "registry/ds/controls/field-column.tsx",
+          "type": "registry:component",
+          "target": "components/controls/field-column.tsx"
+        }
+      ]
+    },
+    {
+      "name": "audio",
+      "type": "registry:block",
+      "title": "Controles de audio",
+      "description": "Controles de audio: slider de parámetro, perilla, dial, sintonizador, selector, barra, pad XY, botón redondo, vúmetro, botones ⏻/S y panel. Sólo para apps de música.",
+      "registryDependencies": [
+        "utils",
+        "@ds/slider",
+        "@ds/button"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/audio/drag.ts",
+          "type": "registry:component",
+          "target": "components/audio/drag.ts"
+        },
+        {
+          "path": "registry/ds/audio/param-buttons.tsx",
+          "type": "registry:component",
+          "target": "components/audio/param-buttons.tsx"
+        },
+        {
+          "path": "registry/ds/audio/param-slider.tsx",
+          "type": "registry:component",
+          "target": "components/audio/param-slider.tsx"
+        },
+        {
+          "path": "registry/ds/audio/rotary-knob.tsx",
+          "type": "registry:component",
+          "target": "components/audio/rotary-knob.tsx"
+        },
+        {
+          "path": "registry/ds/audio/level-meter.tsx",
+          "type": "registry:component",
+          "target": "components/audio/level-meter.tsx"
+        },
+        {
+          "path": "registry/ds/audio/audio-panel.tsx",
+          "type": "registry:component",
+          "target": "components/audio/audio-panel.tsx"
+        },
+        {
+          "path": "registry/ds/audio/dial.tsx",
+          "type": "registry:component",
+          "target": "components/audio/dial.tsx"
+        },
+        {
+          "path": "registry/ds/audio/tuner.tsx",
+          "type": "registry:component",
+          "target": "components/audio/tuner.tsx"
+        },
+        {
+          "path": "registry/ds/audio/selector-knob.tsx",
+          "type": "registry:component",
+          "target": "components/audio/selector-knob.tsx"
+        },
+        {
+          "path": "registry/ds/audio/bar-fader.tsx",
+          "type": "registry:component",
+          "target": "components/audio/bar-fader.tsx"
+        },
+        {
+          "path": "registry/ds/audio/xy-pad.tsx",
+          "type": "registry:component",
+          "target": "components/audio/xy-pad.tsx"
+        },
+        {
+          "path": "registry/ds/audio/round-toggle.tsx",
+          "type": "registry:component",
+          "target": "components/audio/round-toggle.tsx"
+        },
+        {
+          "path": "registry/ds/audio/speaker-grille.tsx",
+          "type": "registry:component",
+          "target": "components/audio/speaker-grille.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "kit",
+      "type": "registry:block",
+      "title": "Kit completo",
+      "description": "Tema + selector de tema + todos los componentes base.",
+      "registryDependencies": [
+        "@ds/input",
+        "@ds/textarea",
+        "label",
+        "@ds/card",
+        "separator",
+        "dialog",
+        "sheet",
+        "dropdown-menu",
+        "@ds/select",
+        "@ds/tabs",
+        "tooltip",
+        "switch",
+        "checkbox",
+        "@ds/slider",
+        "@ds/toggle",
+        "@ds/toggle-group",
+        "skeleton",
+        "alert",
+        "avatar",
+        "@ds/theme",
+        "@ds/theme-toggle",
+        "@ds/toaster",
+        "@ds/button",
+        "@ds/badge",
+        "@ds/controls"
+      ]
+    }
+  ]
+}

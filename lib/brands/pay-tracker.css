@@ -1,0 +1,28 @@
+/* Color de pay-tracker. Importalo después de theme.css */
+:root {
+  --brand: #22c55e;
+  --brand-foreground: #0a0a0a;
+  --brand-text: oklch(0.398 0.106 149.6);
+  --primary: #22c55e;
+  --primary-foreground: #0a0a0a;
+  --ring: #22c55e;
+  --chart-1: #22c55e;
+  --sidebar-primary: #22c55e;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-ring: #22c55e;
+  --brand-strong: #15803d;
+}
+
+.dark {
+  --brand: #22c55e;
+  --brand-foreground: #0a0a0a;
+  --brand-text: #22c55e;
+  --primary: #22c55e;
+  --primary-foreground: #0a0a0a;
+  --ring: #22c55e;
+  --chart-1: #22c55e;
+  --sidebar-primary: #22c55e;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-ring: #22c55e;
+  --brand-strong: #15803d;
+}

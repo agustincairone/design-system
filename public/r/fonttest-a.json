@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fonttest-a",
+  "css": {
+    "@layer base": {
+      "@font-face": {
+        "font-family": "\"Test A\"",
+        "src": "url(data:font/woff2;base64,AAAA) format(\"woff2\")"
+      }
+    }
+  },
+  "type": "registry:theme"
+}

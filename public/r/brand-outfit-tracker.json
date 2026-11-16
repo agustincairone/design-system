@@ -1,0 +1,35 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brand-outfit-tracker",
+  "title": "Acento de outfit-tracker (provisorio)",
+  "description": "Color de acento #ec4899 para outfit-tracker.",
+  "cssVars": {
+    "light": {
+      "brand": "#ec4899",
+      "brand-foreground": "#0a0a0a",
+      "brand-text": "oklch(0.361 0.116 354.3)",
+      "primary": "#ec4899",
+      "primary-foreground": "#0a0a0a",
+      "ring": "#ec4899",
+      "chart-1": "#ec4899",
+      "sidebar-primary": "#ec4899",
+      "sidebar-primary-foreground": "#0a0a0a",
+      "sidebar-ring": "#ec4899",
+      "brand-strong": "#be185d"
+    },
+    "dark": {
+      "brand": "#ec4899",
+      "brand-foreground": "#0a0a0a",
+      "brand-text": "#ec4899",
+      "primary": "#ec4899",
+      "primary-foreground": "#0a0a0a",
+      "ring": "#ec4899",
+      "chart-1": "#ec4899",
+      "sidebar-primary": "#ec4899",
+      "sidebar-primary-foreground": "#0a0a0a",
+      "sidebar-ring": "#ec4899",
+      "brand-strong": "#be185d"
+    }
+  },
+  "type": "registry:theme"
+}

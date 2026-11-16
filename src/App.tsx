@@ -1,18 +1,1044 @@
+import * as React from "react"
+import { toast } from "sonner"
+import {
+  Bell,
+  Check,
+  Cloud,
+  Drum,
+  Guitar,
+  Headphones,
+  Sparkles,
+  Speaker,
+  VolumeX,
+  X,
+  Zap,
+  ChevronDown,
+  Copy,
+  CreditCard,
+  LogOut,
+  Minus,
+  Plus,
+  Settings,
+  Shirt,
+  Music,
+  Trash2,
+  Wallet,
+} from "lucide-react"
+
+import { useTheme } from "@/components/theme-provider"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { Skeleton } from "@/components/ui/skeleton"
+import { Slider } from "@/components/ui/slider"
+import { Switch } from "@/components/ui/switch"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Textarea } from "@/components/ui/textarea"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+import { BRANDS, type BrandId, applyBrand } from "@/brands"
+import { PALETTE, SHADES } from "@/palette"
+import { AudioPanel } from "@/components/audio/audio-panel"
+import { LevelMeter, paintMeter } from "@/components/audio/level-meter"
+import { ParamButtons } from "@/components/audio/param-buttons"
+import { ParamSlider } from "@/components/audio/param-slider"
+import { RotaryKnob } from "@/components/audio/rotary-knob"
+import { BarFader } from "@/components/audio/bar-fader"
+import { Dial } from "@/components/audio/dial"
+import { RoundToggle } from "@/components/audio/round-toggle"
+import { SelectorKnob } from "@/components/audio/selector-knob"
+import { Tuner } from "@/components/audio/tuner"
+import { XYPad } from "@/components/audio/xy-pad"
+import { SpeakerGrille } from "@/components/audio/speaker-grille"
+import { FieldSlider } from "@/components/controls/field-slider"
+import { NumberSlider } from "@/components/controls/number-slider"
+import { Segmented } from "@/components/controls/segmented"
+import { SplitSlider } from "@/components/controls/split-slider"
+import { Stepper } from "@/components/controls/stepper"
+import { TileGroup } from "@/components/controls/tile-group"
+import { IconTile } from "@/components/controls/icon-tile"
+import { FieldColumn } from "@/components/controls/field-column"
+
+// ---------------------------------------------------------------------------
+
+function Section({
+  id,
+  title,
+  description,
+  children,
+}: {
+  id: string
+  title: string
+  description: string
+  children: React.ReactNode
+}) {
+  return (
+    <section id={id} className="scroll-mt-20 border-t py-12">
+      <div className="mb-6">
+        <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
+        <p className="mt-1 max-w-prose text-sm text-muted-foreground">
+          {description}
+        </p>
+      </div>
+      {children}
+    </section>
+  )
+}
+
+function Demo({
+  label,
+  children,
+  className = "",
+}: {
+  label: string
+  children: React.ReactNode
+  className?: string
+}) {
+  return (
+    <div className="overflow-hidden rounded-lg border">
+      <div
+        className={`flex flex-wrap items-center gap-3 bg-background p-6 ${className}`}
+      >
+        {children}
+      </div>
+      <div className="border-t bg-muted/50 px-4 py-2 font-mono text-xs text-muted-foreground">
+        {label}
+      </div>
+    </div>
+  )
+}
+
+const TOKENS: { name: string; cls: string; note: string }[] = [
+  { name: "background", cls: "bg-background", note: "Fondo de la página" },
+  { name: "card", cls: "bg-card", note: "Tarjetas y paneles" },
+  { name: "muted", cls: "bg-muted", note: "Zonas secundarias" },
+  { name: "accent", cls: "bg-accent", note: "Hover y seleccionados" },
+  { name: "border", cls: "bg-border", note: "Bordes y divisores" },
+  { name: "muted-foreground", cls: "bg-muted-foreground", note: "Texto secundario" },
+  { name: "foreground", cls: "bg-foreground", note: "Texto principal" },
+  { name: "brand", cls: "bg-brand", note: "Acento de la app" },
+  { name: "destructive", cls: "bg-destructive", note: "Borrar (siempre rojo)" },
+]
+
+const NAV = [
+  ["colores", "Colores"],
+  ["tipografia", "Tipografía"],
+  ["cajas", "Cajas"],
+  ["numeros", "Números en vivo"],
+  ["audio", "Audio"],
+  ["botones", "Botones"],
+  ["formularios", "Formularios"],
+  ["controles", "Controles"],
+  ["tarjetas", "Tarjetas"],
+  ["navegacion", "Navegación"],
+  ["ventanas", "Ventanas y avisos"],
+  ["usar", "Cómo usarlo"],
+]
+
+const ICONS: Record<BrandId, typeof Music> = {
+  neutral: Settings,
+  loop: Music,
+  "pay-tracker": Wallet,
+  "outfit-tracker": Shirt,
+}
+
+// Ceros a la izquierda atenuados: "007" -> <span dim>00</span>7
+function Dimmed({ value, digits }: { value: number; digits: number }) {
+  const str = String(value).padStart(digits, "0")
+  const firstReal = str.search(/[1-9]/)
+  const cut = firstReal === -1 ? digits - 1 : firstReal
+  return (
+    <>
+      <span className="opacity-25">{str.slice(0, cut)}</span>
+      {str.slice(cut)}
+    </>
+  )
+}
+
+function LiveClock() {
+  const [running, setRunning] = React.useState(true)
+  const [secs, setSecs] = React.useState(83)
+  React.useEffect(() => {
+    if (!running) return
+    const t = setInterval(() => setSecs((x) => x + 1), 1000)
+    return () => clearInterval(t)
+  }, [running])
+  const m = Math.floor(secs / 60)
+  const sec = secs % 60
+  return (
+    <div className="flex flex-col gap-3 rounded-3xl bg-card p-5">
+      <span className="eyebrow">Tiempo · font-clock</span>
+      <div className="live-number font-clock text-6xl leading-none sm:text-7xl">
+        <Dimmed value={m} digits={2} />
+        <span className="text-muted-foreground">:</span>
+        {String(sec).padStart(2, "0")}
+      </div>
+      <div className="flex gap-2">
+        <Button size="sm" variant={running ? "secondary" : "default"} onClick={() => setRunning((r) => !r)}>
+          {running ? "Pausar" : "Seguir"}
+        </Button>
+        <Button size="sm" variant="ghost" onClick={() => setSecs(0)}>
+          Reiniciar
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+function LiveBpm() {
+  const [bpm, setBpm] = React.useState(96)
+  return (
+    <div className="flex flex-col gap-3 rounded-3xl bg-card p-5">
+      <span className="eyebrow">Valor en vivo · font-readout</span>
+      <div className="flex items-baseline gap-2">
+        <span className="live-number font-readout text-6xl font-bold leading-none sm:text-7xl">
+          <Dimmed value={bpm} digits={3} />
+        </span>
+        <span className="text-sm text-brand">BPM</span>
+      </div>
+      <div className="flex gap-2">
+        <Button size="icon" variant="secondary" aria-label="Menos" onClick={() => setBpm((b) => Math.max(40, b - 1))}>
+          <Minus />
+        </Button>
+        <Button size="icon" variant="secondary" aria-label="Más" onClick={() => setBpm((b) => Math.min(240, b + 1))}>
+          <Plus />
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+// Demo de los controles de audio, armada como un canal de LOOP.
+type Ctl = { v: number; off: boolean; solo: boolean }
+const ctl = (v: number): Ctl => ({ v, off: false, solo: false })
+
+function AudioDemo() {
+  const [p, setP] = React.useState<Record<string, Ctl>>({
+    dur: ctl(1205), golpe: ctl(0.99), click: ctl(0.99),
+    trim: ctl(0), hi: ctl(3), mid: ctl(-1), low: ctl(-18),
+    pan: ctl(-0.38), eco: ctl(0.39), sala: ctl(0.57),
+  })
+  const [signal, setSignal] = React.useState(true)
+  const meter = React.useRef<HTMLDivElement>(null)
+
+  // Señal falsa para mostrar el vúmetro (en la app real viene del audio).
+  React.useEffect(() => {
+    if (!signal) return paintMeter(meter.current, 0)
+    let level = 0, beat = 0
+    const t = setInterval(() => {
+      beat = (beat + 1) % 15
+      const target = beat === 0 ? 0.75 + Math.random() * 0.3 : 0
+      level = Math.max(target, level - 0.05)
+      paintMeter(meter.current, level * 10)
+    }, 33)
+    return () => clearInterval(t)
+  }, [signal])
+
+  const set = (k: string, patch: Partial<Ctl>) => setP((s) => ({ ...s, [k]: { ...s[k], ...patch } }))
+  const bind = (k: string, opts: { solo?: boolean } = {}) => ({
+    value: p[k].v,
+    onChange: (v: number) => set(k, { v }),
+    off: p[k].off,
+    onPower: () => set(k, { off: !p[k].off }),
+    ...(opts.solo ? { soloed: p[k].solo, onSolo: () => set(k, { solo: !p[k].solo }) } : {}),
+  })
+  const pct = (v: number) => `${Math.round(v * 100)}%`
+  const db = (v: number) => `${v > 0 ? "+" : ""}${Math.round(v)}dB`
+  const pan = (v: number) => (Math.abs(v) < 0.02 ? "C" : `${v < 0 ? "I" : "D"}${Math.round(Math.abs(v) * 100)}`)
+
+  return (
+    <div className="grid gap-3 lg:grid-cols-[minmax(0,1.3fr)_auto_minmax(0,1fr)]">
+      <AudioPanel title="Sonido">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(110px,1fr))] gap-x-4 gap-y-3">
+          <ParamSlider label="Duración" min={50} max={3000} log defaultValue={600} format={(v) => `${Math.round(v)}ms`} {...bind("dur")} />
+          <ParamSlider label="Golpe" min={0} max={1} defaultValue={0.5} format={pct} {...bind("golpe")} />
+          <ParamSlider label="Click" min={0} max={1} defaultValue={0.5} format={pct} {...bind("click")} />
+        </div>
+      </AudioPanel>
+      <AudioPanel title="Consola">
+        <div className="flex items-start gap-3">
+          <LevelMeter ref={meter} className="mt-1" />
+          <RotaryKnob label="Trim" min={-12} max={12} defaultValue={0} format={db} value={p.trim.v} onChange={(v) => set("trim", { v })} off={p.trim.off} onPower={() => set("trim", { off: !p.trim.off })} />
+          <div className="w-px self-stretch bg-border" />
+          <RotaryKnob label="Hi" min={-30} max={6} format={db} {...bind("hi", { solo: true })} />
+          <RotaryKnob label="Mid" min={-30} max={6} format={db} {...bind("mid", { solo: true })} />
+          <RotaryKnob label="Low" min={-30} max={6} format={db} {...bind("low", { solo: true })} />
+        </div>
+      </AudioPanel>
+      <AudioPanel title="Mezcla">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(96px,1fr))] gap-x-4 gap-y-3">
+          <ParamSlider label="Pan" min={-1} max={1} defaultValue={0} format={pan} {...bind("pan")} />
+          <ParamSlider label="Eco" min={0} max={1} defaultValue={0} format={pct} {...bind("eco", { solo: true })} />
+          <ParamSlider label="Sala" min={0} max={1} defaultValue={0} format={pct} {...bind("sala", { solo: true })} />
+        </div>
+      </AudioPanel>
+      <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground lg:col-span-3">
+        <Button size="sm" variant="secondary" onClick={() => setSignal((x) => !x)}>
+          {signal ? "Parar señal de prueba" : "Probar vúmetro"}
+        </Button>
+        <span className="inline-flex items-center gap-2">
+          <ParamButtons off onPower={() => {}} /> apagado
+        </span>
+        <span className="inline-flex items-center gap-2">
+          <ParamButtons soloed onSolo={() => {}} /> sólo esto
+        </span>
+        <span>Doble clic en cualquier control: vuelve al valor original. Perillas: arrastrá hacia arriba o abajo.</span>
+      </div>
+    </div>
+  )
+}
+
+// Controles extra (para elegir después cuál usar en cada parámetro).
+function ControlCard({ name, use, children }: { name: string; use: string; children: React.ReactNode }) {
+  return (
+    <div className="flex flex-col rounded-3xl bg-card">
+      <div className="flex min-h-56 flex-1 items-center justify-center p-6">{children}</div>
+      <div className="border-t px-5 py-3">
+        <div className="text-sm font-medium">{name}</div>
+        <div className="text-xs text-muted-foreground">{use}</div>
+      </div>
+    </div>
+  )
+}
+
+function MoreControls() {
+  const [vol, setVol] = React.useState(55)
+  const [swing, setSwing] = React.useState(51)
+  const [tens, setTens] = React.useState(30)
+  const [cut, setCut] = React.useState(-35)
+  const [bpm, setBpm] = React.useState(94)
+  const [sig, setSig] = React.useState("4/4")
+  const [wave, setWave] = React.useState("tri")
+  const [bars, setBars] = React.useState([0.65, 0, 1, 0.42, 0.24])
+  const [barsOff, setBarsOff] = React.useState([false, false, false, true, false])
+  const [xy, setXy] = React.useState({ x: 0.7, y: 0.35 })
+  const [toggles, setToggles] = React.useState({ play: true, metro: false, loop: false })
+  const days = ["1", "2", "3", "4", "5"]
+
+  return (
+    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <ControlCard name="Dial" use="Un valor importante, grande: volumen general, swing, cantidad de pasos.">
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          <Dial label="Volumen" value={vol} min={0} max={100} defaultValue={80} format={(v) => `${v}%`} onChange={setVol} />
+          <div className="flex flex-col gap-4">
+            <Dial label="Swing" variant="fill" value={swing} min={0} max={100} defaultValue={50} format={(v) => `${v}%`} onChange={setSwing} />
+            <Dial label="De 10 en 10" variant="dots" step={10} ticks={10} value={tens} min={0} max={100} defaultValue={50} format={(v) => `${v}`} onChange={setTens} />
+          </div>
+        </div>
+      </ControlCard>
+      <ControlCard name="Sintonizador" use="Valores precisos con muchas opciones: BPM, frecuencia.">
+        <Tuner stepper label="BPM" value={bpm} min={40} max={240} step={1} major={10} digits={3} onChange={setBpm} />
+      </ControlCard>
+      <ControlCard name="Dial bipolar" use="Valores con un centro neutro que van a izquierda o derecha: filtro, paneo. Doble clic = centro.">
+        <div className="flex flex-col items-center gap-2">
+          <Dial bipolar variant="fill" label={cut === 0 ? "abierto" : cut < 0 ? "graves" : "agudos"} value={cut} min={-100} max={100} defaultValue={0} format={(v) => (v === 0 ? "0" : `${Math.abs(v)}`)} onChange={setCut} />
+          <div className="flex w-36 justify-between eyebrow"><span>◀ izq</span><span>der ▶</span></div>
+        </div>
+      </ControlCard>
+      <ControlCard name="Selector" use="Pocas opciones fijas: compás, forma de onda.">
+        <div className="flex flex-wrap items-center justify-center gap-2">
+          <SelectorKnob
+            label="Compás"
+            value={sig}
+            onChange={setSig}
+            options={[{ value: "3/4", label: "3/4" }, { value: "4/4", label: "4/4" }, { value: "6/8", label: "6/8" }]}
+          />
+          <SelectorKnob
+            label="Onda"
+            size={56}
+            value={wave}
+            onChange={setWave}
+            options={[{ value: "sin", label: "SIN" }, { value: "tri", label: "TRI" }, { value: "saw", label: "SAW" }, { value: "sq", label: "SQR" }]}
+          />
+        </div>
+      </ControlCard>
+      <ControlCard name="Barras" use="Varios valores lado a lado. Rayada = en 0. ⏻ apaga esa barra entera.">
+        <div className="flex items-end gap-2">
+          {bars.map((b, i) => (
+            <BarFader
+              key={i}
+              label={days[i]}
+              width={40}
+              height={150}
+              value={b}
+              off={barsOff[i]}
+              onPower={() => setBarsOff((s) => s.map((x, j) => (j === i ? !x : x)))}
+              format={(v) => String(Math.round(v * 127))}
+              onChange={(v) => setBars((s) => s.map((x, j) => (j === i ? v : x)))}
+            />
+          ))}
+        </div>
+      </ControlCard>
+      <ControlCard name="Pad XY" use="Dos cosas a la vez con un dedo: eco y sala, filtro.">
+        <XYPad labelX="Eco" labelY="Sala" x={xy.x} y={xy.y} onChange={(x, y) => setXy({ x, y })} />
+      </ControlCard>
+      <ControlCard name="Rejilla de parlante" use="Sólo decorativa: le da a una app de música el look de un equipo.">
+        <SpeakerGrille plate={false} scatter size={160} />
+      </ControlCard>
+      <ControlCard name="Botón redondo" use="Prender y apagar: play, metrónomo, repetir.">
+        <div className="flex gap-6">
+          {(Object.keys(toggles) as (keyof typeof toggles)[]).map((k) => (
+            <RoundToggle
+              key={k}
+              label={{ play: "play", metro: "metrónomo", loop: "repetir" }[k]}
+              on={toggles[k]}
+              onToggle={() => setToggles((t) => ({ ...t, [k]: !t[k] }))}
+            />
+          ))}
+        </div>
+      </ControlCard>
+    </div>
+  )
+}
+
+function EqColumns() {
+  const [eq, setEq] = React.useState({ Hi: 0, Mid: -6, Low: 3 })
+  const [off, setOff] = React.useState<Record<string, boolean>>({})
+  const db = (v: number) => (v <= -29.5 ? "KILL" : `${v > 0 ? "+" : ""}${Math.round(v)}dB`)
+  return (
+    <div className="flex h-64 gap-4 rounded-box-m bg-inset p-box-m" data-variant="inset">
+      {(Object.keys(eq) as (keyof typeof eq)[]).map((b) => (
+        <FieldColumn
+          key={b}
+          label={b}
+          value={db(eq[b])}
+          off={off[b]}
+          offText="KILL"
+          buttons={<ParamButtons off={off[b]} onPower={() => setOff((o) => ({ ...o, [b]: !o[b] }))} onSolo={() => {}} />}
+        >
+          <FieldSlider orientation="vertical" hideText label={b} value={eq[b]} min={-30} max={6} defaultValue={0} format={db} onChange={(v) => setEq((e) => ({ ...e, [b]: v }))} />
+        </FieldColumn>
+      ))}
+      <LevelMeter fill ref={(el) => paintMeter(el, 7)} />
+    </div>
+  )
+}
+
+function ControlsDemo() {
+  const [width, setWidth] = React.useState(3)
+  const [radius, setRadius] = React.useState(347)
+  const [count, setCount] = React.useState(1)
+  const [range, setRange] = React.useState("15M")
+  const [rows, setRows] = React.useState(27)
+  const [cols, setCols] = React.useState(54)
+  const [mix, setMix] = React.useState(0.37)
+  const [tile, setTile] = React.useState("4/4")
+  return (
+    <div className="grid gap-3 md:grid-cols-2">
+      <ControlCard name="Campo-slider" use="Arrastrás de costado en cualquier parte. Con pocos valores, muestra un punto por cada uno.">
+        <div className="grid w-full max-w-sm gap-3">
+          <FieldSlider label="Ancho" value={width} min={1} max={8} defaultValue={3} onChange={setWidth} />
+          <FieldSlider label="Radio" value={radius} min={0} max={500} defaultValue={250} onChange={setRadius} />
+        </div>
+      </ControlCard>
+      <ControlCard name="Campo-slider vertical" use="La misma píldora parada: se arrastra para arriba o para abajo.">
+        <div className="flex h-56 gap-3">
+          <FieldSlider orientation="vertical" label="Ancho" value={width} min={1} max={8} defaultValue={3} onChange={setWidth} />
+          <FieldSlider orientation="vertical" label="Radio" value={radius} min={0} max={500} defaultValue={250} onChange={setRadius} />
+        </div>
+      </ControlCard>
+      <ControlCard name="Stepper y segmentado" use="Cantidades chicas (− 1 +) y elegir una opción entre pocas.">
+        <div className="flex flex-col items-center gap-5">
+          <Stepper label="Cantidad" value={count} min={0} max={16} onChange={setCount} />
+          <Segmented
+            label="Rango"
+            value={range}
+            onChange={setRange}
+            options={["15M", "30M", "1H", "4H", "1D"].map((v) => ({ value: v, label: v }))}
+          />
+        </div>
+      </ControlCard>
+      <ControlCard name="Fichas" use="Elegir una opción corta entre pocas. La elegida se pinta del color de la app.">
+        <TileGroup
+          label="Compás"
+          value={tile}
+          onChange={setTile}
+          options={["4/4", "3/4", "6/8", "5/4", "7/8", "12/8"].map((v) => ({ value: v, label: v }))}
+          className="max-w-xs justify-center font-mono"
+        />
+        <TileGroup
+          label="Compás a lo ancho"
+          columns={3}
+          value={tile}
+          onChange={setTile}
+          options={["4/4", "3/4", "6/8", "5/4", "7/8", "12/8"].map((v) => ({ value: v, label: v }))}
+          className="mt-4 w-full max-w-xs font-mono"
+        />
+      </ControlCard>
+      <ControlCard name="Fichas con ícono" use="Elegir algo de un catálogo (ej: agregar un sonido). Llenan su columna y son cuadradas.">
+        <div className="grid w-full max-w-xs grid-cols-3 gap-box-gap">
+          {[["Kick", Speaker], ["Snare", Drum], ["Pluck", Guitar], ["Pad", Cloud], ["Laser", Zap], ["Bell", Bell]].map(([l, I]) => (
+            <IconTile key={l as string} icon={I as typeof Bell} label={l as string} />
+          ))}
+        </div>
+      </ControlCard>
+      <ControlCard name="Columna vertical" use="Nombre y valor arriba, el control en el medio, ⏻ y 🎧 abajo. Con el vúmetro lleno al costado.">
+        <EqColumns />
+      </ControlCard>
+      <ControlCard name="Número + slider" use="Podés escribir el número exacto o arrastrar.">
+        <div className="grid w-full max-w-sm gap-3">
+          <NumberSlider label="Filas" value={rows} min={1} max={64} onChange={setRows} />
+          <NumberSlider label="Columnas" value={cols} min={1} max={64} onChange={setCols} />
+        </div>
+      </ControlCard>
+      <ControlCard name="Reparto entre dos" use="Cuánto de cada cosa: seco/efecto, izquierda/derecha. Doble clic = mitad y mitad.">
+        <SplitSlider left="Seco" right="Efecto" value={mix} onChange={setMix} className="max-w-sm" />
+      </ControlCard>
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
 
 export function App() {
+  const { resolvedTheme } = useTheme()
+  const [brand, setBrand] = React.useState<BrandId>("neutral")
+  const [volume, setVolume] = React.useState([70])
+
+  React.useEffect(() => applyBrand(brand, resolvedTheme), [brand, resolvedTheme])
+
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
+    <div className="min-h-svh">
+      {/* Barra superior */}
+      <header className="sticky top-0 z-20 border-b bg-background/80 backdrop-blur">
+        <div className="mx-auto flex h-14 max-w-6xl items-center gap-4 px-4">
+          <div className="flex items-center gap-2">
+            <div className="size-5 rounded-full bg-brand" />
+            <span className="font-semibold tracking-tight">Sistema de diseño</span>
+            <Badge variant="secondary" className="font-mono">
+              v0.1
+            </Badge>
+          </div>
+          <div className="ml-auto flex items-center gap-3">
+            <ThemeToggle />
+          </div>
         </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
+      </header>
+
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[180px_1fr]">
+        {/* Índice */}
+        <nav className="sticky top-14 hidden h-fit py-12 md:block">
+          <ul className="space-y-1 text-sm">
+            {NAV.map(([id, label]) => (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  className="block rounded-md px-2 py-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <main className="min-w-0 pb-24">
+          {/* Portada */}
+          <div className="py-12">
+            <h1 className="text-4xl font-semibold tracking-tighter sm:text-5xl">
+              Una sola forma de diseñar,
+              <br />
+              <span className="text-muted-foreground">para todas tus apps.</span>
+            </h1>
+            <p className="mt-4 max-w-prose text-muted-foreground">
+              Misma tipografía, mismos grises, mismos componentes. Cada app
+              tiene su propio color de acento. Elegí uno para ver cómo queda:
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {(Object.keys(BRANDS) as BrandId[]).map((id) => {
+                const b = BRANDS[id]
+                const Icon = ICONS[id]
+                const active = brand === id
+                return (
+                  <button
+                    key={id}
+                    onClick={() => setBrand(id)}
+                    className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm transition-colors ${
+                      active
+                        ? "border-foreground bg-accent text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    <span
+                      className="size-3 rounded-full border"
+                      style={{ background: b.light.brand }}
+                    />
+                    <Icon className="size-3.5" />
+                    {b.name}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          <Section
+            id="colores"
+            title="Colores"
+            description="La base es gris cálido (stone), en claro y en oscuro. Cada app usa UN solo color de la paleta como acento. El rojo queda reservado para borrar y errores, en todas las apps."
+          >
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+              {TOKENS.map((t) => (
+                <div key={t.name} className="overflow-hidden rounded-2xl border bg-card">
+                  <div className={`h-16 ${t.cls}`} />
+                  <div className="p-3">
+                    <div className="font-mono text-xs">{t.name}</div>
+                    <div className="mt-0.5 text-xs text-muted-foreground">{t.note}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 mb-3 flex items-baseline justify-between gap-4">
+              <h3 className="font-medium">Paleta completa</h3>
+              <span className="eyebrow">50 → 950</span>
+            </div>
+            <div className="overflow-x-auto rounded-2xl border bg-card p-4">
+              <div className="grid min-w-[560px] gap-1.5">
+                {Object.entries(PALETTE).map(([name, shades]) => {
+                  const tag =
+                    name === "red" ? "borrar" : name === "orange" ? "LOOP · 600" : name === "stone" ? "base" : ""
+                  return (
+                    <div key={name} className="grid grid-cols-[88px_repeat(11,1fr)] items-center gap-1.5">
+                      <div className="font-mono text-xs">
+                        {name}
+                        {tag && <div className="text-[10px] text-brand-text">{tag}</div>}
+                      </div>
+                      {SHADES.map((sh) => (
+                        <div
+                          key={sh}
+                          title={`${name}-${sh}`}
+                          className={`h-7 rounded-md ${
+                            (name === "orange" && sh === "600") || (name === "red" && sh === "600")
+                              ? "ring-2 ring-foreground ring-offset-2 ring-offset-card"
+                              : ""
+                          }`}
+                          style={{ background: shades[sh] }}
+                        />
+                      ))}
+                    </div>
+                  )
+                })}
+                <div className="grid grid-cols-[88px_repeat(11,1fr)] gap-1.5 pt-1">
+                  <div />
+                  {SHADES.map((sh) => (
+                    <div key={sh} className="text-center font-mono text-[10px] text-muted-foreground">
+                      {sh}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Section>
+
+          <Section
+            id="tipografia"
+            title="Tipografía"
+            description="Geist para todo el texto, Geist Mono para etiquetas. Los números quietos van con la letra normal; sólo los que se mueven usan letras de puntitos."
+          >
+            <div className="divide-y rounded-3xl bg-card">
+              {[
+                ["Título de página", "Geist semibold, 40px (clase title-page)", <div className="title-page">Mis pagos</div>],
+                ["Título de caja", "Geist semibold, 20px (clase title-box)", <div className="title-box">Agregar un sonido</div>],
+                ["Número grande quieto", "Geist light, muy grande", <div className="live-number text-6xl font-light tracking-tighter">$ 125.430<span className="text-muted-foreground">,50</span></div>],
+                ["Etiqueta", "Geist Mono, mayúsculas, 11px (clase eyebrow)", <span className="eyebrow">Total del mes</span>],
+                ["Valor de un control", "Geist Mono semibold, 14px", <span className="live-number font-mono text-sm font-semibold">450ms · +3dB · 60%</span>],
+                ["Texto", "Geist regular", <p className="max-w-prose">Texto normal para párrafos y descripciones, cómodo en el celular.</p>],
+                ["Unidad / ayuda", "Chico y gris", <span className="text-sm text-muted-foreground">120 BPM · actualizado hace 2 min</span>],
+                ["Link", "Color de la app", <a href="#tipografia" className="text-sm font-medium text-brand-text underline-offset-4 hover:underline">Ver detalle →</a>],
+              ].map(([role, how, sample]) => (
+                <div key={role as string} className="grid gap-3 p-5 sm:grid-cols-[180px_1fr] sm:items-center">
+                  <div>
+                    <div className="text-sm font-medium">{role}</div>
+                    <div className="text-xs text-muted-foreground">{how}</div>
+                  </div>
+                  <div className="min-w-0">{sample}</div>
+                </div>
+              ))}
+            </div>
+          </Section>
+
+          <Section
+            id="cajas"
+            title="Cajas"
+            description="Tamaños fijos para todas las cajas. Usá siempre estos, nunca otros: L sobre el fondo de la página, M adentro de otra caja (gris clarito, sin borde), S para cajitas chicas. Entre caja y caja siempre hay 8px (gap-box-gap); entre bloques grandes (o grupos dentro de una caja) 40px (gap-section). Las cajas nunca llevan borde: se separan sólo por el color de fondo."
+          >
+            <div className="rounded-box-l bg-card p-box-l">
+              <p className="eyebrow mb-3">L · esquinas 16 · relleno 20</p>
+              <div className="grid gap-box-gap sm:grid-cols-2">
+                <div className="rounded-box-m bg-inset p-box-m">
+                  <p className="eyebrow mb-3">M · esquinas 16 · relleno 16</p>
+                  <div className="flex gap-3">
+                    <div className="rounded-box-s bg-card p-box-s">
+                      <p className="eyebrow">S · 12 · 12</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="rounded-box-m bg-inset p-box-m">
+                  <p className="eyebrow mb-1">Clases</p>
+                  <p className="font-mono text-sm">rounded-box-s · m · l</p>
+                  <p className="font-mono text-sm">p-box-s · m · l</p>
+                  <p className="font-mono text-sm">gap-box-gap (8px entre cajas)</p>
+                  <p className="font-mono text-sm">gap-section (40px entre bloques)</p>
+                  <p className="mt-2 text-sm text-muted-foreground">Un AudioPanel con variant="inset" ya es una caja M.</p>
+                </div>
+              </div>
+            </div>
+          </Section>
+
+          <Section
+            id="numeros"
+            title="Números en vivo"
+            description="Cuando un número cambia solo (un cronómetro, el BPM mientras lo movés), usa letra de puntitos: Geist Pixel Circle para tiempos y Doto para valores. Los ceros de adelante se ven apagados."
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <LiveClock />
+              <LiveBpm />
+            </div>
+          </Section>
+
+          <Section
+            id="audio"
+            title="Audio"
+            description="Controles para apps de música: slider con valor, perilla giratoria, vúmetro y los botones ⏻ (apagar) y 🎧 (escuchar sólo eso). Toman el color de la app, o el de cada instrumento si se lo pasás."
+          >
+            <AudioDemo />
+            <h3 className="mt-10 mb-3 font-medium">Más controles</h3>
+            <MoreControls />
+          </Section>
+
+          <Section
+            id="botones"
+            title="Botones"
+            description="El botón principal usa el color de la app; idealmente uno solo por pantalla. El resto, en grises."
+          >
+            <div className="grid gap-4">
+              <Demo label="Variantes">
+                <Button>Principal</Button>
+                <Button variant="secondary">Secundario</Button>
+                <Button variant="outline">Con borde</Button>
+                <Button variant="ghost">Fantasma</Button>
+                <Button variant="destructive">Borrar</Button>
+                <Button variant="destructive-outline">Quitar</Button>
+                <Button variant="link">Link</Button>
+              </Demo>
+              <Demo label="Tamaños e íconos">
+                <Button size="sm">Chico</Button>
+                <Button>Normal</Button>
+                <Button size="lg">Grande</Button>
+                <Button>
+                  <Plus /> Agregar
+                </Button>
+                <Button variant="outline" size="icon" aria-label="Copiar">
+                  <Copy />
+                </Button>
+                <Button disabled>Deshabilitado</Button>
+              </Demo>
+              <Demo label="Botoncitos redondos (icon-sm): silenciar, solo, al azar, quitar">
+                <Button variant="outline" size="icon-sm" aria-label="Silenciar"><VolumeX /></Button>
+                <Button size="icon-sm" aria-label="Silenciado"><VolumeX /></Button>
+                <Button variant="outline" size="icon-sm" aria-label="Solo"><Headphones /></Button>
+                <Button size="icon-sm" aria-label="Al azar"><Sparkles /></Button>
+                <Button variant="destructive-outline" size="icon-sm" aria-label="Quitar"><X /></Button>
+              </Demo>
+            </div>
+          </Section>
+
+          <Section
+            id="formularios"
+            title="Formularios"
+            description="Campos de texto, selectores, interruptores y sliders. Todos con el mismo alto, borde y foco."
+          >
+            <Demo label="Campos" className="grid gap-5 sm:grid-cols-2">
+              <div className="grid gap-2">
+                <Label htmlFor="name">Nombre</Label>
+                <Input id="name" placeholder="Ej: Sueldo de noviembre" />
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="amount">Monto</Label>
+                <Input id="amount" type="number" placeholder="0,00" className="font-mono" />
+              </div>
+              <div className="grid gap-2">
+                <Label>Categoría</Label>
+                <Select defaultValue="servicios">
+                  <SelectTrigger className="w-full">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="servicios">Servicios</SelectItem>
+                    <SelectItem value="alquiler">Alquiler</SelectItem>
+                    <SelectItem value="super">Supermercado</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="grid gap-2">
+                <Label>Volumen · {volume[0]}</Label>
+                <Slider value={volume} onValueChange={setVolume} max={100} />
+              </div>
+              <div className="grid gap-2 sm:col-span-2">
+                <Label htmlFor="notes">Notas</Label>
+                <Textarea id="notes" placeholder="Algo para recordar…" />
+              </div>
+              <div className="flex items-center gap-2">
+                <Checkbox id="paid" defaultChecked />
+                <Label htmlFor="paid">Ya está pagado</Label>
+              </div>
+              <div className="flex items-center gap-2">
+                <Switch id="notif" defaultChecked />
+                <Label htmlFor="notif">Avisarme antes del vencimiento</Label>
+              </div>
+            </Demo>
+          </Section>
+
+          <Section
+            id="controles"
+            title="Controles"
+            description="Para cambiar valores de otras formas, no sólo con un slider. Sirven en cualquier app: LOOP, pay-tracker, outfit-tracker."
+          >
+            <ControlsDemo />
+          </Section>
+
+          <Section
+            id="tarjetas"
+            title="Tarjetas"
+            description="Para agrupar información: un pago, una prenda, un proyecto. Bordes finos y sombra casi invisible."
+          >
+            <div className="grid gap-4 sm:grid-cols-2">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Internet</CardTitle>
+                  <CardDescription>Vence el 20 de noviembre</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="font-mono text-3xl font-semibold tracking-tight">$ 24.990</div>
+                  <div className="mt-2 flex gap-2">
+                    <Badge>Pendiente</Badge>
+                    <Badge variant="outline">Servicios</Badge>
+                  </div>
+                </CardContent>
+                <CardFooter className="gap-2">
+                  <Button className="flex-1" onClick={() => toast.success("Pago registrado")}>
+                    <Check /> Marcar pagado
+                  </Button>
+                  <Button variant="outline" size="icon" aria-label="Borrar">
+                    <Trash2 />
+                  </Button>
+                </CardFooter>
+              </Card>
+
+              <Card>
+                <CardHeader className="flex-row items-center gap-3">
+                  <Avatar>
+                    <AvatarFallback>AC</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <CardTitle>Tu cuenta</CardTitle>
+                    <CardDescription>Plan gratuito</CardDescription>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-4 w-1/2" />
+                  <p className="text-xs text-muted-foreground">
+                    ↑ Así se ve algo que está cargando.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+          </Section>
+
+          <Section
+            id="navegacion"
+            title="Navegación"
+            description="Pestañas, grupos de opciones y menús desplegables."
+          >
+            <div className="grid gap-4">
+              <Demo label="Pestañas" className="block">
+                <Tabs defaultValue="mes">
+                  <TabsList>
+                    <TabsTrigger value="mes">Este mes</TabsTrigger>
+                    <TabsTrigger value="anio">Este año</TabsTrigger>
+                    <TabsTrigger value="todo">Todo</TabsTrigger>
+                  </TabsList>
+                  <TabsContent value="mes" className="pt-3 text-sm text-muted-foreground">
+                    Contenido de la pestaña "Este mes".
+                  </TabsContent>
+                  <TabsContent value="anio" className="pt-3 text-sm text-muted-foreground">
+                    Contenido de la pestaña "Este año".
+                  </TabsContent>
+                  <TabsContent value="todo" className="pt-3 text-sm text-muted-foreground">
+                    Contenido de la pestaña "Todo".
+                  </TabsContent>
+                </Tabs>
+              </Demo>
+              <Demo label="Grupo de opciones y menú">
+                <ToggleGroup type="single" defaultValue="4/4" variant="outline">
+                  {["4/4", "3/4", "6/8", "5/4"].map((v) => (
+                    <ToggleGroupItem key={v} value={v} className="font-mono">
+                      {v}
+                    </ToggleGroupItem>
+                  ))}
+                </ToggleGroup>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline">
+                      Opciones <ChevronDown />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="start">
+                    <DropdownMenuLabel>Mi cuenta</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>
+                      <Settings /> Ajustes
+                    </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <CreditCard /> Pagos
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem variant="destructive">
+                      <LogOut /> Cerrar sesión
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </Demo>
+            </div>
+          </Section>
+
+          <Section
+            id="ventanas"
+            title="Ventanas y avisos"
+            description="Ventanas para confirmar, paneles laterales, ayudas al pasar el mouse y avisos que aparecen y se van solos."
+          >
+            <div className="grid gap-4">
+              <Demo label="Ventana, panel lateral, ayuda y aviso">
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline">Abrir ventana</Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>¿Borrar este pago?</DialogTitle>
+                      <DialogDescription>
+                        No se puede deshacer. El pago desaparece del historial.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter>
+                      <DialogClose asChild>
+                        <Button variant="outline">Cancelar</Button>
+                      </DialogClose>
+                      <DialogClose asChild>
+                        <Button variant="destructive" onClick={() => toast("Pago borrado")}>
+                          Borrar
+                        </Button>
+                      </DialogClose>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <Button variant="outline">Panel lateral</Button>
+                  </SheetTrigger>
+                  <SheetContent>
+                    <SheetHeader>
+                      <SheetTitle>Filtros</SheetTitle>
+                      <SheetDescription>Ideal para opciones en el celular.</SheetDescription>
+                    </SheetHeader>
+                  </SheetContent>
+                </Sheet>
+
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button variant="ghost" size="icon" aria-label="Notificaciones">
+                      <Bell />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Notificaciones</TooltipContent>
+                </Tooltip>
+
+                <Button
+                  variant="secondary"
+                  onClick={() =>
+                    toast.success("¡Guardado!", { description: "Tus cambios están a salvo." })
+                  }
+                >
+                  Mostrar aviso
+                </Button>
+              </Demo>
+              <Alert>
+                <Bell />
+                <AlertTitle>Un aviso fijo</AlertTitle>
+                <AlertDescription>
+                  Para mensajes importantes que tienen que quedar a la vista.
+                </AlertDescription>
+              </Alert>
+            </div>
+          </Section>
+
+          <Section
+            id="usar"
+            title="Cómo usarlo en una app"
+            description="Esto lo hace Claude por vos, pero queda anotado. Cada pieza se instala con un comando."
+          >
+            <div className="space-y-3 rounded-lg border bg-muted/40 p-5 font-mono text-sm">
+              <div className="text-muted-foreground"># todo junto (tema + selector + componentes)</div>
+              <div>npx shadcn add @ds/kit</div>
+              <div className="pt-2 text-muted-foreground"># el color de la app</div>
+              <div>npx shadcn add @ds/brand-loop</div>
+              <div>npx shadcn add @ds/brand-pay-tracker</div>
+              <div>npx shadcn add @ds/brand-outfit-tracker</div>
+            </div>
+          </Section>
+        </main>
       </div>
     </div>
   )
