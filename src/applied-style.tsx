@@ -11,6 +11,8 @@ import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
 import { Input } from "@/components/ui/input"
 import { ColorSwatches, type Swatch } from "@/components/controls/color-swatches"
 import { DateStrip } from "@/components/controls/date-strip"
+import { BottomNav } from "@/components/controls/bottom-nav"
+import { CalendarDays, Shirt, User, BarChart3 } from "lucide-react"
 import { ColorDots, ItemCard, ItemCardSmall, ItemRow, type Item } from "@/components/cards/item-card"
 import { ChevronLeft, Plus } from "lucide-react"
 
@@ -56,6 +58,7 @@ export function AppliedStyle() {
   const [sel, setSel] = React.useState(1)
   const [cols, setCols] = React.useState<Swatch[]>([SWATCHES[1]])
   const [day, setDay] = React.useState("b")
+  const [nav, setNav] = React.useState("ropa")
 
   return (
     <>
@@ -162,6 +165,17 @@ export function AppliedStyle() {
                 <div className="h-[340px] overflow-hidden rounded-box-l bg-card ring-1 ring-foreground/15">{node}</div>
               </div>
             ))}
+          </div>
+        </Rule>
+
+        <Rule title="Barra de abajo" rule="Estilo 1: caja blanca con íconos de 24px; la sección actual va del color de la app con el puntito debajo.">
+          <div className="rounded-box-l bg-background p-2 ring-1 ring-foreground/15 md:max-w-[calc(50%-6px)]">
+            <BottomNav value={nav} onChange={setNav} items={[
+              { key: "hoy", icon: CalendarDays, label: "Hoy" },
+              { key: "ropa", icon: Shirt, label: "Ropa" },
+              { key: "stats", icon: BarChart3, label: "Estadísticas" },
+              { key: "perfil", icon: User, label: "Perfil" },
+            ]} />
           </div>
         </Rule>
       </div>

@@ -2,7 +2,6 @@
 // que todavía no tienen equivalente. Si se aprueban, pasan a ser componentes del DS.
 import * as React from "react"
 import { Plus } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -103,22 +102,7 @@ export function PCenterModal({ open, onClose, title, subtitle, children, footer,
 }
 
 // ---------- barra de abajo y vacío ----------
-export function PBottomNav<T extends string>({ items, value, onChange }: { items: { key: T; icon: LucideIcon; label?: string }[]; value: T; onChange: (k: T) => void }) {
-  return (
-    <div className="flex h-16 w-full items-center rounded-box-l bg-card">
-      {items.map(({ key, icon: Icon, label }) => {
-        const on = value === key
-        return (
-          <button key={key} type="button" aria-label={label} onClick={() => onChange(key)}
-            className={cn("flex h-full flex-1 flex-col items-center justify-center gap-1.5 transition-colors", on ? "text-primary" : "text-muted-foreground hover:text-foreground")}>
-            <Icon className="size-6" />
-            <span className={cn("dot", on ? "bg-primary" : "bg-transparent")} />
-          </button>
-        )
-      })}
-    </div>
-  )
-}
+export { BottomNav as PBottomNav } from "@/components/controls/bottom-nav"
 
 export function PEmptyState({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return (

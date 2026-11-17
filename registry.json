@@ -570,6 +570,11 @@
           "path": "registry/ds/controls/date-strip.tsx",
           "type": "registry:component",
           "target": "components/controls/date-strip.tsx"
+        },
+        {
+          "path": "registry/ds/controls/bottom-nav.tsx",
+          "type": "registry:component",
+          "target": "components/controls/bottom-nav.tsx"
         }
       ]
     },
