@@ -398,25 +398,6 @@
       ]
     },
     {
-      "name": "tabs",
-      "type": "registry:ui",
-      "title": "tabs",
-      "description": "Pestañas en píldora.",
-      "dependencies": [
-        "radix-ui"
-      ],
-      "registryDependencies": [
-        "utils"
-      ],
-      "files": [
-        {
-          "path": "registry/ds/ui/tabs.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/tabs.tsx"
-        }
-      ]
-    },
-    {
       "name": "input",
       "type": "registry:ui",
       "title": "input",
@@ -657,7 +638,6 @@
         "sheet",
         "dropdown-menu",
         "@ds/select",
-        "@ds/tabs",
         "tooltip",
         "switch",
         "checkbox",

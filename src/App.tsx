@@ -78,7 +78,6 @@ import {
 import { Skeleton } from "@/components/ui/skeleton"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import {
@@ -488,11 +487,18 @@ function ControlsDemo() {
           <FieldSlider orientation="vertical" label="Radio" value={radius} min={0} max={500} defaultValue={250} onChange={setRadius} />
         </div>
       </ControlCard>
-      <ControlCard name="Stepper y segmentado" use="Cantidades chicas (− 1 +) y elegir una opción entre pocas.">
+      <ControlCard name="Stepper y píldora con opciones" use="Cantidades chicas (− 1 +). La píldora elige una opción entre pocas o cambia de vista; tamaño normal y chico.">
         <div className="flex flex-col items-center gap-5">
           <Stepper label="Cantidad" value={count} min={0} max={16} onChange={setCount} />
           <Segmented
             label="Rango"
+            value={range}
+            onChange={setRange}
+            options={["15M", "30M", "1H", "4H", "1D"].map((v) => ({ value: v, label: v }))}
+          />
+          <Segmented
+            size="sm"
+            label="Período"
             value={range}
             onChange={setRange}
             options={["15M", "30M", "1H", "4H", "1D"].map((v) => ({ value: v, label: v }))}
@@ -901,27 +907,9 @@ export function App() {
           <Section
             id="navegacion"
             title="Navegación"
-            description="Pestañas, grupos de opciones y menús desplegables."
+            description="Grupos de opciones y menús desplegables. Para cambiar de vista se usa la píldora con opciones (en Controles)."
           >
             <div className="grid gap-4">
-              <Demo label="Pestañas" className="block">
-                <Tabs defaultValue="mes">
-                  <TabsList>
-                    <TabsTrigger value="mes">Este mes</TabsTrigger>
-                    <TabsTrigger value="anio">Este año</TabsTrigger>
-                    <TabsTrigger value="todo">Todo</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="mes" className="pt-3 text-sm text-muted-foreground">
-                    Contenido de la pestaña "Este mes".
-                  </TabsContent>
-                  <TabsContent value="anio" className="pt-3 text-sm text-muted-foreground">
-                    Contenido de la pestaña "Este año".
-                  </TabsContent>
-                  <TabsContent value="todo" className="pt-3 text-sm text-muted-foreground">
-                    Contenido de la pestaña "Todo".
-                  </TabsContent>
-                </Tabs>
-              </Demo>
               <Demo label="Grupo de opciones y menú">
                 <ToggleGroup type="single" defaultValue="4/4" variant="outline">
                   {["4/4", "3/4", "6/8", "5/4"].map((v) => (
