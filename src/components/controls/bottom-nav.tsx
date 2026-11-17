@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 // Barra de abajo de las apps de celular: caja blanca con íconos de 24px.
 // Íconos centrados en la caja; la sección actual va del color de la app con el puntito (4px)
-// apoyado abajo, a 8px del borde.
+// justo sobre el borde de abajo: el borde lo corta a la mitad.
 
 export function BottomNav<T extends string>({
   items,
@@ -34,7 +34,7 @@ export function BottomNav<T extends string>({
             )}
           >
             <Icon className="size-6" />
-            {on && <span className="dot absolute bottom-2 left-1/2 -translate-x-1/2 bg-primary" />}
+            {on && <span className="dot absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 bg-primary" />}
           </button>
         )
       })}

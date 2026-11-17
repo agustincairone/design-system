@@ -170,7 +170,7 @@ export function AppliedStyle() {
           </div>
         </Rule>
 
-        <Rule title="Barra de abajo" rule="Estilo 1: caja blanca con íconos de 24px centrados; la sección actual va del color de la app con el puntito apoyado abajo, a 8px del borde.">
+        <Rule title="Barra de abajo" rule="Estilo 1: caja blanca con íconos de 24px centrados; la sección actual va del color de la app con el puntito sobre el borde de abajo, cortado a la mitad.">
           <div className="rounded-box-l bg-background p-2 ring-1 ring-foreground/15 md:max-w-[calc(50%-6px)]">
             <BottomNav value={nav} onChange={setNav} items={[
               { key: "hoy", icon: CalendarDays, label: "Hoy" },
