@@ -339,6 +339,18 @@ function AudioDemo() {
 }
 
 // Controles extra (para elegir después cuál usar en cada parámetro).
+// Píldora con opciones en sus dos tamaños (va en Navegación)
+function PillDemo() {
+  const [range, setRange] = React.useState("15M")
+  const [view, setView] = React.useState("mes")
+  return (
+    <div className="flex flex-col items-start gap-3">
+      <Segmented label="Rango" value={range} onChange={setRange} options={["15M", "30M", "1H", "4H", "1D"].map((v) => ({ value: v, label: v }))} />
+      <Segmented size="sm" label="Período" value={view} onChange={setView} options={[{ value: "mes", label: "Este mes" }, { value: "anio", label: "Este año" }, { value: "todo", label: "Todo" }]} />
+    </div>
+  )
+}
+
 function ControlCard({ name, use, children }: { name: string; use: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col rounded-3xl bg-card">
@@ -468,7 +480,6 @@ function ControlsDemo() {
   const [width, setWidth] = React.useState(3)
   const [radius, setRadius] = React.useState(347)
   const [count, setCount] = React.useState(1)
-  const [range, setRange] = React.useState("15M")
   const [rows, setRows] = React.useState(27)
   const [cols, setCols] = React.useState(54)
   const [mix, setMix] = React.useState(0.37)
@@ -487,22 +498,9 @@ function ControlsDemo() {
           <FieldSlider orientation="vertical" label="Radio" value={radius} min={0} max={500} defaultValue={250} onChange={setRadius} />
         </div>
       </ControlCard>
-      <ControlCard name="Stepper y píldora con opciones" use="Cantidades chicas (− 1 +). La píldora elige una opción entre pocas o cambia de vista; tamaño normal y chico.">
+      <ControlCard name="Stepper" use="Cantidades chicas (− 1 +).">
         <div className="flex flex-col items-center gap-5">
           <Stepper label="Cantidad" value={count} min={0} max={16} onChange={setCount} />
-          <Segmented
-            label="Rango"
-            value={range}
-            onChange={setRange}
-            options={["15M", "30M", "1H", "4H", "1D"].map((v) => ({ value: v, label: v }))}
-          />
-          <Segmented
-            size="sm"
-            label="Período"
-            value={range}
-            onChange={setRange}
-            options={["15M", "30M", "1H", "4H", "1D"].map((v) => ({ value: v, label: v }))}
-          />
         </div>
       </ControlCard>
       <ControlCard name="Fichas" use="Elegir una opción corta entre pocas. La elegida se pinta del color de la app.">
@@ -907,9 +905,12 @@ export function App() {
           <Section
             id="navegacion"
             title="Navegación"
-            description="Grupos de opciones y menús desplegables. Para cambiar de vista se usa la píldora con opciones (en Controles)."
+            description="Píldora con opciones, grupos de opciones y menús desplegables."
           >
             <div className="grid gap-4">
+              <Demo label="Píldora con opciones · normal y chica (elegir una opción o cambiar de vista)">
+                <PillDemo />
+              </Demo>
               <Demo label="Grupo de opciones y menú">
                 <ToggleGroup type="single" defaultValue="4/4" variant="outline">
                   {["4/4", "3/4", "6/8", "5/4"].map((v) => (
