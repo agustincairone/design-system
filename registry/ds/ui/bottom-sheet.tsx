@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button"
 function SheetHeaderRow({ title, onClose }: { title: React.ReactNode; onClose?: () => void }) {
   return (
     <div className="flex items-center justify-between gap-3">
-      <span className="min-w-0 truncate text-base font-semibold tracking-tight">{title}</span>
+      <span className="min-w-0 truncate text-base font-medium tracking-tight">{title}</span>
       <Button variant="outline" size="icon-sm" aria-label="Cerrar" onClick={onClose}>
         <X className="size-4" />
       </Button>
