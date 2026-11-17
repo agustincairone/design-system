@@ -93,7 +93,8 @@ import { FieldColumn } from "@/components/controls/field-column"
 import { OutfitStyle } from "@/outfit-style"
 import { AppliedStyle } from "@/applied-style"
 import { Rules } from "@/rules"
-import { AppHero, SectionHeader } from "@/components/ui/app-hero"
+import { FloatAccordion } from "@/components/ui/float-accordion"
+import { AppHero, LiveDate, SectionHeader } from "@/components/ui/app-hero"
 
 // ---------------------------------------------------------------------------
 
@@ -702,12 +703,13 @@ export function App() {
                 <AppHero name="Loop" jp="ループ — リズムマシン" description="16-step sampler composer" stats={[{ value: 6, label: "channels", digits: 2 }, { value: 16, label: "steps", digits: 2 }]} />
               </div>
               <div className="rounded-box-l bg-card p-box-l">
-                <AppHero name="Outfit" jp="コーデ日記" description="registro diario de outfits" eyebrow="plain" stats={[{ value: 12, label: "días seguidos", digits: 2 }]} />
+                <AppHero name="Outfit" jp="コーデ日記" stats={[{ value: <LiveDate className="text-[15px] sm:text-[25px]" />, label: "registro diario de outfits" }]} />
               </div>
               <div className="grid gap-box-gap rounded-box-l bg-card p-box-l">
-                <SectionHeader title="¿Qué me puse hoy?" label="☀️" value="12/22°" eyebrow="plain" />
-                <SectionHeader title="Historial" label="días cargados" value={124} eyebrow="plain" />
-                <SectionHeader title="Mis prendas" label="prendas" value={48} eyebrow="plain" />
+                <SectionHeader title="¿Qué me puse hoy?" icon="☀️" value="12/22°" />
+                <SectionHeader title="Historial" label="días cargados" value={124} />
+                <SectionHeader title="Mis prendas" label="prendas" value={48} />
+                <SectionHeader title="Estadísticas" label="prendas usadas" value={31} />
               </div>
             </div>
           </Section>
@@ -1074,6 +1076,17 @@ export function App() {
                 >
                   Mostrar aviso
                 </Button>
+              </Demo>
+              <Demo label="Acordeón flotante: tocalo y crece hacia arriba sobre la página">
+                <div className="w-full max-w-md">
+                  <FloatAccordion title="Sugerencia para hoy" onInfo={() => setSheetOpen(true)}>
+                    <div className="divide-y divide-border text-sm">
+                      <p className="py-2.5">Nike Air Force</p>
+                      <p className="py-2.5">Levis 501</p>
+                      <p className="py-2.5">Uniqlo U</p>
+                    </div>
+                  </FloatAccordion>
+                </div>
               </Demo>
               <Alert>
                 <Bell />

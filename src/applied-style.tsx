@@ -181,7 +181,7 @@ export function AppliedStyle() {
           </div>
         </Rule>
 
-        <Rule title="Vacío y aviso" rule="Estilo 1: ícono en un círculo gris, título de caja y texto gris. El aviso es el del sistema, abajo de la pantalla (tocá el botón).">
+        <Rule title="Vacío y aviso" rule="Estilo 1: ícono en un círculo gris, título de 18px y texto gris. El aviso es el del sistema, abajo de la pantalla (tocá el botón).">
           <div className="flex flex-col items-center gap-6 rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
             <EmptyState icon={<Check className="text-primary" />} title="Outfit registrado" text="Podés modificarlo cuando quieras" />
             <Button variant="secondary" onClick={() => toast("Outfit guardado ✓")}>Mostrar aviso</Button>

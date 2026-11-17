@@ -445,6 +445,26 @@
       ]
     },
     {
+      "name": "float-accordion",
+      "type": "registry:ui",
+      "title": "float-accordion",
+      "description": "Acordeón flotante: caja con título, ¿Qué es esto? y chevron; al abrirse crece hacia arriba sobre la página con el fondo desenfocado.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/float-accordion.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/float-accordion.tsx"
+        }
+      ]
+    },
+    {
       "name": "field-label",
       "type": "registry:ui",
       "title": "field-label",

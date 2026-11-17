@@ -7,12 +7,13 @@ import { Button } from "@/components/ui/button"
 
 // Hoja desde abajo: la única ventana del sistema (detalle, confirmación, formulario).
 // Flota con 16px de aire a los costados y abajo, título de 16px y cruz en un botón
-// redondo gris claro, sin borde.
+// redondo gris claro, sin borde. Debajo del título, una línea divisoria de lado a lado.
 // `inline` la dibuja dentro de la página en vez de flotando (sólo para la guía).
 
 function SheetHeaderRow({ title, onClose }: { title: React.ReactNode; onClose?: () => void }) {
   return (
-    <div className="flex items-center justify-between gap-3">
+    // línea divisoria de lado a lado debajo del título
+    <div className="-mx-box-l flex items-center justify-between gap-3 border-b border-border px-box-l pb-4">
       <span className="min-w-0 truncate text-base font-medium tracking-tight">{title}</span>
       <Button variant="secondary" size="icon-sm" aria-label="Cerrar" onClick={onClose}>
         <X className="size-4" />

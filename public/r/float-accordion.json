@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "float-accordion",
+  "title": "float-accordion",
+  "description": "Acordeón flotante: caja con título, ¿Qué es esto? y chevron; al abrirse crece hacia arriba sobre la página con el fondo desenfocado.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "button"
+  ],
+  "files": [
+    {
+      "path": "registry/ds/ui/float-accordion.tsx",
+      "content": "import * as React from \"react\"\nimport { createPortal } from \"react-dom\"\nimport { ChevronUp, Info } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/components/ui/button\"\n\n// Acordeón flotante (relleno de 16px): una caja con título, botón \"¿Qué es esto?\" (opcional) y chevron al final.\n// Al abrirlo, el fondo se oscurece y desenfoca (como las hojas) y la caja crece hacia arriba\n// desde donde está, por encima del resto de la página. Se cierra con el chevron, tocando afuera o con Esc.\n// `onInfo` muestra el botón \"¿Qué es esto?\" (normalmente abre una BottomSheet con la explicación).\n\nexport function FloatAccordion({\n  title,\n  onInfo,\n  infoLabel = \"¿Qué es esto?\",\n  children,\n  className,\n}: {\n  title: React.ReactNode\n  onInfo?: () => void\n  infoLabel?: string\n  children: React.ReactNode\n  className?: string\n}) {\n  const ref = React.useRef<HTMLDivElement>(null)\n  const [rect, setRect] = React.useState<DOMRect | null>(null) // dónde está la caja cerrada\n  const [grown, setGrown] = React.useState(false) // para animar el crecimiento\n  const open = rect !== null\n\n  const close = React.useCallback(() => {\n    setGrown(false)\n    setTimeout(() => setRect(null), 200)\n  }, [])\n  const toggle = () => {\n    if (open) return close()\n    if (!ref.current) return\n    setRect(ref.current.getBoundingClientRect())\n    requestAnimationFrame(() => requestAnimationFrame(() => setGrown(true)))\n  }\n\n  React.useEffect(() => {\n    if (!open) return\n    const onKey = (e: KeyboardEvent) => e.key === \"Escape\" && close()\n    window.addEventListener(\"keydown\", onKey)\n    window.addEventListener(\"resize\", close)\n    return () => {\n      window.removeEventListener(\"keydown\", onKey)\n      window.removeEventListener(\"resize\", close)\n    }\n  }, [open, close])\n\n  const header = (\n    <div className=\"flex items-center gap-2\">\n      <button type=\"button\" onClick={toggle} aria-expanded={open} className=\"min-w-0 flex-1 truncate text-left text-sm font-medium outline-none\">\n        {title}\n      </button>\n      {onInfo && (\n        <Button variant=\"secondary\" size=\"sm\" onClick={onInfo}>\n          <Info />\n          {infoLabel}\n        </Button>\n      )}\n      <Button variant=\"ghost\" size=\"icon-sm\" aria-label={open ? \"Cerrar\" : \"Abrir\"} onClick={toggle}>\n        <ChevronUp className={cn(\"size-4 transition-transform duration-200\", grown && \"rotate-180\")} />\n      </Button>\n    </div>\n  )\n\n  return (\n    <>\n      <div ref={ref} data-slot=\"float-accordion\" className={cn(\"rounded-box-l bg-card p-4\", open && \"invisible\", className)}>\n        {header}\n      </div>\n      {open &&\n        createPortal(\n          <>\n            <div\n              aria-hidden\n              onClick={close}\n              className={cn(\"fixed inset-0 z-50 bg-overlay transition-opacity duration-200 supports-backdrop-filter:backdrop-blur-xs\", grown ? \"opacity-100\" : \"opacity-0\")}\n            />\n            <div\n              role=\"dialog\"\n              aria-modal\n              className=\"fixed z-50 flex max-h-[calc(100dvh-32px)] flex-col overflow-y-auto rounded-box-l bg-card p-4 text-card-foreground shadow-lg\"\n              style={{ left: rect.left, width: rect.width, bottom: window.innerHeight - rect.bottom }}\n            >\n              {header}\n              {/* el contenido crece de 0 a su alto; como la caja está anclada abajo, crece hacia arriba */}\n              <div className={cn(\"grid transition-[grid-template-rows] duration-200 ease-out\", grown ? \"grid-rows-[1fr]\" : \"grid-rows-[0fr]\")}>\n                <div className=\"min-h-0 overflow-hidden\">\n                  <div className=\"pt-3\">{children}</div>\n                </div>\n              </div>\n            </div>\n          </>,\n          document.body\n        )}\n    </>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/float-accordion.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

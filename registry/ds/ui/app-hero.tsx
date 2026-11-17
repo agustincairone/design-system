@@ -6,12 +6,15 @@ import { cn } from "@/lib/utils"
 //   nombre (title-page) + nombre en japonés (color de la app) + texto gris + números de puntitos.
 // En pantalla ancha: nombre arriba y texto gris abajo a la izquierda, números a la derecha.
 // En el celular: nombre y japonés a la izquierda; texto gris y números a la derecha.
-// La letra de puntitos (font-readout) se usa sólo para estos números y el dato de cada sección.
+// Abajo lleva una línea de puntos redondos de 2px (stone-300 en claro, stone-800 en oscuro) que lo separa del resto de la app.
+// Los números del fleje y el dato de cada sección van en Doto (font-readout).
+// Si el texto gris va como etiqueta del número (abajo, a la derecha), se pasa como `label` del número y sin `description`.
 
 type Eyebrow = "caps" | "plain"
 const EYEBROW: Record<Eyebrow, string> = { caps: "eyebrow", plain: "eyebrow-plain" }
 
-export type Stat = { value: number | string; label: string; digits?: number }
+// value: un número, un texto o un componente (ej: <LiveDate />).
+export type Stat = { value: number | string | React.ReactElement; label: string; digits?: number }
 
 // Número de puntitos. Con `digits`, completa con ceros apagados (07, 012).
 export function Readout({ value, digits, className }: { value: number | string; digits?: number; className?: string }) {
@@ -21,6 +24,32 @@ export function Readout({ value, digits, className }: { value: number | string; 
     <span data-slot="readout" className={cn("live-number font-readout leading-none font-bold", className)}>
       {pad && <span className="opacity-20">{pad}</span>}
       {text}
+    </span>
+  )
+}
+
+// Fecha y hora en vivo para el fleje: 17/11 — 14:32:07, se actualiza cada segundo.
+// El día y la hora van en el color del texto; la barra, el mes, el guion y los ":" en stone-600 en oscuro
+// y un tono más claro en claro (stone-500), para que se diferencien del texto.
+const DIM = "text-stone-500 dark:text-stone-600"
+export function LiveDate({ className }: { className?: string }) {
+  const [now, setNow] = React.useState(() => new Date())
+  React.useEffect(() => {
+    const t = setInterval(() => setNow(new Date()), 1000)
+    return () => clearInterval(t)
+  }, [])
+  const p2 = (n: number) => String(n).padStart(2, "0")
+  return (
+    <span data-slot="live-date" className={cn("live-number font-readout leading-none font-bold whitespace-nowrap", className)}>
+      {p2(now.getDate())}
+      <span className={DIM}>/</span>
+      <span className={DIM}>{p2(now.getMonth() + 1)}</span>
+      <span className={DIM}> — </span>
+      {p2(now.getHours())}
+      <span className={DIM}>:</span>
+      {p2(now.getMinutes())}
+      <span className={DIM}>:</span>
+      {p2(now.getSeconds())}
     </span>
   )
 }
@@ -36,29 +65,34 @@ export function AppHero({
 }: {
   name: string
   jp: string
-  description: string
+  description?: string
   stats?: Stat[]
   eyebrow?: Eyebrow
   aside?: React.ReactNode
   className?: string
 }) {
   return (
-    <header data-slot="app-hero" className={cn("flex items-stretch gap-6", className)}>
+    <header data-slot="app-hero" className={cn("relative flex items-stretch gap-6 pb-5", className)}>
       <div className="grid min-w-0 flex-1 grid-cols-[minmax(0,1fr)_auto] gap-x-6 gap-y-3 sm:gap-y-8">
-        <div className="row-span-2 self-start sm:row-span-1">
+        <div className={cn("row-span-2 self-start", description && "sm:row-span-1")}>
           <h1 className="title-page">{name}</h1>
           <p lang="ja" className="mt-2 text-lg leading-none text-brand">
             {jp}
           </p>
         </div>
-        <p className={cn(EYEBROW[eyebrow], "col-start-2 row-start-1 max-w-40 justify-self-end text-right sm:col-start-1 sm:row-start-2 sm:max-w-none sm:justify-self-start sm:self-end sm:text-left")}>
+        {description && <p className={cn(EYEBROW[eyebrow], "col-start-2 row-start-1 max-w-40 justify-self-end text-right sm:col-start-1 sm:row-start-2 sm:max-w-none sm:justify-self-start sm:self-end sm:text-left")}>
           {description}
-        </p>
+        </p>}
         {stats.length > 0 && (
-          <div className="col-start-2 row-start-2 flex justify-end gap-5 self-end sm:row-span-2 sm:row-start-1">
+          // Sin texto aparte, los números ocupan el alto del nombre: número arriba (con el nombre), etiqueta abajo (con el japonés).
+          <div className={cn("col-start-2 flex justify-end gap-5", description ? "row-start-2 self-end sm:row-span-2 sm:row-start-1" : "row-span-2 row-start-1 self-stretch")}>
             {stats.map((s) => (
-              <div key={s.label} className="flex flex-col items-end gap-1">
-                <Readout value={s.value} digits={s.digits} className="text-4xl" />
+              <div key={s.label} className="flex flex-col items-end justify-between gap-1.5">
+                {React.isValidElement(s.value) ? (
+                  s.value
+                ) : (
+                  <Readout value={s.value as number | string} digits={s.digits} className="text-[25px] whitespace-nowrap" />
+                )}
                 <span className={EYEBROW[eyebrow]}>{s.label}</span>
               </div>
             ))}
@@ -66,20 +100,26 @@ export function AppHero({
         )}
       </div>
       {aside}
+      {/* línea de puntos redondos de 2px, cada 6px. Va sobre el fondo de la página:
+          en oscuro stone-800 (como los divisores); en claro stone-300, porque el fondo ya es stone-200 */}
+      <span aria-hidden className="absolute inset-x-0 bottom-0 h-0.5 bg-[radial-gradient(circle,currentColor_1px,transparent_1.2px)] bg-size-[6px_2px] bg-repeat-x text-stone-300 dark:text-stone-800" />
     </header>
   )
 }
 
 // Título de sección con su dato a la derecha (texto gris + número de puntitos).
+// `icon` (ej: el clima) va al mismo tamaño que el número.
 export function SectionHeader({
   title,
   value,
   label,
+  icon,
   digits,
   eyebrow = "caps",
   className,
 }: {
   title: React.ReactNode
+  icon?: React.ReactNode
   value?: number | string | null
   label?: string
   digits?: number
@@ -92,6 +132,7 @@ export function SectionHeader({
       {value != null && value !== "" && (
         <div className="flex shrink-0 items-baseline gap-2">
           {label && <span className={EYEBROW[eyebrow]}>{label}</span>}
+          {icon && <span className="text-2xl leading-none">{icon}</span>}
           <Readout value={value} digits={digits} className="text-2xl" />
         </div>
       )}

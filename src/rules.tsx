@@ -23,9 +23,11 @@ const RULES: { title: string; items: string[] }[] = [
   {
     title: "Fleje",
     items: [
-      "Toda app arranca con el fleje: nombre, nombre en japonés (color de la app), un texto gris y un número general de puntitos.",
-      "En el celular, nombre y japonés van a la izquierda; texto gris y números a la derecha.",
-      "Cada sección lleva su título con un dato a la derecha: texto gris y número de puntitos. Si no hay un dato útil, va sin dato.",
+      "Toda app arranca con el fleje: nombre, nombre en japonés (color de la app), un número general de puntitos y su etiqueta en mayúsculas, alineados con el nombre (número arriba, etiqueta abajo).",
+      "En el celular, nombre y japonés van a la izquierda; números y etiquetas a la derecha.",
+      "Debajo del fleje va una línea de puntos redondos de 2px que lo separa del resto de la app: stone-800 en oscuro (como los divisores) y stone-300 en claro, porque va sobre el fondo de la página.",
+      "El número general puede ser la fecha y hora en vivo (17/11 — 14:32:07): el día y la hora en el color del texto; la barra, el mes, el guion y los \":\" en stone-600 en oscuro y stone-500 en claro.",
+      "Cada sección lleva su título con un dato a la derecha: etiqueta en mayúsculas y número de puntitos (un ícono, como el clima, va del tamaño del número). Cada sección con un dato distinto; si no hay uno útil, va sin dato.",
     ],
   },
   {
@@ -40,7 +42,7 @@ const RULES: { title: string; items: string[] }[] = [
   {
     title: "Texto",
     items: [
-      "Letra Geist. La letra de puntitos se usa sólo para números: el número general del fleje, el dato de cada sección y los números en vivo.",
+      "Letra Geist. La letra de puntitos (Doto) es sólo para números: el del fleje y el dato de cada sección.",
       "Labels de los inputs: gris, del mismo tamaño que el input (14px) y a 6px arriba.",
       "Dos etiquetas chicas: en mayúsculas (LOOP) y simple (outfit). Cada app usa una.",
       "Inputs con letra de 14px siempre. Cada app lleva maximum-scale=1 en index.html para que el iPhone no haga zoom.",
@@ -62,7 +64,8 @@ const RULES: { title: string; items: string[] }[] = [
     items: [
       "Todas las ventanas salen desde abajo (no hay ventana centrada ni panel lateral).",
       "Flotan con 16px de aire a los costados y abajo, ocupando el ancho que queda.",
-      "Título de 16px con peso 500. La cruz es un botón redondo gris sin borde.",
+      "Título de 16px con peso 500, con una línea divisoria de lado a lado debajo. La cruz es un botón redondo gris sin borde.",
+      "Acordeón flotante: caja con título, \"¿Qué es esto?\" (abre una hoja con la explicación) y chevron al final. Al abrirlo crece hacia arriba desde donde está, sobre la página, con el fondo desenfocado como las hojas.",
     ],
   },
 ]
