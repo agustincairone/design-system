@@ -8,7 +8,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
+        // deshabilitado en grises (como outfit), no el color de la app a media luz
+        default: "bg-primary text-primary-foreground hover:bg-primary/80 disabled:bg-secondary disabled:text-muted-foreground disabled:opacity-100",
         outline:
           "border-border bg-transparent hover:border-brand hover:text-brand aria-expanded:border-brand aria-expanded:text-brand dark:border-input",
         secondary:

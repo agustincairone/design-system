@@ -5,6 +5,7 @@ import { ImageIcon } from "lucide-react"
 import { Segmented } from "@/components/controls/segmented"
 import { TabBar } from "@/components/controls/tab-bar"
 import { Chip } from "@/components/ui/chip"
+import { PFieldLabel, PInputAdd } from "@/outfit-proposals"
 import { BRANDS } from "@/brands"
 import { useTheme } from "@/components/theme-provider"
 
@@ -35,6 +36,9 @@ export function AppliedStyle() {
   const [mode, setMode] = React.useState("year")
   const [range, setRange] = React.useState("mes")
   const [brand, setBrand] = React.useState("Todo")
+  const [text, setText] = React.useState("")
+  const [saved, setSaved] = React.useState(["Nike", "Adidas", "Vans"])
+  const [pick, setPick] = React.useState("Nike")
 
   return (
     <OutfitColor>
@@ -71,6 +75,16 @@ export function AppliedStyle() {
           <div className="rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
             <div className="flex flex-wrap gap-2">
               {["Todo", "Adidas", "Nike", "Vans"].map((b) => <Chip key={b} selected={brand === b} onClick={() => setBrand(b)}>{b}</Chip>)}
+            </div>
+          </div>
+        </Rule>
+
+        <Rule title="Chips guardados + campo con +" rule="Estilo 1: Input + botón + (gris mientras está vacío) + Chips con cruz. Al pasar el mouse por un chip con cruz sólo se pinta el fondo de gris.">
+          <div className="rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
+            <PFieldLabel>Marca</PFieldLabel>
+            <PInputAdd value={text} onChange={setText} onAdd={() => { const v = text.trim(); if (v && !saved.includes(v)) setSaved((p) => [...p, v]); setPick(v); setText("") }} placeholder="Agregar marca..." />
+            <div className="mt-2 flex flex-wrap gap-2">
+              {saved.map((b) => <Chip key={b} selected={pick === b} onClick={() => setPick(b)} onRemove={() => setSaved((p) => p.filter((x) => x !== b))} removeLabel={"Borrar " + b}>{b}</Chip>)}
             </div>
           </div>
         </Rule>

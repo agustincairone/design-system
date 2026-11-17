@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 // Chip: opción chiquita que se prende y se apaga (filtros, valores guardados).
 // Apagado = borde gris; elegido = relleno del color principal.
-// Con `icon` lleva un ícono adelante; con `onRemove`, una cruz para borrarlo.
+// Con `icon` lleva un ícono adelante; con `onRemove`, una cruz (del mismo color que el texto) para borrarlo.
 function Chip({
   selected = false,
   icon: Icon,
@@ -32,7 +32,9 @@ function Chip({
         "inline-flex h-8 shrink-0 items-center gap-1.5 rounded-full border px-3 text-[0.8rem] font-medium whitespace-nowrap transition-colors outline-none select-none focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50",
         selected
           ? "border-transparent bg-primary text-primary-foreground hover:bg-primary/80"
-          : "border-border bg-transparent text-foreground hover:border-brand hover:text-brand dark:border-input",
+          : onRemove
+            ? "border-border bg-transparent text-foreground hover:bg-secondary dark:border-input" // con cruz: al pasar el mouse sólo se pinta el fondo de gris
+            : "border-border bg-transparent text-foreground hover:border-brand hover:text-brand dark:border-input",
         Icon && "pl-2.5",
         onRemove && "pr-2",
         className
@@ -49,7 +51,7 @@ function Chip({
             e.stopPropagation()
             onRemove()
           }}
-          className="-mr-0.5 flex size-4 items-center justify-center rounded-full opacity-60 hover:opacity-100"
+          className="-mr-0.5 flex size-4 items-center justify-center rounded-full"
         >
           <X className="size-3" />
         </span>
