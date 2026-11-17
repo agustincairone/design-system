@@ -92,7 +92,7 @@ export function SplitSlider({
           active ? "bg-brand" : "bg-foreground group-hover/split:bg-brand"
         )}
       />
-      <div className={cn("flex h-full min-w-0 flex-1 items-center justify-end gap-2 overflow-hidden rounded-xl bg-secondary in-data-[variant=inset]:bg-card whitespace-nowrap", !rightOut && "px-4")}>
+      <div className={cn("flex h-full min-w-0 flex-1 items-center justify-end gap-2 overflow-hidden rounded-xl bg-secondary in-data-[variant=inset]:bg-raised whitespace-nowrap", !rightOut && "px-4")}>
         {!rightOut && rightText}
       </div>
       {leftOut && (

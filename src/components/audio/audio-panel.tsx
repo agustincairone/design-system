@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 // Panel de una sección de controles (ej: SONIDO, CONSOLA, MEZCLA):
 // - variant="card" (por defecto): caja L, blanca y SIN borde, sobre el fondo de la página.
 //   Regla del sistema: las cajas nunca llevan borde; se separan por color de fondo.
-// - variant="inset": caja M (los controles grises de adentro pasan a blanco solos para que se vean), gris clarito sin borde (bg-inset: stone 100 en claro, hundido en oscuro), para ir adentro de otra caja.
+// - variant="inset": caja M (los controles grises de adentro pasan a blanco solos para que se vean), gris clarito sin borde (bg-inset: stone 100 en claro, un paso más claro que la tarjeta en oscuro), para ir adentro de otra caja.
 // tarjeta con un título chiquito en mayúsculas y un puntito de color.
 // Con `live`, el puntito es de "en vivo": aro naranja más claro mientras live=true,
 // y gris cuando está en false (ej: el monitor cuando no suena nada).

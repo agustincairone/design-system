@@ -39,7 +39,7 @@ export function TileGroup<T extends string | number>({
               "flex items-center justify-center rounded-box-s px-2 text-center text-sm font-medium whitespace-nowrap transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand",
               on
                 ? "bg-brand text-brand-foreground hover:bg-brand-strong"
-                : "bg-secondary text-foreground hover:bg-brand hover:text-brand-foreground in-data-[variant=inset]:bg-card in-data-[variant=inset]:hover:bg-brand"
+                : "bg-secondary text-foreground hover:bg-brand hover:text-brand-foreground in-data-[variant=inset]:bg-raised in-data-[variant=inset]:hover:bg-brand"
             )}
           >
             {o.label}

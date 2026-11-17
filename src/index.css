@@ -68,6 +68,7 @@
     --spacing-box-l: 20px;
     --color-inset: var(--inset);
     --color-tile: var(--tile);
+    --color-raised: var(--raised);
     --spacing-box-gap: 8px;
     --spacing-section: 40px;
 }
@@ -115,6 +116,7 @@
     --brand-strong: oklch(37.4% 0.01 67.558);
     --inset: oklch(97% 0.001 106.424);
     --tile: oklch(98.5% 0.001 106.423); /* fichas con foto (más claro que inset) */
+    --raised: oklch(100% 0 0); /* lo que va encima de inset/tile */
 }
 
 .dark {
@@ -157,8 +159,10 @@
     --brand-foreground: oklch(21.6% 0.006 56.043);
     --brand-text: oklch(97% 0.001 106.424);
     --brand-strong: oklch(86.9% 0.005 56.366);
-    --inset: oklch(14.7% 0.004 49.25);
-    --tile: oklch(14.7% 0.004 49.25);
+    /* mamushka: página 950 → tarjeta 900 → adentro 800 → encima 700 */
+    --inset: oklch(26.8% 0.007 34.298);
+    --tile: oklch(26.8% 0.007 34.298);
+    --raised: oklch(37.4% 0.01 67.558);
 }
 
 @layer base {

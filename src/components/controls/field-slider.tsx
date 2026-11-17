@@ -108,7 +108,7 @@ export function FieldSlider({
         aria-valuemax={max}
         aria-valuenow={value}
         className={cn(
-          "group/fs relative flex h-full min-h-48 w-14 cursor-ns-resize touch-none flex-col items-center overflow-hidden rounded-2xl bg-secondary outline-none select-none focus-visible:ring-4 focus-visible:ring-ring/40 in-data-[variant=inset]:bg-card",
+          "group/fs relative flex h-full min-h-48 w-14 cursor-ns-resize touch-none flex-col items-center overflow-hidden rounded-2xl bg-secondary outline-none select-none focus-visible:ring-4 focus-visible:ring-ring/40 in-data-[variant=inset]:bg-raised",
           className
         )}
         {...handlers}
@@ -183,7 +183,7 @@ export function FieldSlider({
       aria-valuemax={max}
       aria-valuenow={value}
       className={cn(
-        "group/fs relative flex h-12 w-full cursor-ew-resize touch-none items-center overflow-hidden rounded-2xl bg-secondary outline-none select-none focus-visible:ring-4 focus-visible:ring-ring/40 in-data-[variant=inset]:bg-card",
+        "group/fs relative flex h-12 w-full cursor-ew-resize touch-none items-center overflow-hidden rounded-2xl bg-secondary outline-none select-none focus-visible:ring-4 focus-visible:ring-ring/40 in-data-[variant=inset]:bg-raised",
         className
       )}
       {...handlers}

@@ -22,7 +22,7 @@ export function IconTile({
       className={cn(
         "group/tile flex aspect-square min-w-0 cursor-pointer flex-col items-start justify-between rounded-box-s bg-secondary p-box-s text-left text-sm font-medium text-foreground transition-colors outline-none",
         "hover:bg-brand hover:text-brand-foreground active:bg-brand-strong focus-visible:ring-2 focus-visible:ring-brand",
-        "in-data-[variant=inset]:bg-card in-data-[variant=inset]:hover:bg-brand",
+        "in-data-[variant=inset]:bg-raised in-data-[variant=inset]:hover:bg-brand",
         className
       )}
       {...props}

@@ -38,7 +38,7 @@ export function ColorDots({ colors, size = 14 }: { colors?: { hex: string }[]; s
 
 export function ItemPhoto({ item, className, gray, framed = true, selected }: { item: Item; className?: string; gray?: boolean; framed?: boolean; selected?: boolean }) {
   return (
-    <div className={cn("relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-sm bg-card", className)}>
+    <div className={cn("relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-sm bg-raised", className)}>
       {item.imageUrl ? (
         <img
           src={item.imageUrl}

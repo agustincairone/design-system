@@ -48,7 +48,7 @@ export function NumberSlider({
           else return
           e.preventDefault()
         }}
-        className="live-number h-9 w-full rounded-full border border-transparent bg-secondary in-data-[variant=inset]:bg-card px-3.5 font-mono text-sm outline-none focus-visible:border-brand"
+        className="live-number h-9 w-full rounded-full border border-transparent bg-secondary in-data-[variant=inset]:bg-raised px-3.5 font-mono text-sm outline-none focus-visible:border-brand"
       />
       <Slider aria-label={label} min={min} max={max} step={step} value={[value]} onValueChange={([v]) => onChange(v)} />
     </div>
