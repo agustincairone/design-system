@@ -7,6 +7,8 @@ import { TabBar } from "@/components/controls/tab-bar"
 import { Chip } from "@/components/ui/chip"
 import { PFieldLabel, PInputAdd } from "@/outfit-proposals"
 import { Button } from "@/components/ui/button"
+import { ColorSwatches, type Swatch } from "@/components/controls/color-swatches"
+import { DateStrip } from "@/components/controls/date-strip"
 import { ColorDots, ItemCard, ItemCardSmall, ItemRow, type Item } from "@/components/cards/item-card"
 import { ChevronLeft, Plus } from "lucide-react"
 
@@ -14,6 +16,18 @@ const ITEMS: Item[] = [
   { marca: "Nike", modelo: "Air Force", colors: [{ hex: "#FFFFFF" }] },
   { marca: "Levis", modelo: "501", tipo: "Jean", colors: [{ hex: "#23466A" }] },
   { marca: "Uniqlo", modelo: "U", tipo: "Lisa", colors: [{ hex: "#1A1A1A" }, { hex: "#C0392B" }] },
+]
+const SWATCHES: Swatch[] = [
+  { name: "Blanco", hex: "#FFFFFF" }, { name: "Negro", hex: "#1A1A1A" }, { name: "Gris claro", hex: "#D4D4D4" },
+  { name: "Beige", hex: "#C4A882" }, { name: "Rojo", hex: "#C0392B" }, { name: "Verde", hex: "#527C47" },
+  { name: "Celeste", hex: "#7FB3D3" }, { name: "Azul", hex: "#23466A" },
+]
+const DAYS = [
+  { dateStr: "a", dayName: "Lunes", label: "16/11", isToday: true, marked: true },
+  { dateStr: "b", dayName: "Viernes", label: "13/11", marked: true },
+  { dateStr: "c", dayName: "Jueves", label: "12/11" },
+  { dateStr: "d", dayName: "Miércoles", label: "11/11" },
+  { dateStr: "e", dayName: "Martes", label: "10/11" },
 ]
 const CATS = ["Zapatillas", "Abajo", "Remera", "Camisa", "Arriba", "Campera"]
 
@@ -38,6 +52,8 @@ export function AppliedStyle() {
   const [saved, setSaved] = React.useState(["Nike", "Adidas", "Vans"])
   const [pick, setPick] = React.useState("Nike")
   const [sel, setSel] = React.useState(1)
+  const [cols, setCols] = React.useState<Swatch[]>([SWATCHES[1]])
+  const [day, setDay] = React.useState("b")
 
   return (
     <>
@@ -117,6 +133,13 @@ export function AppliedStyle() {
             <div className="flex gap-4">{ITEMS.map((it, i) => <ItemCardSmall key={i} item={it} />)}</div>
             <div className="max-w-[360px]"><ItemRow item={ITEMS[1]} right={<span className="text-sm font-semibold">12x</span>} /></div>
             <div className="flex items-center gap-3"><ColorDots colors={ITEMS[2].colors} size={18} /><span className="text-xs text-muted-foreground">puntitos de color</span></div>
+          </div>
+        </Rule>
+
+        <Rule title="Colores y días" rule="Estilo 2 (outfit) con los colores del sistema. Color elegido = aro del color de la app; día elegido = relleno; hoy = borde; con outfit cargado = puntito.">
+          <div className="flex flex-col gap-3 rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
+            <ColorSwatches colors={SWATCHES} value={cols} onToggle={(c) => setCols((p) => (p.some((x) => x.hex === c.hex) ? p.filter((x) => x.hex !== c.hex) : p.length >= 3 ? p : [...p, c]))} />
+            <DateStrip days={DAYS} value={day} onChange={setDay} />
           </div>
         </Rule>
       </div>

@@ -543,6 +543,16 @@
           "path": "registry/ds/controls/tab-bar.tsx",
           "type": "registry:component",
           "target": "components/controls/tab-bar.tsx"
+        },
+        {
+          "path": "registry/ds/controls/color-swatches.tsx",
+          "type": "registry:component",
+          "target": "components/controls/color-swatches.tsx"
+        },
+        {
+          "path": "registry/ds/controls/date-strip.tsx",
+          "type": "registry:component",
+          "target": "components/controls/date-strip.tsx"
         }
       ]
     },
