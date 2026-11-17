@@ -22,9 +22,9 @@ export const BRANDS: Record<BrandId, { name: string; light: Vars; dark: Vars }> 
     dark: { brand: "#22c55e", fg: "#0a0a0a", text: "#22c55e", strong: "#15803d" },
   },
   "outfit-tracker": {
-    name: "outfit-tracker (provisorio)",
-    light: { brand: "#ec4899", fg: "#0a0a0a", text: "oklch(0.361 0.116 354.3)", strong: "#be185d" },
-    dark: { brand: "#ec4899", fg: "#0a0a0a", text: "#ec4899", strong: "#be185d" },
+    name: "outfit-tracker (neutro)",
+    light: { brand: "oklch(21.6% 0.006 56.043)", fg: "oklch(98.5% 0.001 106.423)", text: "oklch(21.6% 0.006 56.043)", strong: "oklch(37.4% 0.01 67.558)" },
+    dark: { brand: "oklch(97% 0.001 106.424)", fg: "oklch(21.6% 0.006 56.043)", text: "oklch(97% 0.001 106.424)", strong: "oklch(86.9% 0.005 56.366)" },
   },
 }
 
