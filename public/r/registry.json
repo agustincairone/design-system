@@ -535,6 +535,11 @@
           "path": "registry/ds/controls/field-column.tsx",
           "type": "registry:component",
           "target": "components/controls/field-column.tsx"
+        },
+        {
+          "path": "registry/ds/controls/tab-bar.tsx",
+          "type": "registry:component",
+          "target": "components/controls/tab-bar.tsx"
         }
       ]
     },

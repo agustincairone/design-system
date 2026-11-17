@@ -108,6 +108,7 @@ import { TileGroup } from "@/components/controls/tile-group"
 import { IconTile } from "@/components/controls/icon-tile"
 import { FieldColumn } from "@/components/controls/field-column"
 import { OutfitStyle } from "@/outfit-style"
+import { AppliedStyle } from "@/applied-style"
 
 // ---------------------------------------------------------------------------
 
@@ -183,6 +184,8 @@ const NAV = [
   ["navegacion", "Navegación"],
   ["chips", "Chips y labels"],
   ["ventanas", "Ventanas y avisos"],
+  ["estilo-aplicado", "Estilo aplicado"],
+  ["estilo-outfit", "Estilo outfit"],
   ["usar", "Cómo usarlo"],
 ]
 
@@ -1079,6 +1082,14 @@ export function App() {
                 </AlertDescription>
               </Alert>
             </div>
+          </Section>
+
+          <Section
+            id="estilo-aplicado"
+            title="Estilo aplicado"
+            description="Lo que ya elegiste, como queda en outfit-tracker (en rosa). Se va completando a medida que elegís."
+          >
+            <AppliedStyle />
           </Section>
 
           <Section
