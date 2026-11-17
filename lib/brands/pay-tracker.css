@@ -1,28 +1,28 @@
 /* Color de pay-tracker. Importalo después de theme.css */
 :root {
-  --brand: #22c55e;
-  --brand-foreground: #0a0a0a;
-  --brand-text: oklch(0.398 0.106 149.6);
-  --primary: #22c55e;
-  --primary-foreground: #0a0a0a;
-  --ring: #22c55e;
-  --chart-1: #22c55e;
-  --sidebar-primary: #22c55e;
-  --sidebar-primary-foreground: #0a0a0a;
-  --sidebar-ring: #22c55e;
-  --brand-strong: #15803d;
+  --brand: oklch(39.3% 0.095 152.535);
+  --brand-foreground: oklch(100% 0 0);
+  --brand-text: oklch(39.3% 0.095 152.535);
+  --primary: oklch(39.3% 0.095 152.535);
+  --primary-foreground: oklch(100% 0 0);
+  --ring: oklch(39.3% 0.095 152.535);
+  --chart-1: oklch(39.3% 0.095 152.535);
+  --sidebar-primary: oklch(39.3% 0.095 152.535);
+  --sidebar-primary-foreground: oklch(100% 0 0);
+  --sidebar-ring: oklch(39.3% 0.095 152.535);
+  --brand-strong: oklch(26.6% 0.065 152.934);
 }
 
 .dark {
-  --brand: #22c55e;
-  --brand-foreground: #0a0a0a;
-  --brand-text: #22c55e;
-  --primary: #22c55e;
-  --primary-foreground: #0a0a0a;
-  --ring: #22c55e;
-  --chart-1: #22c55e;
-  --sidebar-primary: #22c55e;
-  --sidebar-primary-foreground: #0a0a0a;
-  --sidebar-ring: #22c55e;
-  --brand-strong: #15803d;
+  --brand: oklch(39.3% 0.095 152.535);
+  --brand-foreground: oklch(100% 0 0);
+  --brand-text: oklch(39.3% 0.095 152.535);
+  --primary: oklch(39.3% 0.095 152.535);
+  --primary-foreground: oklch(100% 0 0);
+  --ring: oklch(39.3% 0.095 152.535);
+  --chart-1: oklch(39.3% 0.095 152.535);
+  --sidebar-primary: oklch(39.3% 0.095 152.535);
+  --sidebar-primary-foreground: oklch(100% 0 0);
+  --sidebar-ring: oklch(39.3% 0.095 152.535);
+  --brand-strong: oklch(26.6% 0.065 152.934);
 }
