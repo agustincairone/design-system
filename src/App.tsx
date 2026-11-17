@@ -92,6 +92,7 @@ import { IconTile } from "@/components/controls/icon-tile"
 import { FieldColumn } from "@/components/controls/field-column"
 import { OutfitStyle } from "@/outfit-style"
 import { AppliedStyle } from "@/applied-style"
+import { Rules } from "@/rules"
 
 // ---------------------------------------------------------------------------
 
@@ -162,6 +163,7 @@ const TOKENS: { name: string; cls: string; note: string }[] = [
 ]
 
 const NAV = [
+  ["reglas", "Reglas"],
   ["colores", "Colores"],
   ["tipografia", "Tipografía"],
   ["cajas", "Cajas"],
@@ -679,6 +681,14 @@ export function App() {
               })}
             </div>
           </div>
+
+          <Section
+            id="reglas"
+            title="Reglas"
+            description="Las decisiones del sistema en un solo lugar. Toda app nueva las sigue."
+          >
+            <Rules />
+          </Section>
 
           <Section
             id="colores"
