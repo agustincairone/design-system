@@ -28,7 +28,8 @@
     "@ds/badge",
     "@ds/chip",
     "@ds/controls",
-    "@ds/item-card"
+    "@ds/item-card",
+    "@ds/bottom-sheet"
   ],
   "type": "registry:block"
 }

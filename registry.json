@@ -378,6 +378,23 @@
       ]
     },
     {
+      "name": "bottom-sheet",
+      "type": "registry:ui",
+      "title": "bottom-sheet",
+      "description": "Hoja desde abajo con 16px de aire, título de 16px y cruz redonda; y la confirmación.",
+      "registryDependencies": [
+        "utils",
+        "@ds/button"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/bottom-sheet.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/bottom-sheet.tsx"
+        }
+      ]
+    },
+    {
       "name": "toggle",
       "type": "registry:ui",
       "title": "toggle",
@@ -667,7 +684,8 @@
         "@ds/badge",
         "@ds/chip",
         "@ds/controls",
-        "@ds/item-card"
+        "@ds/item-card",
+        "@ds/bottom-sheet"
       ]
     },
     {

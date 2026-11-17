@@ -1,15 +1,14 @@
 // Propuestas: cómo quedarían en el estilo del sistema los componentes de outfit
 // que todavía no tienen equivalente. Si se aprueban, pasan a ser componentes del DS.
 import * as React from "react"
-import { Plus, X } from "lucide-react"
+import { Plus } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Chip } from "@/components/ui/chip"
 import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
+import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
 import type { DayOption } from "@/components/outfit/date-strip"
 
 // ---------- etiqueta + campo con + + chips guardados ----------
@@ -80,73 +79,26 @@ export function PDateStrip({ days, value, onChange }: { days: DayOption[]; value
   )
 }
 
-// ---------- hojas y ventanas ----------
-const SHEET_TITLE = "title-box text-[20px] leading-[1.2] font-semibold text-foreground"
-
+// ---------- hojas y ventanas (ya son componente del DS: BottomSheet) ----------
 export function PBottomSheet({ open, onClose, title, children, inline }: { open: boolean; onClose: () => void; title: string; children: React.ReactNode; inline?: boolean }) {
-  if (inline) return (
-    <div className="flex h-full items-end bg-black/10 supports-backdrop-filter:backdrop-blur-xs">
-      <div className="relative flex w-full flex-col gap-4 rounded-t-box-l bg-popover p-box-l pb-8 text-sm text-popover-foreground shadow-lg">
-        <div className="pr-10"><p className={SHEET_TITLE}>{title}</p></div>
-        <Button variant="ghost" size="icon-sm" className="absolute top-3 right-3" onClick={onClose}><X /></Button>
-        {children}
-      </div>
-    </div>
-  )
-  return (
-    <Sheet open={open} onOpenChange={(o) => { if (!o) onClose() }}>
-      <SheetContent side="bottom" aria-describedby={undefined} className="mx-auto w-full max-w-md gap-4 rounded-t-box-l border-0 p-box-l pb-8">
-        <SheetHeader className="p-0 pr-10"><SheetTitle className={SHEET_TITLE}>{title}</SheetTitle></SheetHeader>
-        {children}
-      </SheetContent>
-    </Sheet>
-  )
+  return <BottomSheet open={open} onOpenChange={(o) => { if (!o) onClose() }} title={title} inline={inline}>{children}</BottomSheet>
 }
 
-export function PConfirmSheet({ open, onClose, title, question, detail, confirmLabel, onConfirm, inline }: {
+export function PConfirmSheet({ open, onClose, inline, ...p }: {
   open: boolean; onClose: () => void; title: string; question: string; detail: string; confirmLabel: string; onConfirm: () => void; inline?: boolean
 }) {
-  return (
-    <PBottomSheet open={open} onClose={onClose} title={title} inline={inline}>
-      <div className="flex flex-col gap-1">
-        <p className="text-sm">{question}</p>
-        <p className="text-sm text-muted-foreground">{detail}</p>
-      </div>
-      <div className="flex gap-2">
-        <Button variant="secondary" className="flex-1" onClick={onClose}>Volver</Button>
-        <Button variant="destructive" className="flex-1" onClick={onConfirm}>{confirmLabel}</Button>
-      </div>
-    </PBottomSheet>
-  )
+  return <ConfirmSheet open={open} onOpenChange={(o) => { if (!o) onClose() }} inline={inline} {...p} />
 }
 
+// La ventana centrada también pasa a ser una hoja desde abajo
 export function PCenterModal({ open, onClose, title, subtitle, children, footer, inline }: {
   open: boolean; onClose: () => void; title: string; subtitle?: string; children: React.ReactNode; footer?: React.ReactNode; inline?: boolean
 }) {
-  if (inline) return (
-    <div className="flex h-full items-center justify-center bg-black/10 p-4 supports-backdrop-filter:backdrop-blur-xs">
-      <div className="relative flex w-full max-w-sm flex-col gap-5 rounded-box-l bg-card p-box-l text-sm">
-        <div className="pr-8">
-          <p className="title-box text-[20px] leading-[1.2] font-semibold">{title}</p>
-          {subtitle && <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>}
-        </div>
-        <Button variant="ghost" size="icon-sm" className="absolute top-2 right-2" onClick={onClose}><X /></Button>
-        {children}
-        {footer}
-      </div>
-    </div>
-  )
   return (
-    <Dialog open={open} onOpenChange={(o) => { if (!o) onClose() }}>
-      <DialogContent aria-describedby={undefined} className="flex max-h-[92vh] flex-col gap-5 overflow-y-auto rounded-box-l bg-card p-box-l ring-0">
-        <div className="pr-8">
-          <DialogTitle className="title-box text-[20px] leading-[1.2] font-semibold">{title}</DialogTitle>
-          {subtitle && <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>}
-        </div>
-        {children}
-        {footer}
-      </DialogContent>
-    </Dialog>
+    <BottomSheet open={open} onOpenChange={(o) => { if (!o) onClose() }} title={subtitle ? <>{title} <span className="font-normal text-muted-foreground">· {subtitle}</span></> : title} inline={inline}>
+      {children}
+      {footer}
+    </BottomSheet>
   )
 }
 

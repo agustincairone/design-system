@@ -7,6 +7,8 @@ import { TabBar } from "@/components/controls/tab-bar"
 import { Chip } from "@/components/ui/chip"
 import { PFieldLabel, PInputAdd } from "@/outfit-proposals"
 import { Button } from "@/components/ui/button"
+import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
+import { Input } from "@/components/ui/input"
 import { ColorSwatches, type Swatch } from "@/components/controls/color-swatches"
 import { DateStrip } from "@/components/controls/date-strip"
 import { ColorDots, ItemCard, ItemCardSmall, ItemRow, type Item } from "@/components/cards/item-card"
@@ -140,6 +142,26 @@ export function AppliedStyle() {
           <div className="flex flex-col gap-3 rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
             <ColorSwatches colors={SWATCHES} value={cols} onToggle={(c) => setCols((p) => (p.some((x) => x.hex === c.hex) ? p.filter((x) => x.hex !== c.hex) : p.length >= 3 ? p : [...p, c]))} />
             <DateStrip days={DAYS} value={day} onChange={setDay} />
+          </div>
+        </Rule>
+
+        <Rule title="Hojas y ventanas" rule="Estilo 1, y todas salen desde abajo (ya no hay ventana centrada). Flotan con 16px de aire a los costados y abajo, título de 16px y cruz en botón redondo con borde, igual al de volver.">
+          <div className="grid gap-box-gap md:grid-cols-3">
+            {[
+              ["Detalle", <BottomSheet key="a" inline open onOpenChange={() => {}} title="Nike Air Force">
+                <div className="grid grid-cols-2 gap-2"><Button variant="secondary">Editar</Button><Button variant="destructive-soft">Archivar</Button></div>
+              </BottomSheet>],
+              ["Confirmación", <ConfirmSheet key="b" inline open onOpenChange={() => {}} title="Eliminar prenda" question="¿Eliminar Nike Air Force?" detail="No se puede deshacer." confirmLabel="Eliminar" onConfirm={() => {}} />],
+              ["Formulario", <BottomSheet key="c" inline open onOpenChange={() => {}} title="Nueva prenda">
+                <Input placeholder="Marca" />
+                <Button disabled className="w-full">Guardar</Button>
+              </BottomSheet>],
+            ].map(([l, node]) => (
+              <div key={l as string}>
+                <p className="eyebrow-plain mb-2">{l}</p>
+                <div className="h-[340px] overflow-hidden rounded-box-l bg-card ring-1 ring-foreground/15">{node}</div>
+              </div>
+            ))}
           </div>
         </Rule>
       </div>

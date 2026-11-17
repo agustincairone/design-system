@@ -246,7 +246,7 @@ export function OutfitStyle() {
         bare
         name="Hoja desde abajo"
         use="Detalle de una prenda u opciones. Se muestra abierta."
-        oneNote="lo que ya tenemos: Sheet"
+        oneNote="DS: hoja desde abajo"
         one={<Screen><PBottomSheet inline open onClose={noop} title="Zapatillas"><PItemRow item={ITEMS[0]} right={<span className="text-sm font-semibold">5x</span>} /><div className="flex gap-2"><Button variant="secondary" className="flex-1">Archivar</Button><Button className="flex-1">Editar</Button></div></PBottomSheet></Screen>}
         two={<Screen outfit><BottomSheet inline open onClose={noop} title="Zapatillas"><div className="flex flex-col gap-4 p-4 pb-8"><ItemRow item={ITEMS[0]} right={<span style={{ color: OUTFIT.ink, fontSize: 13, fontWeight: 600 }}>5x</span>} /><div className="flex gap-3"><ActionButton tone="soft" className="flex-1">Archivar</ActionButton><ActionButton className="flex-1">Editar</ActionButton></div></div></BottomSheet></Screen>}
       />
@@ -255,7 +255,7 @@ export function OutfitStyle() {
         bare
         name="Confirmación"
         use="Antes de borrar o cancelar algo. Se muestra abierta."
-        oneNote="lo que ya tenemos: Sheet + Button"
+        oneNote="DS: confirmación"
         one={<Screen><PConfirmSheet inline open onClose={noop} title="Eliminar outfit" question="¿Estás seguro que querés eliminar este outfit?" detail="Recordá que podés volver a cargarlo nuevamente." confirmLabel="Eliminar" onConfirm={noop} /></Screen>}
         two={<Screen outfit><ConfirmSheet inline open onClose={noop} title="Eliminar outfit" question="¿Estás seguro que querés eliminar este outfit?" detail="Recordá que podés volver a cargarlo nuevamente." confirmLabel="Eliminar" onConfirm={noop} /></Screen>}
       />
@@ -264,7 +264,7 @@ export function OutfitStyle() {
         bare
         name="Ventana centrada"
         use="Formularios como Nueva prenda. Se muestra abierta."
-        oneNote="lo que ya tenemos: Dialog + Input + Button"
+        oneNote="DS: hoja desde abajo (ya no hay ventana centrada)"
         one={<Screen><PCenterModal inline open onClose={noop} title="Nueva prenda" subtitle="Zapatillas" footer={<Button className="w-full">Agregar prenda</Button>}><div><PFieldLabel>Marca</PFieldLabel><PInputAdd value={text1} onChange={setText1} onAdd={() => setText1("")} placeholder="Agregar marca..." /></div></PCenterModal></Screen>}
         two={<Screen outfit><CenterModal inline open onClose={noop} title="Nueva prenda" subtitle="Zapatillas" footer={<ActionButton className="w-full">Agregar prenda</ActionButton>}><div><FieldLabel>Marca</FieldLabel><InputAdd value={text} onChange={setText} onAdd={() => setText("")} placeholder="Agregar marca..." /></div></CenterModal></Screen>}
       />
