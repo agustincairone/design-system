@@ -1079,6 +1079,8 @@ export function App() {
               <div>npx shadcn add @ds/brand-loop</div>
               <div>npx shadcn add @ds/brand-pay-tracker</div>
               <div>npx shadcn add @ds/brand-outfit-tracker</div>
+              <div className="pt-2 text-muted-foreground"># en index.html: los inputs tienen letra de 14px, así el iPhone no hace zoom al tocarlos</div>
+              <div>{'<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />'}</div>
             </div>
           </Section>
         </main>
