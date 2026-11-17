@@ -395,6 +395,22 @@
       ]
     },
     {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "empty-state",
+      "description": "Pantalla vacía o de listo: ícono en círculo gris, título y texto.",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/empty-state.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/empty-state.tsx"
+        }
+      ]
+    },
+    {
       "name": "toggle",
       "type": "registry:ui",
       "title": "toggle",
@@ -690,7 +706,8 @@
         "@ds/chip",
         "@ds/controls",
         "@ds/item-card",
-        "@ds/bottom-sheet"
+        "@ds/bottom-sheet",
+        "@ds/empty-state"
       ]
     },
     {

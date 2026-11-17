@@ -9,10 +9,12 @@ import { PFieldLabel, PInputAdd } from "@/outfit-proposals"
 import { Button } from "@/components/ui/button"
 import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
 import { Input } from "@/components/ui/input"
+import { EmptyState } from "@/components/ui/empty-state"
+import { toast } from "sonner"
 import { ColorSwatches, type Swatch } from "@/components/controls/color-swatches"
 import { DateStrip } from "@/components/controls/date-strip"
 import { BottomNav } from "@/components/controls/bottom-nav"
-import { CalendarDays, Shirt, User, BarChart3 } from "lucide-react"
+import { CalendarDays, Shirt, User, BarChart3, Check } from "lucide-react"
 import { ColorDots, ItemCard, ItemCardSmall, ItemRow, type Item } from "@/components/cards/item-card"
 import { ChevronLeft, Plus } from "lucide-react"
 
@@ -176,6 +178,13 @@ export function AppliedStyle() {
               { key: "stats", icon: BarChart3, label: "Estadísticas" },
               { key: "perfil", icon: User, label: "Perfil" },
             ]} />
+          </div>
+        </Rule>
+
+        <Rule title="Vacío y aviso" rule="Estilo 1: ícono en un círculo gris, título de caja y texto gris. El aviso es el del sistema, abajo de la pantalla (tocá el botón).">
+          <div className="flex flex-col items-center gap-6 rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
+            <EmptyState icon={<Check className="text-primary" />} title="Outfit registrado" text="Podés modificarlo cuando quieras" />
+            <Button variant="secondary" onClick={() => toast("Outfit guardado ✓")}>Mostrar aviso</Button>
           </div>
         </Rule>
       </div>

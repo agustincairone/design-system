@@ -29,7 +29,8 @@
     "@ds/chip",
     "@ds/controls",
     "@ds/item-card",
-    "@ds/bottom-sheet"
+    "@ds/bottom-sheet",
+    "@ds/empty-state"
   ],
   "type": "registry:block"
 }

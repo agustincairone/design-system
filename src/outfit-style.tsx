@@ -272,7 +272,7 @@ export function OutfitStyle() {
       <Compare
         name="Barra de abajo, vacío y aviso"
         use="Navegación con puntito, estado vacío y aviso flotante."
-        oneNote="barra y vacío = propuesta; aviso = el que ya tenemos (tocalo)"
+        oneNote="DS: barra de abajo, vacío y aviso (tocalo)"
         one={
           <>
             <div className="rounded-box-m bg-background p-2"><PBottomNav value={nav1} onChange={setNav1} items={NAV_ITEMS} /></div>

@@ -104,14 +104,4 @@ export function PCenterModal({ open, onClose, title, subtitle, children, footer,
 // ---------- barra de abajo y vacío ----------
 export { BottomNav as PBottomNav } from "@/components/controls/bottom-nav"
 
-export function PEmptyState({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
-  return (
-    <div className="flex flex-col items-center gap-4 text-center">
-      <div className="flex size-16 items-center justify-center rounded-full bg-inset">{icon}</div>
-      <div>
-        <p className="title-box mb-1">{title}</p>
-        <p className="text-sm text-muted-foreground">{text}</p>
-      </div>
-    </div>
-  )
-}
+export { EmptyState as PEmptyState } from "@/components/ui/empty-state"
