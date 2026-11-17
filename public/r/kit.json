@@ -18,7 +18,6 @@
     "checkbox",
     "@ds/slider",
     "@ds/toggle",
-    "@ds/toggle-group",
     "skeleton",
     "alert",
     "avatar",
@@ -27,6 +26,7 @@
     "@ds/toaster",
     "@ds/button",
     "@ds/badge",
+    "@ds/chip",
     "@ds/controls"
   ],
   "type": "registry:block"

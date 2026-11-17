@@ -359,6 +359,22 @@
       ]
     },
     {
+      "name": "chip",
+      "type": "registry:ui",
+      "title": "chip",
+      "description": "Chip que se prende y se apaga, con ícono y cruz opcionales.",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/chip.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/chip.tsx"
+        }
+      ]
+    },
+    {
       "name": "toggle",
       "type": "registry:ui",
       "title": "toggle",
@@ -374,26 +390,6 @@
           "path": "registry/ds/ui/toggle.tsx",
           "type": "registry:ui",
           "target": "components/ui/toggle.tsx"
-        }
-      ]
-    },
-    {
-      "name": "toggle-group",
-      "type": "registry:ui",
-      "title": "toggle-group",
-      "description": "Grupo de opciones en píldora.",
-      "dependencies": [
-        "radix-ui"
-      ],
-      "registryDependencies": [
-        "utils",
-        "@ds/toggle"
-      ],
-      "files": [
-        {
-          "path": "registry/ds/ui/toggle-group.tsx",
-          "type": "registry:ui",
-          "target": "components/ui/toggle-group.tsx"
         }
       ]
     },
@@ -643,7 +639,6 @@
         "checkbox",
         "@ds/slider",
         "@ds/toggle",
-        "@ds/toggle-group",
         "skeleton",
         "alert",
         "avatar",
@@ -652,6 +647,7 @@
         "@ds/toaster",
         "@ds/button",
         "@ds/badge",
+        "@ds/chip",
         "@ds/controls"
       ]
     },

@@ -6,6 +6,7 @@ import type { LucideIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { Chip } from "@/components/ui/chip"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
@@ -22,18 +23,9 @@ export function PFieldLabel({ children, right }: { children: React.ReactNode; ri
   )
 }
 
-// Chip con cruz = el Button chico del sistema (sm), con una cruz adentro
+// Chip con cruz = el Chip del sistema
 export function PChipTag({ label, selected, onSelect, onDelete }: { label: string; selected?: boolean; onSelect?: () => void; onDelete?: () => void }) {
-  return (
-    <Button size="sm" variant={selected ? "default" : "outline"} onClick={onSelect} className="pr-2">
-      {label}
-      {onDelete && (
-        <span role="button" aria-label={"Borrar " + label} onClick={(e) => { e.stopPropagation(); onDelete() }} className="flex items-center opacity-60 hover:opacity-100">
-          <X />
-        </span>
-      )}
-    </Button>
-  )
+  return <Chip selected={selected} onClick={onSelect} onRemove={onDelete} removeLabel={"Borrar " + label}>{label}</Chip>
 }
 
 export function PInputAdd({ value, onChange, onAdd, placeholder }: { value: string; onChange: (v: string) => void; onAdd: () => void; placeholder?: string }) {

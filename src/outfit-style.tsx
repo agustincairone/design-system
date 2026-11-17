@@ -8,6 +8,7 @@ import { BarChart2, Calendar, Check, ChevronLeft, LayoutGrid, Plus, Shirt, User 
 import { TileGroup } from "@/components/controls/tile-group"
 import { Segmented } from "@/components/controls/segmented"
 import { Button } from "@/components/ui/button"
+import { Chip } from "@/components/ui/chip"
 import { OUTFIT, OUTFIT_FONT } from "@/components/outfit/palette"
 import { TabBar } from "@/components/outfit/tab-bar"
 import { ChipTag, FilterChips } from "@/components/outfit/chips"
@@ -124,11 +125,11 @@ export function OutfitStyle() {
       <Compare
         name="Filtro con chips"
         use="Filtrar una lista (ej: por marca)."
-        oneNote="lo que ya tenemos: botón chico"
+        oneNote="lo que ya tenemos: Chip"
         one={
           <div className="flex flex-wrap gap-2">
             {[null, "Adidas", "Nike", "Vans"].map((b) => (
-              <Button key={b ?? "todo"} size="sm" variant={brand === b ? "default" : "outline"} onClick={() => setBrand(b)}>{b ?? "Todo"}</Button>
+              <Chip key={b ?? "todo"} selected={brand === b} onClick={() => setBrand(b)}>{b ?? "Todo"}</Chip>
             ))}
           </div>
         }
@@ -138,7 +139,7 @@ export function OutfitStyle() {
       <Compare
         name="Chips guardados + campo con +"
         use="Escribir un valor nuevo o elegir uno ya guardado, con cruz para borrarlo."
-        oneNote="Input + botón chico con una cruz (no hay chip con cruz todavía)"
+        oneNote="lo que ya tenemos: Input + Chip con cruz"
         one={
           <div>
             <PFieldLabel>Marca</PFieldLabel>

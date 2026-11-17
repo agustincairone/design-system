@@ -79,7 +79,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Chip } from "@/components/ui/chip"
 import {
   Tooltip,
   TooltipContent,
@@ -181,6 +181,7 @@ const NAV = [
   ["controles", "Controles"],
   ["tarjetas", "Tarjetas"],
   ["navegacion", "Navegación"],
+  ["chips", "Chips y labels"],
   ["ventanas", "Ventanas y avisos"],
   ["usar", "Cómo usarlo"],
 ]
@@ -351,6 +352,82 @@ function PillDemo() {
   )
 }
 
+// Fichas en sus dos tamaños (van en Navegación)
+function TilesDemo() {
+  const [tile, setTile] = React.useState("4/4")
+  const opts = ["4/4", "3/4", "6/8", "5/4", "7/8", "12/8"].map((v) => ({ value: v, label: v }))
+  return (
+    <div className="flex flex-wrap items-start gap-8">
+      <TileGroup label="Compás" value={tile} onChange={setTile} options={opts} className="max-w-[150px] font-mono" />
+      <TileGroup label="Compás a lo ancho" columns={3} value={tile} onChange={setTile} options={opts} className="w-72 font-mono" />
+    </div>
+  )
+}
+
+// Chips: sin ícono, con ícono, con cruz y en cada estado
+function ChipsDemo() {
+  const [on, setOn] = React.useState<string[]>(["Nike"])
+  const [saved, setSaved] = React.useState(["Nike", "Adidas", "Vans"])
+  const toggle = (v: string) => setOn((p) => (p.includes(v) ? p.filter((x) => x !== v) : [...p, v]))
+  const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
+    <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+      <span className="eyebrow w-40 shrink-0">{label}</span>
+      <div className="flex flex-wrap items-center gap-2">{children}</div>
+    </div>
+  )
+  return (
+    <div className="flex flex-col gap-4">
+      <Row label="Sin ícono">
+        <Chip>Apagado</Chip>
+        <Chip selected>Elegido</Chip>
+        <Chip disabled>Deshabilitado</Chip>
+      </Row>
+      <Row label="Con ícono">
+        <Chip icon={Shirt}>Apagado</Chip>
+        <Chip icon={Shirt} selected>Elegido</Chip>
+        <Chip icon={Shirt} disabled>Deshabilitado</Chip>
+      </Row>
+      <Row label="Con cruz">
+        <Chip onRemove={() => {}}>Apagado</Chip>
+        <Chip selected onRemove={() => {}}>Elegido</Chip>
+        <Chip icon={Wallet} onRemove={() => {}}>Con ícono</Chip>
+      </Row>
+      <Row label="Probalo: filtro">
+        {["Todo", "Nike", "Adidas", "Vans"].map((b) => <Chip key={b} selected={on.includes(b)} onClick={() => toggle(b)}>{b}</Chip>)}
+      </Row>
+      <Row label="Probalo: guardados">
+        {saved.map((b) => <Chip key={b} selected={on.includes(b)} onClick={() => toggle(b)} onRemove={() => setSaved((p) => p.filter((x) => x !== b))} removeLabel={"Borrar " + b}>{b}</Chip>)}
+        {saved.length === 0 && <Button size="sm" variant="ghost" onClick={() => setSaved(["Nike", "Adidas", "Vans"])}>Volver a poner</Button>}
+      </Row>
+    </div>
+  )
+}
+
+function LabelsDemo() {
+  const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
+    <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
+      <span className="eyebrow w-40 shrink-0">{label}</span>
+      <div className="flex flex-wrap items-center gap-2">{children}</div>
+    </div>
+  )
+  return (
+    <div className="flex flex-col gap-4">
+      <Row label="Sin ícono">
+        <Badge>Principal</Badge>
+        <Badge variant="secondary">Secundario</Badge>
+        <Badge variant="outline">Con borde</Badge>
+        <Badge variant="destructive">Peligro</Badge>
+      </Row>
+      <Row label="Con ícono">
+        <Badge><Check /> Pagado</Badge>
+        <Badge variant="secondary"><Shirt /> Remera</Badge>
+        <Badge variant="outline"><Wallet /> Servicios</Badge>
+        <Badge variant="destructive"><X /> Vencido</Badge>
+      </Row>
+    </div>
+  )
+}
+
 function ControlCard({ name, use, children }: { name: string; use: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col rounded-3xl bg-card">
@@ -483,7 +560,6 @@ function ControlsDemo() {
   const [rows, setRows] = React.useState(27)
   const [cols, setCols] = React.useState(54)
   const [mix, setMix] = React.useState(0.37)
-  const [tile, setTile] = React.useState("4/4")
   return (
     <div className="grid gap-3 md:grid-cols-2">
       <ControlCard name="Campo-slider" use="Arrastrás de costado en cualquier parte. Con pocos valores, muestra un punto por cada uno.">
@@ -502,23 +578,6 @@ function ControlsDemo() {
         <div className="flex flex-col items-center gap-5">
           <Stepper label="Cantidad" value={count} min={0} max={16} onChange={setCount} />
         </div>
-      </ControlCard>
-      <ControlCard name="Fichas" use="Elegir una opción corta entre pocas. La elegida se pinta del color de la app.">
-        <TileGroup
-          label="Compás"
-          value={tile}
-          onChange={setTile}
-          options={["4/4", "3/4", "6/8", "5/4", "7/8", "12/8"].map((v) => ({ value: v, label: v }))}
-          className="max-w-xs justify-center font-mono"
-        />
-        <TileGroup
-          label="Compás a lo ancho"
-          columns={3}
-          value={tile}
-          onChange={setTile}
-          options={["4/4", "3/4", "6/8", "5/4", "7/8", "12/8"].map((v) => ({ value: v, label: v }))}
-          className="mt-4 w-full max-w-xs font-mono"
-        />
       </ControlCard>
       <ControlCard name="Fichas con ícono" use="Elegir algo de un catálogo (ej: agregar un sonido). Llenan su columna y son cuadradas.">
         <div className="grid w-full max-w-xs grid-cols-3 gap-box-gap">
@@ -905,20 +964,16 @@ export function App() {
           <Section
             id="navegacion"
             title="Navegación"
-            description="Píldora con opciones, grupos de opciones y menús desplegables."
+            description="Para elegir una opción o cambiar de vista: píldora con opciones y fichas, cada una en dos tamaños. Y el menú desplegable."
           >
             <div className="grid gap-4">
               <Demo label="Píldora con opciones · normal y chica (elegir una opción o cambiar de vista)">
                 <PillDemo />
               </Demo>
-              <Demo label="Grupo de opciones y menú">
-                <ToggleGroup type="single" defaultValue="4/4" variant="outline">
-                  {["4/4", "3/4", "6/8", "5/4"].map((v) => (
-                    <ToggleGroupItem key={v} value={v} className="font-mono">
-                      {v}
-                    </ToggleGroupItem>
-                  ))}
-                </ToggleGroup>
+              <Demo label="Fichas · compactas y a lo ancho (la elegida va del color de la app)" className="block">
+                <TilesDemo />
+              </Demo>
+              <Demo label="Menú desplegable">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline">
@@ -941,6 +996,17 @@ export function App() {
                   </DropdownMenuContent>
                 </DropdownMenu>
               </Demo>
+            </div>
+          </Section>
+
+          <Section
+            id="chips"
+            title="Chips y labels"
+            description="Chips: se tocan para prender o apagar (filtros, valores guardados con cruz para borrar). Labels: sólo muestran un estado o una categoría, no se tocan."
+          >
+            <div className="grid gap-4">
+              <Demo label="Chips" className="block"><ChipsDemo /></Demo>
+              <Demo label="Labels" className="block"><LabelsDemo /></Demo>
             </div>
           </Section>
 
