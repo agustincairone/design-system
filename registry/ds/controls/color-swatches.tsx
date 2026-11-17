@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 
 // Selector de colores (diseño outfit): círculos de 30px que se deslizan de costado.
 // Elegido = aro del color principal (blanco en modo oscuro) separado del círculo, con un ✓ adentro.
-// Sólo el blanco lleva borde de 1px gris (el de los divisores). Hasta `max` elegidos.
+// Sólo el blanco lleva borde de 1px gris (el de los divisores); en modo oscuro, también el negro. Hasta `max` elegidos.
 
 export type Swatch = { name: string; hex: string }
 
@@ -38,7 +38,7 @@ export function ColorSwatches({
             onClick={() => onToggle(c)}
             className={cn(
               "relative size-[30px] shrink-0 rounded-full outline-none transition-[box-shadow,opacity] focus-visible:ring-2 focus-visible:ring-brand",
-              c.hex.toUpperCase() === "#FFFFFF" || c.hex.toUpperCase() === "#FFF" ? "border border-border" : "border-0",
+              c.hex.toUpperCase() === "#FFFFFF" || c.hex.toUpperCase() === "#FFF" ? "border border-border" : ["#000000", "#1A1A1A", "#0D2137"].includes(c.hex.toUpperCase()) ? "border-0 dark:border dark:border-border" : "border-0",
               sel && "ring-2 ring-primary ring-offset-2 ring-offset-card dark:ring-foreground",
               !sel && value.length >= max && "opacity-35"
             )}
@@ -46,7 +46,7 @@ export function ColorSwatches({
           >
             {sel && (
               <span className="absolute inset-0 flex items-center justify-center">
-                <Check className="size-3" style={{ color: light ? "#1c1917" : "#ffffff" }} />
+                <Check className={cn("size-3", light ? "text-stone-900" : "text-stone-50")} />
               </span>
             )}
           </button>

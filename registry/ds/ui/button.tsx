@@ -17,14 +17,14 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
         destructive:
-          "bg-destructive text-white hover:bg-destructive/90 focus-visible:border-destructive/40 focus-visible:ring-destructive/30",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:border-destructive/40 focus-visible:ring-destructive/30",
         link: "text-brand-text underline-offset-4 hover:underline",
         // Borrar algo sin que grite: borde y texto rojos, se llena de rojo al pasar el mouse
         "destructive-outline":
-          "border-border bg-transparent text-destructive hover:border-destructive hover:bg-destructive hover:text-white",
+          "border-border bg-transparent text-destructive hover:border-destructive hover:bg-destructive hover:text-destructive-foreground",
         // Cancelar/borrar suave: fondo gris y texto rojo (diseño outfit)
         "destructive-soft":
-          "bg-secondary text-destructive hover:bg-destructive hover:text-white",
+          "bg-secondary text-destructive hover:bg-destructive hover:text-destructive-foreground",
         // Agregar algo nuevo: borde punteado y texto gris
         dashed:
           "border-dashed border-border bg-transparent text-muted-foreground hover:border-brand hover:text-brand dark:border-input",
