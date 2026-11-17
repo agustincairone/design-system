@@ -3,7 +3,8 @@ import type { LucideIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 // Barra de abajo de las apps de celular: caja blanca con íconos de 24px.
-// La sección actual va del color de la app con el puntito (4px) debajo.
+// Íconos centrados en la caja; la sección actual va del color de la app con el puntito (4px)
+// apoyado abajo, a 8px del borde.
 
 export function BottomNav<T extends string>({
   items,
@@ -28,12 +29,12 @@ export function BottomNav<T extends string>({
             aria-current={on ? "page" : undefined}
             onClick={() => onChange(key)}
             className={cn(
-              "flex h-full flex-1 flex-col items-center justify-center gap-1.5 transition-colors outline-none focus-visible:text-foreground",
+              "relative flex h-full flex-1 items-center justify-center transition-colors outline-none focus-visible:text-foreground",
               on ? "text-primary" : "text-muted-foreground hover:text-foreground"
             )}
           >
             <Icon className="size-6" />
-            <span className={cn("dot", on ? "bg-primary" : "bg-transparent")} />
+            {on && <span className="dot absolute bottom-2 left-1/2 -translate-x-1/2 bg-primary" />}
           </button>
         )
       })}
