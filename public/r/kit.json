@@ -9,8 +9,6 @@
     "label",
     "@ds/card",
     "separator",
-    "dialog",
-    "sheet",
     "dropdown-menu",
     "@ds/select",
     "tooltip",

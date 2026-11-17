@@ -41,16 +41,6 @@ import {
 } from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -67,19 +57,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
 import { Skeleton } from "@/components/ui/skeleton"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import { Chip } from "@/components/ui/chip"
+import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
 import {
   Tooltip,
   TooltipContent,
@@ -164,11 +147,16 @@ const TOKENS: { name: string; cls: string; note: string }[] = [
   { name: "card", cls: "bg-card", note: "Tarjetas y paneles" },
   { name: "muted", cls: "bg-muted", note: "Zonas secundarias" },
   { name: "accent", cls: "bg-accent", note: "Hover y seleccionados" },
-  { name: "border", cls: "bg-border", note: "Bordes y divisores" },
+  { name: "inset", cls: "bg-inset", note: "Caja adentro de otra caja" },
+  { name: "tile", cls: "bg-tile", note: "Fichas con foto" },
+  { name: "border", cls: "bg-border", note: "Bordes, divisores e inputs (siempre el mismo)" },
   { name: "muted-foreground", cls: "bg-muted-foreground", note: "Texto secundario" },
   { name: "foreground", cls: "bg-foreground", note: "Texto principal" },
   { name: "brand", cls: "bg-brand", note: "Acento de la app" },
   { name: "destructive", cls: "bg-destructive", note: "Borrar (siempre rojo)" },
+  { name: "warning", cls: "bg-warning", note: "Atención (ej: medidor de LOOP)" },
+  { name: "success", cls: "bg-success", note: "Todo bien (ej: medidor de LOOP)" },
+  { name: "overlay", cls: "bg-overlay", note: "Fondo detrás de las hojas (negro transparente)" },
 ]
 
 const NAV = [
@@ -608,6 +596,8 @@ function ControlsDemo() {
 // ---------------------------------------------------------------------------
 
 export function App() {
+  const [confirmOpen, setConfirmOpen] = React.useState(false)
+  const [sheetOpen, setSheetOpen] = React.useState(false)
   const { resolvedTheme } = useTheme()
   const [brand, setBrand] = React.useState<BrandId>("neutral")
   const [volume, setVolume] = React.useState([70])
@@ -1019,45 +1009,19 @@ export function App() {
           <Section
             id="ventanas"
             title="Ventanas y avisos"
-            description="Ventanas para confirmar, paneles laterales, ayudas al pasar el mouse y avisos que aparecen y se van solos."
+            description="Hojas desde abajo (todas las ventanas salen desde abajo), ayudas al pasar el mouse y avisos que aparecen y se van solos."
           >
             <div className="grid gap-4">
-              <Demo label="Ventana, panel lateral, ayuda y aviso">
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button variant="outline">Abrir ventana</Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <DialogHeader>
-                      <DialogTitle>¿Borrar este pago?</DialogTitle>
-                      <DialogDescription>
-                        No se puede deshacer. El pago desaparece del historial.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <DialogFooter>
-                      <DialogClose asChild>
-                        <Button variant="outline">Cancelar</Button>
-                      </DialogClose>
-                      <DialogClose asChild>
-                        <Button variant="destructive" onClick={() => toast("Pago borrado")}>
-                          Borrar
-                        </Button>
-                      </DialogClose>
-                    </DialogFooter>
-                  </DialogContent>
-                </Dialog>
+              <Demo label="Confirmación, hoja desde abajo, ayuda y aviso">
+                <Button variant="outline" onClick={() => setConfirmOpen(true)}>Confirmación</Button>
+                <ConfirmSheet open={confirmOpen} onOpenChange={setConfirmOpen} title="Borrar pago" question="¿Borrar este pago?"
+                  detail="No se puede deshacer. El pago desaparece del historial." confirmLabel="Borrar"
+                  onConfirm={() => { setConfirmOpen(false); toast("Pago borrado") }} />
 
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <Button variant="outline">Panel lateral</Button>
-                  </SheetTrigger>
-                  <SheetContent>
-                    <SheetHeader>
-                      <SheetTitle>Filtros</SheetTitle>
-                      <SheetDescription>Ideal para opciones en el celular.</SheetDescription>
-                    </SheetHeader>
-                  </SheetContent>
-                </Sheet>
+                <Button variant="outline" onClick={() => setSheetOpen(true)}>Hoja desde abajo</Button>
+                <BottomSheet open={sheetOpen} onOpenChange={setSheetOpen} title="Filtros">
+                  <p className="text-sm text-muted-foreground">Todas las ventanas salen desde abajo.</p>
+                </BottomSheet>
 
                 <Tooltip>
                   <TooltipTrigger asChild>

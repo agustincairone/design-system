@@ -37,7 +37,10 @@
       "color-tile": "var(--tile)",
       "spacing-box-gap": "8px",
       "spacing-section": "40px",
-      "color-destructive-foreground": "var(--destructive-foreground)"
+      "color-destructive-foreground": "var(--destructive-foreground)",
+      "color-success": "var(--success)",
+      "color-warning": "var(--warning)",
+      "color-overlay": "var(--overlay)"
     },
     "light": {
       "background": "oklch(92.3% 0.003 48.717)",
@@ -78,7 +81,10 @@
       "sidebar-ring": "oklch(70.9% 0.01 56.259)",
       "brand-strong": "oklch(37.4% 0.01 67.558)",
       "inset": "oklch(97% 0.001 106.424)",
-      "tile": "oklch(98.5% 0.001 106.423)"
+      "tile": "oklch(98.5% 0.001 106.423)",
+      "success": "oklch(72.3% 0.219 149.579)",
+      "warning": "oklch(82.8% 0.189 84.429)",
+      "overlay": "oklch(0% 0 0 / 10%)"
     },
     "dark": {
       "background": "oklch(14.7% 0.004 49.25)",
@@ -118,7 +124,10 @@
       "sidebar-ring": "oklch(44.4% 0.011 73.639)",
       "brand-strong": "oklch(86.9% 0.005 56.366)",
       "inset": "oklch(14.7% 0.004 49.25)",
-      "tile": "oklch(14.7% 0.004 49.25)"
+      "tile": "oklch(14.7% 0.004 49.25)",
+      "success": "oklch(72.3% 0.219 149.579)",
+      "warning": "oklch(82.8% 0.189 84.429)",
+      "overlay": "oklch(0% 0 0 / 10%)"
     }
   },
   "css": {

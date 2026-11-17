@@ -50,7 +50,7 @@ export function SpeakerGrille({
     >
       <svg viewBox={`0 0 ${size} ${size}`} className="size-full">
         {dots.map(([x, y], k) => {
-          const base = plate ? "fill-foreground/75 dark:fill-black/70" : "fill-foreground/85"
+          const base = plate ? "fill-foreground/75 dark:fill-background" : "fill-foreground/85"
           let cls = base
           if (scatter) {
             const v = rand(k)

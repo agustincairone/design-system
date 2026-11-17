@@ -33,6 +33,9 @@
     --color-border: var(--border);
     --color-destructive: var(--destructive);
     --color-destructive-foreground: var(--destructive-foreground);
+    --color-success: var(--success);
+    --color-warning: var(--warning);
+    --color-overlay: var(--overlay);
     --color-accent-foreground: var(--accent-foreground);
     --color-accent: var(--accent);
     --color-muted-foreground: var(--muted-foreground);
@@ -90,6 +93,9 @@
     --accent-foreground: oklch(21.6% 0.006 56.043);
     --destructive: oklch(57.7% 0.245 27.325);
     --destructive-foreground: oklch(98.5% 0.001 106.423); /* texto sobre rojo (stone-50) */
+    --success: oklch(72.3% 0.219 149.579); /* green-500 (ej: medidor de LOOP) */
+    --warning: oklch(82.8% 0.189 84.429); /* amber-400 */
+    --overlay: oklch(0% 0 0 / 10%); /* fondo detrás de las hojas: el único negro transparente */
     --border: oklch(92.3% 0.003 48.717); /* stone-200: bordes y divisores, siempre el mismo */
     --input: oklch(92.3% 0.003 48.717);
     --ring: oklch(70.9% 0.01 56.259);
@@ -132,6 +138,9 @@
     --accent-foreground: oklch(97% 0.001 106.424);
     --destructive: oklch(63.7% 0.237 25.331);
     --destructive-foreground: oklch(98.5% 0.001 106.423);
+    --success: oklch(72.3% 0.219 149.579); /* green-500 (ej: medidor de LOOP) */
+    --warning: oklch(82.8% 0.189 84.429); /* amber-400 */
+    --overlay: oklch(0% 0 0 / 10%); /* fondo detrás de las hojas: el único negro transparente */
     --border: oklch(26.8% 0.007 34.298);
     --input: oklch(26.8% 0.007 34.298);
     --ring: oklch(44.4% 0.011 73.639);

@@ -41,7 +41,7 @@ function BottomSheet({
   if (inline) {
     if (!open) return null
     return (
-      <div className="flex h-full items-end justify-center bg-black/10 p-4">
+      <div className="flex h-full items-end justify-center bg-overlay p-4">
         <div className={cn(PANEL, className)}>
           <SheetHeaderRow title={title} onClose={() => onOpenChange(false)} />
           {children}
@@ -52,7 +52,7 @@ function BottomSheet({
   return (
     <SheetPrimitive.Root open={open} onOpenChange={onOpenChange}>
       <SheetPrimitive.Portal>
-        <SheetPrimitive.Overlay className="fixed inset-0 z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0" />
+        <SheetPrimitive.Overlay className="fixed inset-0 z-50 bg-overlay duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0" />
         <SheetPrimitive.Content
           aria-describedby={undefined}
           onOpenAutoFocus={(e) => e.preventDefault()} // sin aro de foco en la cruz al abrir

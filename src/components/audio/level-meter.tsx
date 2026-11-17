@@ -31,7 +31,7 @@ export function LevelMeter({
           key={i}
           className={cn(
             fill ? "w-2 flex-1 rounded-[2px]" : "h-[7px] w-2 rounded-[2px]",
-            i < 2 ? "bg-red-500" : i < 4 ? "bg-amber-400" : "bg-green-500"
+            i < 2 ? "bg-destructive" : i < 4 ? "bg-warning" : "bg-success"
           )}
         />
       ))}
