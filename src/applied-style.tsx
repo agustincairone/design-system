@@ -4,6 +4,7 @@ import { ImageIcon } from "lucide-react"
 
 import { Segmented } from "@/components/controls/segmented"
 import { TabBar } from "@/components/controls/tab-bar"
+import { Chip } from "@/components/ui/chip"
 import { BRANDS } from "@/brands"
 import { useTheme } from "@/components/theme-provider"
 
@@ -33,6 +34,7 @@ export function AppliedStyle() {
   const [cat, setCat] = React.useState("Zapatillas")
   const [mode, setMode] = React.useState("year")
   const [range, setRange] = React.useState("mes")
+  const [brand, setBrand] = React.useState("Todo")
 
   return (
     <OutfitColor>
@@ -61,6 +63,14 @@ export function AppliedStyle() {
                   ))}
                 </div>
               </div>
+            </div>
+          </div>
+        </Rule>
+
+        <Rule title="Filtro con chips" rule="Estilo 1: el Chip del sistema. Uno elegido a la vez; el elegido va del color de la app.">
+          <div className="rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
+            <div className="flex flex-wrap gap-2">
+              {["Todo", "Adidas", "Nike", "Vans"].map((b) => <Chip key={b} selected={brand === b} onClick={() => setBrand(b)}>{b}</Chip>)}
             </div>
           </div>
         </Rule>
