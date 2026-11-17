@@ -99,16 +99,15 @@ export function AppliedStyle() {
               <Button className="flex-1">Siguiente</Button>
             </div>
             <div className="flex gap-2">
-              <Button variant="destructive-soft" className="flex-1">Cancelar</Button>
-              <Button variant="secondary" className="flex-1">Omitir</Button>
-              <Button className="flex-1">Siguiente</Button>
-            </div>
-            <div className="flex gap-2">
               <Button variant="secondary" className="flex-1">Volver</Button>
               <Button variant="destructive" className="flex-1">Eliminar</Button>
               <Button disabled className="flex-1">Guardar</Button>
             </div>
             <Button variant="dashed" className="w-full"><Plus className="size-4" /> Agregar nueva prenda</Button>
+            <div className="flex items-center gap-3">
+              <span className="eyebrow-plain">Cancelar, la otra opción:</span>
+              <Button variant="destructive-soft">Cancelar</Button>
+            </div>
             <div className="flex items-center gap-3"><Button variant="outline" size="icon-sm" aria-label="Anterior"><ChevronLeft className="size-4" /></Button><span className="text-sm font-medium">Zapatillas</span></div>
           </div>
         </Rule>
