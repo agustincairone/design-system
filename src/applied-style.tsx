@@ -6,6 +6,8 @@ import { Segmented } from "@/components/controls/segmented"
 import { TabBar } from "@/components/controls/tab-bar"
 import { Chip } from "@/components/ui/chip"
 import { PFieldLabel, PInputAdd } from "@/outfit-proposals"
+import { Button } from "@/components/ui/button"
+import { ChevronLeft, Plus } from "lucide-react"
 import { BRANDS } from "@/brands"
 import { useTheme } from "@/components/theme-provider"
 
@@ -86,6 +88,28 @@ export function AppliedStyle() {
             <div className="mt-2 flex flex-wrap gap-2">
               {saved.map((b) => <Chip key={b} selected={pick === b} onClick={() => setPick(b)} onRemove={() => setSaved((p) => p.filter((x) => x !== b))} removeLabel={"Borrar " + b}>{b}</Chip>)}
             </div>
+          </div>
+        </Rule>
+
+        <Rule title="Botones" rule="Estilo 1, todos de 40px de alto con letra de 14px. Cancelar tiene dos opciones: con borde o suave (gris con texto rojo). Guardar deshabilitado = grises. Agregar = punteado con texto gris.">
+          <div className="flex flex-col gap-3 rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
+            <div className="flex gap-2">
+              <Button variant="destructive-outline" className="flex-1">Cancelar</Button>
+              <Button variant="secondary" className="flex-1">Omitir</Button>
+              <Button className="flex-1">Siguiente</Button>
+            </div>
+            <div className="flex gap-2">
+              <Button variant="destructive-soft" className="flex-1">Cancelar</Button>
+              <Button variant="secondary" className="flex-1">Omitir</Button>
+              <Button className="flex-1">Siguiente</Button>
+            </div>
+            <div className="flex gap-2">
+              <Button variant="secondary" className="flex-1">Volver</Button>
+              <Button variant="destructive" className="flex-1">Eliminar</Button>
+              <Button disabled className="flex-1">Guardar</Button>
+            </div>
+            <Button variant="dashed" className="w-full"><Plus className="size-4" /> Agregar nueva prenda</Button>
+            <div className="flex items-center gap-3"><Button variant="outline" size="icon-sm" aria-label="Anterior"><ChevronLeft className="size-4" /></Button><span className="text-sm font-medium">Zapatillas</span></div>
           </div>
         </Rule>
       </div>

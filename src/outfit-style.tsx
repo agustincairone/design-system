@@ -176,7 +176,7 @@ export function OutfitStyle() {
               <Button variant="destructive" className="flex-1">Eliminar</Button>
               <Button disabled className="flex-1">Guardar</Button>
             </div>
-            <Button variant="outline" className="w-full border-dashed"><Plus className="size-4" /> Agregar nueva prenda</Button>
+            <Button variant="dashed" className="w-full"><Plus className="size-4" /> Agregar nueva prenda</Button>
             <div className="flex items-center gap-3"><Button variant="outline" size="icon-sm" aria-label="Anterior"><ChevronLeft className="size-4" /></Button><span className="text-sm font-medium">Zapatillas</span></div>
           </>
         }

@@ -837,7 +837,10 @@ export function App() {
                 <Button variant="ghost">Fantasma</Button>
                 <Button variant="destructive">Borrar</Button>
                 <Button variant="destructive-outline">Quitar</Button>
+                <Button variant="destructive-soft">Cancelar</Button>
+                <Button variant="dashed"><Plus /> Agregar</Button>
                 <Button variant="link">Link</Button>
+                <Button disabled>Deshabilitado</Button>
               </Demo>
               <Demo label="Tamaños e íconos">
                 <Button size="sm">Chico</Button>
