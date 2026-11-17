@@ -1118,7 +1118,7 @@ export function App() {
           <Section
             id="estilo-pay"
             title="Estilo pay"
-            description="Los componentes de pay-tracker, copiados tal cual de la app. Al lado, el equivalente del sistema con el color de pay (green-900), para elegir con cuál quedarnos o dejar los dos estilos."
+            description="Los componentes de pay-tracker, copiados tal cual de la app. Al lado, el equivalente del sistema con el color de pay (green-700), para elegir con cuál quedarnos o dejar los dos estilos."
           >
             <PayStyle />
           </Section>

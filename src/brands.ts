@@ -17,9 +17,9 @@ export const BRANDS: Record<BrandId, { name: string; light: Vars; dark: Vars }> 
     dark: { brand: "oklch(64.6% 0.222 41.116)", fg: "oklch(100% 0 0)", text: "oklch(64.6% 0.222 41.116)", strong: "oklch(55.3% 0.195 38.402)" },
   },
   "pay-tracker": {
-    name: "pay-tracker (green-900)",
-    light: { brand: "oklch(39.3% 0.095 152.535)", fg: "oklch(100% 0 0)", text: "oklch(39.3% 0.095 152.535)", strong: "oklch(26.6% 0.065 152.934)" },
-    dark: { brand: "oklch(39.3% 0.095 152.535)", fg: "oklch(100% 0 0)", text: "oklch(39.3% 0.095 152.535)", strong: "oklch(26.6% 0.065 152.934)" },
+    name: "pay-tracker (green-700)",
+    light: { brand: "oklch(52.7% 0.154 150.069)", fg: "oklch(100% 0 0)", text: "oklch(52.7% 0.154 150.069)", strong: "oklch(44.8% 0.119 151.328)" },
+    dark: { brand: "oklch(52.7% 0.154 150.069)", fg: "oklch(100% 0 0)", text: "oklch(52.7% 0.154 150.069)", strong: "oklch(44.8% 0.119 151.328)" },
   },
   "outfit-tracker": {
     name: "outfit-tracker (neutro)",

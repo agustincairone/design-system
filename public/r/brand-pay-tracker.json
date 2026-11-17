@@ -5,30 +5,30 @@
   "description": "Color de acento #22c55e para pay-tracker.",
   "cssVars": {
     "light": {
-      "brand": "oklch(39.3% 0.095 152.535)",
+      "brand": "oklch(52.7% 0.154 150.069)",
       "brand-foreground": "oklch(100% 0 0)",
-      "brand-text": "oklch(39.3% 0.095 152.535)",
-      "primary": "oklch(39.3% 0.095 152.535)",
+      "brand-text": "oklch(52.7% 0.154 150.069)",
+      "primary": "oklch(52.7% 0.154 150.069)",
       "primary-foreground": "oklch(100% 0 0)",
-      "ring": "oklch(39.3% 0.095 152.535)",
-      "chart-1": "oklch(39.3% 0.095 152.535)",
-      "sidebar-primary": "oklch(39.3% 0.095 152.535)",
+      "ring": "oklch(52.7% 0.154 150.069)",
+      "chart-1": "oklch(52.7% 0.154 150.069)",
+      "sidebar-primary": "oklch(52.7% 0.154 150.069)",
       "sidebar-primary-foreground": "oklch(100% 0 0)",
-      "sidebar-ring": "oklch(39.3% 0.095 152.535)",
-      "brand-strong": "oklch(26.6% 0.065 152.934)"
+      "sidebar-ring": "oklch(52.7% 0.154 150.069)",
+      "brand-strong": "oklch(44.8% 0.119 151.328)"
     },
     "dark": {
-      "brand": "oklch(39.3% 0.095 152.535)",
+      "brand": "oklch(52.7% 0.154 150.069)",
       "brand-foreground": "oklch(100% 0 0)",
-      "brand-text": "oklch(39.3% 0.095 152.535)",
-      "primary": "oklch(39.3% 0.095 152.535)",
+      "brand-text": "oklch(52.7% 0.154 150.069)",
+      "primary": "oklch(52.7% 0.154 150.069)",
       "primary-foreground": "oklch(100% 0 0)",
-      "ring": "oklch(39.3% 0.095 152.535)",
-      "chart-1": "oklch(39.3% 0.095 152.535)",
-      "sidebar-primary": "oklch(39.3% 0.095 152.535)",
+      "ring": "oklch(52.7% 0.154 150.069)",
+      "chart-1": "oklch(52.7% 0.154 150.069)",
+      "sidebar-primary": "oklch(52.7% 0.154 150.069)",
       "sidebar-primary-foreground": "oklch(100% 0 0)",
-      "sidebar-ring": "oklch(39.3% 0.095 152.535)",
-      "brand-strong": "oklch(26.6% 0.065 152.934)"
+      "sidebar-ring": "oklch(52.7% 0.154 150.069)",
+      "brand-strong": "oklch(44.8% 0.119 151.328)"
     }
   },
   "type": "registry:theme"

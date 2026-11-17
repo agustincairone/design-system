@@ -1,5 +1,5 @@
 // Guía: estilo "pay" (componentes copiados tal cual de pay-tracker) al lado de cómo
-// quedaría con lo que el sistema ya tiene, pintado con el color de pay (green-900).
+// quedaría con lo que el sistema ya tiene, pintado con el color de pay (green-700).
 import * as React from "react"
 import { BarChart3, ChevronDown, Settings, ChevronLeft, ChevronRight, EllipsisVertical, Plus } from "lucide-react"
 
@@ -18,12 +18,12 @@ import {
   PayToggle, PayTotalCard, PayTotalTabs,
 } from "@/components/pay/pay"
 
-// El color de pay (green-900, y green-950 al apretar) sólo para la columna del sistema
-const GREEN_900 = "oklch(39.3% 0.095 152.535)"
-const GREEN_950 = "oklch(26.6% 0.065 152.934)"
+// El color de pay (green-700, y green-800 al apretar) sólo para la columna del sistema
+const GREEN_700 = "oklch(52.7% 0.154 150.069)"
+const GREEN_800 = "oklch(44.8% 0.119 151.328)"
 const PAY_BRAND = {
-  "--brand": GREEN_900, "--brand-text": GREEN_900, "--brand-strong": GREEN_950, "--brand-foreground": "oklch(100% 0 0)",
-  "--primary": GREEN_900, "--primary-foreground": "oklch(100% 0 0)", "--ring": GREEN_900,
+  "--brand": GREEN_700, "--brand-text": GREEN_700, "--brand-strong": GREEN_800, "--brand-foreground": "oklch(100% 0 0)",
+  "--primary": GREEN_700, "--primary-foreground": "oklch(100% 0 0)", "--ring": GREEN_700,
 } as React.CSSProperties
 
 const EXPENSES = [
