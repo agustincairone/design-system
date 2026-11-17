@@ -33,8 +33,8 @@ function Chip({
         selected
           ? "border-transparent bg-primary text-primary-foreground hover:bg-primary/80"
           : onRemove
-            ? "border-stone-300 bg-transparent text-foreground hover:bg-secondary dark:border-input" // con cruz: al pasar el mouse sólo se pinta el fondo de gris
-            : "border-stone-300 bg-transparent text-foreground hover:border-brand hover:text-brand dark:border-input",
+            ? "border-input bg-transparent text-foreground hover:bg-secondary dark:border-input" // con cruz: al pasar el mouse sólo se pinta el fondo de gris
+            : "border-input bg-transparent text-foreground hover:border-brand hover:text-brand dark:border-input",
         Icon && "pl-2.5",
         onRemove && "pr-2",
         className
