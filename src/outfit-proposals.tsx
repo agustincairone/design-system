@@ -11,14 +11,7 @@ import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
 import type { DayOption } from "@/components/outfit/date-strip"
 
 // ---------- etiqueta + campo con + + chips guardados ----------
-export function PFieldLabel({ children, right }: { children: React.ReactNode; right?: React.ReactNode }) {
-  return (
-    <div className="mb-2 flex items-center">
-      <p className="eyebrow-plain">{children}</p>
-      {right && <span className="ml-auto text-xs text-muted-foreground">{right}</span>}
-    </div>
-  )
-}
+export { FieldLabel as PFieldLabel } from "@/components/ui/field-label"
 
 // Chip con cruz = el Chip del sistema
 export function PChipTag({ label, selected, onSelect, onDelete }: { label: string; selected?: boolean; onSelect?: () => void; onDelete?: () => void }) {

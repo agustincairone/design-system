@@ -411,6 +411,22 @@
       ]
     },
     {
+      "name": "field-label",
+      "type": "registry:ui",
+      "title": "field-label",
+      "description": "Label de un campo, gris, del tamaño del input y a 6px.",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/field-label.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/field-label.tsx"
+        }
+      ]
+    },
+    {
       "name": "toggle",
       "type": "registry:ui",
       "title": "toggle",
@@ -707,7 +723,8 @@
         "@ds/controls",
         "@ds/item-card",
         "@ds/bottom-sheet",
-        "@ds/empty-state"
+        "@ds/empty-state",
+        "@ds/field-label"
       ]
     },
     {

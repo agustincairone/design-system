@@ -30,7 +30,8 @@
     "@ds/controls",
     "@ds/item-card",
     "@ds/bottom-sheet",
-    "@ds/empty-state"
+    "@ds/empty-state",
+    "@ds/field-label"
   ],
   "type": "registry:block"
 }
