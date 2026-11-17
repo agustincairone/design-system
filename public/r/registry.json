@@ -38,7 +38,8 @@
           "color-success": "var(--success)",
           "color-warning": "var(--warning)",
           "color-overlay": "var(--overlay)",
-          "color-raised": "var(--raised)"
+          "color-raised": "var(--raised)",
+          "color-raised-2": "var(--raised-2)"
         },
         "light": {
           "background": "oklch(92.3% 0.003 48.717)",
@@ -83,7 +84,8 @@
           "success": "oklch(72.3% 0.219 149.579)",
           "warning": "oklch(82.8% 0.189 84.429)",
           "overlay": "oklch(0% 0 0 / 10%)",
-          "raised": "oklch(100% 0 0)"
+          "raised": "oklch(100% 0 0)",
+          "raised-2": "oklch(100% 0 0)"
         },
         "dark": {
           "background": "oklch(14.7% 0.004 49.25)",
@@ -127,7 +129,8 @@
           "success": "oklch(72.3% 0.219 149.579)",
           "warning": "oklch(82.8% 0.189 84.429)",
           "overlay": "oklch(0% 0 0 / 10%)",
-          "raised": "oklch(37.4% 0.01 67.558)"
+          "raised": "oklch(37.4% 0.01 67.558)",
+          "raised-2": "oklch(44.4% 0.011 73.639)"
         }
       },
       "css": {

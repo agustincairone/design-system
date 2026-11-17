@@ -150,6 +150,7 @@ const TOKENS: { name: string; cls: string; note: string }[] = [
   { name: "inset", cls: "bg-inset", note: "Caja adentro de otra caja" },
   { name: "tile", cls: "bg-tile", note: "Fichas con foto" },
   { name: "raised", cls: "bg-raised", note: "Encima de inset/tile (en oscuro, un paso más claro)" },
+  { name: "raised-2", cls: "bg-raised-2", note: "Encima de raised (ej: aviso de archivada sobre la foto)" },
   { name: "border", cls: "bg-border", note: "Bordes, divisores e inputs (siempre el mismo)" },
   { name: "muted-foreground", cls: "bg-muted-foreground", note: "Texto secundario" },
   { name: "foreground", cls: "bg-foreground", note: "Texto principal" },

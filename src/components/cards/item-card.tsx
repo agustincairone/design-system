@@ -51,7 +51,7 @@ export function ItemPhoto({ item, className, gray, framed = true, selected }: { 
         <ImageIcon className="size-5 text-muted-foreground" />
       )}
       {item.archived && (
-        <span className="absolute top-1 right-1 flex size-5 items-center justify-center rounded-full bg-card">
+        <span className="absolute top-1 right-1 flex size-5 items-center justify-center rounded-full bg-raised-2">
           <Archive className="size-3 text-muted-foreground" />
         </span>
       )}
