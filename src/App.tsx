@@ -873,7 +873,6 @@ export function App() {
               <Demo label="Tamaños e íconos">
                 <Button size="sm">Chico</Button>
                 <Button>Normal</Button>
-                <Button size="lg">Grande</Button>
                 <Button>
                   <Plus /> Agregar
                 </Button>

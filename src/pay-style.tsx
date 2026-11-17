@@ -267,7 +267,7 @@ export function PayStyle() {
               <Button variant="destructive-outline" className="flex-1">Cancelar</Button>
               <Button disabled className="flex-1">Guardar</Button>
             </div>
-            <div className="flex justify-center"><Button size="lg" className="rounded-full"><Plus className="size-4" /> Agregar gasto</Button></div>
+            <div className="flex justify-center"><Button><Plus className="size-4" /> Agregar gasto</Button></div>
           </>
         }
         two={

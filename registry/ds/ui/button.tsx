@@ -18,7 +18,8 @@ const buttonVariants = cva(
           "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:border-destructive/40 focus-visible:ring-destructive/30",
-        link: "text-brand-text underline-offset-4 hover:underline",
+        // Botón de solo texto: siempre subrayado y siempre del tamaño normal (14px), nunca chico
+        link: "text-brand-text underline underline-offset-4 hover:decoration-2",
         // Borrar algo sin que grite: borde y texto rojos, se llena de rojo al pasar el mouse
         "destructive-outline":
           "border-border bg-transparent text-destructive hover:border-destructive hover:bg-destructive hover:text-destructive-foreground",
@@ -34,13 +35,11 @@ const buttonVariants = cva(
           "h-10 gap-1.5 px-4 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
         xs: "h-6 gap-1 rounded-full px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
         sm: "h-8 gap-1 rounded-full px-3 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-        lg: "h-11 gap-2 px-6 text-base has-data-[icon=inline-end]:pr-4 has-data-[icon=inline-start]:pl-4",
         icon: "size-10",
         "icon-xs":
           "size-6 rounded-full in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3",
         "icon-sm":
           "size-7 rounded-full in-data-[slot=button-group]:rounded-lg",
-        "icon-lg": "size-11",
       },
     },
     defaultVariants: {
