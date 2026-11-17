@@ -4,11 +4,11 @@ import { cn } from "@/lib/utils"
 
 // Selector de colores (diseño outfit): círculos de 30px que se deslizan de costado.
 // Elegido = aro del color principal separado por un aro blanco, con un ✓ adentro.
-// Los colores claros llevan un borde fino para que se vean. Hasta `max` elegidos.
+// Sólo el blanco lleva borde de 1px gris (el de los divisores). Hasta `max` elegidos.
 
 export type Swatch = { name: string; hex: string }
 
-const LIGHTS = ["#FFFFFF", "#D4D4D4", "#F0E6D6"]
+const LIGHTS = ["#FFFFFF", "#D4D4D4", "#F0E6D6"] // para el color del ✓
 
 export function ColorSwatches({
   colors,
@@ -38,7 +38,7 @@ export function ColorSwatches({
             onClick={() => onToggle(c)}
             className={cn(
               "relative size-[30px] shrink-0 rounded-full outline-none transition-[box-shadow,opacity] focus-visible:ring-2 focus-visible:ring-brand",
-              light ? "border-[1.5px] border-border" : "border-2 border-transparent",
+              c.hex.toUpperCase() === "#FFFFFF" || c.hex.toUpperCase() === "#FFF" ? "border border-border" : "border-0",
               sel && "ring-2 ring-primary ring-offset-2 ring-offset-card",
               !sel && value.length >= max && "opacity-35"
             )}

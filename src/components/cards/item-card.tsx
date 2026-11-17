@@ -18,14 +18,16 @@ export type Item = {
   colors?: { name?: string; hex: string }[]
 }
 
-// Puntitos de color superpuestos, sin borde
+// Puntitos de color superpuestos. Sin borde, salvo el blanco: borde de 1px gris (el de los divisores)
+const isWhite = (hex: string) => /^#(fff|ffffff)$/i.test(hex)
+
 export function ColorDots({ colors, size = 14 }: { colors?: { hex: string }[]; size?: number }) {
   if (!colors?.length) return null
   const step = size - Math.round(size * 0.45)
   return (
     <span className="relative inline-flex shrink-0" style={{ width: size + (colors.length - 1) * step, height: size }}>
       {colors.map((c, i) => (
-        <span key={i} className="absolute rounded-full" style={{ left: i * step, width: size, height: size, background: c.hex, zIndex: i }} />
+        <span key={i} className={"absolute rounded-full" + (isWhite(c.hex) ? " border border-border" : "")} style={{ left: i * step, width: size, height: size, background: c.hex, zIndex: i }} />
       ))}
     </span>
   )

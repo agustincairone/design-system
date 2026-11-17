@@ -127,7 +127,7 @@ export function AppliedStyle() {
           </div>
         </Rule>
 
-        <Rule title="Fichas de prenda" rule="Estilo 1. Fondo gris más claro que las cajas (tile), elegida con borde de 1,5px del color de la app, puntitos de color sin borde.">
+        <Rule title="Fichas de prenda" rule="Estilo 1. Fondo gris más claro que las cajas (tile), elegida con borde de 1,5px del color de la app, puntitos de color sin borde (el blanco sí: 1px gris).">
           <div className="flex flex-col gap-3 rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
             <div className="grid max-w-[360px] grid-cols-3 gap-box-gap">
               {ITEMS.map((it, i) => <ItemCard key={i} item={it} selected={sel === i} onClick={() => setSel(i)} />)}
@@ -145,7 +145,7 @@ export function AppliedStyle() {
           </div>
         </Rule>
 
-        <Rule title="Hojas y ventanas" rule="Estilo 1, y todas salen desde abajo (ya no hay ventana centrada). Flotan con 16px de aire a los costados y abajo, título de 16px y cruz en botón redondo con borde, igual al de volver.">
+        <Rule title="Hojas y ventanas" rule="Estilo 1, y todas salen desde abajo (ya no hay ventana centrada). Flotan con 16px de aire a los costados y abajo, título de 16px y cruz en botón redondo gris claro, sin borde.">
           <div className="grid gap-box-gap md:grid-cols-3">
             {[
               ["Detalle", <BottomSheet key="a" inline open onOpenChange={() => {}} title="Nike Air Force">
