@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils"
 // Para elegir entre MÁS DE 3 opciones (ej: las 6 categorías). Con 2 o 3 opciones
 // se usa la píldora con opciones (Segmented).
 // Va pegado arriba de una caja: la caja lleva overflow-hidden y la tab ocupa todo el ancho.
-// La elegida va con el texto del color de la app y una raya de 4px abajo (más gruesa que la línea
+// La elegida va con el texto del color de la app y una raya de 3px abajo (más gruesa que la línea
 // divisoria de 1px); las demás quedan en gris. Todas sobre el fondo de la caja.
 // Cada opción puede llevar un segundo renglón chico (`sub`), ej: el total de esa pestaña.
 
@@ -35,7 +35,7 @@ export function TabBar<T extends string | number>({
             className={cn(
               "flex min-w-0 flex-1 flex-col items-center justify-center gap-0.5 px-2 py-4 text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-inset",
               i < options.length - 1 && "border-r border-border",
-              "relative bg-card after:absolute after:inset-x-0 after:-bottom-px after:h-1",
+              "relative bg-card after:absolute after:inset-x-0 after:-bottom-px after:h-[3px]",
               on ? "font-medium text-brand-text after:bg-brand" : "text-muted-foreground hover:text-foreground"
             )}
           >

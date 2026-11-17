@@ -65,7 +65,7 @@ export function AppliedStyle() {
   return (
     <>
       <div className="grid gap-10">
-        <Rule title="Tabs" rule="Hasta 3 opciones → píldora con opciones (normal). Más de 3 → tab de ancho completo, pegada arriba de la caja: la elegida con texto del color de la app y raya de 4px abajo.">
+        <Rule title="Tabs" rule="Hasta 3 opciones → píldora con opciones (normal). Más de 3 → tab de ancho completo, pegada arriba de la caja: la elegida con texto del color de la app y raya de 3px abajo.">
           <div className="grid items-start gap-3 md:grid-cols-2">
             <div className="flex flex-col gap-2">
               <span className="eyebrow">2 opciones · píldora</span>
