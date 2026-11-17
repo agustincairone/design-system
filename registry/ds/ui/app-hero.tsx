@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 //   nombre (title-page) + nombre en japonés (color de la app) + texto gris + números de puntitos.
 // En pantalla ancha: nombre arriba y texto gris abajo a la izquierda, números a la derecha.
 // En el celular: nombre y japonés a la izquierda; texto gris y números a la derecha.
+// El nombre y el japonés nunca se cortan: la columna de la derecha usa el espacio que queda.
 // Abajo lleva una línea de puntos redondos de 2px (stone-300 en claro, stone-800 en oscuro) que lo separa del resto de la app.
 // Los números del fleje y el dato de cada sección van en Doto (font-readout).
 // Si el texto gris va como etiqueta del número (abajo, a la derecha), se pasa como `label` del número y sin `description`.
@@ -32,6 +33,9 @@ export function Readout({ value, digits, className }: { value: number | string; 
 // El día y la hora van en el color del texto; la barra, el mes, el guion y los ":" en stone-600 en oscuro
 // y un tono más claro en claro (stone-500), para que se diferencien del texto.
 const DIM = "text-stone-500 dark:text-stone-600"
+// Si el fleje es angosto (menos de 480px, ej: celular) va en dos renglones de 20px (fecha arriba, hora abajo, sin guion),
+// así la etiqueta queda a la altura del japonés; si hay lugar, en una sola línea de 25px centrada con el nombre (40px).
+// Mide el ancho del fleje (container query "hero").
 export function LiveDate({ className }: { className?: string }) {
   const [now, setNow] = React.useState(() => new Date())
   React.useEffect(() => {
@@ -40,16 +44,26 @@ export function LiveDate({ className }: { className?: string }) {
   }, [])
   const p2 = (n: number) => String(n).padStart(2, "0")
   return (
-    <span data-slot="live-date" className={cn("live-number font-readout leading-none font-bold whitespace-nowrap", className)}>
-      {p2(now.getDate())}
-      <span className={DIM}>/</span>
-      <span className={DIM}>{p2(now.getMonth() + 1)}</span>
-      <span className={DIM}> — </span>
-      {p2(now.getHours())}
-      <span className={DIM}>:</span>
-      {p2(now.getMinutes())}
-      <span className={DIM}>:</span>
-      {p2(now.getSeconds())}
+    <span
+      data-slot="live-date"
+      className={cn(
+        "live-number font-readout inline-flex flex-col items-end gap-1 text-[20px] leading-none font-bold whitespace-nowrap @[30rem]/hero:mt-[7.5px] @[30rem]/hero:flex-row @[30rem]/hero:gap-0 @[30rem]/hero:text-[25px]",
+        className
+      )}
+    >
+      <span>
+        {p2(now.getDate())}
+        <span className={DIM}>/</span>
+        <span className={DIM}>{p2(now.getMonth() + 1)}</span>
+      </span>
+      <span className={cn(DIM, "hidden whitespace-pre @[30rem]/hero:inline")}> — </span>
+      <span>
+        {p2(now.getHours())}
+        <span className={DIM}>:</span>
+        {p2(now.getMinutes())}
+        <span className={DIM}>:</span>
+        {p2(now.getSeconds())}
+      </span>
     </span>
   )
 }
@@ -72,11 +86,11 @@ export function AppHero({
   className?: string
 }) {
   return (
-    <header data-slot="app-hero" className={cn("relative flex items-stretch gap-6 pb-5", className)}>
-      <div className="grid min-w-0 flex-1 grid-cols-[minmax(0,1fr)_auto] gap-x-6 gap-y-3 sm:gap-y-8">
+    <header data-slot="app-hero" className={cn("@container/hero relative flex items-stretch gap-6 pb-5", className)}>
+      <div className="grid min-w-0 flex-1 grid-cols-[auto_minmax(0,1fr)] gap-x-6 gap-y-3 sm:gap-y-8">
         <div className={cn("row-span-2 self-start", description && "sm:row-span-1")}>
           <h1 className="title-page">{name}</h1>
-          <p lang="ja" className="mt-2 text-lg leading-none text-brand">
+          <p lang="ja" className="mt-2 text-lg leading-none whitespace-nowrap text-brand">
             {jp}
           </p>
         </div>
@@ -91,7 +105,7 @@ export function AppHero({
                 {React.isValidElement(s.value) ? (
                   s.value
                 ) : (
-                  <Readout value={s.value as number | string} digits={s.digits} className="text-[25px] whitespace-nowrap" />
+                  <Readout value={s.value as number | string} digits={s.digits} className="mt-[7.5px] text-[25px] whitespace-nowrap" />
                 )}
                 <span className={EYEBROW[eyebrow]}>{s.label}</span>
               </div>

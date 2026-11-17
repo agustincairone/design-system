@@ -703,7 +703,7 @@ export function App() {
                 <AppHero name="Loop" jp="ループ — リズムマシン" description="16-step sampler composer" stats={[{ value: 6, label: "channels", digits: 2 }, { value: 16, label: "steps", digits: 2 }]} />
               </div>
               <div className="rounded-box-l bg-card p-box-l">
-                <AppHero name="Outfit" jp="コーデ日記" stats={[{ value: <LiveDate className="text-[15px] sm:text-[25px]" />, label: "registro diario de outfits" }]} />
+                <AppHero name="Outfit" jp="コーデ日記" stats={[{ value: <LiveDate />, label: "registro diario de outfits" }]} />
               </div>
               <div className="grid gap-box-gap rounded-box-l bg-card p-box-l">
                 <SectionHeader title="¿Qué me puse hoy?" icon="☀️" value="12/22°" />
