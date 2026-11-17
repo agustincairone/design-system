@@ -21,7 +21,7 @@ function SheetHeaderRow({ title, onClose }: { title: React.ReactNode; onClose?: 
   )
 }
 
-const PANEL = "flex w-full max-w-md flex-col gap-4 rounded-box-l bg-card p-box-l text-sm text-card-foreground shadow-lg"
+const PANEL = "flex max-w-md flex-col gap-4 rounded-box-l bg-card p-box-l text-sm text-card-foreground shadow-lg"
 
 function BottomSheet({
   open,
@@ -42,7 +42,7 @@ function BottomSheet({
     if (!open) return null
     return (
       <div className="flex h-full items-end justify-center bg-overlay p-4">
-        <div className={cn(PANEL, className)}>
+        <div className={cn(PANEL, "w-full", className)}>
           <SheetHeaderRow title={title} onClose={() => onOpenChange(false)} />
           {children}
         </div>
