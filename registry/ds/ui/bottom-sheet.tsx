@@ -55,6 +55,7 @@ function BottomSheet({
         <SheetPrimitive.Overlay className="fixed inset-0 z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0" />
         <SheetPrimitive.Content
           aria-describedby={undefined}
+          onOpenAutoFocus={(e) => e.preventDefault()} // sin aro de foco en la cruz al abrir
           className={cn(
             PANEL,
             "fixed inset-x-4 bottom-4 z-50 mx-auto max-h-[calc(100dvh-32px)] overflow-y-auto outline-none duration-200 data-open:animate-in data-open:fade-in-0 data-open:slide-in-from-bottom-10 data-closed:animate-out data-closed:fade-out-0 data-closed:slide-out-to-bottom-10",
