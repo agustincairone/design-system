@@ -1090,7 +1090,7 @@ export function App() {
           <Section
             id="estilo-aplicado"
             title="Estilo aplicado"
-            description="Lo que ya elegiste, como queda en outfit-tracker (en rosa). Se va completando a medida que elegís."
+            description="Lo que ya elegiste. Usa el color de app que elijas en Colores (neutro, LOOP, outfit…). Se va completando a medida que elegís."
           >
             <AppliedStyle />
           </Section>

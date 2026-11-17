@@ -1,4 +1,4 @@
-// Guía: "Estilo aplicado" = lo que ya se eligió, mostrado como quedaría en outfit-tracker.
+// Guía: "Estilo aplicado" = lo que ya se eligió. Usa el color que esté elegido arriba en la guía.
 import * as React from "react"
 import { ImageIcon } from "lucide-react"
 
@@ -8,18 +8,8 @@ import { Chip } from "@/components/ui/chip"
 import { PFieldLabel, PInputAdd } from "@/outfit-proposals"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, Plus } from "lucide-react"
-import { BRANDS } from "@/brands"
-import { useTheme } from "@/components/theme-provider"
 
 const CATS = ["Zapatillas", "Abajo", "Remera", "Camisa", "Arriba", "Campera"]
-
-// Pinta lo de adentro con el color de outfit-tracker, para ver cómo queda en esa app
-function OutfitColor({ children }: { children: React.ReactNode }) {
-  const { resolvedTheme } = useTheme()
-  const v = BRANDS["outfit-tracker"][resolvedTheme === "dark" ? "dark" : "light"]
-  const style = { "--primary": v.brand, "--primary-foreground": v.fg, "--brand": v.brand, "--brand-foreground": v.fg, "--brand-text": v.text, "--brand-strong": v.strong, "--ring": v.brand } as React.CSSProperties
-  return <div style={style}>{children}</div>
-}
 
 function Rule({ title, rule, children }: { title: string; rule: string; children: React.ReactNode }) {
   return (
@@ -43,7 +33,7 @@ export function AppliedStyle() {
   const [pick, setPick] = React.useState("Nike")
 
   return (
-    <OutfitColor>
+    <>
       <div className="grid gap-10">
         <Rule title="Tabs" rule="Hasta 3 opciones → píldora con opciones (normal). Más de 3 → tab de ancho completo (diseño outfit), pegada arriba de la caja.">
           <div className="grid items-start gap-3 md:grid-cols-2">
@@ -112,6 +102,6 @@ export function AppliedStyle() {
           </div>
         </Rule>
       </div>
-    </OutfitColor>
+    </>
   )
 }
