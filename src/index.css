@@ -63,6 +63,7 @@
     --spacing-box-m: 16px;
     --spacing-box-l: 20px;
     --color-inset: var(--inset);
+    --color-tile: var(--tile);
     --spacing-box-gap: 8px;
     --spacing-section: 40px;
 }
@@ -105,6 +106,7 @@
     --brand-text: oklch(21.6% 0.006 56.043);
     --brand-strong: oklch(37.4% 0.01 67.558);
     --inset: oklch(97% 0.001 106.424);
+    --tile: oklch(98.5% 0.001 106.423); /* fichas con foto (más claro que inset) */
 }
 
 .dark {
@@ -144,6 +146,7 @@
     --brand-text: oklch(97% 0.001 106.424);
     --brand-strong: oklch(86.9% 0.005 56.366);
     --inset: oklch(14.7% 0.004 49.25);
+    --tile: oklch(14.7% 0.004 49.25);
 }
 
 @layer base {

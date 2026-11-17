@@ -7,8 +7,14 @@ import { TabBar } from "@/components/controls/tab-bar"
 import { Chip } from "@/components/ui/chip"
 import { PFieldLabel, PInputAdd } from "@/outfit-proposals"
 import { Button } from "@/components/ui/button"
+import { ColorDots, ItemCard, ItemCardSmall, ItemRow, type Item } from "@/components/cards/item-card"
 import { ChevronLeft, Plus } from "lucide-react"
 
+const ITEMS: Item[] = [
+  { marca: "Nike", modelo: "Air Force", colors: [{ hex: "#FFFFFF" }] },
+  { marca: "Levis", modelo: "501", tipo: "Jean", colors: [{ hex: "#23466A" }] },
+  { marca: "Uniqlo", modelo: "U", tipo: "Lisa", colors: [{ hex: "#1A1A1A" }, { hex: "#C0392B" }] },
+]
 const CATS = ["Zapatillas", "Abajo", "Remera", "Camisa", "Arriba", "Campera"]
 
 function Rule({ title, rule, children }: { title: string; rule: string; children: React.ReactNode }) {
@@ -31,6 +37,7 @@ export function AppliedStyle() {
   const [text, setText] = React.useState("")
   const [saved, setSaved] = React.useState(["Nike", "Adidas", "Vans"])
   const [pick, setPick] = React.useState("Nike")
+  const [sel, setSel] = React.useState(1)
 
   return (
     <>
@@ -99,6 +106,17 @@ export function AppliedStyle() {
               <Button variant="destructive-soft">Cancelar</Button>
             </div>
             <div className="flex items-center gap-3"><Button variant="outline" size="icon-sm" aria-label="Anterior"><ChevronLeft className="size-4" /></Button><span className="text-sm font-medium">Zapatillas</span></div>
+          </div>
+        </Rule>
+
+        <Rule title="Fichas de prenda" rule="Estilo 1. Fondo gris más claro que las cajas (tile), elegida con borde de 1,5px del color de la app, puntitos de color sin borde.">
+          <div className="flex flex-col gap-3 rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
+            <div className="grid max-w-[360px] grid-cols-3 gap-box-gap">
+              {ITEMS.map((it, i) => <ItemCard key={i} item={it} selected={sel === i} onClick={() => setSel(i)} />)}
+            </div>
+            <div className="flex gap-4">{ITEMS.map((it, i) => <ItemCardSmall key={i} item={it} />)}</div>
+            <div className="max-w-[360px]"><ItemRow item={ITEMS[1]} right={<span className="text-sm font-semibold">12x</span>} /></div>
+            <div className="flex items-center gap-3"><ColorDots colors={ITEMS[2].colors} size={18} /><span className="text-xs text-muted-foreground">puntitos de color</span></div>
           </div>
         </Rule>
       </div>

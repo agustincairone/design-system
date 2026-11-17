@@ -27,7 +27,8 @@
     "@ds/button",
     "@ds/badge",
     "@ds/chip",
-    "@ds/controls"
+    "@ds/controls",
+    "@ds/item-card"
   ],
   "type": "registry:block"
 }

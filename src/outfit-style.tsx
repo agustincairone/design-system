@@ -201,7 +201,7 @@ export function OutfitStyle() {
       <Compare
         name="Fichas de prenda"
         use="Grilla de 3 columnas, la chiquita del historial y la fila de lista."
-        oneNote="propuesta con cajas chicas del sistema (no existe todavía)"
+        oneNote="ya es componente del DS: fichas"
         one={
           <>
             <div className="grid max-w-[360px] grid-cols-3 gap-box-gap">
