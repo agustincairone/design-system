@@ -93,6 +93,7 @@ import { FieldColumn } from "@/components/controls/field-column"
 import { OutfitStyle } from "@/outfit-style"
 import { AppliedStyle } from "@/applied-style"
 import { Rules } from "@/rules"
+import { AppHero, SectionHeader } from "@/components/ui/app-hero"
 
 // ---------------------------------------------------------------------------
 
@@ -164,6 +165,7 @@ const TOKENS: { name: string; cls: string; note: string }[] = [
 
 const NAV = [
   ["reglas", "Reglas"],
+  ["fleje", "Fleje"],
   ["colores", "Colores"],
   ["tipografia", "Tipografía"],
   ["cajas", "Cajas"],
@@ -688,6 +690,26 @@ export function App() {
             description="Las decisiones del sistema en un solo lugar. Toda app nueva las sigue."
           >
             <Rules />
+          </Section>
+
+          <Section
+            id="fleje"
+            title="Fleje"
+            description="El título de cada app, igual en todas: nombre, nombre en japonés, un texto gris y un número general en letra de puntitos. Cada sección lleva su título con un dato a la derecha. Achicá la ventana para ver cómo se acomoda en el celular."
+          >
+            <div className="grid gap-box-gap">
+              <div className="rounded-box-l bg-card p-box-l">
+                <AppHero name="Loop" jp="ループ — リズムマシン" description="16-step sampler composer" stats={[{ value: 6, label: "channels", digits: 2 }, { value: 16, label: "steps", digits: 2 }]} />
+              </div>
+              <div className="rounded-box-l bg-card p-box-l">
+                <AppHero name="Outfit" jp="コーデ日記" description="registro diario de outfits" eyebrow="plain" stats={[{ value: 12, label: "días seguidos", digits: 2 }]} />
+              </div>
+              <div className="grid gap-box-gap rounded-box-l bg-card p-box-l">
+                <SectionHeader title="¿Qué me puse hoy?" label="☀️" value="12/22°" eyebrow="plain" />
+                <SectionHeader title="Historial" label="días cargados" value={124} eyebrow="plain" />
+                <SectionHeader title="Mis prendas" label="prendas" value={48} eyebrow="plain" />
+              </div>
+            </div>
           </Section>
 
           <Section

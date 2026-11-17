@@ -21,6 +21,14 @@ const RULES: { title: string; items: string[] }[] = [
     ],
   },
   {
+    title: "Fleje",
+    items: [
+      "Toda app arranca con el fleje: nombre, nombre en japonés (color de la app), un texto gris y un número general de puntitos.",
+      "En el celular, nombre y japonés van a la izquierda; texto gris y números a la derecha.",
+      "Cada sección lleva su título con un dato a la derecha: texto gris y número de puntitos. Si no hay un dato útil, va sin dato.",
+    ],
+  },
+  {
     title: "Cajas",
     items: [
       "Tres tamaños: L (sobre la página, blanca), M (adentro de otra caja, gris) y S (fichas). Siempre los mismos radios y rellenos.",
@@ -32,7 +40,7 @@ const RULES: { title: string; items: string[] }[] = [
   {
     title: "Texto",
     items: [
-      "Letra Geist. Los números en vivo usan las letras de puntos.",
+      "Letra Geist. La letra de puntitos se usa sólo para números: el número general del fleje, el dato de cada sección y los números en vivo.",
       "Labels de los inputs: gris, del mismo tamaño que el input (14px) y a 6px arriba.",
       "Dos etiquetas chicas: en mayúsculas (LOOP) y simple (outfit). Cada app usa una.",
       "Inputs con letra de 14px siempre. Cada app lleva maximum-scale=1 en index.html para que el iPhone no haga zoom.",

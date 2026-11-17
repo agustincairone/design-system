@@ -429,6 +429,22 @@
       ]
     },
     {
+      "name": "app-hero",
+      "type": "registry:ui",
+      "title": "app-hero",
+      "description": "Fleje: título de la app (nombre, japonés, texto gris y números de puntitos) y título de sección con su dato.",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/app-hero.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/app-hero.tsx"
+        }
+      ]
+    },
+    {
       "name": "field-label",
       "type": "registry:ui",
       "title": "field-label",
