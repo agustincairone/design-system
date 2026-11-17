@@ -132,7 +132,7 @@ export function AppliedStyle() {
           </div>
         </Rule>
 
-        <Rule title="Fichas de prenda" rule="Estilo 1. Fondo gris más claro que las cajas (tile), elegida con borde de 1,5px del color de la app, puntitos de color sin borde (el blanco sí: 1px gris).">
+        <Rule title="Fichas de prenda" rule="Estilo 1. Fondo gris más claro que las cajas (tile), elegida con borde de 1,5px del color de la app (blanco en modo oscuro) y puntito, puntitos de color sin borde (el blanco sí: 1px gris).">
           <div className="flex flex-col gap-3 rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
             <div className="grid max-w-[360px] grid-cols-3 gap-box-gap">
               {ITEMS.map((it, i) => <ItemCard key={i} item={it} selected={sel === i} onClick={() => setSel(i)} />)}
@@ -143,7 +143,7 @@ export function AppliedStyle() {
           </div>
         </Rule>
 
-        <Rule title="Colores y días" rule="Estilo 2 (outfit) con los colores del sistema. Color elegido = aro del color de la app; día elegido = relleno; hoy = borde; con outfit cargado = puntito.">
+        <Rule title="Colores y días" rule="Estilo 2 (outfit) con los colores del sistema. Color elegido = aro del color de la app (blanco en modo oscuro); día elegido = relleno; hoy = borde; con outfit cargado = puntito.">
           <div className="flex flex-col gap-3 rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
             <ColorSwatches colors={SWATCHES} value={cols} onToggle={(c) => setCols((p) => (p.some((x) => x.hex === c.hex) ? p.filter((x) => x.hex !== c.hex) : p.length >= 3 ? p : [...p, c]))} />
             <DateStrip days={DAYS} value={day} onChange={setDay} />

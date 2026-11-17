@@ -3,7 +3,7 @@ import { Check } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 // Selector de colores (diseño outfit): círculos de 30px que se deslizan de costado.
-// Elegido = aro del color principal separado por un aro blanco, con un ✓ adentro.
+// Elegido = aro del color principal (blanco en modo oscuro) separado del círculo, con un ✓ adentro.
 // Sólo el blanco lleva borde de 1px gris (el de los divisores). Hasta `max` elegidos.
 
 export type Swatch = { name: string; hex: string }
@@ -39,7 +39,7 @@ export function ColorSwatches({
             className={cn(
               "relative size-[30px] shrink-0 rounded-full outline-none transition-[box-shadow,opacity] focus-visible:ring-2 focus-visible:ring-brand",
               c.hex.toUpperCase() === "#FFFFFF" || c.hex.toUpperCase() === "#FFF" ? "border border-border" : "border-0",
-              sel && "ring-2 ring-primary ring-offset-2 ring-offset-card",
+              sel && "ring-2 ring-primary ring-offset-2 ring-offset-card dark:ring-foreground",
               !sel && value.length >= max && "opacity-35"
             )}
             style={{ background: c.hex }}
