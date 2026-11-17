@@ -129,8 +129,8 @@
           "color": "var(--muted-foreground)"
         },
         "@utility eyebrow-plain": {
-          "font-family": "var(--font-mono)",
-          "font-size": "0.6875rem",
+          "font-family": "var(--font-sans)",
+          "font-size": "0.75rem",
           "line-height": "1rem",
           "color": "var(--muted-foreground)"
         },

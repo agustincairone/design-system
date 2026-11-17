@@ -758,7 +758,7 @@ export function App() {
                 ["Título de caja", "Geist semibold, 20px (clase title-box)", <div className="title-box">Agregar un sonido</div>],
                 ["Número grande quieto", "Geist light, muy grande", <div className="live-number text-6xl font-light tracking-tighter">$ 125.430<span className="text-muted-foreground">,50</span></div>],
                 ["Etiqueta", "Geist Mono, mayúsculas, 11px (clase eyebrow). La usa LOOP.", <span className="eyebrow">Total del mes</span>],
-                ["Etiqueta simple", "Geist Mono, 11px, sin mayúsculas ni interletrado (clase eyebrow-plain). La usa outfit.", <span className="eyebrow-plain">Total del mes</span>],
+                ["Etiqueta simple", "Geist normal, 12px, gris, sin mayúsculas (clase eyebrow-plain). La usa outfit y los labels de los inputs.", <span className="eyebrow-plain">Total del mes</span>],
                 ["Valor de un control", "Geist Mono semibold, 14px", <span className="live-number font-mono text-sm font-semibold">450ms · +3dB · 60%</span>],
                 ["Texto", "Geist regular", <p className="max-w-prose">Texto normal para párrafos y descripciones, cómodo en el celular.</p>],
                 ["Unidad / ayuda", "Chico y gris", <span className="text-sm text-muted-foreground">120 BPM · actualizado hace 2 min</span>],
