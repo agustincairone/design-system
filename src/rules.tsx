@@ -60,7 +60,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Agregar algo nuevo = botón punteado con texto gris.",
       "Elegir entre 2 o 3 opciones = píldora. En un formulario, la píldora ocupa todo el ancho (fill). Más de 3 = tab de ancho completo, pegado arriba de la caja; si cada pestaña tiene un total, va en un segundo renglón chico.",
       "Pestaña elegida: texto del color de la app y una raya de 3px abajo, más gruesa que la línea divisoria de 1px. Sin relleno. Todas las pestañas miden lo mismo en todas las apps.",
-      "Botón de volver: el chico redondo con borde (28px). Flechas para cambiar de mes o período: también las chicas redondas con borde, con el mes en 14px y el año en gris.",
+      "Botón de volver: el chico redondo con borde (28px). Flechas para cambiar de mes o período: las chicas redondas rellenas de gris claro (secondary), así se distinguen del volver. El mes en 14px y el año en gris.",
       "Chips con cruz: al pasar el mouse sólo se pinta el fondo de gris. La cruz es del color del texto.",
       "El puntito es siempre de 4px. En la barra de abajo va sobre el borde inferior, cortado a la mitad, y los íconos van centrados.",
     ],

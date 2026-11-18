@@ -143,9 +143,9 @@ export function PayStyle() {
         oneNote="Button redondo con borde"
         one={
           <div className="flex items-center gap-3">
-            <Button variant="outline" size="icon-sm" aria-label="Mes anterior"><ChevronLeft className="size-4" /></Button>
+            <Button variant="secondary" size="icon-sm" aria-label="Mes anterior"><ChevronLeft className="size-4" /></Button>
             <span className="flex-1 text-center text-sm font-medium">Noviembre <span className="text-muted-foreground">2026</span></span>
-            <Button variant="outline" size="icon-sm" aria-label="Mes siguiente"><ChevronRight className="size-4" /></Button>
+            <Button variant="secondary" size="icon-sm" aria-label="Mes siguiente"><ChevronRight className="size-4" /></Button>
           </div>
         }
         two={<PayMonthNav month="Noviembre" year={2026} />}
