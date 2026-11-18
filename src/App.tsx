@@ -808,6 +808,7 @@ export function App() {
                 ["Título de caja", "Geist semibold, 20px (clase title-box)", <div className="title-box">Agregar un sonido</div>],
                 ["Número grande quieto", "Geist light, muy grande", <div className="live-number text-6xl font-light tracking-tighter">$ 125.430<span className="text-muted-foreground">,50</span></div>],
                 ["Etiqueta", "Geist Mono, mayúsculas, 13px (clase eyebrow). La usa LOOP.", <span className="eyebrow">Total del mes</span>],
+                ["Monto importante", "Geist medium, 26px (text-2xl). Deuda, total del mes.", <div className="text-2xl font-medium text-brand-text">$758.070</div>],
                 ["Valor de un control", "Geist Mono semibold, 15px", <span className="live-number font-mono text-sm font-semibold">450ms · +3dB · 60%</span>],
                 ["Texto", "Geist regular", <p className="max-w-prose">Texto normal para párrafos y descripciones, cómodo en el celular.</p>],
                 ["Unidad / ayuda", "Chico y gris", <span className="text-sm text-muted-foreground">120 BPM · actualizado hace 2 min</span>],
@@ -827,7 +828,7 @@ export function App() {
           <Section
             id="fuera-de-escala"
             title="Fuera de escala"
-            description="La escala es 13 · 15 · 18 · 20 (más los títulos grandes). Acá está todo lo que usa el paso chico (13px), con una muestra de cada uno, y lo que queda fuera de la escala."
+            description="La escala es 13 · 15 · 18 · 20 · 26 (más los títulos grandes). Acá está todo lo que usa el paso chico (13px) y el grande (26px), con una muestra de cada uno, y lo que queda fuera de la escala."
           >
             <TypeAudit />
           </Section>

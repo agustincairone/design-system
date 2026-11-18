@@ -44,7 +44,7 @@ export function LiveDate({ className }: { className?: string }) {
     <span
       data-slot="live-date"
       className={cn(
-        "live-number font-readout inline-flex flex-col items-end gap-1 text-[20px] leading-none font-bold whitespace-nowrap @[30rem]/hero:mt-[7.5px] @[30rem]/hero:flex-row @[30rem]/hero:gap-0 @[30rem]/hero:text-[26px]",
+        "live-number font-readout inline-flex flex-col items-end gap-1 text-xl leading-none font-bold whitespace-nowrap @[30rem]/hero:mt-[7.5px] @[30rem]/hero:flex-row @[30rem]/hero:gap-0 @[30rem]/hero:text-[26px]",
         className
       )}
     >
@@ -100,7 +100,7 @@ export function AppHero({
                 {React.isValidElement(s.value) ? (
                   s.value
                 ) : (
-                  <Readout value={s.value as number | string} digits={s.digits} className="mt-[7.5px] text-[26px] whitespace-nowrap" />
+                  <Readout value={s.value as number | string} digits={s.digits} className="mt-[7.5px] text-2xl whitespace-nowrap" />
                 )}
                 <span className="eyebrow">{s.label}</span>
               </div>

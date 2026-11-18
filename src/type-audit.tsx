@@ -61,15 +61,20 @@ export function TypeAudit() {
     { name: "Pad XY (LOOP)", size: "13px", where: "Las etiquetas de los ejes (antes 11px)", sample: <span className="flex gap-3 font-mono text-xs text-muted-foreground"><span>X · Filtro</span><span>Y · Eco</span></span> },
     { name: "Botoncitos de parámetro (LOOP)", size: "13px", where: "La letra adentro del círculo (antes 11px)", sample: <span className="grid size-6 place-items-center rounded-full border bg-secondary font-mono text-xs leading-none font-bold">A</span> },
   ]
+  // El paso grande de la escala (26px)
+  const big: Row[] = [
+    { name: "Fleje", size: "26px", where: "El número de puntitos de cada sección (antes 25px)", sample: <span className="font-readout text-2xl leading-none">128</span> },
+    { name: "Montos importantes (pay)", size: "26px", where: "Deuda total, deudas del mes y total del mes (antes 24, 20 y 18px)", sample: <span className="text-2xl font-medium text-brand-text">$758.070</span> },
+  ]
   // Lo único que queda fuera de la escala
   const off: Row[] = [
-    { name: "Fleje", size: "26px", where: "El número de puntitos de cada sección (antes 25px). Cuenta como título grande.", sample: <span className="font-readout text-[26px] leading-none">128</span> },
     { name: "Dial (LOOP)", size: "variable", where: "El número del centro crece con el tamaño del dial", sample: <span className="live-number text-2xl font-light tracking-tight">120</span> },
   ]
   return (
     <div className="flex flex-col gap-section">
       <Table title="Dónde se usa 13px" note="El paso chico de la escala (antes era 12px)." rows={[...thirteen, ...moved]} />
-      <Table title="Fuera de escala" note="Lo único que no es 13, 15, 18 ni 20: números decorativos grandes." rows={off} />
+      <Table title="Dónde se usa 26px" note="El paso grande de la escala." rows={big} />
+      <Table title="Fuera de escala" note="Lo único que no es 13, 15, 18, 20 ni 26." rows={off} />
     </div>
   )
 }

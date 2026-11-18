@@ -20,6 +20,8 @@
           "text-sm--line-height": "calc(1.375 / 0.9375)",
           "text-xs": "0.8125rem",
           "text-xs--line-height": "calc(1.125 / 0.8125)",
+          "text-2xl": "1.625rem",
+          "text-2xl--line-height": "calc(2 / 1.625)",
           "font-mono": "'Geist Mono Variable', ui-monospace, monospace",
           "font-heading": "var(--font-sans)",
           "font-clock": "'Geist Pixel Circle', 'Geist Mono Variable', ui-monospace, monospace",
