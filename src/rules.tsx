@@ -44,23 +44,23 @@ const RULES: { title: string; items: string[] }[] = [
     title: "Texto",
     items: [
       "Letra Geist. La letra de puntitos (Doto) es sólo para números: el del fleje y el dato de cada sección.",
-      "Tamaños de letra sólo de la escala: 12, 14, 16, 18, 20px (y los títulos grandes). Si algo tiene que ser más grande, se sube un paso entero, nunca 1px.",
-      "Labels de los inputs: gris, del mismo tamaño que el input (14px) y a 6px arriba.",
+      "Tamaños de letra sólo de la escala: 12, 15, 18, 20px (y los títulos grandes). El texto base es de 15px. Si algo tiene que ser más grande, se sube un paso entero, nunca 1px.",
+      "Labels de los inputs: gris, del mismo tamaño que el input (15px) y a 6px arriba.",
       "Dos etiquetas chicas: en mayúsculas (LOOP) y simple (outfit). Cada app usa una.",
-      "Inputs con letra de 14px siempre. Cada app lleva maximum-scale=1 en index.html para que el iPhone no haga zoom.",
+      "Inputs con letra de 15px siempre. Cada app lleva maximum-scale=1 en index.html para que el iPhone no haga zoom.",
     ],
   },
   {
     title: "Controles",
     items: [
-      "Botones de 40px de alto con letra de 14px. Uno solo con el color de la app por pantalla.",
+      "Botones de 40px de alto con letra de 15px. Uno solo con el color de la app por pantalla.",
       "Todos los botones van en el tamaño normal. El chico sólo cuando el lugar lo pide (un botoncito de ícono). No hay botón grande.",
-      "Botón de solo texto (Link): siempre subrayado, del color de la app y en el tamaño normal (14px).",
+      "Botón de solo texto (Link): siempre subrayado, del color de la app y en el tamaño normal (15px).",
       "Cancelar tiene dos opciones: con borde rojo o suave (gris con texto rojo). El botón deshabilitado va en grises.",
       "Agregar algo nuevo = botón punteado con texto gris.",
       "Elegir entre 2 o 3 opciones = píldora. En un formulario, la píldora ocupa todo el ancho (fill). Más de 3 = tab de ancho completo, pegado arriba de la caja; si cada pestaña tiene un total, va en un segundo renglón chico.",
       "Pestaña elegida: texto del color de la app y una raya de 3px abajo, más gruesa que la línea divisoria de 1px. Sin relleno. Todas las pestañas miden lo mismo en todas las apps.",
-      "Botón de volver: el chico redondo con borde (28px). Flechas para cambiar de mes o período: las chicas redondas rellenas de blanco (variante card; en modo oscuro, del color de las cajas), así se distinguen del volver. El mes en 14px y el año en gris.",
+      "Botón de volver: el chico redondo con borde (28px). Flechas para cambiar de mes o período: las chicas redondas rellenas de blanco (variante card; en modo oscuro, del color de las cajas), así se distinguen del volver. El mes en 15px y el año en gris.",
       "Chips con cruz: al pasar el mouse sólo se pinta el fondo de gris. La cruz es del color del texto.",
       "El puntito es siempre de 4px. En la barra de abajo va sobre el borde inferior, cortado a la mitad, y los íconos van centrados.",
     ],
@@ -71,7 +71,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Todas las ventanas salen desde abajo (no hay ventana centrada ni panel lateral).",
       "No hay menús desplegables: las opciones de algo (el ⋮ de una fila, configurar un grupo) abren una hoja desde abajo con sus botones.",
       "Flotan con 16px de aire a los costados y abajo, ocupando el ancho que queda.",
-      "Título de 16px con peso 500, con una línea divisoria de lado a lado debajo. La cruz es un botón redondo gris sin borde.",
+      "Título de 18px con peso 500, con una línea divisoria de lado a lado debajo. La cruz es un botón redondo gris sin borde.",
       "Acordeón flotante: caja con título, \"¿Qué es esto?\" (abre una hoja con la explicación) y chevron al final. Al abrirlo crece hacia arriba desde donde está, sobre la página, con el fondo desenfocado como las hojas.",
     ],
   },
@@ -82,7 +82,7 @@ export function Rules() {
     <div className="grid gap-box-gap md:grid-cols-2">
       {RULES.map((g) => (
         <div key={g.title} className="rounded-box-l bg-card p-box-l">
-          <p className="mb-3 text-base font-medium">{g.title}</p>
+          <p className="mb-3 text-lg font-medium">{g.title}</p>
           <ul className="space-y-2 text-sm text-muted-foreground">
             {g.items.map((t) => (
               <li key={t} className="flex gap-2">

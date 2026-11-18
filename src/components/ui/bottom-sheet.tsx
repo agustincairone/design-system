@@ -14,7 +14,7 @@ function SheetHeaderRow({ title, onClose }: { title: React.ReactNode; onClose?: 
   return (
     // línea divisoria de lado a lado debajo del título
     <div className="-mx-box-l flex items-center justify-between gap-3 border-b border-border px-box-l pb-4">
-      <span className="min-w-0 truncate text-base font-medium tracking-tight">{title}</span>
+      <span className="min-w-0 truncate text-lg font-medium tracking-tight">{title}</span>
       <Button variant="secondary" size="icon-sm" aria-label="Cerrar" onClick={onClose}>
         <X className="size-4" />
       </Button>

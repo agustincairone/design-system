@@ -789,7 +789,7 @@ export function App() {
                 ["Número grande quieto", "Geist light, muy grande", <div className="live-number text-6xl font-light tracking-tighter">$ 125.430<span className="text-muted-foreground">,50</span></div>],
                 ["Etiqueta", "Geist Mono, mayúsculas, 11px (clase eyebrow). La usa LOOP.", <span className="eyebrow">Total del mes</span>],
                 ["Etiqueta simple", "Geist normal, 12px, gris, sin mayúsculas (clase eyebrow-plain). La usa outfit y los labels de los inputs.", <span className="eyebrow-plain">Total del mes</span>],
-                ["Valor de un control", "Geist Mono semibold, 14px", <span className="live-number font-mono text-sm font-semibold">450ms · +3dB · 60%</span>],
+                ["Valor de un control", "Geist Mono semibold, 15px", <span className="live-number font-mono text-sm font-semibold">450ms · +3dB · 60%</span>],
                 ["Texto", "Geist regular", <p className="max-w-prose">Texto normal para párrafos y descripciones, cómodo en el celular.</p>],
                 ["Unidad / ayuda", "Chico y gris", <span className="text-sm text-muted-foreground">120 BPM · actualizado hace 2 min</span>],
                 ["Link", "Color de la app", <a href="#tipografia" className="text-sm font-medium text-brand-text underline-offset-4 hover:underline">Ver detalle →</a>],
@@ -1143,7 +1143,7 @@ export function App() {
               <div>npx shadcn add @ds/brand-loop</div>
               <div>npx shadcn add @ds/brand-pay-tracker</div>
               <div>npx shadcn add @ds/brand-outfit-tracker</div>
-              <div className="pt-2 text-muted-foreground"># en index.html: los inputs tienen letra de 14px, así el iPhone no hace zoom al tocarlos</div>
+              <div className="pt-2 text-muted-foreground"># en index.html: los inputs tienen letra de 15px, así el iPhone no hace zoom al tocarlos</div>
               <div>{'<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />'}</div>
             </div>
           </Section>
