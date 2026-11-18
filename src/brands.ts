@@ -8,7 +8,7 @@ type Vars = { brand: string; fg: string; text: string; strong: string }
 export const BRANDS: Record<BrandId, { name: string; light: Vars; dark: Vars }> = {
   neutral: {
     name: "Neutro",
-    light: { brand: "oklch(21.6% 0.006 56.043)", fg: "oklch(98.5% 0.001 106.423)", text: "oklch(21.6% 0.006 56.043)", strong: "oklch(37.4% 0.01 67.558)" },
+    light: { brand: "oklch(21.6% 0.006 56.043)", fg: "oklch(98.5% 0.001 106.423)", text: "oklch(21.6% 0.006 56.043)", strong: "oklch(14.7% 0.004 49.25)" },
     dark: { brand: "oklch(97% 0.001 106.424)", fg: "oklch(21.6% 0.006 56.043)", text: "oklch(97% 0.001 106.424)", strong: "oklch(86.9% 0.005 56.366)" },
   },
   loop: {
@@ -23,7 +23,7 @@ export const BRANDS: Record<BrandId, { name: string; light: Vars; dark: Vars }> 
   },
   "outfit-tracker": {
     name: "outfit-tracker (neutro)",
-    light: { brand: "oklch(21.6% 0.006 56.043)", fg: "oklch(98.5% 0.001 106.423)", text: "oklch(21.6% 0.006 56.043)", strong: "oklch(37.4% 0.01 67.558)" },
+    light: { brand: "oklch(21.6% 0.006 56.043)", fg: "oklch(98.5% 0.001 106.423)", text: "oklch(21.6% 0.006 56.043)", strong: "oklch(14.7% 0.004 49.25)" },
     dark: { brand: "oklch(97% 0.001 106.424)", fg: "oklch(21.6% 0.006 56.043)", text: "oklch(97% 0.001 106.424)", strong: "oklch(86.9% 0.005 56.366)" },
   },
 }

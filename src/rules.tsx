@@ -8,6 +8,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Cada app tiene un solo color de acento. outfit-tracker usa neutro (negro en claro, blanco en oscuro). El rojo es sólo para borrar y errores.",
       "Bordes, divisores e inputs son siempre del mismo color: stone-200 en claro y stone-800 en oscuro.",
       "Un solo negro transparente: overlay, el fondo detrás de las hojas.",
+      "Al pasar el mouse, todo se pone un tono MÁS OSCURO de lo que es, nunca más claro (en claro y en oscuro): lo blanco pasa a stone-100, lo gris a stone-200; en oscuro, la caja a stone-950 y lo gris a stone-900. El color de la app y el rojo pasan a su tono fuerte (brand-strong, destructive-strong).",
       "El color blanco (puntitos, círculos de color) lleva siempre un borde gris de 1px. En oscuro, también el negro.",
     ],
   },

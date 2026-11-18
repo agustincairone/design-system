@@ -51,7 +51,10 @@
           "spacing-box-2xs": "4px",
           "spacing-box-xs": "8px",
           "spacing-box-xl": "24px",
-          "spacing-screen-end": "112px"
+          "spacing-screen-end": "112px",
+          "color-card-hover": "var(--card-hover)",
+          "color-secondary-hover": "var(--secondary-hover)",
+          "color-destructive-strong": "var(--destructive-strong)"
         },
         "light": {
           "background": "oklch(92.3% 0.003 48.717)",
@@ -90,14 +93,17 @@
           "sidebar-primary": "oklch(21.6% 0.006 56.043)",
           "sidebar-primary-foreground": "oklch(98.5% 0.001 106.423)",
           "sidebar-ring": "oklch(70.9% 0.01 56.259)",
-          "brand-strong": "oklch(37.4% 0.01 67.558)",
+          "brand-strong": "oklch(14.7% 0.004 49.25)",
           "inset": "oklch(97% 0.001 106.424)",
           "tile": "oklch(98.5% 0.001 106.423)",
           "success": "oklch(72.3% 0.219 149.579)",
           "warning": "oklch(82.8% 0.189 84.429)",
           "overlay": "oklch(0% 0 0 / 10%)",
           "raised": "oklch(100% 0 0)",
-          "raised-2": "oklch(100% 0 0)"
+          "raised-2": "oklch(100% 0 0)",
+          "card-hover": "oklch(97% 0.001 106.424)",
+          "secondary-hover": "oklch(92.3% 0.003 48.717)",
+          "destructive-strong": "oklch(50.5% 0.213 27.518)"
         },
         "dark": {
           "background": "oklch(14.7% 0.004 49.25)",
@@ -142,7 +148,10 @@
           "warning": "oklch(82.8% 0.189 84.429)",
           "overlay": "oklch(0% 0 0 / 10%)",
           "raised": "oklch(37.4% 0.01 67.558)",
-          "raised-2": "oklch(44.4% 0.011 73.639)"
+          "raised-2": "oklch(44.4% 0.011 73.639)",
+          "card-hover": "oklch(14.7% 0.004 49.25)",
+          "secondary-hover": "oklch(21.6% 0.006 56.043)",
+          "destructive-strong": "oklch(57.7% 0.245 27.325)"
         }
       },
       "css": {
@@ -308,7 +317,7 @@
           "sidebar-primary": "oklch(21.6% 0.006 56.043)",
           "sidebar-primary-foreground": "oklch(98.5% 0.001 106.423)",
           "sidebar-ring": "oklch(70.9% 0.01 56.259)",
-          "brand-strong": "oklch(37.4% 0.01 67.558)"
+          "brand-strong": "oklch(14.7% 0.004 49.25)"
         },
         "dark": {
           "brand": "oklch(97% 0.001 106.424)",

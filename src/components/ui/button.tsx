@@ -9,7 +9,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         // deshabilitado en grises (como outfit), no el color de la app a media luz
-        default: "bg-primary text-primary-foreground hover:bg-primary/80 disabled:bg-secondary disabled:text-muted-foreground disabled:opacity-100",
+        default: "bg-primary text-primary-foreground hover:bg-brand-strong disabled:bg-secondary disabled:text-muted-foreground disabled:opacity-100",
         outline:
           "border-input bg-transparent hover:border-brand hover:text-brand aria-expanded:border-brand aria-expanded:text-brand dark:border-input",
         secondary:
@@ -17,9 +17,9 @@ const buttonVariants = cva(
         // Relleno blanco (en modo oscuro, del color de las cajas). Ej: flechas para cambiar de mes
         card: "bg-card text-foreground hover:bg-brand hover:text-brand-foreground active:bg-brand-strong active:text-brand-foreground",
         ghost:
-          "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
+          "hover:bg-card-hover hover:text-foreground aria-expanded:bg-card-hover aria-expanded:text-foreground",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:border-destructive/40 focus-visible:ring-destructive/30",
+          "bg-destructive text-destructive-foreground hover:bg-destructive-strong focus-visible:border-destructive/40 focus-visible:ring-destructive/30",
         // Botón de solo texto: siempre subrayado y siempre del tamaño normal (14px), nunca chico
         link: "text-brand-text underline underline-offset-4 hover:decoration-2",
         // Borrar algo sin que grite: borde y texto rojos, se llena de rojo al pasar el mouse
