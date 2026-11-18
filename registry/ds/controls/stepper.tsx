@@ -30,7 +30,7 @@ export function Stepper({
       data-slot="stepper"
       role="group"
       aria-label={label}
-      className={cn("inline-flex h-10 items-center rounded-full border bg-card", className)}
+      className={cn("inline-flex h-10 items-center rounded-full border border-input bg-card", className)}
     >
       <button type="button" className={btn} aria-label="Decrease" disabled={value - step < min} onClick={() => onChange(Math.max(min, value - step))}>
         <Minus />

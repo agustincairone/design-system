@@ -99,7 +99,7 @@ function Section({
   children: React.ReactNode
 }) {
   return (
-    <section id={id} className="scroll-mt-20 border-t py-12">
+    <section id={id} className="scroll-mt-20 border-t border-input py-12">
       <div className="mb-6">
         <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
         <p className="mt-1 max-w-prose text-sm text-muted-foreground">
@@ -121,13 +121,13 @@ function Demo({
   className?: string
 }) {
   return (
-    <div className="overflow-hidden rounded-lg border">
+    <div className="overflow-hidden rounded-lg border border-input">
       <div
         className={`flex flex-wrap items-center gap-3 bg-background p-6 ${className}`}
       >
         {children}
       </div>
-      <div className="border-t bg-muted/50 px-4 py-2 text-xs text-muted-foreground">
+      <div className="border-t border-input bg-muted/50 px-4 py-2 text-xs text-muted-foreground">
         {label}
       </div>
     </div>
@@ -143,7 +143,8 @@ const TOKENS: { name: string; cls: string; note: string }[] = [
   { name: "tile", cls: "bg-tile", note: "Fichas con foto" },
   { name: "raised", cls: "bg-raised", note: "Encima de inset/tile (en oscuro, un paso más claro)" },
   { name: "raised-2", cls: "bg-raised-2", note: "Encima de raised (ej: aviso de archivada sobre la foto)" },
-  { name: "border", cls: "bg-border", note: "Bordes, divisores e inputs (siempre el mismo)" },
+  { name: "border", cls: "bg-border", note: "Divisores y bordes adentro de las cajas" },
+  { name: "input", cls: "bg-input", note: "Borde de lo que va sobre la página: campos, botones con borde, chips" },
   { name: "muted-foreground", cls: "bg-muted-foreground", note: "Texto secundario" },
   { name: "foreground", cls: "bg-foreground", note: "Texto principal" },
   { name: "brand", cls: "bg-brand", note: "Acento de la app" },
@@ -420,9 +421,9 @@ function LabelsDemo() {
 // Mismo marco que Demo, con nombre y para qué sirve
 function ControlCard({ name, use, children }: { name: string; use: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-lg border">
+    <div className="flex flex-col overflow-hidden rounded-lg border border-input">
       <div className="flex min-h-56 flex-1 items-center justify-center bg-background p-6">{children}</div>
-      <div className="border-t bg-muted/50 px-4 py-2">
+      <div className="border-t border-input bg-muted/50 px-4 py-2">
         <div className="text-sm font-medium">{name}</div>
         <div className="text-xs text-muted-foreground">{use}</div>
       </div>
@@ -636,7 +637,7 @@ export function App() {
   return (
     <div className="min-h-svh">
       {/* Barra superior */}
-      <header className="sticky top-0 z-20 border-b bg-background/80 backdrop-blur">
+      <header className="sticky top-0 z-20 border-b border-input bg-background/80 backdrop-blur">
         <div className="mx-auto flex h-14 max-w-6xl items-center gap-4 px-4">
           <div className="flex items-center gap-2">
             <div className="size-5 rounded-full bg-brand" />
@@ -696,7 +697,7 @@ export function App() {
                     className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm transition-colors ${
                       active
                         ? "border-foreground bg-accent text-foreground"
-                        : "text-muted-foreground hover:text-foreground"
+                        : "border-input text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     <span
@@ -726,7 +727,7 @@ export function App() {
           >
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
               {TOKENS.map((t) => (
-                <div key={t.name} className="overflow-hidden rounded-2xl border bg-card">
+                <div key={t.name} className="overflow-hidden rounded-2xl border border-input bg-card">
                   <div className={`h-16 ${t.cls}`} />
                   <div className="p-3">
                     <div className="font-mono text-xs">{t.name}</div>
@@ -740,7 +741,7 @@ export function App() {
               <h3 className="font-medium">Paleta completa</h3>
               <span className="eyebrow">50 → 950</span>
             </div>
-            <div className="overflow-x-auto rounded-2xl border bg-card p-4">
+            <div className="overflow-x-auto rounded-2xl border border-input bg-card p-4">
               <div className="grid min-w-[560px] gap-1.5">
                 {Object.entries(PALETTE).map(([name, shades]) => {
                   const tag =
@@ -1149,7 +1150,7 @@ export function App() {
             title="Cómo usarlo en una app"
             description="Esto lo hace Claude por vos, pero queda anotado."
           >
-            <div className="space-y-3 rounded-lg border bg-muted/40 p-5 font-mono text-sm">
+            <div className="space-y-3 rounded-lg border border-input bg-muted/40 p-5 font-mono text-sm">
               <div className="text-muted-foreground"># 1. en package.json de la app, con la última versión publicada (vX.Y.Z)</div>
               <div>"@agustincairone/design-system": "github:agustincairone/design-system#vX.Y.Z"</div>
               <div className="pt-2 text-muted-foreground"># 2. en src/index.css: el tema y el color de la app</div>

@@ -169,7 +169,7 @@ export function SheetsDemo() {
       ].map(([l, node]) => (
         <div key={l as string} className="flex flex-col gap-box-xs">
           <Caption>{l}</Caption>
-          <div className="h-[340px] overflow-hidden rounded-box-l bg-card ring-1 ring-foreground/15">{node}</div>
+          <div className="h-[340px] overflow-hidden rounded-box-l border border-input bg-card">{node}</div>
         </div>
       ))}
     </div>
@@ -180,7 +180,7 @@ export function SheetsDemo() {
 export function BottomNavDemo() {
   const [nav, setNav] = React.useState("ropa")
   return (
-    <div className="w-full max-w-sm rounded-box-l bg-background p-box-xs ring-1 ring-foreground/15">
+    <div className="w-full max-w-sm rounded-box-l border border-input bg-background p-box-xs">
       <BottomNav value={nav} onChange={setNav} items={[
         { key: "hoy", icon: CalendarDays, label: "Hoy" },
         { key: "ropa", icon: Shirt, label: "Ropa" },
