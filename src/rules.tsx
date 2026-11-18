@@ -45,6 +45,8 @@ const RULES: { title: string; items: string[] }[] = [
     items: [
       "Letra Geist. La letra de puntitos (Doto) es sólo para números: el del fleje y el dato de cada sección.",
       "Tamaños de letra sólo de la escala: 13, 15, 18, 20 y 26px (y los títulos grandes). El texto base es de 15px, el chico de 13px y los montos importantes de 26px. En las apps nunca se escribe un tamaño a mano: siempre la clase del DS. Si algo tiene que ser más grande, se sube un paso entero, nunca 1px.",
+      "Negro = el color del texto del DS (foreground): stone-900 en claro y casi blanco en oscuro. Nunca #000000.",
+      "El título de las cajas de monto (Deuda total, Total del mes) va en negro, en 15px; el monto abajo, en 26px.",
       "Labels de los inputs: gris, del mismo tamaño que el input (15px) y a 6px arriba.",
       "Dos etiquetas chicas: en mayúsculas (LOOP) y simple (outfit). Cada app usa una.",
       "Inputs con letra de 15px siempre. Cada app lleva maximum-scale=1 en index.html para que el iPhone no haga zoom.",
