@@ -17,6 +17,9 @@
     --text-xs--line-height: calc(1.125 / 0.8125);
     --text-2xl: 1.625rem;
     --text-2xl--line-height: calc(2 / 1.625);
+    /* Emoji grande (pantallas especiales: login, error, unirse a un grupo): un solo tamaño, 48px */
+    --text-emoji: 3rem;
+    --text-emoji--line-height: 1;
 }
 
 @theme inline {
@@ -74,6 +77,9 @@
     --radius-box-s: 12px;
     --radius-box-m: 16px;
     --radius-box-l: 16px;
+    /* Escala de espacios: 4 · 8 · 12 · 16 · 20 (box-2xs · box-xs · box-s · box-m · box-l) */
+    --spacing-box-2xs: 4px;
+    --spacing-box-xs: 8px;
     --spacing-box-s: 12px;
     --spacing-box-m: 16px;
     --spacing-box-l: 20px;

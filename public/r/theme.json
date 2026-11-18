@@ -48,7 +48,11 @@
       "color-warning": "var(--warning)",
       "color-overlay": "var(--overlay)",
       "color-raised": "var(--raised)",
-      "color-raised-2": "var(--raised-2)"
+      "color-raised-2": "var(--raised-2)",
+      "text-emoji": "3rem",
+      "text-emoji--line-height": "1",
+      "spacing-box-2xs": "4px",
+      "spacing-box-xs": "8px"
     },
     "light": {
       "background": "oklch(92.3% 0.003 48.717)",

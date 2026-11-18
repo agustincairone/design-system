@@ -809,6 +809,7 @@ export function App() {
                 ["Número grande quieto", "Geist light, muy grande", <div className="live-number text-6xl font-light tracking-tighter">$ 125.430<span className="text-muted-foreground">,50</span></div>],
                 ["Etiqueta", "Geist Mono, mayúsculas, 13px (clase eyebrow). La usa LOOP.", <span className="eyebrow">Total del mes</span>],
                 ["Monto importante", "Geist medium, 26px (text-2xl). Deuda, total del mes.", <div className="text-2xl font-medium text-brand-text">$758.070</div>],
+                ["Emoji grande", "48px (text-emoji). Un solo tamaño, para pantallas especiales: login, error, unirse a un grupo.", <span className="text-emoji">🔒</span>],
                 ["Valor de un control", "Geist Mono semibold, 15px", <span className="live-number font-mono text-sm font-semibold">450ms · +3dB · 60%</span>],
                 ["Texto", "Geist regular", <p className="max-w-prose">Texto normal para párrafos y descripciones, cómodo en el celular.</p>],
                 ["Unidad / ayuda", "Chico y gris", <span className="text-sm text-muted-foreground">120 BPM · actualizado hace 2 min</span>],
@@ -836,7 +837,7 @@ export function App() {
           <Section
             id="cajas"
             title="Cajas"
-            description="Las cajas nunca llevan borde: se separan sólo por el color de fondo. Sobre el fondo de la página la caja es blanca; adentro de otra caja, gris clarito. El relleno se elige de estas tres medidas según lo que le quede mejor a cada caja: L 20px, M 16px o S 12px (nunca otro número). Entre caja y caja siempre hay 8px (gap-box-gap); entre bloques grandes (o grupos dentro de una caja) 40px (gap-section)."
+            description="Las cajas nunca llevan borde: se separan sólo por el color de fondo. Sobre el fondo de la página la caja es blanca; adentro de otra caja, gris clarito. El relleno se elige de estas tres medidas según lo que le quede mejor a cada caja: L 20px, M 16px o S 12px (nunca otro número). Para cualquier otro espacio (márgenes, separaciones) se usa la escala 4 · 8 · 12 · 16 · 20 (box-2xs · box-xs · box-s · box-m · box-l). Entre caja y caja siempre hay 8px (gap-box-gap); entre bloques grandes (o grupos dentro de una caja) 40px (gap-section)."
           >
             <div className="rounded-box-l bg-card p-box-l">
               <p className="eyebrow mb-3">L · esquinas 16 · relleno 20</p>
