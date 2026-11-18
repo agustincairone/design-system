@@ -9,7 +9,7 @@
     "label",
     "@ds/card",
     "separator",
-    "dropdown-menu",
+    "@ds/dropdown-menu",
     "@ds/select",
     "tooltip",
     "switch",

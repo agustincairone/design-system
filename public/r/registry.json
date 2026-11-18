@@ -560,6 +560,25 @@
       ]
     },
     {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "dropdown-menu",
+      "description": "Menú desplegable (el ⋮ de una fila): opciones con 12px de cada lado y divisor de borde a borde.",
+      "dependencies": [
+        "radix-ui",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "select",
       "type": "registry:ui",
       "title": "select",
@@ -787,7 +806,7 @@
         "label",
         "@ds/card",
         "separator",
-        "dropdown-menu",
+        "@ds/dropdown-menu",
         "@ds/select",
         "tooltip",
         "switch",
