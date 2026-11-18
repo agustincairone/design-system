@@ -101,7 +101,7 @@ export function AppliedStyle() {
           </div>
         </Rule>
 
-        <Rule title="Chips guardados + campo con +" rule="Estilo 1: label gris del mismo tamaño que el input, a 6px. Input + botón + (gris mientras está vacío) + Chips con cruz. Al pasar el mouse por un chip con cruz sólo se pinta el fondo de gris.">
+        <Rule title="Chips guardados + campo con +" rule="Estilo 1: label gris del mismo tamaño que el input, a 4px. Input + botón + (gris mientras está vacío) + Chips con cruz. Al pasar el mouse por un chip con cruz sólo se pinta el fondo de gris.">
           <div className="rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
             <PFieldLabel>Marca</PFieldLabel>
             <PInputAdd value={text} onChange={setText} onAdd={() => { const v = text.trim(); if (v && !saved.includes(v)) setSaved((p) => [...p, v]); setPick(v); setText("") }} placeholder="Agregar marca..." />

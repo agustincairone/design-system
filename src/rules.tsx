@@ -35,7 +35,7 @@ const RULES: { title: string; items: string[] }[] = [
     title: "Cajas",
     items: [
       "El color depende de dónde está la caja: sobre la página, blanca; adentro de otra caja, gris. El relleno se elige de las tres medidas del DS según lo que le quede mejor a la caja: L 20px (p-box-l), M 16px (p-box-m) o S 12px (p-box-s). Nunca otro número.",
-      "Espacios (márgenes, separaciones, rellenos) sólo de la escala: 4 · 8 · 12 · 16 · 20px (box-2xs · box-xs · box-s · box-m · box-l). Entre bloques grandes, 40px (gap-section).",
+      "Espacios (márgenes, separaciones, rellenos) sólo de la escala: 4 · 8 · 12 · 16 · 20 · 24px (box-2xs · box-xs · box-s · box-m · box-l · box-xl). Entre bloques grandes, 40px (section). Al final de cada pantalla, 112px libres (screen-end) para que la barra de abajo no tape nada.",
       "Las cajas no tienen borde: se separan sólo por el color de fondo.",
       "8px de separación entre cajas.",
       "Nada de adornos: ni barras de color al costado ni títulos en mayúsculas.",
@@ -48,7 +48,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Tamaños de letra sólo de la escala: 13, 15, 18, 20 y 26px (y los títulos grandes). El texto base es de 15px, el chico de 13px y los montos importantes de 26px. En las apps nunca se escribe un tamaño a mano: siempre la clase del DS. Si algo tiene que ser más grande, se sube un paso entero, nunca 1px.",
       "Negro = el color del texto del DS (foreground): stone-900 en claro y casi blanco en oscuro. Nunca #000000.",
       "El título de las cajas (Deuda total, Total del mes, Gastos fijos) va en negro, en 15px y medium (500); el monto abajo, en 26px.",
-      "Labels de los inputs: gris, del mismo tamaño que el input (15px) y a 6px arriba.",
+      "Labels de los inputs: gris, del mismo tamaño que el input (15px) y a 4px arriba.",
       "Dos etiquetas chicas: en mayúsculas (LOOP) y simple (outfit). Cada app usa una.",
       "Inputs con letra de 15px siempre. Cada app lleva maximum-scale=1 en index.html para que el iPhone no haga zoom.",
     ],

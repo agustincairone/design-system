@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "brand-pay-tracker",
   "title": "Acento de pay-tracker",
-  "description": "Verde de pay-tracker: green-700 en modo claro, green-500 en modo oscuro (con texto oscuro encima).",
+  "description": "Verde de pay-tracker: green-700 en modo claro, green-500 en modo oscuro, siempre con texto blanco encima.",
   "cssVars": {
     "light": {
       "brand": "oklch(52.7% 0.154 150.069)",
@@ -19,14 +19,14 @@
     },
     "dark": {
       "brand": "oklch(72.3% 0.219 149.579)",
-      "brand-foreground": "oklch(21.6% 0.006 56.043)",
+      "brand-foreground": "oklch(100% 0 0)",
       "brand-text": "oklch(72.3% 0.219 149.579)",
       "primary": "oklch(72.3% 0.219 149.579)",
-      "primary-foreground": "oklch(21.6% 0.006 56.043)",
+      "primary-foreground": "oklch(100% 0 0)",
       "ring": "oklch(72.3% 0.219 149.579)",
       "chart-1": "oklch(72.3% 0.219 149.579)",
       "sidebar-primary": "oklch(72.3% 0.219 149.579)",
-      "sidebar-primary-foreground": "oklch(21.6% 0.006 56.043)",
+      "sidebar-primary-foreground": "oklch(100% 0 0)",
       "sidebar-ring": "oklch(72.3% 0.219 149.579)",
       "brand-strong": "oklch(62.7% 0.194 149.214)"
     }

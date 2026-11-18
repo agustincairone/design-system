@@ -15,14 +15,14 @@
 
 .dark {
   --brand: oklch(72.3% 0.219 149.579);
-  --brand-foreground: oklch(21.6% 0.006 56.043);
+  --brand-foreground: oklch(100% 0 0);
   --brand-text: oklch(72.3% 0.219 149.579);
   --primary: oklch(72.3% 0.219 149.579);
-  --primary-foreground: oklch(21.6% 0.006 56.043);
+  --primary-foreground: oklch(100% 0 0);
   --ring: oklch(72.3% 0.219 149.579);
   --chart-1: oklch(72.3% 0.219 149.579);
   --sidebar-primary: oklch(72.3% 0.219 149.579);
-  --sidebar-primary-foreground: oklch(21.6% 0.006 56.043);
+  --sidebar-primary-foreground: oklch(100% 0 0);
   --sidebar-ring: oklch(72.3% 0.219 149.579);
   --brand-strong: oklch(62.7% 0.194 149.214);
 }

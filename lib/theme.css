@@ -81,18 +81,21 @@
     --radius-box-s: 12px;
     --radius-box-m: 16px;
     --radius-box-l: 16px;
-    /* Escala de espacios: 4 · 8 · 12 · 16 · 20 (box-2xs · box-xs · box-s · box-m · box-l) */
+    /* Escala de espacios: 4 · 8 · 12 · 16 · 20 · 24 (box-2xs · box-xs · box-s · box-m · box-l · box-xl), más 40 entre bloques (section) */
     --spacing-box-2xs: 4px;
     --spacing-box-xs: 8px;
     --spacing-box-s: 12px;
     --spacing-box-m: 16px;
     --spacing-box-l: 20px;
+    --spacing-box-xl: 24px;
     --color-inset: var(--inset);
     --color-tile: var(--tile);
     --color-raised: var(--raised);
     --color-raised-2: var(--raised-2);
     --spacing-box-gap: 8px;
     --spacing-section: 40px;
+    /* Lugar libre al final de cada pantalla, para que la barra de abajo y el botón flotante no tapen el contenido */
+    --spacing-screen-end: 112px;
 }
 
 :root {

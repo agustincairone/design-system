@@ -9,7 +9,7 @@
   "files": [
     {
       "path": "registry/ds/ui/field-label.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n// Label de un campo: letra normal en gris, del mismo tamaño que el texto del input\n// (14px siempre), 6px arriba del input.\n// `right` muestra algo a la derecha (ej: \"2/3\").\n\nexport function FieldLabel({\n  children,\n  right,\n  htmlFor,\n  className,\n}: {\n  children: React.ReactNode\n  right?: React.ReactNode\n  htmlFor?: string\n  className?: string\n}) {\n  return (\n    <div data-slot=\"field-label\" className={cn(\"mb-1.5 flex items-center\", className)}>\n      <label htmlFor={htmlFor} className=\"text-sm text-muted-foreground\">{children}</label>\n      {right && <span className=\"ml-auto text-sm text-muted-foreground\">{right}</span>}\n    </div>\n  )\n}\n",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n// Label de un campo: letra normal en gris, del mismo tamaño que el texto del input\n// (15px siempre), 4px arriba del input.\n// `right` muestra algo a la derecha (ej: \"2/3\").\n\nexport function FieldLabel({\n  children,\n  right,\n  htmlFor,\n  className,\n}: {\n  children: React.ReactNode\n  right?: React.ReactNode\n  htmlFor?: string\n  className?: string\n}) {\n  return (\n    <div data-slot=\"field-label\" className={cn(\"mb-box-2xs flex items-center\", className)}>\n      <label htmlFor={htmlFor} className=\"text-sm text-muted-foreground\">{children}</label>\n      {right && <span className=\"ml-auto text-sm text-muted-foreground\">{right}</span>}\n    </div>\n  )\n}\n",
       "type": "registry:ui",
       "target": "components/ui/field-label.tsx"
     }

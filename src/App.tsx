@@ -837,7 +837,7 @@ export function App() {
           <Section
             id="cajas"
             title="Cajas"
-            description="Las cajas nunca llevan borde: se separan sólo por el color de fondo. Sobre el fondo de la página la caja es blanca; adentro de otra caja, gris clarito. El relleno se elige de estas tres medidas según lo que le quede mejor a cada caja: L 20px, M 16px o S 12px (nunca otro número). Para cualquier otro espacio (márgenes, separaciones) se usa la escala 4 · 8 · 12 · 16 · 20 (box-2xs · box-xs · box-s · box-m · box-l). Entre caja y caja siempre hay 8px (gap-box-gap); entre bloques grandes (o grupos dentro de una caja) 40px (gap-section)."
+            description="Las cajas nunca llevan borde: se separan sólo por el color de fondo. Sobre el fondo de la página la caja es blanca; adentro de otra caja, gris clarito. El relleno se elige de estas tres medidas según lo que le quede mejor a cada caja: L 20px, M 16px o S 12px (nunca otro número). Para cualquier otro espacio (márgenes, separaciones) se usa la escala 4 · 8 · 12 · 16 · 20 · 24 (box-2xs · box-xs · box-s · box-m · box-l · box-xl), 40 entre bloques (section) y 112 libres al final de cada pantalla (screen-end). Entre caja y caja siempre hay 8px (gap-box-gap); entre bloques grandes (o grupos dentro de una caja) 40px (gap-section)."
           >
             <div className="rounded-box-l bg-card p-box-l">
               <p className="eyebrow mb-3">L · esquinas 16 · relleno 20</p>
