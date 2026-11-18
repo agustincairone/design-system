@@ -56,6 +56,7 @@ const RULES: { title: string; items: string[] }[] = [
     title: "Controles",
     items: [
       "Botones de 40px de alto con letra de 15px. Uno solo con el color de la app por pantalla.",
+      "Al apretar un botón no se mueve: sólo cambia el color.",
       "Todos los botones van en el tamaño normal. El chico sólo cuando el lugar lo pide (un botoncito de ícono). No hay botón grande.",
       "Botón de solo texto (Link): siempre subrayado, del color de la app y en el tamaño normal (15px).",
       "Cancelar tiene dos opciones: con borde rojo o suave (gris con texto rojo). El botón deshabilitado va en grises.",

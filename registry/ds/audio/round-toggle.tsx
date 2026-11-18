@@ -26,7 +26,7 @@ export function RoundToggle({
         aria-label={label}
         onClick={onToggle}
         className={cn(
-          "rounded-full transition-[background-color,transform] outline-none active:scale-95 focus-visible:ring-4 focus-visible:ring-ring/40",
+          "rounded-full transition-colors outline-none focus-visible:ring-4 focus-visible:ring-ring/40",
           on ? "bg-brand" : "bg-foreground"
         )}
         style={{ width: size, height: size }}
