@@ -14,6 +14,8 @@ const buttonVariants = cva(
           "border-input bg-transparent hover:border-brand hover:text-brand aria-expanded:border-brand aria-expanded:text-brand dark:border-input",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-brand hover:text-brand-foreground active:bg-brand-strong active:text-brand-foreground aria-expanded:bg-brand aria-expanded:text-brand-foreground",
+        // Relleno blanco (en modo oscuro, del color de las cajas). Ej: flechas para cambiar de mes
+        card: "bg-card text-foreground hover:bg-brand hover:text-brand-foreground active:bg-brand-strong active:text-brand-foreground",
         ghost:
           "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
         destructive:

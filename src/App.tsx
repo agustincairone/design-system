@@ -23,6 +23,8 @@ import {
   Music,
   Trash2,
   Wallet,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react"
 
 import { useTheme } from "@/components/theme-provider"
@@ -861,6 +863,7 @@ export function App() {
               <Demo label="Variantes">
                 <Button>Principal</Button>
                 <Button variant="secondary">Secundario</Button>
+                <Button variant="card">Blanco</Button>
                 <Button variant="outline">Con borde</Button>
                 <Button variant="ghost">Fantasma</Button>
                 <Button variant="destructive">Borrar</Button>
@@ -887,6 +890,11 @@ export function App() {
                 <Button variant="outline" size="icon-sm" aria-label="Solo"><Headphones /></Button>
                 <Button size="icon-sm" aria-label="Al azar"><Sparkles /></Button>
                 <Button variant="destructive-outline" size="icon-sm" aria-label="Quitar"><X /></Button>
+              </Demo>
+              <Demo label="Flechas para cambiar de mes (icon-sm blanco), distintas al volver (con borde)">
+                <Button variant="outline" size="icon-sm" aria-label="Volver"><ChevronLeft /></Button>
+                <Button variant="card" size="icon-sm" aria-label="Mes anterior"><ChevronLeft /></Button>
+                <Button variant="card" size="icon-sm" aria-label="Mes siguiente"><ChevronRight /></Button>
               </Demo>
             </div>
           </Section>

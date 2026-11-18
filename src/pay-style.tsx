@@ -140,12 +140,12 @@ export function PayStyle() {
       <Compare
         name="Elegir mes"
         use="Pasar al mes anterior o al siguiente."
-        oneNote="Button redondo con borde"
+        oneNote="Button redondo blanco"
         one={
           <div className="flex items-center gap-3">
-            <Button variant="secondary" size="icon-sm" aria-label="Mes anterior"><ChevronLeft className="size-4" /></Button>
+            <Button variant="card" size="icon-sm" aria-label="Mes anterior"><ChevronLeft className="size-4" /></Button>
             <span className="flex-1 text-center text-sm font-medium">Noviembre <span className="text-muted-foreground">2026</span></span>
-            <Button variant="secondary" size="icon-sm" aria-label="Mes siguiente"><ChevronRight className="size-4" /></Button>
+            <Button variant="card" size="icon-sm" aria-label="Mes siguiente"><ChevronRight className="size-4" /></Button>
           </div>
         }
         two={<PayMonthNav month="Noviembre" year={2026} />}
