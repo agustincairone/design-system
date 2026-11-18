@@ -21,7 +21,6 @@ import {
   Settings,
   Shirt,
   Music,
-  Trash2,
   Wallet,
   ChevronLeft,
   ChevronRight,
@@ -29,18 +28,8 @@ import {
 
 import { useTheme } from "@/components/theme-provider"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 import { Checkbox } from "@/components/ui/checkbox"
 import {
   DropdownMenu,
@@ -59,12 +48,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Skeleton } from "@/components/ui/skeleton"
 import { Slider } from "@/components/ui/slider"
-import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import { Chip, ChipGroup } from "@/components/ui/chip"
-import { TypeAudit } from "@/type-audit"
 import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
 import {
   Tooltip,
@@ -87,16 +73,14 @@ import { XYPad } from "@/components/audio/xy-pad"
 import { SpeakerGrille } from "@/components/audio/speaker-grille"
 import { FieldSlider } from "@/components/controls/field-slider"
 import { NumberSlider } from "@/components/controls/number-slider"
-import { Segmented } from "@/components/controls/segmented"
 import { SplitSlider } from "@/components/controls/split-slider"
 import { Stepper } from "@/components/controls/stepper"
 import { TileGroup } from "@/components/controls/tile-group"
 import { ExpandRow, ExpandRowItem } from "@/components/controls/expand-row"
 import { IconTile } from "@/components/controls/icon-tile"
 import { FieldColumn } from "@/components/controls/field-column"
-import { OutfitStyle } from "@/outfit-style"
-import { PayStyle } from "@/pay-style"
-import { AppliedStyle } from "@/applied-style"
+import { FieldLabel } from "@/components/ui/field-label"
+import { BottomNavDemo, ColorsDaysDemo, EmptyDemo, ItemCardsDemo, PickManyDemo, SavedValuesDemo, SheetsDemo, TabsDemo } from "@/guide-demos"
 import { Rules } from "@/rules"
 import { FloatAccordion } from "@/components/ui/float-accordion"
 import { AppHero, LiveDate, SectionHeader } from "@/components/ui/app-hero"
@@ -143,7 +127,7 @@ function Demo({
       >
         {children}
       </div>
-      <div className="border-t bg-muted/50 px-4 py-2 font-mono text-xs text-muted-foreground">
+      <div className="border-t bg-muted/50 px-4 py-2 text-xs text-muted-foreground">
         {label}
       </div>
     </div>
@@ -169,26 +153,37 @@ const TOKENS: { name: string; cls: string; note: string }[] = [
   { name: "overlay", cls: "bg-overlay", note: "Fondo detrás de las hojas (negro transparente)" },
 ]
 
-const NAV = [
-  ["reglas", "Reglas"],
-  ["fleje", "Fleje"],
-  ["colores", "Colores"],
-  ["tipografia", "Tipografía"],
-  ["fuera-de-escala", "Fuera de escala"],
-  ["cajas", "Cajas"],
-  ["numeros", "Números en vivo"],
-  ["audio", "Audio"],
-  ["botones", "Botones"],
-  ["formularios", "Formularios"],
-  ["controles", "Controles"],
-  ["tarjetas", "Tarjetas"],
-  ["navegacion", "Navegación"],
-  ["chips", "Chips y labels"],
-  ["ventanas", "Ventanas y avisos"],
-  ["estilo-aplicado", "Estilo aplicado"],
-  ["estilo-outfit", "Estilo outfit"],
-  ["estilo-pay", "Estilo pay"],
-  ["usar", "Cómo usarlo"],
+// Índice: agrupado por tipo
+const NAV: [string, [string, string][]][] = [
+  ["Fundamentos", [["reglas", "Reglas"], ["colores", "Colores"], ["tipografia", "Tipografía"], ["numeros", "Números en vivo"], ["cajas", "Espacios y cajas"]]],
+  ["Componentes", [["fleje", "Fleje y títulos"], ["botones", "Botones"], ["formularios", "Formularios"], ["elegir", "Elegir opciones"], ["controles", "Controles"], ["listas", "Tarjetas y listas"], ["navegacion", "Navegación"], ["ventanas", "Ventanas y avisos"]]],
+  ["Música", [["audio", "Audio (LOOP)"]]],
+  ["Uso", [["usar", "Cómo usarlo"]]],
+]
+
+// Escala de letra (para la tabla de Tipografía)
+const TYPE_SCALE: [string, string, string][] = [
+  ["10", "text-2xs", "Sólo adentro de piezas chicas (la nota de un paso)"],
+  ["13", "text-xs", "Texto chico, etiquetas"],
+  ["15", "text-sm", "Texto base"],
+  ["18", "text-lg", "Títulos de las hojas"],
+  ["20", "text-xl", "Título de caja"],
+  ["26", "text-2xl", "Montos importantes, número del fleje"],
+  ["30", "text-3xl", "Emoji de las filas del inicio"],
+  ["36", "text-4xl", "Números de la placa de LOOP"],
+  ["48", "text-5xl", "Tempo y reloj de LOOP"],
+]
+
+// Escala de espacios (para Espacios y cajas)
+const SPACE_SCALE: [number, string, string][] = [
+  [4, "box-2xs", "Label arriba del campo"],
+  [8, "box-xs", "Entre caja y caja (gap-box-gap)"],
+  [12, "box-s", "Relleno de caja S"],
+  [16, "box-m", "Relleno de caja M"],
+  [20, "box-l", "Relleno de caja L"],
+  [24, "box-xl", ""],
+  [40, "section", "Entre bloques grandes"],
+  [112, "screen-end", "Libre al final de cada pantalla"],
 ]
 
 const ICONS: Record<BrandId, typeof Music> = {
@@ -346,18 +341,7 @@ function AudioDemo() {
 
 // Controles extra (para elegir después cuál usar en cada parámetro).
 // Píldora con opciones en sus dos tamaños (va en Navegación)
-function PillDemo() {
-  const [range, setRange] = React.useState("15M")
-  const [view, setView] = React.useState("mes")
-  return (
-    <div className="flex flex-col items-start gap-3">
-      <Segmented label="Rango" value={range} onChange={setRange} options={["15M", "30M", "1H", "4H", "1D"].map((v) => ({ value: v, label: v }))} />
-      <Segmented size="sm" label="Período" value={view} onChange={setView} options={[{ value: "mes", label: "Este mes" }, { value: "anio", label: "Este año" }, { value: "todo", label: "Todo" }]} />
-    </div>
-  )
-}
-
-// Fichas en sus dos tamaños (van en Navegación)
+// Fichas en sus dos tamaños (van en Elegir opciones)
 function TilesDemo() {
   const [tile, setTile] = React.useState("4/4")
   const opts = ["4/4", "3/4", "6/8", "5/4", "7/8", "12/8"].map((v) => ({ value: v, label: v }))
@@ -433,11 +417,12 @@ function LabelsDemo() {
   )
 }
 
+// Mismo marco que Demo, con nombre y para qué sirve
 function ControlCard({ name, use, children }: { name: string; use: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col rounded-3xl bg-card">
-      <div className="flex min-h-56 flex-1 items-center justify-center p-6">{children}</div>
-      <div className="border-t px-5 py-3">
+    <div className="flex flex-col overflow-hidden rounded-lg border">
+      <div className="flex min-h-56 flex-1 items-center justify-center bg-background p-6">{children}</div>
+      <div className="border-t bg-muted/50 px-4 py-2">
         <div className="text-sm font-medium">{name}</div>
         <div className="text-xs text-muted-foreground">{use}</div>
       </div>
@@ -584,6 +569,24 @@ function ControlsDemo() {
           <Stepper label="Cantidad" value={count} min={0} max={16} onChange={setCount} />
         </div>
       </ControlCard>
+      <ControlCard name="Número + slider" use="Podés escribir el número exacto o arrastrar.">
+        <div className="grid w-full max-w-sm gap-3">
+          <NumberSlider label="Filas" value={rows} min={1} max={64} onChange={setRows} />
+          <NumberSlider label="Columnas" value={cols} min={1} max={64} onChange={setCols} />
+        </div>
+      </ControlCard>
+      <ControlCard name="Reparto entre dos" use="Cuánto de cada cosa: seco/efecto, izquierda/derecha. Doble clic = mitad y mitad.">
+        <SplitSlider left="Seco" right="Efecto" value={mix} onChange={setMix} className="max-w-sm" />
+      </ControlCard>
+    </div>
+  )
+}
+
+
+// Piezas de LOOP: fichas con ícono (agregar un sonido) y la columna vertical del ecualizador
+function LoopPiecesDemo() {
+  return (
+    <div className="grid gap-3 md:grid-cols-2">
       <ControlCard name="Fichas con ícono" use="Elegir algo de un catálogo (ej: agregar un sonido). Llenan su columna y son cuadradas.">
         <div className="grid w-full max-w-xs grid-cols-3 gap-box-gap">
           {[["Kick", Speaker], ["Snare", Drum], ["Pluck", Guitar], ["Pad", Cloud], ["Laser", Zap], ["Bell", Bell]].map(([l, I]) => (
@@ -594,33 +597,28 @@ function ControlsDemo() {
       <ControlCard name="Columna vertical" use="Nombre y valor arriba, el control en el medio, ⏻ y 🎧 abajo. Con el vúmetro lleno al costado.">
         <EqColumns />
       </ControlCard>
-      <ControlCard name="Número + slider" use="Podés escribir el número exacto o arrastrar.">
-        <div className="grid w-full max-w-sm gap-3">
-          <NumberSlider label="Filas" value={rows} min={1} max={64} onChange={setRows} />
-          <NumberSlider label="Columnas" value={cols} min={1} max={64} onChange={setCols} />
-        </div>
-      </ControlCard>
-      <ControlCard name="Reparto entre dos" use="Cuánto de cada cosa: seco/efecto, izquierda/derecha. Doble clic = mitad y mitad.">
-        <SplitSlider left="Seco" right="Efecto" value={mix} onChange={setMix} className="max-w-sm" />
-      </ControlCard>
-      <ControlCard name="Filas que se abren" use="Una lista adentro de una caja; al tocar una fila, el detalle aparece abajo en una caja M. Si el detalle tiene otra fila que se abre, su detalle va en blanco.">
-        <div className="w-full max-w-sm">
-          <ExpandRow defaultOpen title="Noviembre 2026" sub="IPC 2,2%" right={<span className="font-medium text-brand-text">$758.070</span>}>
-            <ExpandRow defaultOpen title="🏠 Casa" right={<span className="font-medium text-muted-foreground">$561.770</span>}>
-              <ExpandRowItem label="🛒 Supermercado" value="$320.000" />
-              <ExpandRowItem label="⚡ Servicios" value="$241.770" />
-            </ExpandRow>
-            <ExpandRow title="🤖 Personal" right={<span className="font-medium text-muted-foreground">$76.300</span>}>
-              <ExpandRowItem label="💊 Farmacia" value="$76.300" />
-            </ExpandRow>
-          </ExpandRow>
-          <ExpandRow title="Octubre 2026" sub="IPC 2,7%" right={<span className="font-medium text-brand-text">$638.070</span>}>
-            <ExpandRowItem label="🛒 Supermercado" value="$638.070" />
-          </ExpandRow>
-          <ExpandRow title="Septiembre 2026" sub="Sin gastos para abrir" right={<span className="font-medium text-brand-text">$0</span>} />
-        </div>
-      </ControlCard>
     </div>
+  )
+}
+
+// Filas que se abren (ej: gastos por mes en Análisis de pay)
+function ExpandRowsDemo() {
+  return (
+    <div className="w-full max-w-sm">
+        <ExpandRow defaultOpen title="Noviembre 2026" sub="IPC 2,2%" right={<span className="font-medium text-brand-text">$758.070</span>}>
+          <ExpandRow defaultOpen title="🏠 Casa" right={<span className="font-medium text-muted-foreground">$561.770</span>}>
+            <ExpandRowItem label="🛒 Supermercado" value="$320.000" />
+            <ExpandRowItem label="⚡ Servicios" value="$241.770" />
+          </ExpandRow>
+          <ExpandRow title="🤖 Personal" right={<span className="font-medium text-muted-foreground">$76.300</span>}>
+            <ExpandRowItem label="💊 Farmacia" value="$76.300" />
+          </ExpandRow>
+        </ExpandRow>
+        <ExpandRow title="Octubre 2026" sub="IPC 2,7%" right={<span className="font-medium text-brand-text">$638.070</span>}>
+          <ExpandRowItem label="🛒 Supermercado" value="$638.070" />
+        </ExpandRow>
+        <ExpandRow title="Septiembre 2026" sub="Sin gastos para abrir" right={<span className="font-medium text-brand-text">$0</span>} />
+      </div>
   )
 }
 
@@ -643,9 +641,6 @@ export function App() {
           <div className="flex items-center gap-2">
             <div className="size-5 rounded-full bg-brand" />
             <span className="font-semibold tracking-tight">Sistema de diseño</span>
-            <Badge variant="secondary" className="font-mono">
-              v0.1
-            </Badge>
           </div>
           <div className="ml-auto flex items-center gap-3">
             <ThemeToggle />
@@ -656,18 +651,25 @@ export function App() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[180px_1fr]">
         {/* Índice */}
         <nav className="sticky top-14 hidden h-fit py-12 md:block">
-          <ul className="space-y-1 text-sm">
-            {NAV.map(([id, label]) => (
-              <li key={id}>
-                <a
-                  href={`#${id}`}
-                  className="block rounded-md px-2 py-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
-                >
-                  {label}
-                </a>
-              </li>
+          <div className="flex flex-col gap-6 text-sm">
+            {NAV.map(([group, items]) => (
+              <div key={group}>
+                <p className="eyebrow mb-2 px-2">{group}</p>
+                <ul className="space-y-1">
+                  {items.map(([id, label]) => (
+                    <li key={id}>
+                      <a
+                        href={`#${id}`}
+                        className="block rounded-md px-2 py-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+                      >
+                        {label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </nav>
 
         <main className="min-w-0 pb-24">
@@ -715,27 +717,6 @@ export function App() {
             description="Las decisiones del sistema en un solo lugar. Toda app nueva las sigue."
           >
             <Rules />
-          </Section>
-
-          <Section
-            id="fleje"
-            title="Fleje"
-            description="El título de cada app, igual en todas: nombre, nombre en japonés, un texto gris y un número general en letra de puntitos. Cada sección lleva su título con un dato a la derecha. Achicá la ventana para ver cómo se acomoda en el celular."
-          >
-            <div className="grid gap-box-gap">
-              <div className="rounded-box-l bg-card p-box-l">
-                <AppHero name="Loop" jp="ループ — リズムマシン" description="16-step sampler composer" stats={[{ value: 6, label: "channels", digits: 2 }, { value: 16, label: "steps", digits: 2 }]} />
-              </div>
-              <div className="rounded-box-l bg-card p-box-l">
-                <AppHero name="Outfit" jp="コーデ日記" stats={[{ value: <LiveDate />, label: "registro diario de outfits" }]} />
-              </div>
-              <div className="grid gap-box-gap rounded-box-l bg-card p-box-l">
-                <SectionHeader title="¿Qué me puse hoy?" icon="☀️" value="12/22°" />
-                <SectionHeader title="Historial" label="días cargados" value={124} />
-                <SectionHeader title="Mis prendas" label="prendas" value={48} />
-                <SectionHeader title="Estadísticas" label="prendas usadas" value={31} />
-              </div>
-            </div>
           </Section>
 
           <Section
@@ -800,8 +781,22 @@ export function App() {
           <Section
             id="tipografia"
             title="Tipografía"
-            description="Geist para todo el texto, Geist Mono para etiquetas. Los números quietos van con la letra normal; sólo los que se mueven usan letras de puntitos."
+            description="Geist para todo el texto, Geist Mono para etiquetas. Los tamaños salen sólo de esta escala; si algo tiene que ser más grande, se sube un paso entero."
           >
+            <div className="mb-4 divide-y rounded-3xl bg-card">
+              {TYPE_SCALE.map(([px, cls, use]) => (
+                <div key={cls} className="grid items-center gap-3 p-4 sm:grid-cols-[180px_1fr]">
+                  <div>
+                    <div className="text-sm font-medium">{px}px</div>
+                    <div className="font-mono text-xs text-muted-foreground">{cls}</div>
+                  </div>
+                  <div className="flex min-w-0 items-baseline gap-4">
+                    <span className={`${cls} shrink-0 leading-none font-medium`}>Aa</span>
+                    <span className="truncate text-xs text-muted-foreground">{use}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
             <div className="divide-y rounded-3xl bg-card">
               {[
                 ["Título de página", "Geist semibold, 40px (clase title-page)", <div className="title-page">Mis pagos</div>],
@@ -831,18 +826,35 @@ export function App() {
           </Section>
 
           <Section
-            id="fuera-de-escala"
-            title="Fuera de escala"
-            description="La escala es 10 · 13 · 15 · 18 · 20 · 26 · 30 · 36 · 48 (más los títulos grandes). Acá está todo lo que usa el paso chico (13px) y el grande (26px), con una muestra de cada uno, y lo que queda fuera de la escala."
+            id="numeros"
+            title="Números en vivo"
+            description="Cuando un número cambia solo (un cronómetro, el BPM mientras lo movés), usa letra de puntitos: Geist Pixel Circle para tiempos y Doto para valores. Los ceros de adelante se ven apagados."
           >
-            <TypeAudit />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <LiveClock />
+              <LiveBpm />
+            </div>
           </Section>
 
           <Section
             id="cajas"
-            title="Cajas"
-            description="Las cajas nunca llevan borde: se separan sólo por el color de fondo. Sobre el fondo de la página la caja es blanca; adentro de otra caja, gris clarito. El relleno se elige de estas tres medidas según lo que le quede mejor a cada caja: L 20px, M 16px o S 12px (nunca otro número). Para cualquier otro espacio (márgenes, separaciones) se usa la escala 4 · 8 · 12 · 16 · 20 · 24 (box-2xs · box-xs · box-s · box-m · box-l · box-xl), 40 entre bloques (section) y 112 libres al final de cada pantalla (screen-end). Entre caja y caja siempre hay 8px (gap-box-gap); entre bloques grandes (o grupos dentro de una caja) 40px (gap-section)."
+            title="Espacios y cajas"
+            description="Todos los espacios salen de esta escala. Las cajas nunca llevan borde: se separan sólo por el color de fondo. El relleno de cada caja es L 20, M 16 o S 12, según lo que le quede mejor."
           >
+            <div className="mb-4 divide-y rounded-3xl bg-card">
+              {SPACE_SCALE.map(([px, token, use]) => (
+                <div key={token} className="grid items-center gap-3 p-4 sm:grid-cols-[180px_1fr]">
+                  <div>
+                    <div className="text-sm font-medium">{px}px</div>
+                    <div className="font-mono text-xs text-muted-foreground">{token}</div>
+                  </div>
+                  <div className="flex min-w-0 items-center gap-4">
+                    <span className="h-3 shrink-0 rounded-bar bg-brand" style={{ width: px }} />
+                    <span className="truncate text-xs text-muted-foreground">{use}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
             <div className="rounded-box-l bg-card p-box-l">
               <p className="eyebrow mb-3">L · esquinas 16 · relleno 20</p>
               <div className="grid gap-box-gap sm:grid-cols-2">
@@ -867,30 +879,30 @@ export function App() {
           </Section>
 
           <Section
-            id="numeros"
-            title="Números en vivo"
-            description="Cuando un número cambia solo (un cronómetro, el BPM mientras lo movés), usa letra de puntitos: Geist Pixel Circle para tiempos y Doto para valores. Los ceros de adelante se ven apagados."
+            id="fleje"
+            title="Fleje y títulos"
+            description="El título de cada app, igual en todas: nombre, nombre en japonés, un texto gris y un número general en letra de puntitos. Cada sección lleva su título con un dato a la derecha. Achicá la ventana para ver cómo se acomoda en el celular."
           >
-            <div className="grid gap-4 sm:grid-cols-2">
-              <LiveClock />
-              <LiveBpm />
+            <div className="grid grid-cols-1 gap-box-gap">
+              <div className="rounded-box-l bg-card p-box-l">
+                <AppHero name="Loop" jp="ループ — リズムマシン" description="16-step sampler composer" stats={[{ value: 6, label: "channels", digits: 2 }, { value: 16, label: "steps", digits: 2 }]} />
+              </div>
+              <div className="rounded-box-l bg-card p-box-l">
+                <AppHero name="Outfit" jp="コーデ日記" stats={[{ value: <LiveDate />, label: "registro diario de outfits" }]} />
+              </div>
+              <div className="grid gap-box-gap rounded-box-l bg-card p-box-l">
+                <SectionHeader title="¿Qué me puse hoy?" icon="☀️" value="12/22°" />
+                <SectionHeader title="Historial" label="días cargados" value={124} />
+                <SectionHeader title="Mis prendas" label="prendas" value={48} />
+                <SectionHeader title="Estadísticas" label="prendas usadas" value={31} />
+              </div>
             </div>
-          </Section>
-
-          <Section
-            id="audio"
-            title="Audio"
-            description="Controles para apps de música: slider con valor, perilla giratoria, vúmetro y los botones ⏻ (apagar) y 🎧 (escuchar sólo eso). Toman el color de la app, o el de cada instrumento si se lo pasás."
-          >
-            <AudioDemo />
-            <h3 className="mt-10 mb-3 font-medium">Más controles</h3>
-            <MoreControls />
           </Section>
 
           <Section
             id="botones"
             title="Botones"
-            description="El botón principal usa el color de la app; idealmente uno solo por pantalla. El resto, en grises."
+            description="El botón principal usa el color de la app; idealmente uno solo por pantalla. El resto, en grises. Los botones de solo texto van subrayados (en rojo para cancelar)."
           >
             <div className="grid gap-4">
               <Demo label="Variantes">
@@ -936,117 +948,108 @@ export function App() {
           <Section
             id="formularios"
             title="Formularios"
-            description="Campos de texto, selectores, interruptores y sliders. Todos con el mismo alto, borde y foco."
+            description="Campos de texto, selectores, casillas y sliders, todos con el mismo alto, borde y foco."
           >
-            <Demo label="Campos" className="grid gap-5 sm:grid-cols-2">
-              <div className="grid gap-2">
-                <Label htmlFor="name">Nombre</Label>
-                <Input id="name" placeholder="Ej: Sueldo de noviembre" />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="amount">Monto</Label>
-                <Input id="amount" type="number" placeholder="0,00" className="font-mono" />
-              </div>
-              <div className="grid gap-2">
-                <Label>Categoría</Label>
-                <Select defaultValue="servicios">
-                  <SelectTrigger className="w-full">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="servicios">Servicios</SelectItem>
-                    <SelectItem value="alquiler">Alquiler</SelectItem>
-                    <SelectItem value="super">Supermercado</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="grid gap-2">
-                <Label>Volumen · {volume[0]}</Label>
-                <Slider value={volume} onValueChange={setVolume} max={100} />
-              </div>
-              <div className="grid gap-2 sm:col-span-2">
-                <Label htmlFor="notes">Notas</Label>
-                <Textarea id="notes" placeholder="Algo para recordar…" />
-              </div>
-              <div className="flex items-center gap-2">
-                <Checkbox id="paid" defaultChecked />
-                <Label htmlFor="paid">Ya está pagado</Label>
-              </div>
-              <div className="flex items-center gap-2">
-                <Switch id="notif" defaultChecked />
-                <Label htmlFor="notif">Avisarme antes del vencimiento</Label>
-              </div>
-            </Demo>
+            <div className="grid gap-4">
+              <Demo label="Campos: label gris a 4px arriba del campo, todos del mismo alto" className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <FieldLabel htmlFor="name">Nombre</FieldLabel>
+                  <Input id="name" placeholder="Ej: Sueldo de noviembre" />
+                </div>
+                <div>
+                  <FieldLabel htmlFor="amount">Monto</FieldLabel>
+                  <Input id="amount" type="number" placeholder="$0" />
+                </div>
+                <div>
+                  <FieldLabel>Categoría</FieldLabel>
+                  <Select defaultValue="servicios">
+                    <SelectTrigger className="w-full">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="servicios">Servicios</SelectItem>
+                      <SelectItem value="alquiler">Alquiler</SelectItem>
+                      <SelectItem value="super">Supermercado</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <FieldLabel>Volumen · {volume[0]}</FieldLabel>
+                  <Slider value={volume} onValueChange={setVolume} max={100} />
+                </div>
+                <div className="sm:col-span-2">
+                  <FieldLabel htmlFor="notes">Notas</FieldLabel>
+                  <Textarea id="notes" placeholder="Algo para recordar…" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <Checkbox id="paid" defaultChecked />
+                  <Label htmlFor="paid">Ya está pagado</Label>
+                </div>
+              </Demo>
+              <Demo label="Campo con + para agregar, y lo guardado como chips con cruz">
+                <SavedValuesDemo />
+              </Demo>
+            </div>
+          </Section>
+
+          <Section
+            id="elegir"
+            title="Elegir opciones"
+            description="Para elegir una o varias opciones: píldora, pestañas, fichas, chips, casillas, colores y días."
+          >
+            <div className="grid gap-4">
+              <Demo label="Píldora y pestañas: hasta 3 opciones, píldora; más de 3, pestañas de ancho completo pegadas arriba de la caja" className="block">
+                <TabsDemo />
+              </Demo>
+              <Demo label="Fichas: compactas y a lo ancho (la elegida va del color de la app)" className="block">
+                <TilesDemo />
+              </Demo>
+              <Demo label="Chips: se tocan para prender o apagar. Varios van en un ChipGroup, a 4px uno del otro" className="block">
+                <ChipsDemo />
+              </Demo>
+              <Demo label="Elegir varias: cada opción en su caja S, toda la caja se puede tocar">
+                <PickManyDemo />
+              </Demo>
+              <Demo label="Colores (hasta 3, el elegido con aro) y días (hoy con borde, con algo cargado = puntito)">
+                <ColorsDaysDemo />
+              </Demo>
+            </div>
           </Section>
 
           <Section
             id="controles"
             title="Controles"
-            description="Para cambiar valores de otras formas, no sólo con un slider. Sirven en cualquier app: LOOP, pay-tracker, outfit-tracker."
+            description="Para cambiar un número de otras formas, no sólo con un slider. Sirven en cualquier app."
           >
             <ControlsDemo />
           </Section>
 
           <Section
-            id="tarjetas"
-            title="Tarjetas"
-            description="Para agrupar información: un pago, una prenda, un proyecto. Bordes finos y sombra casi invisible."
+            id="listas"
+            title="Tarjetas y listas"
+            description="Para mostrar cosas: fichas con foto, filas que se abren y labels."
           >
-            <div className="grid gap-4 sm:grid-cols-2">
-              <Card>
-                <CardHeader>
-                  <CardTitle>Internet</CardTitle>
-                  <CardDescription>Vence el 20 de noviembre</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="font-mono text-3xl font-semibold tracking-tight">$ 24.990</div>
-                  <div className="mt-2 flex gap-2">
-                    <Badge>Pendiente</Badge>
-                    <Badge variant="outline">Servicios</Badge>
-                  </div>
-                </CardContent>
-                <CardFooter className="gap-2">
-                  <Button className="flex-1" onClick={() => toast.success("Pago registrado")}>
-                    <Check /> Marcar pagado
-                  </Button>
-                  <Button variant="outline" size="icon" aria-label="Borrar">
-                    <Trash2 />
-                  </Button>
-                </CardFooter>
-              </Card>
-
-              <Card>
-                <CardHeader className="flex-row items-center gap-3">
-                  <Avatar>
-                    <AvatarFallback>AC</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <CardTitle>Tu cuenta</CardTitle>
-                    <CardDescription>Plan gratuito</CardDescription>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <Skeleton className="h-4 w-3/4" />
-                  <Skeleton className="h-4 w-1/2" />
-                  <p className="text-xs text-muted-foreground">
-                    ↑ Así se ve algo que está cargando.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="grid gap-4">
+              <Demo label="Fichas de prenda: grilla de 3, chiquita y fila. La elegida con borde del color de la app (blanco en oscuro)">
+                <ItemCardsDemo />
+              </Demo>
+              <Demo label="Filas que se abren: el detalle aparece abajo en una caja M">
+                <ExpandRowsDemo />
+              </Demo>
+              <Demo label="Labels: sólo muestran un estado o una categoría, no se tocan" className="block">
+                <LabelsDemo />
+              </Demo>
             </div>
           </Section>
 
           <Section
             id="navegacion"
             title="Navegación"
-            description="Para elegir una opción o cambiar de vista: píldora con opciones y fichas, cada una en dos tamaños. Y el menú desplegable."
+            description="Para moverse por la app: la barra de abajo y el menú desplegable (el ⋮ de cada fila)."
           >
             <div className="grid gap-4">
-              <Demo label="Píldora con opciones · normal y chica (elegir una opción o cambiar de vista)">
-                <PillDemo />
-              </Demo>
-              <Demo label="Fichas · compactas y a lo ancho (la elegida va del color de la app)" className="block">
-                <TilesDemo />
+              <Demo label="Barra de abajo: íconos de 24px, la sección actual del color de la app con el puntito">
+                <BottomNavDemo />
               </Demo>
               <Demo label="Menú desplegable">
                 <DropdownMenu>
@@ -1075,23 +1078,15 @@ export function App() {
           </Section>
 
           <Section
-            id="chips"
-            title="Chips y labels"
-            description="Chips: se tocan para prender o apagar (filtros, valores guardados con cruz para borrar). Labels: sólo muestran un estado o una categoría, no se tocan."
-          >
-            <div className="grid gap-4">
-              <Demo label="Chips" className="block"><ChipsDemo /></Demo>
-              <Demo label="Labels" className="block"><LabelsDemo /></Demo>
-            </div>
-          </Section>
-
-          <Section
             id="ventanas"
             title="Ventanas y avisos"
-            description="Hojas desde abajo (todas las ventanas salen desde abajo), ayudas al pasar el mouse y avisos que aparecen y se van solos."
+            description="Hojas desde abajo, confirmaciones, ayudas al pasar el mouse, avisos que aparecen y se van solos, y el estado vacío."
           >
             <div className="grid gap-4">
-              <Demo label="Confirmación, hoja desde abajo, ayuda y aviso">
+              <Demo label="Hojas: todas salen desde abajo y flotan a 16px de los bordes (acá se muestran abiertas)" className="block">
+                <SheetsDemo />
+              </Demo>
+              <Demo label="Probalo: confirmación, hoja desde abajo, ayuda al pasar el mouse y aviso que se va solo">
                 <Button variant="outline" onClick={() => setConfirmOpen(true)}>Confirmación</Button>
                 <ConfirmSheet open={confirmOpen} onOpenChange={setConfirmOpen} title="Borrar pago" question="¿Borrar este pago?"
                   detail="No se puede deshacer. El pago desaparece del historial." confirmLabel="Borrar"
@@ -1120,6 +1115,9 @@ export function App() {
                   Mostrar aviso
                 </Button>
               </Demo>
+              <Demo label="Estado vacío">
+                <EmptyDemo />
+              </Demo>
               <Demo label="Acordeón flotante: tocalo y crece hacia arriba sobre la página">
                 <div className="w-full max-w-md">
                   <FloatAccordion title="Sugerencia para hoy" onInfo={() => setSheetOpen(true)}>
@@ -1131,53 +1129,35 @@ export function App() {
                   </FloatAccordion>
                 </div>
               </Demo>
-              <Alert>
-                <Bell />
-                <AlertTitle>Un aviso fijo</AlertTitle>
-                <AlertDescription>
-                  Para mensajes importantes que tienen que quedar a la vista.
-                </AlertDescription>
-              </Alert>
             </div>
           </Section>
 
           <Section
-            id="estilo-aplicado"
-            title="Estilo aplicado"
-            description="Lo que ya elegiste. Usa el color de app que elijas en Colores (neutro, LOOP, outfit…). Se va completando a medida que elegís."
+            id="audio"
+            title="Audio (LOOP)"
+            description="Controles para apps de música: slider con valor, perillas, vúmetro y los botones ⏻ (apagar) y 🎧 (escuchar sólo eso). Toman el color de la app."
           >
-            <AppliedStyle />
-          </Section>
-
-          <Section
-            id="estilo-outfit"
-            title="Estilo outfit"
-            description="Los componentes de outfit-tracker, copiados tal cual de la app. Al lado, el equivalente del sistema cuando existe, para elegir con cuál quedarnos o dejar los dos estilos."
-          >
-            <OutfitStyle />
-          </Section>
-
-          <Section
-            id="estilo-pay"
-            title="Estilo pay"
-            description="Los componentes de pay-tracker, copiados tal cual de la app. Al lado, el equivalente del sistema con el color de pay (green-700), para elegir con cuál quedarnos o dejar los dos estilos."
-          >
-            <PayStyle />
+            <AudioDemo />
+            <h3 className="mt-10 mb-3 font-medium">Más controles</h3>
+            <MoreControls />
+            <h3 className="mt-10 mb-3 font-medium">Piezas de LOOP</h3>
+            <LoopPiecesDemo />
           </Section>
 
           <Section
             id="usar"
             title="Cómo usarlo en una app"
-            description="Esto lo hace Claude por vos, pero queda anotado. Cada pieza se instala con un comando."
+            description="Esto lo hace Claude por vos, pero queda anotado."
           >
             <div className="space-y-3 rounded-lg border bg-muted/40 p-5 font-mono text-sm">
-              <div className="text-muted-foreground"># todo junto (tema + selector + componentes)</div>
-              <div>npx shadcn add @ds/kit</div>
-              <div className="pt-2 text-muted-foreground"># el color de la app</div>
-              <div>npx shadcn add @ds/brand-loop</div>
-              <div>npx shadcn add @ds/brand-pay-tracker</div>
-              <div>npx shadcn add @ds/brand-outfit-tracker</div>
-              <div className="pt-2 text-muted-foreground"># en index.html: los inputs tienen letra de 15px, así el iPhone no hace zoom al tocarlos</div>
+              <div className="text-muted-foreground"># 1. en package.json de la app, con la última versión publicada (vX.Y.Z)</div>
+              <div>"@agustincairone/design-system": "github:agustincairone/design-system#vX.Y.Z"</div>
+              <div className="pt-2 text-muted-foreground"># 2. en src/index.css: el tema y el color de la app</div>
+              <div>@import "@agustincairone/design-system/theme.css";</div>
+              <div>@import "@agustincairone/design-system/brands/pay-tracker.css";</div>
+              <div className="pt-2 text-muted-foreground"># 3. cada pieza se importa así</div>
+              <div>{'import { Button } from "@agustincairone/design-system/components/ui/button"'}</div>
+              <div className="pt-2 text-muted-foreground"># 4. en index.html: que el iPhone no haga zoom al tocar un campo</div>
               <div>{'<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />'}</div>
             </div>
           </Section>
