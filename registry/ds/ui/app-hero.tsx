@@ -11,9 +11,6 @@ import { cn } from "@/lib/utils"
 // Los números del fleje y el dato de cada sección van en Doto (font-readout).
 // Si el texto gris va como etiqueta del número (abajo, a la derecha), se pasa como `label` del número y sin `description`.
 
-type Eyebrow = "caps" | "plain"
-const EYEBROW: Record<Eyebrow, string> = { caps: "eyebrow", plain: "eyebrow-plain" }
-
 // value: un número, un texto o un componente (ej: <LiveDate />).
 export type Stat = { value: number | string | React.ReactElement; label: string; digits?: number }
 
@@ -73,7 +70,6 @@ export function AppHero({
   jp,
   description,
   stats = [],
-  eyebrow = "caps",
   aside,
   className,
 }: {
@@ -81,7 +77,6 @@ export function AppHero({
   jp: string
   description?: string
   stats?: Stat[]
-  eyebrow?: Eyebrow
   aside?: React.ReactNode
   className?: string
 }) {
@@ -94,7 +89,7 @@ export function AppHero({
             {jp}
           </p>
         </div>
-        {description && <p className={cn(EYEBROW[eyebrow], "col-start-2 row-start-1 max-w-40 justify-self-end text-right sm:col-start-1 sm:row-start-2 sm:max-w-none sm:justify-self-start sm:self-end sm:text-left")}>
+        {description && <p className={cn("eyebrow", "col-start-2 row-start-1 max-w-40 justify-self-end text-right sm:col-start-1 sm:row-start-2 sm:max-w-none sm:justify-self-start sm:self-end sm:text-left")}>
           {description}
         </p>}
         {stats.length > 0 && (
@@ -107,7 +102,7 @@ export function AppHero({
                 ) : (
                   <Readout value={s.value as number | string} digits={s.digits} className="mt-[7.5px] text-[26px] whitespace-nowrap" />
                 )}
-                <span className={EYEBROW[eyebrow]}>{s.label}</span>
+                <span className="eyebrow">{s.label}</span>
               </div>
             ))}
           </div>
@@ -129,7 +124,6 @@ export function SectionHeader({
   label,
   icon,
   digits,
-  eyebrow = "caps",
   className,
 }: {
   title: React.ReactNode
@@ -137,7 +131,6 @@ export function SectionHeader({
   value?: number | string | null
   label?: string
   digits?: number
-  eyebrow?: Eyebrow
   className?: string
 }) {
   return (
@@ -145,7 +138,7 @@ export function SectionHeader({
       <h2 className="title-box min-w-0 truncate">{title}</h2>
       {value != null && value !== "" && (
         <div className="flex shrink-0 items-baseline gap-2">
-          {label && <span className={EYEBROW[eyebrow]}>{label}</span>}
+          {label && <span className="eyebrow">{label}</span>}
           {icon && <span className="text-2xl leading-none">{icon}</span>}
           <Readout value={value} digits={digits} className="text-2xl" />
         </div>

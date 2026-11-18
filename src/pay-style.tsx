@@ -12,10 +12,13 @@ import { FieldLabel } from "@/components/ui/field-label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { BottomSheet } from "@/components/ui/bottom-sheet"
 import { AppHero, LiveDate } from "@/components/ui/app-hero"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Label } from "@/components/ui/label"
+import { ExpandRow, ExpandRowItem } from "@/components/controls/expand-row"
 import {
   PAY, PAY_FONT, PayActions, PayChips, PayChoice, PayDashedAdd, PayDebtCard, PayExpenseRow, PayFab, PayHeader,
   PayInput, PayLabel, PayListCard, PayMonthNav, PaySectionLabel, PaySelect, PaySheet, PaySheetTitle, PayStat,
-  PayToggle, PayTotalCard, PayTotalTabs,
+  PayToggle, PayTotalCard, PayTotalTabs, PayEmojiField, PayCheckList, PayExpandRow,
 } from "@/components/pay/pay"
 
 // El color de pay (green-700, y green-800 al apretar) sólo para la columna del sistema
@@ -160,14 +163,14 @@ export function PayStyle() {
           <div className="flex flex-col gap-box-gap">
             <div className="flex items-center gap-3 rounded-box-l bg-card p-box-l">
               <div className="flex-1">
-                <span className="eyebrow-plain">Deuda total</span>
+                <span className="text-sm text-muted-foreground">Deuda total</span>
                 <div className="mt-1 text-2xl font-semibold tracking-tight text-brand-text">$676.890</div>
                 <div className="text-sm text-muted-foreground"><span className="font-medium text-foreground">Sofi</span> le debe a <span className="font-medium text-foreground">Agus</span></div>
               </div>
               <Button>Saldar deuda</Button>
             </div>
             <button className="flex items-center justify-between rounded-box-l bg-card p-box-l text-left">
-              <div><span className="eyebrow-plain">Total del mes</span><div className="mt-1 text-xl font-semibold tracking-tight">$943.200</div></div>
+              <div><span className="text-sm text-muted-foreground">Total del mes</span><div className="mt-1 text-xl font-semibold tracking-tight">$943.200</div></div>
               <ChevronDown className="size-4 text-muted-foreground" />
             </button>
           </div>
@@ -332,6 +335,45 @@ export function PayStyle() {
       />
 
       <Compare
+        name="Nombre con emoji"
+        use="Nombre del grupo (al crearlo o editarlo); el emoji abre la lista para elegir otro."
+        oneNote="botón redondo con borde + campo"
+        one={
+          <div className="flex gap-2">
+            <Button variant="outline" size="icon" className="text-xl" aria-label="Elegir emoji">🏠</Button>
+            <Input placeholder="Ej: Amigos viaje" className="flex-1" />
+          </div>
+        }
+        two={<PayEmojiField emoji="🏠" placeholder="Ej: Amigos viaje" />}
+      />
+
+      <SplitsCompare />
+
+      <Compare
+        name="Filas que se abren"
+        use="Gastos por mes en Análisis: al tocar un mes se ve el detalle."
+        oneNote="ExpandRow"
+        bare
+        one={
+          <div className="rounded-box-l bg-card py-1">
+            <ExpandRow defaultOpen title="Noviembre 2026" sub="IPC 2,2%" right={<span className="font-medium text-brand-text">$758.070</span>}>
+              <ExpandRowItem label="🛒 Supermercado" value="$320.000" />
+              <ExpandRowItem label="⚡ Servicios" value="$241.770" />
+            </ExpandRow>
+            <ExpandRow title="Octubre 2026" sub="IPC 2,7%" right={<span className="font-medium text-brand-text">$638.070</span>}>
+              <ExpandRowItem label="🛒 Supermercado" value="$638.070" />
+            </ExpandRow>
+          </div>
+        }
+        two={
+          <div style={{ background: PAY.white, border: `1px solid ${PAY.border}`, borderRadius: 12, fontFamily: PAY_FONT, overflow: "hidden" }}>
+            <PayExpandRow title="Noviembre 2026" sub="IPC 2,2%" total="$758.070" items={[["🛒 Supermercado", "$320.000"], ["⚡ Servicios", "$241.770"]]} />
+            <PayExpandRow title="Octubre 2026" sub="IPC 2,7%" total="$638.070" items={[["🛒 Supermercado", "$638.070"]]} last />
+          </div>
+        }
+      />
+
+      <Compare
         name="Hoja de nuevo gasto"
         use="La ventana que sube desde abajo para cargar un gasto."
         oneNote="BottomSheet"
@@ -361,5 +403,30 @@ export function PayStyle() {
         }
       />
     </div>
+  )
+}
+
+// Elegir varias: casillas del sistema (Checkbox + texto), una abajo de la otra
+function SplitsCompare() {
+  const OPTS = ["70/30", "60/40", "50/50"]
+  const [sel, setSel] = React.useState(["60/40", "50/50"])
+  const toggle = (o: string) => setSel((p) => (p.includes(o) ? (p.length > 1 ? p.filter((x) => x !== o) : p) : [...p, o]))
+  return (
+    <Compare
+      name="Elegir varias"
+      use="Splits disponibles al crear o editar un grupo (por lo menos uno)."
+      oneNote="casillas (Checkbox)"
+      one={
+        <div className="flex flex-col gap-3">
+          {OPTS.map((o) => (
+            <div key={o} className="flex items-center gap-2">
+              <Checkbox id={`split-${o}`} checked={sel.includes(o)} onCheckedChange={() => toggle(o)} />
+              <Label htmlFor={`split-${o}`}>{o}</Label>
+            </div>
+          ))}
+        </div>
+      }
+      two={<PayCheckList options={OPTS} value={sel} onToggle={toggle} />}
+    />
   )
 }

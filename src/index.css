@@ -200,14 +200,6 @@
     color: var(--muted-foreground);
 }
 
-/* Etiqueta simple: letra normal (Geist) de 13px en gris, sin mayúsculas (ej: outfit-tracker, labels de inputs). */
-@utility eyebrow-plain {
-    font-family: var(--font-sans);
-    font-size: 0.8125rem;
-    line-height: 1.125rem;
-    color: var(--muted-foreground);
-}
-
 @utility live-number {
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.02em;

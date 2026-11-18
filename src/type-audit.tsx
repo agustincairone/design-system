@@ -44,13 +44,10 @@ export function TypeAudit() {
       ),
     },
     { name: "Botón chico (sm)", size: "13px", where: "El texto del botón", sample: <Button size="sm">Chico</Button> },
-    { name: "Botón muy chico (xs)", size: "13px", where: "El texto del botón", sample: <Button size="xs">Muy chico</Button> },
     { name: "Badge", size: "13px", where: "El texto de la etiqueta", sample: <Badge variant="secondary">Etiqueta</Badge> },
-    { name: "Desplegable (Select)", size: "13px", where: "El título de un grupo de opciones adentro de la lista", sample: <span className="text-xs text-muted-foreground">Servicios</span> },
     { name: "Tira de fechas (outfit)", size: "13px", where: "El día y la fecha abajo", sample: <span className="flex flex-col items-center"><span className="text-xs font-medium">Lun</span><span className="text-xs text-muted-foreground">17/11</span></span> },
     { name: "Tarjeta de prenda grande (outfit)", size: "13px", where: "Marca y modelo · tipo", sample: <span className="flex flex-col"><span className="text-xs font-medium">Nike</span><span className="text-xs font-medium text-muted-foreground">Air Max · Zapatilla</span></span> },
     { name: "Slider de campo", size: "13px", where: "La etiqueta de abajo", sample: <span className="text-xs">Volumen</span> },
-    { name: "Etiqueta simple (eyebrow-plain)", size: "13px", where: "Hoy no la usa ninguna app", sample: <span className="eyebrow-plain">Total del mes</span> },
     { name: "Audio (LOOP)", size: "13px", where: "Perilla, selector, fader y toggle redondo: el valor o la etiqueta chica", sample: <span className="live-number font-mono text-xs font-semibold">450ms · 60%</span> },
   ]
   // Los que antes estaban fuera de escala (12.8, 11 y 10px), ahora en 13px

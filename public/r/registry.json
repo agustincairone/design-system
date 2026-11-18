@@ -150,12 +150,6 @@
           "text-transform": "uppercase",
           "color": "var(--muted-foreground)"
         },
-        "@utility eyebrow-plain": {
-          "font-family": "var(--font-sans)",
-          "font-size": "0.8125rem",
-          "line-height": "1.125rem",
-          "color": "var(--muted-foreground)"
-        },
         "@utility live-number": {
           "font-variant-numeric": "tabular-nums",
           "letter-spacing": "0.02em"
@@ -635,6 +629,11 @@
           "path": "registry/ds/controls/tile-group.tsx",
           "type": "registry:component",
           "target": "components/controls/tile-group.tsx"
+        },
+        {
+          "path": "registry/ds/controls/expand-row.tsx",
+          "type": "registry:component",
+          "target": "components/controls/expand-row.tsx"
         },
         {
           "path": "registry/ds/controls/icon-tile.tsx",

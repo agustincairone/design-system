@@ -216,3 +216,57 @@ export function PayStat({ label, value, sub }: { label: string; value: string; s
 
 /** Título gris de sección ("Mis gastos", "Mis grupos") */
 export const PaySectionLabel = ({ children }: { children: React.ReactNode }) => <div style={{ fontSize: 14, color: TX }}>{children}</div>
+
+/** Nombre del grupo con el botón del emoji cuadrado a la izquierda (al tocarlo abre la lista de emojis) */
+export function PayEmojiField({ emoji, placeholder, onEmoji }: { emoji: string; placeholder?: string; onEmoji?: () => void }) {
+  return (
+    <div style={{ display: "flex", gap: 8 }}>
+      <button onClick={onEmoji} style={{ flexShrink: 0, width: 48, height: 48, fontSize: 28, border: `1px solid ${BD}`, borderRadius: 8, background: W, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>{emoji}</button>
+      <PayInput placeholder={placeholder} />
+    </div>
+  )
+}
+
+/** Elegir varias (Splits disponibles): filas con borde y casilla; la elegida con borde verde y fondo gris */
+export function PayCheckList({ options, value, onToggle }: { options: string[]; value: string[]; onToggle: (o: string) => void }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      {options.map((o) => {
+        const on = value.includes(o)
+        return (
+          <button key={o} onClick={() => onToggle(o)} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 12px", border: `1px solid ${on ? R : BD}`, borderRadius: 8, background: on ? PAY.bg : W, cursor: "pointer", textAlign: "left", height: 46, boxSizing: "border-box", width: "100%" }}>
+            <div style={{ width: 18, height: 18, borderRadius: 4, border: `2px solid ${on ? R : BD}`, background: on ? R : W, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              {on && <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 5l2.5 2.5L8 3" stroke={W} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" /></svg>}
+            </div>
+            <span style={{ fontSize: 15, color: TD, fontWeight: on ? 500 : 400 }}>{o}</span>
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+/** Fila de Análisis que se abre: mes, IPC, total y flechita; el detalle abajo sobre fondo gris con línea arriba */
+export function PayExpandRow({ title, sub, total, items, last }: { title: string; sub?: string; total: string; items?: [string, string][]; last?: boolean }) {
+  const [open, setOpen] = React.useState(false)
+  const has = !!items?.length
+  return (
+    <div style={{ borderBottom: `1px solid ${last ? "transparent" : BD}` }}>
+      <button onClick={() => has && setOpen((o) => !o)} style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "flex-start", padding: "12px 16px", background: "none", border: "none", cursor: has ? "pointer" : "default", textAlign: "left", boxSizing: "border-box" }}>
+        <div>
+          <div style={{ fontSize: 15, color: TD }}>{title}</div>
+          {sub && <div style={{ fontSize: 13, color: TX, marginTop: 2 }}>{sub}</div>}
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div style={{ fontSize: 15, fontWeight: 500, color: R }}>{total}</div>
+          {has && <Arrow rotate={open ? 180 : 0} color={MU} />}
+        </div>
+      </button>
+      {open && has && (
+        <div style={{ background: PAY.bg, padding: "8px 16px 12px", borderTop: `1px solid ${BD}` }}>
+          {items!.map(([l, v]) => <div key={l} style={{ display: "flex", justifyContent: "space-between", padding: "6px 0" }}><span style={{ fontSize: 15, color: TD }}>{l}</span><span style={{ fontSize: 15, color: TX, fontWeight: 500 }}>{v}</span></div>)}
+        </div>
+      )}
+    </div>
+  )
+}

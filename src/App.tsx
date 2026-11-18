@@ -91,6 +91,7 @@ import { Segmented } from "@/components/controls/segmented"
 import { SplitSlider } from "@/components/controls/split-slider"
 import { Stepper } from "@/components/controls/stepper"
 import { TileGroup } from "@/components/controls/tile-group"
+import { ExpandRow, ExpandRowItem } from "@/components/controls/expand-row"
 import { IconTile } from "@/components/controls/icon-tile"
 import { FieldColumn } from "@/components/controls/field-column"
 import { OutfitStyle } from "@/outfit-style"
@@ -602,6 +603,23 @@ function ControlsDemo() {
       <ControlCard name="Reparto entre dos" use="Cuánto de cada cosa: seco/efecto, izquierda/derecha. Doble clic = mitad y mitad.">
         <SplitSlider left="Seco" right="Efecto" value={mix} onChange={setMix} className="max-w-sm" />
       </ControlCard>
+      <ControlCard name="Filas que se abren" use="Una lista adentro de una caja; al tocar una fila, el detalle aparece abajo en una caja M. Si el detalle tiene otra fila que se abre, su detalle va en blanco.">
+        <div className="w-full max-w-sm">
+          <ExpandRow defaultOpen title="Noviembre 2026" sub="IPC 2,2%" right={<span className="font-medium text-brand-text">$758.070</span>}>
+            <ExpandRow defaultOpen title="🏠 Casa" right={<span className="font-medium text-muted-foreground">$561.770</span>}>
+              <ExpandRowItem label="🛒 Supermercado" value="$320.000" />
+              <ExpandRowItem label="⚡ Servicios" value="$241.770" />
+            </ExpandRow>
+            <ExpandRow title="🤖 Personal" right={<span className="font-medium text-muted-foreground">$76.300</span>}>
+              <ExpandRowItem label="💊 Farmacia" value="$76.300" />
+            </ExpandRow>
+          </ExpandRow>
+          <ExpandRow title="Octubre 2026" sub="IPC 2,7%" right={<span className="font-medium text-brand-text">$638.070</span>}>
+            <ExpandRowItem label="🛒 Supermercado" value="$638.070" />
+          </ExpandRow>
+          <ExpandRow title="Septiembre 2026" sub="Sin gastos para abrir" right={<span className="font-medium text-brand-text">$0</span>} />
+        </div>
+      </ControlCard>
     </div>
   )
 }
@@ -790,7 +808,6 @@ export function App() {
                 ["Título de caja", "Geist semibold, 20px (clase title-box)", <div className="title-box">Agregar un sonido</div>],
                 ["Número grande quieto", "Geist light, muy grande", <div className="live-number text-6xl font-light tracking-tighter">$ 125.430<span className="text-muted-foreground">,50</span></div>],
                 ["Etiqueta", "Geist Mono, mayúsculas, 13px (clase eyebrow). La usa LOOP.", <span className="eyebrow">Total del mes</span>],
-                ["Etiqueta simple", "Geist normal, 13px, gris, sin mayúsculas (clase eyebrow-plain). Hoy no la usa ninguna app.", <span className="eyebrow-plain">Total del mes</span>],
                 ["Valor de un control", "Geist Mono semibold, 15px", <span className="live-number font-mono text-sm font-semibold">450ms · +3dB · 60%</span>],
                 ["Texto", "Geist regular", <p className="max-w-prose">Texto normal para párrafos y descripciones, cómodo en el celular.</p>],
                 ["Unidad / ayuda", "Chico y gris", <span className="text-sm text-muted-foreground">120 BPM · actualizado hace 2 min</span>],

@@ -30,12 +30,11 @@ const buttonVariants = cva(
           "bg-secondary text-destructive hover:bg-destructive hover:text-destructive-foreground",
         // Agregar algo nuevo: borde punteado y texto gris
         dashed:
-          "border-dashed border-border bg-transparent text-muted-foreground hover:border-brand hover:text-brand dark:border-input",
+          "border-dashed border-input bg-transparent text-muted-foreground hover:border-brand hover:text-brand",
       },
       size: {
         default:
           "h-10 gap-1.5 px-4 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",
-        xs: "h-6 gap-1 rounded-full px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
         sm: "h-8 gap-1 rounded-full px-3 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
         icon: "size-10",
         "icon-xs":

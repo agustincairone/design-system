@@ -125,7 +125,7 @@ export function AppliedStyle() {
             </div>
             <Button variant="dashed" className="w-full"><Plus className="size-4" /> Agregar nueva prenda</Button>
             <div className="flex items-center gap-3">
-              <span className="eyebrow-plain">Cancelar, la otra opción:</span>
+              <span className="text-sm text-muted-foreground">Cancelar, la otra opción:</span>
               <Button variant="destructive-soft">Cancelar</Button>
             </div>
             <div className="flex items-center gap-3"><Button variant="outline" size="icon-sm" aria-label="Anterior"><ChevronLeft className="size-4" /></Button><span className="text-sm font-medium">Zapatillas</span></div>
@@ -163,7 +163,7 @@ export function AppliedStyle() {
               </BottomSheet>],
             ].map(([l, node]) => (
               <div key={l as string}>
-                <p className="eyebrow-plain mb-2">{l}</p>
+                <p className="mb-2 text-sm text-muted-foreground">{l}</p>
                 <div className="h-[340px] overflow-hidden rounded-box-l bg-card ring-1 ring-foreground/15">{node}</div>
               </div>
             ))}
