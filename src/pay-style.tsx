@@ -163,14 +163,14 @@ export function PayStyle() {
           <div className="flex flex-col gap-box-gap">
             <div className="flex items-center gap-3 rounded-box-l bg-card p-box-l">
               <div className="flex-1">
-                <span className="text-sm text-foreground">Deuda total</span>
+                <span className="text-sm font-medium text-foreground">Deuda total</span>
                 <div className="mt-1 text-2xl font-medium text-brand-text">$676.890</div>
                 <div className="text-sm text-muted-foreground"><span className="font-medium text-foreground">Sofi</span> le debe a <span className="font-medium text-foreground">Agus</span></div>
               </div>
               <Button>Saldar deuda</Button>
             </div>
             <button className="flex items-center justify-between rounded-box-l bg-card p-box-l text-left">
-              <div><span className="text-sm text-foreground">Total del mes</span><div className="mt-1 text-2xl font-medium text-brand-text">$943.200</div></div>
+              <div><span className="text-sm font-medium text-foreground">Total del mes</span><div className="mt-1 text-2xl font-medium text-brand-text">$943.200</div></div>
               <ChevronDown className="size-4 text-muted-foreground" />
             </button>
           </div>
