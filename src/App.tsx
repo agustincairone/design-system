@@ -809,6 +809,9 @@ export function App() {
                 ["Número grande quieto", "Geist light, muy grande", <div className="live-number text-6xl font-light tracking-tighter">$ 125.430<span className="text-muted-foreground">,50</span></div>],
                 ["Etiqueta", "Geist Mono, mayúsculas, 13px (clase eyebrow). La usa LOOP.", <span className="eyebrow">Total del mes</span>],
                 ["Monto importante", "Geist medium, 26px (text-2xl). Deuda, total del mes.", <div className="text-2xl font-medium text-brand-text">$758.070</div>],
+                ["Número de la placa", "36px (text-4xl). Los números quietos de la placa de LOOP: canales y pasos.", <span className="live-number font-readout text-4xl leading-none font-bold">16</span>],
+                ["Número grande de pantalla", "48px (text-5xl). El tempo y el reloj de LOOP.", <span className="live-number font-readout text-5xl font-bold">110</span>],
+                ["Nota mini", "10px (text-2xs). Sólo adentro de piezas chicas, como la nota de un paso de LOOP.", <span className="font-mono text-2xs font-semibold">C#2</span>],
                 ["Emoji grande", "48px (text-emoji). Un solo tamaño, para pantallas especiales: login, error, unirse a un grupo.", <span className="text-emoji">🔒</span>],
                 ["Valor de un control", "Geist Mono semibold, 15px", <span className="live-number font-mono text-sm font-semibold">450ms · +3dB · 60%</span>],
                 ["Texto", "Geist regular", <p className="max-w-prose">Texto normal para párrafos y descripciones, cómodo en el celular.</p>],
@@ -829,7 +832,7 @@ export function App() {
           <Section
             id="fuera-de-escala"
             title="Fuera de escala"
-            description="La escala es 13 · 15 · 18 · 20 · 26 (más los títulos grandes). Acá está todo lo que usa el paso chico (13px) y el grande (26px), con una muestra de cada uno, y lo que queda fuera de la escala."
+            description="La escala es 10 · 13 · 15 · 18 · 20 · 26 · 36 · 48 (más los títulos grandes). Acá está todo lo que usa el paso chico (13px) y el grande (26px), con una muestra de cada uno, y lo que queda fuera de la escala."
           >
             <TypeAudit />
           </Section>

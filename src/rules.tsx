@@ -47,7 +47,7 @@ const RULES: { title: string; items: string[] }[] = [
     title: "Texto",
     items: [
       "Letra Geist. La letra de puntitos (Doto) es sólo para números: el del fleje y el dato de cada sección.",
-      "Tamaños de letra sólo de la escala: 13, 15, 18, 20 y 26px (y los títulos grandes). El texto base es de 15px, el chico de 13px y los montos importantes de 26px. En las apps nunca se escribe un tamaño a mano: siempre la clase del DS. Si algo tiene que ser más grande, se sube un paso entero, nunca 1px.",
+      "Tamaños de letra sólo de la escala: 10, 13, 15, 18, 20, 26, 36 y 48px (y los títulos grandes). El texto base es de 15px, el chico de 13px y los montos importantes de 26px. 10 es sólo para adentro de piezas chicas (la nota de un paso); 36 y 48 para números grandes (la placa, el tempo, el reloj). En las apps nunca se escribe un tamaño a mano: siempre la clase del DS. Si algo tiene que ser más grande, se sube un paso entero, nunca 1px.",
       "Negro = el color del texto del DS (foreground): stone-900 en claro y casi blanco en oscuro. Nunca #000000.",
       "El título de las cajas (Deuda total, Total del mes, Gastos fijos) va en negro, en 15px y medium (500); el monto abajo, en 26px.",
       "Labels de los inputs: gris, del mismo tamaño que el input (15px) y a 4px arriba.",
