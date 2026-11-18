@@ -76,7 +76,7 @@ const RULES: { title: string; items: string[] }[] = [
     title: "Ventanas",
     items: [
       "Todas las ventanas salen desde abajo (no hay ventana centrada ni panel lateral).",
-      "No hay menús desplegables: las opciones de algo (el ⋮ de una fila, configurar un grupo) abren una hoja desde abajo con sus botones.",
+      "El ⋮ de una fila abre el menú desplegable del DS, al lado del botón (Eliminar va en rojo). Las opciones más grandes, como configurar un grupo, abren una hoja desde abajo con sus botones.",
       "Flotan con 16px de aire a los costados y abajo, ocupando el ancho que queda.",
       "Título de 18px con peso 500, con una línea divisoria de lado a lado debajo. La cruz es un botón redondo gris sin borde.",
       "Acordeón flotante: caja con título, \"¿Qué es esto?\" (abre una hoja con la explicación) y chevron al final. Al abrirlo crece hacia arriba desde donde está, sobre la página, con el fondo desenfocado como las hojas.",
