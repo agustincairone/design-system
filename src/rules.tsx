@@ -44,7 +44,7 @@ const RULES: { title: string; items: string[] }[] = [
     title: "Texto",
     items: [
       "Letra Geist. La letra de puntitos (Doto) es sólo para números: el del fleje y el dato de cada sección.",
-      "Tamaños de letra sólo de la escala: 12, 15, 18, 20px (y los títulos grandes). El texto base es de 15px. Si algo tiene que ser más grande, se sube un paso entero, nunca 1px.",
+      "Tamaños de letra sólo de la escala: 13, 15, 18, 20px (y los títulos grandes). El texto base es de 15px y el chico de 13px. Si algo tiene que ser más grande, se sube un paso entero, nunca 1px.",
       "Labels de los inputs: gris, del mismo tamaño que el input (15px) y a 6px arriba.",
       "Dos etiquetas chicas: en mayúsculas (LOOP) y simple (outfit). Cada app usa una.",
       "Inputs con letra de 15px siempre. Cada app lleva maximum-scale=1 en index.html para que el iPhone no haga zoom.",

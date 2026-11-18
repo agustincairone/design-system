@@ -85,7 +85,7 @@ export function XYPad({
         />
       </div>
       {(labelX || labelY) && (
-        <div className="flex gap-3 font-mono text-[11px] text-muted-foreground">
+        <div className="flex gap-3 font-mono text-xs text-muted-foreground">
           {labelX && (
             <span>
               {labelX} <span className="live-number text-foreground">{Math.round(x * 100)}%</span>

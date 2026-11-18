@@ -62,7 +62,7 @@ export function ItemPhoto({ item, className, gray, framed = true, selected }: { 
 
 function ItemText({ item, className }: { item: Item; className?: string }) {
   return (
-    <div className={cn("flex min-w-0 flex-col items-center gap-0.5 text-center text-[11px] leading-[14px] font-medium", className)}>
+    <div className={cn("flex min-w-0 flex-col items-center gap-0.5 text-center text-xs leading-4 font-medium", className)}>
       {item.marca && <p className="max-w-full truncate text-foreground">{item.marca}</p>}
       {item.modelo && <p className="max-w-full truncate text-muted-foreground">{item.modelo}</p>}
       {item.tipo && <p className="max-w-full truncate text-muted-foreground/70">{item.tipo}</p>}
@@ -98,7 +98,7 @@ export function ItemCardSmall({ item }: { item: Item }) {
     <div className="flex flex-col items-center gap-1.5">
       <ItemPhoto item={item} className="size-[60px] bg-tile" />
       <ColorDots colors={item.colors} size={10} />
-      <ItemText item={item} className="text-[10px]" />
+      <ItemText item={item} />
     </div>
   )
 }

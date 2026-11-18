@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
 // No usan rojo: el rojo está reservado para borrar.
 
 const base =
-  "grid size-6 shrink-0 place-items-center rounded-full border bg-secondary font-mono text-[11px] leading-none font-bold [&_svg]:size-3 text-muted-foreground transition-colors hover:border-ring hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
+  "grid size-6 shrink-0 place-items-center rounded-full border bg-secondary font-mono text-xs leading-none font-bold [&_svg]:size-3 text-muted-foreground transition-colors hover:border-ring hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:outline-none"
 
 export function PowerButton({
   off,

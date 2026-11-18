@@ -789,8 +789,8 @@ export function App() {
                 ["Título de página", "Geist semibold, 40px (clase title-page)", <div className="title-page">Mis pagos</div>],
                 ["Título de caja", "Geist semibold, 20px (clase title-box)", <div className="title-box">Agregar un sonido</div>],
                 ["Número grande quieto", "Geist light, muy grande", <div className="live-number text-6xl font-light tracking-tighter">$ 125.430<span className="text-muted-foreground">,50</span></div>],
-                ["Etiqueta", "Geist Mono, mayúsculas, 11px (clase eyebrow). La usa LOOP.", <span className="eyebrow">Total del mes</span>],
-                ["Etiqueta simple", "Geist normal, 12px, gris, sin mayúsculas (clase eyebrow-plain). La usa outfit y los labels de los inputs.", <span className="eyebrow-plain">Total del mes</span>],
+                ["Etiqueta", "Geist Mono, mayúsculas, 13px (clase eyebrow). La usa LOOP.", <span className="eyebrow">Total del mes</span>],
+                ["Etiqueta simple", "Geist normal, 13px, gris, sin mayúsculas (clase eyebrow-plain). Hoy no la usa ninguna app.", <span className="eyebrow-plain">Total del mes</span>],
                 ["Valor de un control", "Geist Mono semibold, 15px", <span className="live-number font-mono text-sm font-semibold">450ms · +3dB · 60%</span>],
                 ["Texto", "Geist regular", <p className="max-w-prose">Texto normal para párrafos y descripciones, cómodo en el celular.</p>],
                 ["Unidad / ayuda", "Chico y gris", <span className="text-sm text-muted-foreground">120 BPM · actualizado hace 2 min</span>],
@@ -810,7 +810,7 @@ export function App() {
           <Section
             id="fuera-de-escala"
             title="Fuera de escala"
-            description="La escala es 12 · 15 · 18 · 20 (más los títulos grandes). Acá está todo lo que usa 12px y todo lo que todavía tiene un tamaño fuera de la escala, con una muestra de cada uno."
+            description="La escala es 13 · 15 · 18 · 20 (más los títulos grandes). Acá está todo lo que usa el paso chico (13px), con una muestra de cada uno, y lo que queda fuera de la escala."
           >
             <TypeAudit />
           </Section>

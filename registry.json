@@ -18,6 +18,8 @@
           "font-sans": "'Geist Variable', ui-sans-serif, system-ui, sans-serif",
           "text-sm": "0.9375rem",
           "text-sm--line-height": "calc(1.375 / 0.9375)",
+          "text-xs": "0.8125rem",
+          "text-xs--line-height": "calc(1.125 / 0.8125)",
           "font-mono": "'Geist Mono Variable', ui-monospace, monospace",
           "font-heading": "var(--font-sans)",
           "font-clock": "'Geist Pixel Circle', 'Geist Mono Variable', ui-monospace, monospace",
@@ -142,16 +144,16 @@
         "@import \"./styles/geist-pixel-circle.css\"": {},
         "@utility eyebrow": {
           "font-family": "var(--font-mono)",
-          "font-size": "0.6875rem",
-          "line-height": "1rem",
+          "font-size": "0.8125rem",
+          "line-height": "1.125rem",
           "letter-spacing": "0.14em",
           "text-transform": "uppercase",
           "color": "var(--muted-foreground)"
         },
         "@utility eyebrow-plain": {
           "font-family": "var(--font-sans)",
-          "font-size": "0.75rem",
-          "line-height": "1rem",
+          "font-size": "0.8125rem",
+          "line-height": "1.125rem",
           "color": "var(--muted-foreground)"
         },
         "@utility live-number": {

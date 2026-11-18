@@ -12,10 +12,12 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Escala de letra: 12 · 15 · 18 · 20 (más los títulos grandes). El texto base (text-sm) es de 15px. */
+/* Escala de letra: 13 · 15 · 18 · 20 (más los títulos grandes). Texto base (text-sm) 15px; el paso chico (text-xs) 13px. */
 @theme {
     --text-sm: 0.9375rem;
     --text-sm--line-height: calc(1.375 / 0.9375);
+    --text-xs: 0.8125rem;
+    --text-xs--line-height: calc(1.125 / 0.8125);
 }
 
 @theme inline {
@@ -195,18 +197,18 @@
 
 @utility eyebrow {
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    line-height: 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted-foreground);
 }
 
-/* Etiqueta simple: letra normal (Geist) de 12px en gris, sin mayúsculas (ej: outfit-tracker, labels de inputs). */
+/* Etiqueta simple: letra normal (Geist) de 13px en gris, sin mayúsculas (ej: outfit-tracker, labels de inputs). */
 @utility eyebrow-plain {
     font-family: var(--font-sans);
-    font-size: 0.75rem;
-    line-height: 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
     color: var(--muted-foreground);
 }
 

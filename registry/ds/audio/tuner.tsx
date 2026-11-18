@@ -106,7 +106,7 @@ export function Tuner({
           )}
         />
         {isMajor && (
-          <div className="mt-1.5 -translate-x-1/2 font-mono text-[10px] text-muted-foreground">
+          <div className="mt-1.5 -translate-x-1/2 font-mono text-xs text-muted-foreground">
             {Number(v.toFixed(decimals))}
           </div>
         )}

@@ -133,7 +133,7 @@ export function Dial({
         <span className="live-number leading-none font-light tracking-tight" style={{ fontSize: size * 0.2 }}>
           {format(value)}
         </span>
-        {label && <span className="mt-1 text-[11px] text-muted-foreground">{label}</span>}
+        {label && <span className="mt-1 text-xs text-muted-foreground">{label}</span>}
       </div>
     </div>
   )
