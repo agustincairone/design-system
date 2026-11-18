@@ -55,7 +55,10 @@
           "color-card-hover": "var(--card-hover)",
           "color-secondary-hover": "var(--secondary-hover)",
           "color-destructive-hover": "var(--destructive-hover)",
-          "color-brand-hover": "var(--brand-hover)"
+          "color-brand-hover": "var(--brand-hover)",
+          "color-dots": "var(--dots)",
+          "radius-bar": "4px",
+          "container-narrow": "320px"
         },
         "light": {
           "background": "oklch(92.3% 0.003 48.717)",
@@ -105,7 +108,8 @@
           "card-hover": "oklch(97% 0.001 106.424)",
           "secondary-hover": "oklch(100% 0 0)",
           "destructive-hover": "oklch(63.7% 0.237 25.331)",
-          "brand-hover": "oklch(26.8% 0.007 34.298)"
+          "brand-hover": "oklch(26.8% 0.007 34.298)",
+          "dots": "oklch(86.9% 0.005 56.366)"
         },
         "dark": {
           "background": "oklch(14.7% 0.004 49.25)",
@@ -154,7 +158,8 @@
           "card-hover": "oklch(26.8% 0.007 34.298)",
           "secondary-hover": "oklch(37.4% 0.01 67.558)",
           "destructive-hover": "oklch(70.4% 0.191 22.216)",
-          "brand-hover": "oklch(98.5% 0.001 106.423)"
+          "brand-hover": "oklch(98.5% 0.001 106.423)",
+          "dots": "oklch(26.8% 0.007 34.298)"
         }
       },
       "css": {

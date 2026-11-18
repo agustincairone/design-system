@@ -81,6 +81,10 @@
     --radius-box-s: 12px;
     --radius-box-m: 16px;
     --radius-box-l: 16px;
+    /* Barras de los gráficos (sólo las puntas de arriba) */
+    --radius-bar: 4px;
+    /* Ancho del contenido angosto de las pantallas especiales (login, unirse a un grupo, micrófono) */
+    --container-narrow: 320px;
     /* Escala de espacios: 4 · 8 · 12 · 16 · 20 · 24 (box-2xs · box-xs · box-s · box-m · box-l · box-xl), más 40 entre bloques (section) */
     --spacing-box-2xs: 4px;
     --spacing-box-xs: 8px;
@@ -95,6 +99,7 @@
     --color-secondary-hover: var(--secondary-hover);
     --color-destructive-hover: var(--destructive-hover);
     --color-brand-hover: var(--brand-hover);
+    --color-dots: var(--dots);
     --color-raised-2: var(--raised-2);
     --spacing-box-gap: 8px;
     --spacing-section: 40px;
@@ -147,6 +152,7 @@
     --tile: oklch(98.5% 0.001 106.423); /* fichas con foto (más claro que inset) */
     --raised: oklch(100% 0 0); /* lo que va encima de inset/tile */
     --raised-2: oklch(100% 0 0); /* lo que va encima de raised */
+    --dots: oklch(86.9% 0.005 56.366); /* línea de puntos: stone-300 (el fondo ya es stone-200) */
     /* Hover: siempre un tono MÁS CLARO, nunca más oscuro */
     --card-hover: oklch(97% 0.001 106.424); /* lo blanco: no hay nada más claro que el blanco, así que en claro va stone-100 (única excepción) */
     --secondary-hover: oklch(100% 0 0); /* lo gris (ficha, botón gris): blanco */
@@ -199,6 +205,7 @@
     --tile: oklch(26.8% 0.007 34.298);
     --raised: oklch(37.4% 0.01 67.558);
     --raised-2: oklch(44.4% 0.011 73.639);
+    --dots: oklch(26.8% 0.007 34.298); /* stone-800, como los divisores */
     --card-hover: oklch(26.8% 0.007 34.298); /* la caja (stone-900) un tono más clara: stone-800 */
     --secondary-hover: oklch(37.4% 0.01 67.558); /* lo gris (stone-800) un tono más claro: stone-700 */
     --destructive-hover: oklch(70.4% 0.191 22.216); /* red-400 */

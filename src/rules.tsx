@@ -36,6 +36,7 @@ const RULES: { title: string; items: string[] }[] = [
     title: "Cajas",
     items: [
       "El color depende de dónde está la caja: sobre la página, blanca; adentro de otra caja, gris. El relleno se elige de las tres medidas del DS según lo que le quede mejor a la caja: L 20px (p-box-l), M 16px (p-box-m) o S 12px (p-box-s). Nunca otro número.",
+      "Redondeos sólo del DS: cajas (box-s 12, box-m y box-l 16), píldoras (full) y barras de gráficos (bar, 4px). Ancho del contenido angosto: narrow (320px). La línea de puntos es la pieza DotsLine, del color dots.",
       "Espacios (márgenes, separaciones, rellenos) sólo de la escala: 4 · 8 · 12 · 16 · 20 · 24px (box-2xs · box-xs · box-s · box-m · box-l · box-xl). Entre bloques grandes, 40px (section). Al final de cada pantalla, 112px libres (screen-end) para que la barra de abajo no tape nada.",
       "Las cajas no tienen borde: se separan sólo por el color de fondo.",
       "8px de separación entre cajas.",

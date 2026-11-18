@@ -109,10 +109,20 @@ export function AppHero({
         )}
       </div>
       {aside}
-      {/* línea de puntos redondos de 2px, cada 6px. Va sobre el fondo de la página:
-          en oscuro stone-800 (como los divisores); en claro stone-300, porque el fondo ya es stone-200 */}
-      <span aria-hidden className="absolute inset-x-0 bottom-0 h-0.5 bg-[radial-gradient(circle,currentColor_1px,transparent_1.2px)] bg-size-[6px_2px] bg-repeat-x text-stone-300 dark:text-stone-800" />
+      <DotsLine />
     </header>
+  )
+}
+
+// Línea de puntos redondos de 2px, cada 6px, abajo de lo que la contiene (que tiene que ser `relative`).
+// Va sobre el fondo de la página, del color `dots` (stone-300 en claro, stone-800 en oscuro).
+export function DotsLine({ className }: { className?: string }) {
+  return (
+    <span
+      aria-hidden
+      data-slot="dots-line"
+      className={cn("pointer-events-none absolute inset-x-0 bottom-0 h-0.5 bg-[radial-gradient(circle,currentColor_1px,transparent_1.2px)] bg-size-[6px_2px] bg-repeat-x text-dots", className)}
+    />
   )
 }
 
