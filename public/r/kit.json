@@ -13,7 +13,7 @@
     "@ds/select",
     "tooltip",
     "switch",
-    "checkbox",
+    "@ds/checkbox",
     "@ds/slider",
     "@ds/toggle",
     "skeleton",

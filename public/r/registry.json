@@ -532,6 +532,26 @@
       ]
     },
     {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "checkbox",
+      "description": "Casilla para elegir varias; adentro de una caja M va en raised.",
+      "dependencies": [
+        "radix-ui",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/checkbox.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/checkbox.tsx"
+        }
+      ]
+    },
+    {
       "name": "select",
       "type": "registry:ui",
       "title": "select",
@@ -763,7 +783,7 @@
         "@ds/select",
         "tooltip",
         "switch",
-        "checkbox",
+        "@ds/checkbox",
         "@ds/slider",
         "@ds/toggle",
         "skeleton",
