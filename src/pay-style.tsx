@@ -164,7 +164,7 @@ export function PayStyle() {
                 <div className="mt-1 text-2xl font-semibold tracking-tight text-brand-text">$676.890</div>
                 <div className="text-sm text-muted-foreground"><span className="font-medium text-foreground">Sofi</span> le debe a <span className="font-medium text-foreground">Agus</span></div>
               </div>
-              <Button size="sm">Saldar deuda</Button>
+              <Button>Saldar deuda</Button>
             </div>
             <button className="flex items-center justify-between rounded-box-l bg-card p-box-l text-left">
               <div><span className="eyebrow-plain">Total del mes</span><div className="mt-1 text-xl font-semibold tracking-tight">$943.200</div></div>
