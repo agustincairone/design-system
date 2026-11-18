@@ -64,6 +64,7 @@ import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
 import { Chip } from "@/components/ui/chip"
+import { TypeAudit } from "@/type-audit"
 import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
 import {
   Tooltip,
@@ -172,6 +173,7 @@ const NAV = [
   ["fleje", "Fleje"],
   ["colores", "Colores"],
   ["tipografia", "Tipografía"],
+  ["fuera-de-escala", "Fuera de escala"],
   ["cajas", "Cajas"],
   ["numeros", "Números en vivo"],
   ["audio", "Audio"],
@@ -803,6 +805,14 @@ export function App() {
                 </div>
               ))}
             </div>
+          </Section>
+
+          <Section
+            id="fuera-de-escala"
+            title="Fuera de escala"
+            description="La escala es 12 · 15 · 18 · 20 (más los títulos grandes). Acá está todo lo que usa 12px y todo lo que todavía tiene un tamaño fuera de la escala, con una muestra de cada uno."
+          >
+            <TypeAudit />
           </Section>
 
           <Section
