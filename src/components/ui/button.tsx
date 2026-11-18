@@ -22,6 +22,8 @@ const buttonVariants = cva(
           "bg-destructive text-destructive-foreground hover:bg-destructive-hover focus-visible:border-destructive/40 focus-visible:ring-destructive/30",
         // Botón de solo texto: siempre subrayado y siempre del tamaño normal (14px), nunca chico
         link: "text-brand-text underline underline-offset-4 hover:decoration-2",
+        // Lo mismo pero en rojo, para cancelar o borrar sin que grite. Ej: cancelar la carga por voz
+        "destructive-link": "text-destructive underline underline-offset-4 hover:decoration-2",
         // Borrar algo sin que grite: borde y texto rojos, se llena de rojo al pasar el mouse
         "destructive-outline":
           "border-border bg-transparent text-destructive hover:border-destructive hover:bg-destructive hover:text-destructive-foreground",

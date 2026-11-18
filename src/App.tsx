@@ -903,6 +903,7 @@ export function App() {
                 <Button variant="destructive-soft">Cancelar</Button>
                 <Button variant="dashed"><Plus /> Agregar</Button>
                 <Button variant="link">Link</Button>
+                <Button variant="destructive-link">Cancelar</Button>
                 <Button disabled>Deshabilitado</Button>
               </Demo>
               <Demo label="Tamaños e íconos">
