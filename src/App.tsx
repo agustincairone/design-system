@@ -63,7 +63,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { Slider } from "@/components/ui/slider"
 import { Switch } from "@/components/ui/switch"
 import { Textarea } from "@/components/ui/textarea"
-import { Chip } from "@/components/ui/chip"
+import { Chip, ChipGroup } from "@/components/ui/chip"
 import { TypeAudit } from "@/type-audit"
 import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
 import {
@@ -377,7 +377,7 @@ function ChipsDemo() {
   const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
     <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
       <span className="eyebrow w-40 shrink-0">{label}</span>
-      <div className="flex flex-wrap items-center gap-2">{children}</div>
+      <ChipGroup className="items-center">{children}</ChipGroup>
     </div>
   )
   return (
@@ -812,6 +812,7 @@ export function App() {
                 ["Número de la placa", "36px (text-4xl). Los números quietos de la placa de LOOP: canales y pasos.", <span className="live-number font-readout text-4xl leading-none font-bold">16</span>],
                 ["Número grande de pantalla", "48px (text-5xl). El tempo y el reloj de LOOP.", <span className="live-number font-readout text-5xl font-bold">110</span>],
                 ["Nota mini", "10px (text-2xs). Sólo adentro de piezas chicas, como la nota de un paso de LOOP.", <span className="font-mono text-2xs font-semibold">C#2</span>],
+                ["Emoji de fila", "30px (text-3xl). El emoji al principio de cada fila del inicio (los grupos de pay).", <span className="text-3xl leading-none">🏠</span>],
                 ["Emoji grande", "48px (text-emoji). Un solo tamaño, para pantallas especiales: login, error, unirse a un grupo.", <span className="text-emoji">🔒</span>],
                 ["Valor de un control", "Geist Mono semibold, 15px", <span className="live-number font-mono text-sm font-semibold">450ms · +3dB · 60%</span>],
                 ["Texto", "Geist regular", <p className="max-w-prose">Texto normal para párrafos y descripciones, cómodo en el celular.</p>],
@@ -832,7 +833,7 @@ export function App() {
           <Section
             id="fuera-de-escala"
             title="Fuera de escala"
-            description="La escala es 10 · 13 · 15 · 18 · 20 · 26 · 36 · 48 (más los títulos grandes). Acá está todo lo que usa el paso chico (13px) y el grande (26px), con una muestra de cada uno, y lo que queda fuera de la escala."
+            description="La escala es 10 · 13 · 15 · 18 · 20 · 26 · 30 · 36 · 48 (más los títulos grandes). Acá está todo lo que usa el paso chico (13px) y el grande (26px), con una muestra de cada uno, y lo que queda fuera de la escala."
           >
             <TypeAudit />
           </Section>

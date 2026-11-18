@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 // Chip: opción chiquita que se prende y se apaga (filtros, valores guardados).
 // Apagado = borde gris; elegido = relleno del color principal.
 // Con `icon` lleva un ícono adelante; con `onRemove`, una cruz (del mismo color que el texto) para borrarlo.
+// Relleno de 8px a los costados. Varios chips van siempre adentro de un ChipGroup (4px entre uno y otro).
 function Chip({
   selected = false,
   icon: Icon,
@@ -29,14 +30,12 @@ function Chip({
       aria-pressed={selected}
       disabled={disabled}
       className={cn(
-        "inline-flex h-8 shrink-0 items-center gap-1.5 rounded-full border px-3 text-xs font-medium whitespace-nowrap transition-colors outline-none select-none focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50",
+        "inline-flex h-8 shrink-0 items-center gap-1.5 rounded-full border px-box-xs text-xs font-medium whitespace-nowrap transition-colors outline-none select-none focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50",
         selected
           ? "border-transparent bg-primary text-primary-foreground hover:bg-brand-hover"
           : onRemove
             ? "border-input bg-transparent text-foreground hover:bg-card-hover dark:border-input" // con cruz: al pasar el mouse sólo se pinta el fondo de gris
             : "border-input bg-transparent text-foreground hover:border-brand hover:text-brand dark:border-input",
-        Icon && "pl-2.5",
-        onRemove && "pr-2",
         className
       )}
       {...props}
@@ -60,4 +59,15 @@ function Chip({
   )
 }
 
-export { Chip }
+// Fila de chips: siempre a 4px uno del otro. Con `scroll`, en una sola línea que se desliza de costado.
+function ChipGroup({ scroll = false, className, ...props }: React.ComponentProps<"div"> & { scroll?: boolean }) {
+  return (
+    <div
+      data-slot="chip-group"
+      className={cn("flex gap-box-2xs", scroll ? "overflow-x-auto [scrollbar-width:none]" : "flex-wrap", className)}
+      {...props}
+    />
+  )
+}
+
+export { Chip, ChipGroup }

@@ -4,7 +4,7 @@ import { ImageIcon } from "lucide-react"
 
 import { Segmented } from "@/components/controls/segmented"
 import { TabBar } from "@/components/controls/tab-bar"
-import { Chip } from "@/components/ui/chip"
+import { Chip, ChipGroup } from "@/components/ui/chip"
 import { PFieldLabel, PInputAdd } from "@/outfit-proposals"
 import { Button } from "@/components/ui/button"
 import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
@@ -95,9 +95,9 @@ export function AppliedStyle() {
 
         <Rule title="Filtro con chips" rule="Estilo 1: el Chip del sistema. Uno elegido a la vez; el elegido va del color de la app.">
           <div className="rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
-            <div className="flex flex-wrap gap-2">
+            <ChipGroup>
               {["Todo", "Adidas", "Nike", "Vans"].map((b) => <Chip key={b} selected={brand === b} onClick={() => setBrand(b)}>{b}</Chip>)}
-            </div>
+            </ChipGroup>
           </div>
         </Rule>
 
@@ -105,9 +105,9 @@ export function AppliedStyle() {
           <div className="rounded-box-l bg-card p-box-l md:max-w-[calc(50%-6px)]">
             <PFieldLabel>Marca</PFieldLabel>
             <PInputAdd value={text} onChange={setText} onAdd={() => { const v = text.trim(); if (v && !saved.includes(v)) setSaved((p) => [...p, v]); setPick(v); setText("") }} placeholder="Agregar marca..." />
-            <div className="mt-2 flex flex-wrap gap-2">
+            <ChipGroup className="mt-2">
               {saved.map((b) => <Chip key={b} selected={pick === b} onClick={() => setPick(b)} onRemove={() => setSaved((p) => p.filter((x) => x !== b))} removeLabel={"Borrar " + b}>{b}</Chip>)}
-            </div>
+            </ChipGroup>
           </div>
         </Rule>
 
