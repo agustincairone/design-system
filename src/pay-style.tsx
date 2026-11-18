@@ -406,7 +406,7 @@ export function PayStyle() {
   )
 }
 
-// Elegir varias: casillas del sistema (Checkbox + texto), una abajo de la otra, adentro de una caja M
+// Elegir varias: casillas del sistema (Checkbox + texto), cada una en su caja S (toda la caja se puede tocar)
 function SplitsCompare() {
   const OPTS = ["70/30", "60/40", "50/50"]
   const [sel, setSel] = React.useState(["60/40", "50/50"])
@@ -415,14 +415,14 @@ function SplitsCompare() {
     <Compare
       name="Elegir varias"
       use="Splits disponibles al crear o editar un grupo (por lo menos uno)."
-      oneNote="casillas en caja M"
+      oneNote="casillas, cada una en una caja S"
       one={
-        <div data-variant="inset" className="flex flex-col gap-3 rounded-box-m bg-inset p-box-m">
+        <div className="flex flex-col gap-box-gap">
           {OPTS.map((o) => (
-            <div key={o} className="flex items-center gap-2">
-              <Checkbox id={`split-${o}`} checked={sel.includes(o)} onCheckedChange={() => toggle(o)} />
-              <Label htmlFor={`split-${o}`}>{o}</Label>
-            </div>
+            <Label key={o} data-variant="inset" className="rounded-box-s bg-inset p-box-s">
+              <Checkbox checked={sel.includes(o)} onCheckedChange={() => toggle(o)} />
+              {o}
+            </Label>
           ))}
         </div>
       }
