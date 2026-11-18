@@ -34,7 +34,7 @@ const RULES: { title: string; items: string[] }[] = [
   {
     title: "Cajas",
     items: [
-      "Tres tamaños: L (sobre la página, blanca), M (adentro de otra caja, gris) y S (fichas). Siempre los mismos radios y rellenos.",
+      "El color depende de dónde está la caja: sobre la página, blanca; adentro de otra caja, gris. El relleno se elige de las tres medidas del DS según lo que le quede mejor a la caja: L 20px (p-box-l), M 16px (p-box-m) o S 12px (p-box-s). Nunca otro número.",
       "Las cajas no tienen borde: se separan sólo por el color de fondo.",
       "8px de separación entre cajas.",
       "Nada de adornos: ni barras de color al costado ni títulos en mayúsculas.",

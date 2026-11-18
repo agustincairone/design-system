@@ -836,7 +836,7 @@ export function App() {
           <Section
             id="cajas"
             title="Cajas"
-            description="Tamaños fijos para todas las cajas. Usá siempre estos, nunca otros: L sobre el fondo de la página, M adentro de otra caja (gris clarito, sin borde), S para cajitas chicas. Entre caja y caja siempre hay 8px (gap-box-gap); entre bloques grandes (o grupos dentro de una caja) 40px (gap-section). Las cajas nunca llevan borde: se separan sólo por el color de fondo."
+            description="Las cajas nunca llevan borde: se separan sólo por el color de fondo. Sobre el fondo de la página la caja es blanca; adentro de otra caja, gris clarito. El relleno se elige de estas tres medidas según lo que le quede mejor a cada caja: L 20px, M 16px o S 12px (nunca otro número). Entre caja y caja siempre hay 8px (gap-box-gap); entre bloques grandes (o grupos dentro de una caja) 40px (gap-section)."
           >
             <div className="rounded-box-l bg-card p-box-l">
               <p className="eyebrow mb-3">L · esquinas 16 · relleno 20</p>

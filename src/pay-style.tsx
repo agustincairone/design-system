@@ -161,7 +161,7 @@ export function PayStyle() {
         bare
         one={
           <div className="flex flex-col gap-box-gap">
-            <div className="flex items-center gap-3 rounded-box-l bg-card p-box-l">
+            <div className="flex items-center gap-3 rounded-box-l bg-card p-box-m">
               <div className="flex-1">
                 <span className="text-sm font-medium text-foreground">Deuda total</span>
                 <div className="mt-1 text-2xl font-medium text-brand-text">$676.890</div>
@@ -169,7 +169,7 @@ export function PayStyle() {
               </div>
               <Button>Saldar deuda</Button>
             </div>
-            <button className="flex items-center justify-between rounded-box-l bg-card p-box-l text-left">
+            <button className="flex items-center justify-between rounded-box-l bg-card p-box-m text-left">
               <div><span className="text-sm font-medium text-foreground">Total del mes</span><div className="mt-1 text-2xl font-medium text-brand-text">$943.200</div></div>
               <ChevronDown className="size-4 text-muted-foreground" />
             </button>
