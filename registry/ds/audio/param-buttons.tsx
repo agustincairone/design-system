@@ -26,7 +26,7 @@ export function PowerButton({
       onClick={onToggle}
       title={off ? "Turn on" : "Turn off"}
       aria-pressed={!!off}
-      className={cn(base, off ? "border-brand bg-brand text-brand-foreground hover:border-brand-strong hover:bg-brand-strong hover:text-brand-foreground" : "text-brand hover:text-brand-strong", className)}
+      className={cn(base, off ? "border-brand bg-brand text-brand-foreground hover:border-brand-hover hover:bg-brand-hover hover:text-brand-foreground" : "text-brand hover:text-brand-strong", className)}
     >
       <Power strokeWidth={2.25} />
     </button>

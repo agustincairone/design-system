@@ -11,6 +11,7 @@
   --sidebar-primary-foreground: oklch(100% 0 0);
   --sidebar-ring: oklch(64.6% 0.222 41.116);
   --brand-strong: oklch(55.3% 0.195 38.402);
+  --brand-hover: oklch(70.5% 0.213 47.604);
 }
 
 .dark {
@@ -25,4 +26,5 @@
   --sidebar-primary-foreground: oklch(100% 0 0);
   --sidebar-ring: oklch(64.6% 0.222 41.116);
   --brand-strong: oklch(55.3% 0.195 38.402);
+  --brand-hover: oklch(70.5% 0.213 47.604);
 }

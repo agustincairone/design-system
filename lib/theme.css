@@ -93,7 +93,8 @@
     --color-raised: var(--raised);
     --color-card-hover: var(--card-hover);
     --color-secondary-hover: var(--secondary-hover);
-    --color-destructive-strong: var(--destructive-strong);
+    --color-destructive-hover: var(--destructive-hover);
+    --color-brand-hover: var(--brand-hover);
     --color-raised-2: var(--raised-2);
     --spacing-box-gap: 8px;
     --spacing-section: 40px;
@@ -141,15 +142,16 @@
     --brand: oklch(21.6% 0.006 56.043);
     --brand-foreground: oklch(98.5% 0.001 106.423);
     --brand-text: oklch(21.6% 0.006 56.043);
-    --brand-strong: oklch(14.7% 0.004 49.25);
+    --brand-strong: oklch(37.4% 0.01 67.558);
     --inset: oklch(97% 0.001 106.424);
     --tile: oklch(98.5% 0.001 106.423); /* fichas con foto (más claro que inset) */
     --raised: oklch(100% 0 0); /* lo que va encima de inset/tile */
     --raised-2: oklch(100% 0 0); /* lo que va encima de raised */
-    /* Hover: siempre un tono MÁS OSCURO que lo que hay abajo, nunca más claro */
-    --card-hover: oklch(97% 0.001 106.424); /* sobre una caja blanca: stone-100 */
-    --secondary-hover: oklch(92.3% 0.003 48.717); /* sobre algo gris (ficha, botón gris): stone-200 */
-    --destructive-strong: oklch(50.5% 0.213 27.518); /* rojo un tono más oscuro (red-700) */
+    /* Hover: siempre un tono MÁS CLARO, nunca más oscuro */
+    --card-hover: oklch(97% 0.001 106.424); /* lo blanco: no hay nada más claro que el blanco, así que en claro va stone-100 (única excepción) */
+    --secondary-hover: oklch(100% 0 0); /* lo gris (ficha, botón gris): blanco */
+    --destructive-hover: oklch(63.7% 0.237 25.331); /* rojo un tono más claro (red-500) */
+    --brand-hover: oklch(26.8% 0.007 34.298); /* color de la app un tono más claro (neutro: stone-800) */
 }
 
 .dark {
@@ -197,9 +199,10 @@
     --tile: oklch(26.8% 0.007 34.298);
     --raised: oklch(37.4% 0.01 67.558);
     --raised-2: oklch(44.4% 0.011 73.639);
-    --card-hover: oklch(14.7% 0.004 49.25); /* stone-950 */
-    --secondary-hover: oklch(21.6% 0.006 56.043); /* stone-900 */
-    --destructive-strong: oklch(57.7% 0.245 27.325); /* red-600 */
+    --card-hover: oklch(26.8% 0.007 34.298); /* la caja (stone-900) un tono más clara: stone-800 */
+    --secondary-hover: oklch(37.4% 0.01 67.558); /* lo gris (stone-800) un tono más claro: stone-700 */
+    --destructive-hover: oklch(70.4% 0.191 22.216); /* red-400 */
+    --brand-hover: oklch(98.5% 0.001 106.423); /* neutro: stone-50 */
 }
 
 @layer base {
