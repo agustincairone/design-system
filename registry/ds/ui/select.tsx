@@ -18,7 +18,7 @@ function SelectGroup({
   return (
     <SelectPrimitive.Group
       data-slot="select-group"
-      className={cn("scroll-my-1 p-1", className)}
+      className={cn("scroll-my-1", className)}
       {...props}
     />
   )
@@ -89,6 +89,8 @@ function SelectContent({
   )
 }
 
+// Opción de la lista: 12px de cada lado (como la caja S y el menú desplegable) y un divisor
+// de borde a borde entre opciones, del gris de los divisores (border).
 function SelectItem({
   className,
   children,
@@ -98,12 +100,12 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "relative flex w-full cursor-default items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        "relative flex w-full cursor-default items-center gap-box-xs border-b border-border py-box-s pr-section pl-box-s text-sm last:border-b-0 outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
         className
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
+      <span className="pointer-events-none absolute right-box-s flex size-4 items-center justify-center">
         <SelectPrimitive.ItemIndicator>
           <CheckIcon className="pointer-events-none" />
         </SelectPrimitive.ItemIndicator>
@@ -120,7 +122,7 @@ function SelectSeparator({
   return (
     <SelectPrimitive.Separator
       data-slot="select-separator"
-      className={cn("pointer-events-none -mx-1 my-1 h-px bg-border", className)}
+      className={cn("pointer-events-none h-px bg-border", className)}
       {...props}
     />
   )
