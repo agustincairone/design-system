@@ -261,7 +261,7 @@
       "name": "brand-pay-tracker",
       "type": "registry:theme",
       "title": "Acento de pay-tracker",
-      "description": "Verde de pay-tracker: green-700 en modo claro, green-500 en modo oscuro, siempre con texto blanco encima.",
+      "description": "Verde de pay-tracker: green-700 en modo claro, green-600 en modo oscuro, siempre con texto blanco encima.",
       "cssVars": {
         "light": {
           "brand": "oklch(52.7% 0.154 150.069)",
@@ -277,17 +277,17 @@
           "brand-strong": "oklch(44.8% 0.119 151.328)"
         },
         "dark": {
-          "brand": "oklch(72.3% 0.219 149.579)",
+          "brand": "oklch(62.7% 0.194 149.214)",
           "brand-foreground": "oklch(100% 0 0)",
-          "brand-text": "oklch(72.3% 0.219 149.579)",
-          "primary": "oklch(72.3% 0.219 149.579)",
+          "brand-text": "oklch(62.7% 0.194 149.214)",
+          "primary": "oklch(62.7% 0.194 149.214)",
           "primary-foreground": "oklch(100% 0 0)",
-          "ring": "oklch(72.3% 0.219 149.579)",
-          "chart-1": "oklch(72.3% 0.219 149.579)",
-          "sidebar-primary": "oklch(72.3% 0.219 149.579)",
+          "ring": "oklch(62.7% 0.194 149.214)",
+          "chart-1": "oklch(62.7% 0.194 149.214)",
+          "sidebar-primary": "oklch(62.7% 0.194 149.214)",
           "sidebar-primary-foreground": "oklch(100% 0 0)",
-          "sidebar-ring": "oklch(72.3% 0.219 149.579)",
-          "brand-strong": "oklch(62.7% 0.194 149.214)"
+          "sidebar-ring": "oklch(62.7% 0.194 149.214)",
+          "brand-strong": "oklch(52.7% 0.154 150.069)"
         }
       }
     },
