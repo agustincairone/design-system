@@ -164,8 +164,7 @@ const NAV: [string, [string, string][]][] = [
 
 // Escala de letra (para la tabla de Tipografía)
 const TYPE_SCALE: [string, string, string][] = [
-  ["10", "text-3xs", "Sólo adentro de piezas chicas (la nota de un paso)"],
-  ["11", "text-2xs", "Texto de las fichas chicas (historial de outfit)"],
+  ["11", "text-2xs", "Piezas chicas: la nota de un paso, las fichas chicas, la tabla del historial"],
   ["13", "text-xs", "Texto chico, etiquetas"],
   ["15", "text-sm", "Texto base"],
   ["18", "text-lg", "Títulos de las hojas"],
@@ -751,7 +750,7 @@ export function App() {
                     <div key={name} className="grid grid-cols-[88px_repeat(11,1fr)] items-center gap-1.5">
                       <div className="font-mono text-xs">
                         {name}
-                        {tag && <div className="text-[10px] text-brand-text">{tag}</div>}
+                        {tag && <div className="text-2xs text-brand-text">{tag}</div>}
                       </div>
                       {SHADES.map((sh) => (
                         <div
@@ -771,7 +770,7 @@ export function App() {
                 <div className="grid grid-cols-[88px_repeat(11,1fr)] gap-1.5 pt-1">
                   <div />
                   {SHADES.map((sh) => (
-                    <div key={sh} className="text-center font-mono text-[10px] text-muted-foreground">
+                    <div key={sh} className="text-center font-mono text-2xs text-muted-foreground">
                       {sh}
                     </div>
                   ))}
@@ -808,7 +807,7 @@ export function App() {
                 ["Monto importante", "Geist medium, 26px (text-2xl). Deuda, total del mes.", <div className="text-2xl font-medium text-brand-text">$758.070</div>],
                 ["Número de la placa", "36px (text-4xl). Los números quietos de la placa de LOOP: canales y pasos.", <span className="live-number font-readout text-4xl leading-none font-bold">16</span>],
                 ["Número grande de pantalla", "48px (text-5xl). El tempo y el reloj de LOOP.", <span className="live-number font-readout text-5xl font-bold">110</span>],
-                ["Nota mini", "10px (text-3xs). Sólo adentro de piezas chicas, como la nota de un paso de LOOP.", <span className="font-mono text-3xs font-semibold">C#2</span>],
+                ["Nota mini", "11px (text-2xs). Sólo para piezas chicas: la nota de un paso de LOOP, las fichas chicas y la tabla del historial de outfit.", <span className="font-mono text-2xs font-semibold">C#2</span>],
                 ["Emoji de fila", "30px (text-3xl). El emoji al principio de cada fila del inicio (los grupos de pay).", <span className="text-3xl leading-none">🏠</span>],
                 ["Emoji grande", "48px (text-emoji). Un solo tamaño, para pantallas especiales: login, error, unirse a un grupo.", <span className="text-emoji">🔒</span>],
                 ["Valor de un control", "Geist Mono semibold, 15px", <span className="live-number font-mono text-sm font-semibold">450ms · +3dB · 60%</span>],

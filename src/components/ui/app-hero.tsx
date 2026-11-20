@@ -44,7 +44,7 @@ export function LiveDate({ className }: { className?: string }) {
     <span
       data-slot="live-date"
       className={cn(
-        "live-number font-readout inline-flex flex-col items-end gap-1 text-xl leading-none font-bold whitespace-nowrap @[30rem]/hero:mt-[7.5px] @[30rem]/hero:flex-row @[30rem]/hero:gap-0 @[30rem]/hero:text-[26px]",
+        "live-number font-readout inline-flex flex-col items-end gap-1 text-xl leading-none font-bold whitespace-nowrap @[30rem]/hero:mt-box-xs @[30rem]/hero:flex-row @[30rem]/hero:gap-0 @[30rem]/hero:text-2xl",
         className
       )}
     >
