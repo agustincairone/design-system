@@ -12,8 +12,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Escala de letra: 10 · 13 · 15 · 18 · 20 · 26 · 30 · 36 · 48 (más los títulos grandes).
-   text-2xs 10 (sólo adentro de piezas chicas, como la nota de un paso) · text-xs 13 · text-sm 15 (texto base) · text-lg 18 · text-xl 20
+/* Escala de letra: 10 · 11 · 13 · 15 · 18 · 20 · 26 · 30 · 36 · 48 (más los títulos grandes).
+   text-3xs 10 (sólo adentro de piezas chicas, como la nota de un paso) · text-2xs 11 (texto de las fichas chicas) · text-xs 13 · text-sm 15 (texto base) · text-lg 18 · text-xl 20
    · text-2xl 26 (montos importantes y el número del fleje) · text-3xl 30 (emoji de las filas del inicio) · text-4xl 36 (números de la placa) · text-5xl 48 (números grandes de pantalla). */
 @theme {
     --text-sm: 0.9375rem;
@@ -22,8 +22,10 @@
     --text-xs--line-height: calc(1.125 / 0.8125);
     --text-2xl: 1.625rem;
     --text-2xl--line-height: calc(2 / 1.625);
-    --text-2xs: 0.625rem;
-    --text-2xs--line-height: calc(0.875 / 0.625);
+    --text-3xs: 0.625rem;
+    --text-3xs--line-height: calc(0.875 / 0.625);
+    --text-2xs: 0.6875rem;
+    --text-2xs--line-height: calc(1 / 0.6875);
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
     --text-4xl: 2.25rem;
