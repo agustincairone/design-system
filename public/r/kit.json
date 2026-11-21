@@ -25,7 +25,8 @@
     "@ds/empty-state",
     "@ds/field-label",
     "@ds/search-input",
-    "@ds/stars"
+    "@ds/stars",
+    "@ds/scroll-fade"
   ],
   "type": "registry:block"
 }

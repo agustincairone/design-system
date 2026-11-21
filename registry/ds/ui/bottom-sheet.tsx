@@ -5,6 +5,7 @@ import { Dialog as SheetPrimitive } from "radix-ui"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Chip, ChipGroup } from "@/components/ui/chip"
+import { ScrollFade, useMoreBelow } from "@/components/ui/scroll-fade"
 
 // Hoja desde abajo: la única ventana del sistema (detalle, confirmación, formulario).
 // Flota con 16px de aire a los costados y abajo, título de 16px y cruz en un botón
@@ -212,7 +213,8 @@ function FilterSheet({
 // Pestañas de una hoja que miden siempre lo mismo: el alto lo pone la pestaña principal
 // (`base`, ej: Info), que se dibuja siempre aunque no se vea. Las otras pestañas ocupan
 // exactamente ese alto: lo de arriba (`top`, ej: sub-pestañas) queda fijo, el contenido se
-// desplaza si no entra y los botones (`footer`) quedan siempre pegados abajo.
+// desplaza si no entra (con el degradé que avisa que hay más abajo) y los botones (`footer`)
+// quedan siempre pegados abajo.
 function SheetPanels({
   base,
   showBase,
@@ -232,13 +234,24 @@ function SheetPanels({
       {!showBase && (
         <div className="absolute inset-0 flex flex-col gap-4">
           {top}
-          {/* 4px de aire arriba y abajo para que no se corte el borde de foco de los campos */}
-          <div className="-mx-box-l -my-1 min-h-0 flex-1 overflow-y-auto px-box-l py-1">
-            <div className="flex flex-col gap-4">{children}</div>
-          </div>
+          <PanelScroll>{children}</PanelScroll>
           {footer && <div className="flex gap-box-xs *:flex-1">{footer}</div>}
         </div>
       )}
+    </div>
+  )
+}
+
+// La zona que se desplaza de una pestaña, con el degradé abajo mientras quede más por ver.
+// 4px de aire arriba y abajo para que no se corte el borde de foco de los campos.
+function PanelScroll({ children }: { children?: React.ReactNode }) {
+  const more = useMoreBelow()
+  return (
+    <div className="relative -mx-box-l -my-1 min-h-0 flex-1">
+      <div ref={more.ref} onScroll={more.onScroll} className="h-full overflow-y-auto px-box-l py-1">
+        <div className="flex flex-col gap-4">{children}</div>
+      </div>
+      <ScrollFade show={more.show} />
     </div>
   )
 }
