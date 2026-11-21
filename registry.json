@@ -357,6 +357,42 @@
       }
     },
     {
+      "name": "brand-wine-tracker",
+      "type": "registry:theme",
+      "title": "Acento de wine-tracker",
+      "description": "Bordó de wine-tracker: rose-900 en modo claro, rose-700 en modo oscuro, siempre con texto blanco encima.",
+      "cssVars": {
+        "light": {
+          "brand": "oklch(41% 0.159 10.272)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(41% 0.159 10.272)",
+          "primary": "oklch(41% 0.159 10.272)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(41% 0.159 10.272)",
+          "chart-1": "oklch(41% 0.159 10.272)",
+          "sidebar-primary": "oklch(41% 0.159 10.272)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(41% 0.159 10.272)",
+          "brand-strong": "oklch(27.1% 0.105 12.094)",
+          "brand-hover": "oklch(45.5% 0.188 13.697)"
+        },
+        "dark": {
+          "brand": "oklch(51.4% 0.222 16.935)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(51.4% 0.222 16.935)",
+          "primary": "oklch(51.4% 0.222 16.935)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(51.4% 0.222 16.935)",
+          "chart-1": "oklch(51.4% 0.222 16.935)",
+          "sidebar-primary": "oklch(51.4% 0.222 16.935)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(51.4% 0.222 16.935)",
+          "brand-strong": "oklch(45.5% 0.188 13.697)",
+          "brand-hover": "oklch(58.6% 0.253 17.585)"
+        }
+      }
+    },
+    {
       "name": "toaster",
       "type": "registry:ui",
       "title": "Notificaciones",

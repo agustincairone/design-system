@@ -22,6 +22,7 @@ import {
   Shirt,
   Music,
   Wallet,
+  Wine,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react"
@@ -80,6 +81,7 @@ import { ExpandRow, ExpandRowItem } from "@/components/controls/expand-row"
 import { IconTile } from "@/components/controls/icon-tile"
 import { FieldColumn } from "@/components/controls/field-column"
 import { FieldLabel } from "@/components/ui/field-label"
+import { WineStyle } from "@/wine-style"
 import { BottomNavDemo, ColorsDaysDemo, EmptyDemo, ItemCardsDemo, PickManyDemo, SavedValuesDemo, SheetsDemo, TabsDemo } from "@/guide-demos"
 import { Rules } from "@/rules"
 import { FloatAccordion } from "@/components/ui/float-accordion"
@@ -159,6 +161,7 @@ const NAV: [string, [string, string][]][] = [
   ["Fundamentos", [["reglas", "Reglas"], ["colores", "Colores"], ["tipografia", "Tipografía"], ["numeros", "Números en vivo"], ["cajas", "Espacios y cajas"]]],
   ["Componentes", [["fleje", "Fleje y títulos"], ["botones", "Botones"], ["formularios", "Formularios"], ["elegir", "Elegir opciones"], ["controles", "Controles"], ["listas", "Tarjetas y listas"], ["navegacion", "Navegación"], ["ventanas", "Ventanas y avisos"]]],
   ["Música", [["audio", "Audio (LOOP)"]]],
+  ["Para elegir", [["estilo-wine", "Estilo wine"]]],
   ["Uso", [["usar", "Cómo usarlo"]]],
 ]
 
@@ -192,6 +195,7 @@ const ICONS: Record<BrandId, typeof Music> = {
   loop: Music,
   "pay-tracker": Wallet,
   "outfit-tracker": Shirt,
+  "wine-tracker": Wine,
 }
 
 // Ceros a la izquierda atenuados: "007" -> <span dim>00</span>7
@@ -1143,6 +1147,14 @@ export function App() {
             <MoreControls />
             <h3 className="mt-10 mb-3 font-medium">Piezas de LOOP</h3>
             <LoopPiecesDemo />
+          </Section>
+
+          <Section
+            id="estilo-wine"
+            title="Estilo wine"
+            description="Temporal, para elegir. A la derecha, cada pieza de wine-tracker tal cual está hoy; a la izquierda, cómo quedaría con lo que el sistema ya tiene, con el bordó de wine. Elegí con cuál te quedás en cada una (o si querés las dos). Cuando elijas, lo elegido pasa a su sección y esta página se borra."
+          >
+            <WineStyle />
           </Section>
 
           <Section

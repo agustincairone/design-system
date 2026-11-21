@@ -34,8 +34,8 @@ function Chip({
         selected
           ? "border-transparent bg-primary text-primary-foreground hover:bg-brand-hover"
           : onRemove
-            ? "border-input bg-transparent text-foreground hover:bg-card-hover dark:border-input" // con cruz: al pasar el mouse sólo se pinta el fondo de gris
-            : "border-input bg-transparent text-foreground hover:border-brand hover:text-brand dark:border-input",
+            ? "border-input bg-transparent text-foreground hover:bg-card-hover dark:border-input dark:in-data-[variant=inset]:border-raised" // con cruz: al pasar el mouse sólo se pinta el fondo de gris
+            : "border-input bg-transparent text-foreground hover:border-brand hover:text-brand dark:border-input dark:in-data-[variant=inset]:border-raised", // adentro de una caja gris, en oscuro, el borde sube un tono (si no, se pierde)
         className
       )}
       {...props}
