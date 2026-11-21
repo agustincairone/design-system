@@ -79,6 +79,7 @@ const RULES: { title: string; items: string[] }[] = [
     title: "Ventanas",
     items: [
       "Todas las ventanas salen desde abajo (no hay ventana centrada ni panel lateral).",
+      "Hoja con pestañas: mide siempre lo mismo, el alto lo pone la pestaña principal (ej: Info). En las otras, si el contenido no entra se desplaza por dentro y los botones quedan pegados abajo.",
       "El ⋮ de una fila abre el menú desplegable del DS, al lado del botón (Eliminar va en rojo). Las opciones más grandes, como configurar un grupo, abren una hoja desde abajo con sus botones.",
       "Flotan con 16px de aire a los costados y abajo, ocupando el ancho que queda.",
       "Título de 18px con peso 500, con una línea divisoria de lado a lado debajo. La cruz es un botón redondo gris sin borde.",

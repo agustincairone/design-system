@@ -209,4 +209,38 @@ function FilterSheet({
   )
 }
 
-export { BottomSheet, ConfirmSheet, FilterSheet, SheetSummary }
+// Pestañas de una hoja que miden siempre lo mismo: el alto lo pone la pestaña principal
+// (`base`, ej: Info), que se dibuja siempre aunque no se vea. Las otras pestañas ocupan
+// exactamente ese alto: lo de arriba (`top`, ej: sub-pestañas) queda fijo, el contenido se
+// desplaza si no entra y los botones (`footer`) quedan siempre pegados abajo.
+function SheetPanels({
+  base,
+  showBase,
+  top,
+  footer,
+  children,
+}: {
+  base: React.ReactNode
+  showBase: boolean
+  top?: React.ReactNode
+  footer?: React.ReactNode
+  children?: React.ReactNode
+}) {
+  return (
+    <div data-slot="sheet-panels" className="relative">
+      <div className={cn("flex flex-col gap-4", !showBase && "invisible")}>{base}</div>
+      {!showBase && (
+        <div className="absolute inset-0 flex flex-col gap-4">
+          {top}
+          {/* 4px de aire arriba y abajo para que no se corte el borde de foco de los campos */}
+          <div className="-mx-box-l -my-1 min-h-0 flex-1 overflow-y-auto px-box-l py-1">
+            <div className="flex flex-col gap-4">{children}</div>
+          </div>
+          {footer && <div className="flex gap-box-xs *:flex-1">{footer}</div>}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export { BottomSheet, ConfirmSheet, FilterSheet, SheetPanels, SheetSummary }

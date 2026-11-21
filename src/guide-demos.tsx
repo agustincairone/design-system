@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
-import { BottomSheet, ConfirmSheet, FilterSheet, SheetSummary, type FilterGroup } from "@/components/ui/bottom-sheet"
+import { BottomSheet, ConfirmSheet, FilterSheet, SheetPanels, SheetSummary, type FilterGroup } from "@/components/ui/bottom-sheet"
 import { SearchInput } from "@/components/ui/search-input"
 import { Stars, StarRating } from "@/components/ui/stars"
 import { Textarea } from "@/components/ui/textarea"
@@ -292,14 +292,29 @@ export function MoreSheetsDemo() {
   const [comment, setComment] = React.useState("")
   const summary = <SheetSummary title="Gran Enemigo" lines={["El Enemigo · 2019", "Cabernet Franc · Mendoza"]} />
   const sheets: [string, React.ReactNode][] = [
-    ["Detalle con pestañas (ícono arriba)", <BottomSheet inline open onOpenChange={() => {}} title="Ficha del vino">
+    ["Detalle con pestañas (ícono arriba): todas miden lo que mide Info", <BottomSheet inline open onOpenChange={() => {}} title="Ficha del vino">
       <TabBar label="Ficha" value={tab} onChange={setTab} className="-mx-box-l -mt-4 w-auto" options={WINE_TABS} />
-      <div className="flex flex-col gap-box-2xs">
-        <div className="flex items-center justify-between gap-box-xs"><span className="text-lg font-medium">Gran Enemigo</span><Stars value={5} size="md" /></div>
-        <p className="text-muted-foreground">El Enemigo · 2019 · Cabernet Franc</p>
-      </div>
-      <ChipGroup scroll>{PERFIL.map(([l, v]) => <ScoreChip key={l} label={l} value={v} max={5} />)}</ChipGroup>
-      <Button className="w-full"><Bookmark /> Mi lista</Button>
+      <SheetPanels
+        showBase={tab === "info"}
+        base={<>
+          <div className="flex flex-col gap-box-2xs">
+            <div className="flex items-center justify-between gap-box-xs"><span className="text-lg font-medium">Gran Enemigo</span><Stars value={5} size="md" /></div>
+            <p className="text-muted-foreground">El Enemigo · 2019 · Cabernet Franc</p>
+          </div>
+          <ChipGroup scroll>{PERFIL.map(([l, v]) => <ScoreChip key={l} label={l} value={v} max={5} />)}</ChipGroup>
+          <Button className="w-full"><Bookmark /> Mi lista</Button>
+        </>}
+        footer={tab === "editar" ? <Button>Guardar cambios</Button> : <><Button variant="secondary" onClick={() => setTab("info")}>Volver</Button><Button variant="destructive">Eliminar</Button></>}
+      >
+        {tab === "editar" ? <>
+          <div><FieldLabel>Nombre del vino</FieldLabel><Input defaultValue="Gran Enemigo" /></div>
+          <div><FieldLabel>Bodega</FieldLabel><Input defaultValue="El Enemigo" /></div>
+          <div><FieldLabel>Uva</FieldLabel><Input defaultValue="Cabernet Franc" /></div>
+        </> : <>
+          <p>¿Querés eliminar este vino?</p>
+          {summary}
+        </>}
+      </SheetPanels>
     </BottomSheet>],
     ["Con pasos: volver, título, Paso 2/3 y la cruz", <BottomSheet inline open onOpenChange={() => {}} title="Perfil del vino" step={{ current: 2, total: 3 }} onBack={() => {}}>
       <ScaleSlider label="🍒 Fruta" value={fruta} onChange={setFruta} minLabel="Poco frutado" maxLabel="Muy frutado" info="Qué tan presentes son los aromas y sabores frutales." />

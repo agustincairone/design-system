@@ -495,7 +495,7 @@
       "name": "bottom-sheet",
       "type": "registry:ui",
       "title": "bottom-sheet",
-      "description": "Hoja desde abajo con 16px de aire, título y cruz redonda (con pasos opcionales: volver y Paso 2/3); la confirmación, el resumen en cajita gris y el filtro.",
+      "description": "Hoja desde abajo con 16px de aire, título y cruz redonda (con pasos opcionales: volver y Paso 2/3); la confirmación, el resumen en cajita gris, el filtro y pestañas que miden siempre lo mismo (SheetPanels).",
       "registryDependencies": [
         "utils",
         "@ds/button",
