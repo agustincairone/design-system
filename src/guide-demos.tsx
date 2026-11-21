@@ -200,8 +200,13 @@ export function SheetsDemo() {
 export function BottomNavDemo() {
   const [nav, setNav] = React.useState("ropa")
   return (
-    <div className="w-full max-w-sm rounded-box-l border border-input bg-background p-box-xs">
-      <BottomNav value={nav} onChange={setNav} items={[
+    <div className="relative w-full max-w-sm overflow-hidden rounded-box-l border border-input bg-background p-box-xs">
+      {/* algo detrás, para ver el desenfoque */}
+      <div className="grid grid-cols-2 gap-box-gap pb-box-xl">
+        <div className="h-20 rounded-box-m bg-card" />
+        <div className="h-20 rounded-box-m bg-card" />
+      </div>
+      <BottomNav className="absolute inset-x-box-xs bottom-box-xs w-auto" value={nav} onChange={setNav} items={[
         { key: "hoy", icon: CalendarDays, label: "Hoy" },
         { key: "ropa", icon: Shirt, label: "Ropa" },
         { key: "stats", icon: BarChart3, label: "Estadísticas" },

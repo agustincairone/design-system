@@ -2,7 +2,7 @@ import type { LucideIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-// Barra de abajo de las apps de celular: caja blanca con íconos de 24px.
+// Barra de abajo de las apps de celular: caja de vidrio (casi transparente, desenfoca lo que pasa por detrás) con íconos de 24px.
 // Íconos centrados en la caja; la sección actual va del color de la app con el puntito (4px)
 // justo sobre el borde de abajo: el borde lo corta a la mitad.
 
@@ -18,7 +18,7 @@ export function BottomNav<T extends string>({
   className?: string
 }) {
   return (
-    <nav data-slot="bottom-nav" className={cn("flex h-16 w-full items-center rounded-box-l bg-card", className)}>
+    <nav data-slot="bottom-nav" className={cn("flex h-16 w-full items-center rounded-box-l bg-glass backdrop-blur-glass", className)}>
       {items.map(({ key, icon: Icon, label }) => {
         const on = value === key
         return (
