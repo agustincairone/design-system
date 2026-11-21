@@ -1076,7 +1076,7 @@ export function App() {
             description="Para moverse por la app: la barra de abajo y el menú desplegable (el ⋮ de cada fila)."
           >
             <div className="grid gap-4">
-              <Demo label="Barra de abajo: vidrio que desenfoca lo que pasa por detrás, íconos de 24px, la sección actual del color de la app con el puntito">
+              <Demo label="Barra de abajo: blanca cuando no hay nada detrás, de vidrio mientras pasa contenido por detrás. Íconos de 24px, la sección actual del color de la app con el puntito">
                 <BottomNavDemo />
               </Demo>
               <Demo label="Menú desplegable">

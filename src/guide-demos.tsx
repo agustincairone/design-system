@@ -199,19 +199,30 @@ export function SheetsDemo() {
 // Barra de abajo
 export function BottomNavDemo() {
   const [nav, setNav] = React.useState("ropa")
+  const items = [
+    { key: "hoy", icon: CalendarDays, label: "Hoy" },
+    { key: "ropa", icon: Shirt, label: "Ropa" },
+    { key: "stats", icon: BarChart3, label: "Estadísticas" },
+    { key: "perfil", icon: User, label: "Perfil" },
+  ]
   return (
-    <div className="relative w-full max-w-sm overflow-hidden rounded-box-l border border-input bg-background p-box-xs">
-      {/* algo detrás, para ver el desenfoque */}
-      <div className="grid grid-cols-2 gap-box-gap pb-box-xl">
-        <div className="h-20 rounded-box-m bg-card" />
-        <div className="h-20 rounded-box-m bg-card" />
+    <div className="flex w-full flex-wrap gap-box-m">
+      <div className="flex w-full max-w-sm flex-col gap-box-xs">
+        <p className="text-xs text-muted-foreground">Pasa contenido por detrás: vidrio</p>
+        <div className="relative overflow-hidden rounded-box-l border border-input bg-background p-box-xs">
+          <div className="grid grid-cols-2 gap-box-gap pb-box-xl">
+            <div className="h-20 rounded-box-m bg-card" />
+            <div className="h-20 rounded-box-m bg-card" />
+          </div>
+          <BottomNav glass className="absolute inset-x-box-xs bottom-box-xs w-auto" value={nav} onChange={setNav} items={items} />
+        </div>
       </div>
-      <BottomNav className="absolute inset-x-box-xs bottom-box-xs w-auto" value={nav} onChange={setNav} items={[
-        { key: "hoy", icon: CalendarDays, label: "Hoy" },
-        { key: "ropa", icon: Shirt, label: "Ropa" },
-        { key: "stats", icon: BarChart3, label: "Estadísticas" },
-        { key: "perfil", icon: User, label: "Perfil" },
-      ]} />
+      <div className="flex w-full max-w-sm flex-col gap-box-xs">
+        <p className="text-xs text-muted-foreground">Nada detrás (final de la página): blanca</p>
+        <div className="flex flex-1 items-end rounded-box-l border border-input bg-background p-box-xs">
+          <BottomNav glass={false} value={nav} onChange={setNav} items={items} />
+        </div>
+      </div>
     </div>
   )
 }

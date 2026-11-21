@@ -139,7 +139,7 @@
     --success: oklch(72.3% 0.219 149.579); /* green-500 (ej: medidor de LOOP) */
     --warning: oklch(82.8% 0.189 84.429); /* amber-400 */
     --overlay: oklch(0% 0 0 / 10%); /* fondo detrás de las hojas: negro transparente */
-    --glass: oklch(0% 0 0 / 1%); /* barra de abajo: negro casi transparente, con desenfoque (blur-glass) detrás */
+    --glass: oklch(0% 0 0 / 3%); /* barra de abajo mientras pasa contenido por detrás: negro casi transparente, con desenfoque (blur-glass) */
     --border: oklch(92.3% 0.003 48.717); /* stone-200: bordes y divisores, siempre el mismo */
     --input: oklch(86.9% 0.005 56.366); /* stone-300: borde de campos y controles, se ve sobre el fondo de la página */
     --ring: oklch(70.9% 0.01 56.259);
@@ -193,7 +193,7 @@
     --success: oklch(72.3% 0.219 149.579); /* green-500 (ej: medidor de LOOP) */
     --warning: oklch(82.8% 0.189 84.429); /* amber-400 */
     --overlay: oklch(0% 0 0 / 10%); /* fondo detrás de las hojas: negro transparente */
-    --glass: oklch(0% 0 0 / 1%); /* barra de abajo: negro casi transparente, con desenfoque (blur-glass) detrás */
+    --glass: oklch(0% 0 0 / 3%); /* barra de abajo mientras pasa contenido por detrás: negro casi transparente, con desenfoque (blur-glass) */
     --border: oklch(26.8% 0.007 34.298);
     --input: oklch(26.8% 0.007 34.298);
     --ring: oklch(44.4% 0.011 73.639);
