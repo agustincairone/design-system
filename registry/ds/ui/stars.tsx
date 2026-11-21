@@ -22,12 +22,12 @@ function Stars({ value, max = 5, size = "sm", className }: { value: number; max?
   )
 }
 
-// Para puntuar: estrellas de 28px; al pasar el mouse se ve cómo quedaría
+// Para puntuar: estrellas de 28px con 6px entre una y otra; al pasar el mouse se ve cómo quedaría
 function StarRating({ value, onChange, max = 5, className }: { value: number; onChange: (value: number) => void; max?: number; className?: string }) {
   const [hover, setHover] = React.useState(0)
   const shown = hover || value
   return (
-    <div role="radiogroup" aria-label="Puntaje" className={cn("flex gap-box-xs", className)} onMouseLeave={() => setHover(0)}>
+    <div role="radiogroup" aria-label="Puntaje" className={cn("flex", className)} onMouseLeave={() => setHover(0)}>
       {Array.from({ length: max }, (_, i) => {
         const n = i + 1
         return (
@@ -39,7 +39,7 @@ function StarRating({ value, onChange, max = 5, className }: { value: number; on
             aria-label={n === 1 ? "1 estrella" : `${n} estrellas`}
             onMouseEnter={() => setHover(n)}
             onClick={() => onChange(n)}
-            className="rounded-full p-1 outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+            className="rounded-full px-[3px] py-1 outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           >
             <Star strokeWidth={1.5} className={cn("size-7 transition-colors", n <= shown ? "fill-current text-brand-text" : "text-muted-foreground")} />
           </button>
