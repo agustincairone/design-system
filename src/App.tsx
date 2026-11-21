@@ -52,7 +52,7 @@ import {
 import { Slider } from "@/components/ui/slider"
 import { Textarea } from "@/components/ui/textarea"
 import { Chip, ChipGroup } from "@/components/ui/chip"
-import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
+import { BottomSheet, ConfirmSheet, StepHeader } from "@/components/ui/bottom-sheet"
 import {
   Tooltip,
   TooltipContent,
@@ -1121,7 +1121,12 @@ export function App() {
               <Demo label="Más hojas: con pestañas, con pasos, filtro, borrar mostrando lo que se borra y aviso de repetido" className="block">
                 <MoreSheetsDemo />
               </Demo>
-              <Demo label="Probalo: confirmación, hoja desde abajo, ayuda al pasar el mouse y aviso que se va solo">
+              <Demo label="Pasos adentro de una caja de la página: el mismo encabezado de las hojas con pasos" className="block">
+                <div className="max-w-md rounded-box-l bg-card p-box-m">
+                  <StepHeader title="Zapatillas" step={{ current: 2, total: 6 }} onBack={() => {}} />
+                </div>
+              </Demo>
+              <Demo label="Probalo: confirmación, hoja desde abajo, ayuda al pasar el mouse y aviso que se va solo (abajo al centro)">
                 <Button variant="outline" onClick={() => setConfirmOpen(true)}>Confirmación</Button>
                 <ConfirmSheet open={confirmOpen} onOpenChange={setConfirmOpen} title="Borrar pago" question="¿Borrar este pago?"
                   detail="No se puede deshacer. El pago desaparece del historial." confirmLabel="Borrar"

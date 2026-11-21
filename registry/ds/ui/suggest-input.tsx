@@ -89,7 +89,7 @@ export function SuggestInput({
           onOpenAutoFocus={(e) => e.preventDefault()} // el foco sigue en el campo
           onCloseAutoFocus={(e) => e.preventDefault()}
           onInteractOutside={(e) => { if (inputRef.current?.contains(e.target as Node)) e.preventDefault() }}
-          className="z-50 max-h-(--radix-popover-content-available-height) w-(--radix-popover-trigger-width) overflow-x-hidden overflow-y-auto rounded-xl bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=top]:slide-in-from-bottom-2"
+          className="z-50 max-h-[min(var(--radix-popover-content-available-height),var(--spacing-list))] w-(--radix-popover-trigger-width) overflow-x-hidden overflow-y-auto rounded-xl bg-popover text-popover-foreground shadow-md ring-1 ring-foreground/10 duration-100 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=top]:slide-in-from-bottom-2"
         >
           <div id={listId} role="listbox">
             {matches.map((s, i) => (

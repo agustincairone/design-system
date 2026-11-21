@@ -16,10 +16,11 @@ import { ScrollFade, useMoreBelow } from "@/components/ui/scroll-fade"
 
 type Step = { current: number; total: number }
 
-function SheetHeaderRow({ title, onClose, onBack, step }: { title: React.ReactNode; onClose?: () => void; onBack?: () => void; step?: Step }) {
+// Encabezado de un paso: volver (desde el paso 2), título de 18px, "Paso 2/3" y la cruz si se puede cerrar.
+// Es el mismo en las hojas y en los pasos que van adentro de una caja de la página (ej: cargar un outfit).
+function StepHeader({ title, onClose, onBack, step, className }: { title: React.ReactNode; onClose?: () => void; onBack?: () => void; step?: Step; className?: string }) {
   return (
-    // línea divisoria de lado a lado debajo del título
-    <div className="-mx-box-l flex items-center gap-3 border-b border-border px-box-l pb-4">
+    <div data-slot="step-header" className={cn("flex items-center gap-3", className)}>
       {onBack && (
         <Button variant="outline" size="icon-sm" aria-label="Volver" onClick={onBack}>
           <ChevronLeft className="size-4" />
@@ -27,11 +28,18 @@ function SheetHeaderRow({ title, onClose, onBack, step }: { title: React.ReactNo
       )}
       <span className="min-w-0 flex-1 truncate text-lg font-medium tracking-tight">{title}</span>
       {step && <span className="shrink-0 text-xs text-muted-foreground">Paso {step.current}/{step.total}</span>}
-      <Button variant="secondary" size="icon-sm" aria-label="Cerrar" onClick={onClose}>
-        <X className="size-4" />
-      </Button>
+      {onClose && (
+        <Button variant="secondary" size="icon-sm" aria-label="Cerrar" onClick={onClose}>
+          <X className="size-4" />
+        </Button>
+      )}
     </div>
   )
+}
+
+function SheetHeaderRow({ title, onClose, onBack, step }: { title: React.ReactNode; onClose: () => void; onBack?: () => void; step?: Step }) {
+  // en las hojas, con una línea divisoria de lado a lado debajo del título
+  return <StepHeader className="-mx-box-l border-b border-border px-box-l pb-4" title={title} onClose={onClose} onBack={onBack} step={step} />
 }
 
 const PANEL = "flex max-w-md flex-col gap-4 rounded-box-l bg-card p-box-l text-sm text-card-foreground shadow-lg"
@@ -256,4 +264,4 @@ function PanelScroll({ children }: { children?: React.ReactNode }) {
   )
 }
 
-export { BottomSheet, ConfirmSheet, FilterSheet, SheetPanels, SheetSummary }
+export { BottomSheet, ConfirmSheet, FilterSheet, SheetPanels, SheetSummary, StepHeader }

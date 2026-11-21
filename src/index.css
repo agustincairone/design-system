@@ -113,6 +113,8 @@
     --spacing-section: 40px;
     /* Lugar libre al final de cada pantalla, para que la barra de abajo y el botón flotante no tapen el contenido */
     --spacing-screen-end: 112px;
+    /* Alto máximo de la lista de un desplegable: 6 opciones de 47px más la flechita de 24px que avisa que hay más */
+    --spacing-list: 306px;
 }
 
 :root {

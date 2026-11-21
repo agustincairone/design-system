@@ -65,6 +65,7 @@
       "spacing-box-xs": "8px",
       "spacing-box-xl": "24px",
       "spacing-screen-end": "112px",
+      "spacing-list": "306px",
       "color-card-hover": "var(--card-hover)",
       "color-secondary-hover": "var(--secondary-hover)",
       "color-destructive-hover": "var(--destructive-hover)",
