@@ -6,28 +6,39 @@ import { cn } from "@/lib/utils"
 // Barra de abajo de las apps de celular, con íconos de 24px.
 // Blanca cuando no hay nada detrás (la página entra entera o ya llegaste al final: todas las
 // pantallas terminan con un espacio libre para la barra). Mientras pasa contenido por detrás,
-// es de vidrio: casi transparente y desenfoca lo de atrás.
+// es de vidrio: casi transparente y desenfoca lo de atrás. El blanco aparece de a poco en los
+// últimos 80px de la página, siguiendo el dedo, sin saltos.
 // Íconos centrados en la caja; la sección actual va del color de la app con el puntito (4px)
 // justo sobre el borde de abajo: el borde lo corta a la mitad.
 
-// ¿Ya no queda página por bajar? (= no hay nada pasando por detrás de la barra)
-function useAtPageEnd(enabled: boolean) {
-  const [atEnd, setAtEnd] = React.useState(true)
-  React.useEffect(() => {
+const FADE_PX = 80
+
+// Va poniendo la capa blanca de la barra según cuánto falta para el final de la página:
+// nada mientras falten 80px o más, entera al llegar al final. Toca el estilo directo
+// (sin volver a dibujar la app en cada movimiento).
+function usePageEndFade(ref: React.RefObject<HTMLSpanElement | null>, enabled: boolean) {
+  React.useLayoutEffect(() => {
     if (!enabled) return
-    const check = () => setAtEnd(window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2)
-    check()
-    window.addEventListener("scroll", check, { passive: true })
-    window.addEventListener("resize", check)
-    const ro = new ResizeObserver(check) // la página crece o se achica (ej: cargó la lista)
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const left = document.documentElement.scrollHeight - (window.innerHeight + window.scrollY)
+      const white = Math.min(1, Math.max(0, 1 - left / FADE_PX))
+      if (ref.current) ref.current.style.opacity = String(white)
+    }
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(update) }
+    update()
+    window.addEventListener("scroll", schedule, { passive: true })
+    window.addEventListener("resize", schedule)
+    const ro = new ResizeObserver(schedule) // la página crece o se achica (ej: cargó la lista)
     ro.observe(document.body)
     return () => {
-      window.removeEventListener("scroll", check)
-      window.removeEventListener("resize", check)
+      cancelAnimationFrame(frame)
+      window.removeEventListener("scroll", schedule)
+      window.removeEventListener("resize", schedule)
       ro.disconnect()
     }
-  }, [enabled])
-  return atEnd
+  }, [enabled, ref])
 }
 
 export function BottomNav<T extends string>({
@@ -44,10 +55,16 @@ export function BottomNav<T extends string>({
   glass?: boolean
   className?: string
 }) {
-  const atEnd = useAtPageEnd(glass === undefined)
-  const isGlass = glass ?? !atEnd
+  const whiteRef = React.useRef<HTMLSpanElement>(null)
+  usePageEndFade(whiteRef, glass === undefined)
   return (
-    <nav data-slot="bottom-nav" className={cn("flex h-16 w-full items-center rounded-box-l backdrop-blur-glass transition-colors duration-200", isGlass ? "bg-glass" : "bg-card", className)}>
+    <nav data-slot="bottom-nav" className={cn("relative isolate flex h-16 w-full items-center rounded-box-l bg-glass backdrop-blur-glass", className)}>
+      {/* capa blanca: aparece de a poco al llegar al final (con un suavizado corto) */}
+      <span
+        ref={whiteRef}
+        aria-hidden
+        className={cn("absolute inset-0 -z-10 rounded-box-l bg-card transition-opacity duration-300", glass === true && "opacity-0", glass === false && "opacity-100")}
+      />
       {items.map(({ key, icon: Icon, label }) => {
         const on = value === key
         return (

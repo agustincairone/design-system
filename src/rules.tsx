@@ -73,7 +73,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Campo con sugerencias (predictivo): sin ningún ícono. Lo ya cargado que contiene lo escrito (hasta 6) aparece en la misma lista de los desplegables.",
       "Chips con cruz: al pasar el mouse sólo se pinta el fondo de gris. La cruz es del color del texto.",
       "El puntito es siempre de 4px. En la barra de abajo va sobre el borde inferior, cortado a la mitad, y los íconos van centrados.",
-      "Barra de abajo: blanca cuando no hay nada detrás (la página entra entera o llegaste al final). Mientras pasa contenido por detrás, de vidrio: negro al 3% con desenfoque de 20px. Lo decide sola.",
+      "Barra de abajo: blanca cuando no hay nada detrás (la página entra entera o llegaste al final). Mientras pasa contenido por detrás, de vidrio: negro al 3% con desenfoque de 20px. El blanco aparece de a poco en los últimos 80px de la página, sin saltos. Lo decide sola.",
     ],
   },
   {
