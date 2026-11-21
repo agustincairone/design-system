@@ -12,6 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { BottomSheet, ConfirmSheet, FilterSheet, SheetPanels, SheetSummary, type FilterGroup } from "@/components/ui/bottom-sheet"
 import { SearchInput } from "@/components/ui/search-input"
+import { SuggestInput } from "@/components/ui/suggest-input"
 import { Stars, StarRating } from "@/components/ui/stars"
 import { Textarea } from "@/components/ui/textarea"
 import { ScaleSlider } from "@/components/controls/scale-slider"
@@ -240,6 +241,12 @@ export function EmptyDemo() {
 export function SearchDemo() {
   const [q, setQ] = React.useState("Malbec")
   return <SearchInput value={q} onChange={setQ} placeholder="Buscar por nombre, bodega o uva..." />
+}
+
+// Campo con sugerencias: escribí "el" y aparece la lista de los desplegables
+export function SuggestDemo() {
+  const [v, setV] = React.useState("")
+  return <SuggestInput id="bodega-demo" value={v} onChange={setV} placeholder="Ej: El Enemigo" suggestions={["El Enemigo", "El Esteco", "Catena Zapata", "Luigi Bosca", "Rutini", "Humberto Canale"]} />
 }
 
 // Ficha alta: 2 columnas, foto vertical, texto a la izquierda y estrellas

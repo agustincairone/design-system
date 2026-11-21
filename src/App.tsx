@@ -81,7 +81,7 @@ import { ExpandRow, ExpandRowItem } from "@/components/controls/expand-row"
 import { IconTile } from "@/components/controls/icon-tile"
 import { FieldColumn } from "@/components/controls/field-column"
 import { FieldLabel } from "@/components/ui/field-label"
-import { BottomNavDemo, ColorsDaysDemo, EmptyDemo, ItemCardsDemo, MoreSheetsDemo, PickManyDemo, SavedValuesDemo, ScaleSliderDemo, ScoresDemo, SearchDemo, SheetsDemo, StarRatingDemo, TabsDemo, TallCardsDemo } from "@/guide-demos"
+import { BottomNavDemo, ColorsDaysDemo, EmptyDemo, ItemCardsDemo, MoreSheetsDemo, PickManyDemo, SavedValuesDemo, ScaleSliderDemo, ScoresDemo, SearchDemo, SheetsDemo, SuggestDemo, StarRatingDemo, TabsDemo, TallCardsDemo } from "@/guide-demos"
 import { Rules } from "@/rules"
 import { FloatAccordion } from "@/components/ui/float-accordion"
 import { AppHero, LiveDate, SectionHeader } from "@/components/ui/app-hero"
@@ -998,6 +998,10 @@ export function App() {
                 <div className="sm:col-span-2">
                   <FieldLabel>Buscador: lupa adelante y cruz para borrar lo escrito</FieldLabel>
                   <SearchDemo />
+                </div>
+                <div className="sm:col-span-2">
+                  <FieldLabel htmlFor="bodega-demo">Con sugerencias: sin ícono; lo ya cargado aparece en la lista de los desplegables</FieldLabel>
+                  <SuggestDemo />
                 </div>
                 <div className="sm:col-span-2">
                   <FieldLabel htmlFor="notes">Notas (varias líneas: alto fijo; con límite, cuenta las letras)</FieldLabel>

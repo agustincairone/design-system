@@ -26,7 +26,8 @@
     "@ds/field-label",
     "@ds/search-input",
     "@ds/stars",
-    "@ds/scroll-fade"
+    "@ds/scroll-fade",
+    "@ds/suggest-input"
   ],
   "type": "registry:block"
 }

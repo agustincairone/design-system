@@ -656,6 +656,26 @@
       ]
     },
     {
+      "name": "suggest-input",
+      "type": "registry:ui",
+      "title": "suggest-input",
+      "description": "Campo con sugerencias (predictivo): sin ícono; lo ya cargado que contiene lo escrito aparece en la lista de los desplegables. Flechas, Enter y Esc.",
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@ds/input"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/suggest-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/suggest-input.tsx"
+        }
+      ]
+    },
+    {
       "name": "textarea",
       "type": "registry:ui",
       "title": "textarea",
@@ -944,7 +964,8 @@
         "@ds/field-label",
         "@ds/search-input",
         "@ds/stars",
-        "@ds/scroll-fade"
+        "@ds/scroll-fade",
+        "@ds/suggest-input"
       ]
     },
     {

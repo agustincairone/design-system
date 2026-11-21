@@ -70,6 +70,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Elegir varias opciones = casillas (Checkbox) con su texto, cada una en su caja S, una abajo de la otra con 8px entre cajas. Toda la caja se puede tocar.",
       "Filas que se abren: el detalle aparece abajo en una caja M; si adentro hay otra fila que se abre, su detalle va en blanco.",
       "Campo con emoji: el emoji va a la izquierda en un botón redondo con borde, del mismo alto que el campo.",
+      "Campo con sugerencias (predictivo): sin ningún ícono. Lo ya cargado que contiene lo escrito (hasta 6) aparece en la misma lista de los desplegables.",
       "Chips con cruz: al pasar el mouse sólo se pinta el fondo de gris. La cruz es del color del texto.",
       "El puntito es siempre de 4px. En la barra de abajo va sobre el borde inferior, cortado a la mitad, y los íconos van centrados.",
       "Barra de abajo: blanca cuando no hay nada detrás (la página entra entera o llegaste al final). Mientras pasa contenido por detrás, de vidrio: negro al 3% con desenfoque de 20px. Lo decide sola.",
