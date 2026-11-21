@@ -23,7 +23,9 @@
     "@ds/item-card",
     "@ds/bottom-sheet",
     "@ds/empty-state",
-    "@ds/field-label"
+    "@ds/field-label",
+    "@ds/search-input",
+    "@ds/stars"
   ],
   "type": "registry:block"
 }

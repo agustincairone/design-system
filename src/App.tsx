@@ -81,8 +81,7 @@ import { ExpandRow, ExpandRowItem } from "@/components/controls/expand-row"
 import { IconTile } from "@/components/controls/icon-tile"
 import { FieldColumn } from "@/components/controls/field-column"
 import { FieldLabel } from "@/components/ui/field-label"
-import { WineStyle } from "@/wine-style"
-import { BottomNavDemo, ColorsDaysDemo, EmptyDemo, ItemCardsDemo, PickManyDemo, SavedValuesDemo, SheetsDemo, TabsDemo } from "@/guide-demos"
+import { BottomNavDemo, ColorsDaysDemo, EmptyDemo, ItemCardsDemo, MoreSheetsDemo, PickManyDemo, SavedValuesDemo, ScaleSliderDemo, ScoresDemo, SearchDemo, SheetsDemo, StarRatingDemo, TabsDemo, TallCardsDemo } from "@/guide-demos"
 import { Rules } from "@/rules"
 import { FloatAccordion } from "@/components/ui/float-accordion"
 import { AppHero, LiveDate, SectionHeader } from "@/components/ui/app-hero"
@@ -161,7 +160,6 @@ const NAV: [string, [string, string][]][] = [
   ["Fundamentos", [["reglas", "Reglas"], ["colores", "Colores"], ["tipografia", "Tipografía"], ["numeros", "Números en vivo"], ["cajas", "Espacios y cajas"]]],
   ["Componentes", [["fleje", "Fleje y títulos"], ["botones", "Botones"], ["formularios", "Formularios"], ["elegir", "Elegir opciones"], ["controles", "Controles"], ["listas", "Tarjetas y listas"], ["navegacion", "Navegación"], ["ventanas", "Ventanas y avisos"]]],
   ["Música", [["audio", "Audio (LOOP)"]]],
-  ["Para elegir", [["estilo-wine", "Estilo wine"]]],
   ["Uso", [["usar", "Cómo usarlo"]]],
 ]
 
@@ -583,6 +581,12 @@ function ControlsDemo() {
       <ControlCard name="Reparto entre dos" use="Cuánto de cada cosa: seco/efecto, izquierda/derecha. Doble clic = mitad y mitad.">
         <SplitSlider left="Seco" right="Efecto" value={mix} onChange={setMix} className="max-w-sm" />
       </ControlCard>
+      <ControlCard name="Escala corta" use="Un valor de 1 a 5 con nombre, explicación (ⓘ), una marquita por valor y los extremos. Ej: el perfil de un vino.">
+        <ScaleSliderDemo />
+      </ControlCard>
+      <ControlCard name="Estrellas para puntuar" use="Un puntaje de 1 a 5. Al pasar el mouse se ve cómo quedaría.">
+        <StarRatingDemo />
+      </ControlCard>
     </div>
   )
 }
@@ -935,6 +939,15 @@ export function App() {
                 </Button>
                 <Button disabled>Deshabilitado</Button>
               </Demo>
+              <Demo label="Deshabilitados: todos los botones llenos quedan iguales (fondo gris y texto gris); los de borde y los de texto se aclaran">
+                <Button disabled>Principal</Button>
+                <Button variant="secondary" disabled>Secundario</Button>
+                <Button variant="card" disabled>Blanco</Button>
+                <Button variant="destructive" disabled>Borrar</Button>
+                <Button variant="destructive-soft" disabled>Cancelar</Button>
+                <Button variant="outline" disabled>Con borde</Button>
+                <Button variant="link" disabled>Link</Button>
+              </Demo>
               <Demo label="Botoncitos redondos (icon-sm): silenciar, solo, al azar, quitar">
                 <Button variant="outline" size="icon-sm" aria-label="Silenciar"><VolumeX /></Button>
                 <Button size="icon-sm" aria-label="Silenciado"><VolumeX /></Button>
@@ -983,8 +996,12 @@ export function App() {
                   <Slider value={volume} onValueChange={setVolume} max={100} />
                 </div>
                 <div className="sm:col-span-2">
-                  <FieldLabel htmlFor="notes">Notas</FieldLabel>
-                  <Textarea id="notes" placeholder="Algo para recordar…" />
+                  <FieldLabel>Buscador: lupa adelante y cruz para borrar lo escrito</FieldLabel>
+                  <SearchDemo />
+                </div>
+                <div className="sm:col-span-2">
+                  <FieldLabel htmlFor="notes">Notas (varias líneas: alto fijo; con límite, cuenta las letras)</FieldLabel>
+                  <Textarea id="notes" maxLength={200} placeholder="Algo para recordar…" />
                 </div>
                 <div className="flex items-center gap-2">
                   <Checkbox id="paid" defaultChecked />
@@ -1032,11 +1049,17 @@ export function App() {
           <Section
             id="listas"
             title="Tarjetas y listas"
-            description="Para mostrar cosas: fichas con foto, filas que se abren y labels."
+            description="Para mostrar cosas: fichas con foto, filas que se abren, labels, estrellas y datos con puntaje."
           >
             <div className="grid gap-4">
               <Demo label="Fichas de prenda: grilla de 3, chiquita y fila. La elegida con borde del color de la app (blanco en oscuro)">
                 <ItemCardsDemo />
+              </Demo>
+              <Demo label="Ficha alta: grilla de 2, foto vertical y texto a la izquierda, con lugar para estrellas">
+                <TallCardsDemo />
+              </Demo>
+              <Demo label="Estrellas (14px en las fichas, 16px en el detalle) y datos con puntaje: sólo muestran, no se tocan">
+                <ScoresDemo />
               </Demo>
               <Demo label="Filas que se abren: el detalle aparece abajo en una caja M">
                 <ExpandRowsDemo />
@@ -1090,6 +1113,9 @@ export function App() {
             <div className="grid gap-4">
               <Demo label="Hojas: todas salen desde abajo y flotan a 16px de los bordes (acá se muestran abiertas)" className="block">
                 <SheetsDemo />
+              </Demo>
+              <Demo label="Más hojas: con pestañas, con pasos, filtro, borrar mostrando lo que se borra y aviso de repetido" className="block">
+                <MoreSheetsDemo />
               </Demo>
               <Demo label="Probalo: confirmación, hoja desde abajo, ayuda al pasar el mouse y aviso que se va solo">
                 <Button variant="outline" onClick={() => setConfirmOpen(true)}>Confirmación</Button>
@@ -1147,14 +1173,6 @@ export function App() {
             <MoreControls />
             <h3 className="mt-10 mb-3 font-medium">Piezas de LOOP</h3>
             <LoopPiecesDemo />
-          </Section>
-
-          <Section
-            id="estilo-wine"
-            title="Estilo wine"
-            description="Temporal, para elegir. A la derecha, cada pieza de wine-tracker tal cual está hoy; a la izquierda, cómo quedaría con lo que el sistema ya tiene, con el bordó de wine. Elegí con cuál te quedás en cada una (o si querés las dos). Cuando elijas, lo elegido pasa a su sección y esta página se borra."
-          >
-            <WineStyle />
           </Section>
 
           <Section

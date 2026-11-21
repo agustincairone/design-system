@@ -62,7 +62,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Al apretar un botón no se mueve: sólo cambia el color.",
       "Todos los botones van en el tamaño normal. El chico sólo cuando el lugar lo pide (un botoncito de ícono). No hay botón grande.",
       "Botón de solo texto (Link): siempre subrayado, del color de la app y en el tamaño normal (15px).",
-      "Cancelar tiene dos opciones: con borde rojo o suave (gris con texto rojo). El botón deshabilitado va en grises.",
+      "Cancelar tiene dos opciones: con borde rojo o suave (gris con texto rojo). Deshabilitados: todos los botones llenos (principal, gris, blanco y rojos) quedan iguales, fondo gris y texto gris.",
       "Agregar algo nuevo = botón punteado con texto gris.",
       "Elegir entre 2 o 3 opciones = píldora. En un formulario, la píldora ocupa todo el ancho (fill). Más de 3 = tab de ancho completo, pegado arriba de la caja; si cada pestaña tiene un total, va en un segundo renglón chico.",
       "Pestaña elegida: texto del color de la app y una raya de 3px abajo, más gruesa que la línea divisoria de 1px. Sin relleno. Todas las pestañas miden lo mismo en todas las apps.",

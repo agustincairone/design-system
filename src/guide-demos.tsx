@@ -1,16 +1,20 @@
 // Guía: demos de las piezas que se usan en las apps, cada una en su sección.
 import * as React from "react"
-import { BarChart3, CalendarDays, Check, ImageIcon, Plus, Shirt, User } from "lucide-react"
+import { BarChart3, Bookmark, CalendarDays, Check, ImageIcon, Pencil, Plus, Shirt, Trash2, User, Wine } from "lucide-react"
 
 import { Segmented } from "@/components/controls/segmented"
 import { TabBar } from "@/components/controls/tab-bar"
-import { Chip, ChipGroup } from "@/components/ui/chip"
+import { Chip, ChipGroup, ScoreChip } from "@/components/ui/chip"
 import { FieldLabel } from "@/components/ui/field-label"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
-import { BottomSheet, ConfirmSheet } from "@/components/ui/bottom-sheet"
+import { BottomSheet, ConfirmSheet, FilterSheet, SheetSummary, type FilterGroup } from "@/components/ui/bottom-sheet"
+import { SearchInput } from "@/components/ui/search-input"
+import { Stars, StarRating } from "@/components/ui/stars"
+import { Textarea } from "@/components/ui/textarea"
+import { ScaleSlider } from "@/components/controls/scale-slider"
 import { EmptyState } from "@/components/ui/empty-state"
 import { ColorSwatches, type Swatch } from "@/components/controls/color-swatches"
 import { DateStrip } from "@/components/controls/date-strip"
@@ -35,6 +39,17 @@ const DAYS = [
   { dateStr: "e", dayName: "Martes", label: "10/11" },
 ]
 const CATS = ["Zapatillas", "Abajo", "Remera", "Camisa", "Arriba", "Campera"]
+const WINES: Item[] = [
+  { marca: "Gran Enemigo", modelo: "El Enemigo · 2019", tipo: "Mendoza" },
+  { marca: "Catena Zapata Malbec", modelo: "Catena Zapata · 2020", tipo: "Mendoza" },
+]
+const PERFIL: [string, number][] = [["🍒 Fruta", 4], ["🍋 Acidez", 3], ["🌿 Taninos", 4], ["🪵 Madera", 2]]
+const WINE_TABS = [{ value: "info", label: "Info", icon: Wine }, { value: "editar", label: "Editar", icon: Pencil }, { value: "borrar", label: "Borrar", icon: Trash2 }]
+const FILTERS: FilterGroup[] = [
+  { key: "uva", label: "Uva", options: ["Malbec", "Cabernet Franc", "Bonarda", "Torrontés"] },
+  { key: "bodega", label: "Bodega", options: ["Catena Zapata", "El Enemigo", "El Esteco"] },
+  { key: "cosecha", label: "Cosecha", options: ["2018", "2019", "2020", "2021"] },
+]
 
 // Etiqueta chica arriba de cada ejemplo
 function Caption({ children }: { children: React.ReactNode }) {
@@ -48,6 +63,7 @@ export function TabsDemo() {
   const [who, setWho] = React.useState("Agus")
   const [cat, setCat] = React.useState("Zapatillas")
   const [pay, setPay] = React.useState("contado")
+  const [wineTab, setWineTab] = React.useState("info")
   return (
     <div className="grid w-full grid-cols-1 items-start gap-box-xl md:grid-cols-2">
       <div className="flex min-w-0 flex-col gap-box-xs">
@@ -73,6 +89,10 @@ export function TabsDemo() {
         <Caption>Con un dato abajo</Caption>
         <div className="overflow-hidden rounded-box-l bg-card">
           <TabBar label="Forma de pago" value={pay} onChange={setPay} options={[{ value: "contado", label: "Gastos al contado", sub: "$32.300" }, { value: "tarjeta", label: "Gastos con tarjeta", sub: "$44.000" }]} />
+        </div>
+        <Caption>Con ícono arriba (ej: la ficha de un vino)</Caption>
+        <div className="overflow-hidden rounded-box-l bg-card">
+          <TabBar label="Ficha" value={wineTab} onChange={setWineTab} options={WINE_TABS} />
         </div>
       </div>
     </div>
@@ -196,6 +216,104 @@ export function EmptyDemo() {
   return (
     <div className="w-full max-w-sm rounded-box-l bg-card p-box-l">
       <EmptyState icon={<Check className="text-primary" />} title="Outfit registrado" text="Podés modificarlo cuando quieras" />
+    </div>
+  )
+}
+
+// Buscador: lupa adelante y cruz para borrar
+export function SearchDemo() {
+  const [q, setQ] = React.useState("Malbec")
+  return <SearchInput value={q} onChange={setQ} placeholder="Buscar por nombre, bodega o uva..." />
+}
+
+// Ficha alta: 2 columnas, foto vertical, texto a la izquierda y estrellas
+export function TallCardsDemo() {
+  const [sel, setSel] = React.useState(-1)
+  return (
+    <div className="w-full max-w-sm rounded-box-l bg-card p-box-l">
+      <div className="grid grid-cols-2 gap-box-gap">
+        {WINES.map((w, i) => <ItemCard key={i} layout="tall" item={w} extra={<Stars value={[5, 4][i]} />} selected={sel === i} onClick={() => setSel(sel === i ? -1 : i)} />)}
+      </div>
+    </div>
+  )
+}
+
+// Estrellas y datos con puntaje: sólo muestran, no se tocan
+export function ScoresDemo() {
+  return (
+    <div className="flex w-full max-w-sm flex-col gap-box-m rounded-box-l bg-card p-box-l">
+      <div className="flex items-center gap-box-m"><Stars value={4} /><Stars value={3} size="md" /></div>
+      <ChipGroup scroll>{PERFIL.map(([l, v]) => <ScoreChip key={l} label={l} value={v} max={5} />)}</ChipGroup>
+    </div>
+  )
+}
+
+// Estrellas para puntuar
+export function StarRatingDemo() {
+  const [rating, setRating] = React.useState(4)
+  return <StarRating value={rating} onChange={setRating} />
+}
+
+// Escala corta: el perfil de un vino de 1 a 5 (va adentro de una caja blanca o de una hoja)
+export function ScaleSliderDemo() {
+  const [fruta, setFruta] = React.useState(4)
+  const [acidez, setAcidez] = React.useState(3)
+  return (
+    <div className="grid w-full max-w-sm gap-box-xs rounded-box-l bg-card p-box-l">
+      <ScaleSlider label="🍒 Fruta" value={fruta} onChange={setFruta} minLabel="Poco frutado" maxLabel="Muy frutado" info="Qué tan presentes son los aromas y sabores frutales." />
+      <ScaleSlider label="🍋 Acidez" value={acidez} onChange={setAcidez} minLabel="Baja" maxLabel="Alta" info="La sensación de frescura del vino." />
+    </div>
+  )
+}
+
+// Más hojas: con pestañas, con pasos, filtro, borrar con resumen y aviso de repetido
+export function MoreSheetsDemo() {
+  const [tab, setTab] = React.useState("info")
+  const [filters, setFilters] = React.useState<Record<string, string[]>>({ uva: ["Malbec"] })
+  const [fruta, setFruta] = React.useState(4)
+  const [acidez, setAcidez] = React.useState(3)
+  const [rating, setRating] = React.useState(4)
+  const [comment, setComment] = React.useState("")
+  const summary = <SheetSummary title="Gran Enemigo" lines={["El Enemigo · 2019", "Cabernet Franc · Mendoza"]} />
+  const sheets: [string, React.ReactNode][] = [
+    ["Detalle con pestañas (ícono arriba)", <BottomSheet inline open onOpenChange={() => {}} title="Ficha del vino">
+      <TabBar label="Ficha" value={tab} onChange={setTab} className="-mx-box-l -mt-4 w-auto" options={WINE_TABS} />
+      <div className="flex flex-col gap-box-2xs">
+        <div className="flex items-center justify-between gap-box-xs"><span className="text-lg font-medium">Gran Enemigo</span><Stars value={5} size="md" /></div>
+        <p className="text-muted-foreground">El Enemigo · 2019 · Cabernet Franc</p>
+      </div>
+      <ChipGroup scroll>{PERFIL.map(([l, v]) => <ScoreChip key={l} label={l} value={v} max={5} />)}</ChipGroup>
+      <Button className="w-full"><Bookmark /> Mi lista</Button>
+    </BottomSheet>],
+    ["Con pasos: volver, título, Paso 2/3 y la cruz", <BottomSheet inline open onOpenChange={() => {}} title="Perfil del vino" step={{ current: 2, total: 3 }} onBack={() => {}}>
+      <ScaleSlider label="🍒 Fruta" value={fruta} onChange={setFruta} minLabel="Poco frutado" maxLabel="Muy frutado" info="Qué tan presentes son los aromas y sabores frutales." />
+      <ScaleSlider label="🍋 Acidez" value={acidez} onChange={setAcidez} minLabel="Baja" maxLabel="Alta" info="La sensación de frescura del vino." />
+      <Button className="w-full">Siguiente</Button>
+    </BottomSheet>],
+    ["Último paso: puntuar y comentar (con contador)", <BottomSheet inline open onOpenChange={() => {}} title="¿Qué te pareció?" step={{ current: 3, total: 3 }} onBack={() => {}}>
+      <StarRating value={rating} onChange={setRating} className="self-center" />
+      <div>
+        <FieldLabel>Comentario (opcional)</FieldLabel>
+        <Textarea maxLength={200} value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Escribí un comentario" />
+      </div>
+      <Button className="w-full">Guardar</Button>
+    </BottomSheet>],
+    ["Filtro: filas que se abren, lo elegido al lado y chips", <FilterSheet inline open onOpenChange={() => {}} groups={FILTERS} value={filters} onChange={setFilters} onConfirm={() => {}} />],
+    ["Borrar: la pregunta y lo que se borra", <ConfirmSheet inline open onOpenChange={() => {}} title="Eliminar vino" question="¿Querés eliminar este vino?" detail="No se puede deshacer." confirmLabel="Eliminar" onConfirm={() => {}}>{summary}</ConfirmSheet>],
+    ["Aviso de algo repetido", <BottomSheet inline open onOpenChange={() => {}} title="Vino duplicado">
+      <p>Parece que ya cargaste este vino en <span className="font-medium text-brand-text">Ya probé</span>.</p>
+      {summary}
+      <div className="grid grid-cols-2 gap-box-xs"><Button variant="secondary">Guardar igual</Button><Button>Ver vino</Button></div>
+    </BottomSheet>],
+  ]
+  return (
+    <div className="grid w-full grid-cols-1 gap-box-gap md:grid-cols-2">
+      {sheets.map(([l, node]) => (
+        <div key={l} className="flex min-w-0 flex-col gap-box-xs">
+          <Caption>{l}</Caption>
+          <div className="h-[460px] overflow-hidden rounded-box-l border border-input bg-card">{node}</div>
+        </div>
+      ))}
     </div>
   )
 }

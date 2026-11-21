@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "textarea",
   "title": "textarea",
-  "description": "Texto largo, redondeado.",
+  "description": "Campo de varias líneas: alto fijo, esquinas de caja S, no se agranda; con maxLength cuenta las letras.",
   "dependencies": [],
   "registryDependencies": [
     "utils"
@@ -10,7 +10,7 @@
   "files": [
     {
       "path": "registry/ds/ui/textarea.tsx",
-      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\nfunction Textarea({ className, ...props }: React.ComponentProps<\"textarea\">) {\n  return (\n    <textarea\n      data-slot=\"textarea\"\n      className={cn(\n        \"flex field-sizing-content min-h-20 w-full rounded-xl border border-input bg-transparent px-3.5 py-2.5 text-sm transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-brand disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50\",\n        className\n      )}\n      {...props}\n    />\n  )\n}\n\nexport { Textarea }\n",
+      "content": "import * as React from \"react\"\nimport { cn } from \"@/lib/utils\"\n\n// Campo de varias líneas: alto fijo de 96px, esquinas de caja S (12px) y no se agranda.\n// Con `maxLength`, abajo a la derecha aparece cuántas letras van (ej: 12/200).\nfunction Textarea({ className, maxLength, onChange, ...props }: React.ComponentProps<\"textarea\">) {\n  const [typed, setTyped] = React.useState(String(props.defaultValue ?? \"\").length)\n  const count = props.value !== undefined ? String(props.value).length : typed\n  const field = (\n    <textarea\n      data-slot=\"textarea\"\n      maxLength={maxLength}\n      onChange={(e) => {\n        setTyped(e.target.value.length)\n        onChange?.(e)\n      }}\n      className={cn(\n        \"flex h-24 w-full resize-none rounded-box-s border border-input bg-transparent px-3.5 py-2.5 text-sm transition-colors outline-none placeholder:text-muted-foreground focus-visible:border-brand disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50\",\n        className\n      )}\n      {...props}\n    />\n  )\n  if (maxLength == null) return field\n  return (\n    <div data-slot=\"textarea-count\" className=\"flex w-full flex-col gap-box-2xs\">\n      {field}\n      <span className=\"self-end text-xs text-muted-foreground\">{count}/{maxLength}</span>\n    </div>\n  )\n}\n\nexport { Textarea }\n",
       "type": "registry:ui",
       "target": "components/ui/textarea.tsx"
     }

@@ -70,4 +70,19 @@ function ChipGroup({ scroll = false, className, ...props }: React.ComponentProps
   )
 }
 
-export { Chip, ChipGroup }
+// Dato con puntaje (ej: "🍒 Fruta | 4/5"): el nombre en gris, una rayita y el número del color de la app.
+// Mismo alto y borde que los chips, pero no se toca. Varios van en un ChipGroup (`scroll` = una sola línea).
+function ScoreChip({ label, value, max, className }: { label: React.ReactNode; value: React.ReactNode; max?: React.ReactNode; className?: string }) {
+  return (
+    <span data-slot="score-chip" className={cn("inline-flex h-8 shrink-0 items-stretch overflow-hidden rounded-full border border-input text-xs whitespace-nowrap dark:in-data-[variant=inset]:border-raised", className)}>
+      <span className="flex items-center pr-box-xs pl-box-s text-muted-foreground">{label}</span>
+      <span aria-hidden className="w-px bg-input dark:in-data-[variant=inset]:bg-raised" />
+      <span className="flex items-center pr-box-s pl-box-xs font-medium text-brand-text">
+        {value}
+        {max != null && <span className="font-normal text-muted-foreground">/{max}</span>}
+      </span>
+    </span>
+  )
+}
+
+export { Chip, ChipGroup, ScoreChip }

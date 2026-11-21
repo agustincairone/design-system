@@ -1,3 +1,4 @@
+import * as React from "react"
 import { cn } from "@/lib/utils"
 
 // Tab de ancho completo (diseño de outfit-tracker, con los colores del sistema).
@@ -6,7 +7,8 @@ import { cn } from "@/lib/utils"
 // Va pegado arriba de una caja: la caja lleva overflow-hidden y la tab ocupa todo el ancho.
 // La elegida va con el texto del color de la app y una raya de 3px abajo (más gruesa que la línea
 // divisoria de 1px); las demás quedan en gris. Todas sobre el fondo de la caja.
-// Cada opción puede llevar un segundo renglón chico (`sub`), ej: el total de esa pestaña.
+// Cada opción puede llevar un segundo renglón chico (`sub`), ej: el total de esa pestaña,
+// o un ícono arriba del texto (`icon`): ícono de 16px y texto de 13px (ej: Info / Editar / Borrar).
 
 export function TabBar<T extends string | number>({
   options,
@@ -15,7 +17,7 @@ export function TabBar<T extends string | number>({
   label,
   className,
 }: {
-  options: { value: T; label: string; sub?: string }[]
+  options: { value: T; label: string; sub?: string; icon?: React.ComponentType<{ className?: string }> }[]
   value: T
   onChange: (v: T) => void
   label?: string
@@ -25,6 +27,7 @@ export function TabBar<T extends string | number>({
     <div data-slot="tab-bar" role="tablist" aria-label={label} className={cn("flex w-full shrink-0 border-b border-border", className)}>
       {options.map((o, i) => {
         const on = o.value === value
+        const Icon = o.icon
         return (
           <button
             key={String(o.value)}
@@ -33,12 +36,14 @@ export function TabBar<T extends string | number>({
             aria-selected={on}
             onClick={() => onChange(o.value)}
             className={cn(
-              "flex min-w-0 flex-1 flex-col items-center justify-center gap-0.5 px-2 py-4 text-sm transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-inset",
+              "flex min-w-0 flex-1 flex-col items-center justify-center px-2 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-inset",
+              Icon ? "gap-box-2xs py-box-s text-xs" : "gap-0.5 py-4 text-sm",
               i < options.length - 1 && "border-r border-border",
               "relative bg-card after:absolute after:inset-x-0 after:-bottom-px after:h-[3px]",
               on ? "font-medium text-brand-text after:bg-brand" : "text-muted-foreground hover:text-foreground"
             )}
           >
+            {Icon && <Icon className="size-4" />}
             <span className="max-w-full truncate">{o.label}</span>
             {o.sub && <span className="max-w-full truncate text-xs font-normal text-muted-foreground">{o.sub}</span>}
           </button>

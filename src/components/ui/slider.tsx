@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils"
 // Línea de 2px, punto de 12px y 4px de aire entre el punto y la línea a cada lado.
 // Hover / apretado: aro sólido de 2px en el tono más oscuro del color (orange-700 en LOOP).
 // El color sale de `color` o, si no, del de la app.
+// Adentro de una caja gris, en modo oscuro, la línea sube un tono (si no, se pierde contra la caja).
 
 const THUMB = 12
 const GAP = 4
@@ -52,7 +53,7 @@ function Slider({
         } as React.CSSProperties
       }
       className={cn(
-        "group/slider relative flex h-5 w-full touch-none items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-5 data-vertical:flex-col",
+        "group/slider relative flex h-5 w-full touch-none dark:in-data-[variant=inset]:[--border:var(--raised)] items-center select-none data-disabled:opacity-50 data-vertical:h-full data-vertical:min-h-40 data-vertical:w-5 data-vertical:flex-col",
         className
       )}
       {...props}

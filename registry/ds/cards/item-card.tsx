@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils"
 // Fichas de algo con foto (ej: una prenda): foto cuadrada, puntitos de color y hasta 3 líneas de texto.
 // Fondo `tile` (un gris más claro que el de las cajas). Elegida = borde de 1,5px del color principal
 // (blanco en modo oscuro) + puntito arriba a la derecha de la foto.
+// `layout="tall"` (diseño de wine): foto vertical (3:4) y texto a la izquierda, nombre de 15px y debajo
+// lo demás en 13px, con lugar para algo más entre el 2º y el 3er renglón (`extra`, ej: estrellas).
 
 export type Item = {
   marca?: string
@@ -36,9 +38,9 @@ export function ColorDots({ colors, size = 14 }: { colors?: { hex: string }[]; s
   )
 }
 
-export function ItemPhoto({ item, className, gray, framed = true, selected }: { item: Item; className?: string; gray?: boolean; framed?: boolean; selected?: boolean }) {
+export function ItemPhoto({ item, className, gray, framed = true, selected, tall }: { item: Item; className?: string; gray?: boolean; framed?: boolean; selected?: boolean; tall?: boolean }) {
   return (
-    <div className={cn("relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-sm bg-raised", className)}>
+    <div className={cn("relative flex w-full items-center", tall ? "aspect-[3/4]" : "aspect-square", "justify-center overflow-hidden rounded-sm bg-raised", className)}>
       {item.imageUrl ? (
         <img
           src={item.imageUrl}
@@ -71,8 +73,21 @@ function ItemText({ item, size = "xs", className }: { item: Item; size?: "xs" | 
   )
 }
 
-// Ficha de las grillas de 3 columnas
-export function ItemCard({ item, selected, onClick, className, style }: { item: Item; selected?: boolean; onClick?: () => void; className?: string; style?: React.CSSProperties }) {
+// Texto de la ficha alta: a la izquierda, nombre de 15px y lo demás en 13px
+function ItemTextTall({ item, extra }: { item: Item; extra?: React.ReactNode }) {
+  return (
+    <div className="flex min-w-0 flex-col gap-box-2xs text-left">
+      {item.marca && <p className="truncate text-sm leading-tight font-medium">{item.marca}</p>}
+      {item.modelo && <p className="truncate text-xs leading-tight text-muted-foreground">{item.modelo}</p>}
+      {extra}
+      {item.tipo && <p className="truncate text-xs leading-tight text-muted-foreground/70">{item.tipo}</p>}
+    </div>
+  )
+}
+
+// Ficha de las grillas: cuadrada de 3 columnas, o alta de 2 (`layout="tall"`)
+export function ItemCard({ item, selected, onClick, className, style, layout = "square", extra }: { item: Item; selected?: boolean; onClick?: () => void; className?: string; style?: React.CSSProperties; layout?: "square" | "tall"; extra?: React.ReactNode }) {
+  const tall = layout === "tall"
   const Tag = onClick ? "button" : "div"
   return (
     <Tag
@@ -80,15 +95,22 @@ export function ItemCard({ item, selected, onClick, className, style }: { item: 
       onClick={onClick}
       style={style}
       className={cn(
-        "flex min-w-0 flex-col items-center gap-2 rounded-box-s bg-tile p-box-s outline-none transition-shadow",
+        "flex min-w-0 flex-col gap-2 rounded-box-s bg-tile p-box-s outline-none transition-shadow",
+        tall ? "items-stretch" : "items-center",
         onClick && "cursor-pointer hover:ring-[1.5px] hover:ring-brand focus-visible:ring-[1.5px] focus-visible:ring-brand",
         selected && "ring-[1.5px] ring-primary hover:ring-primary dark:ring-foreground dark:hover:ring-foreground",
         className
       )}
     >
-      <ItemPhoto item={item} selected={selected} />
-      <ColorDots colors={item.colors} size={11} />
-      <ItemText item={item} />
+      <ItemPhoto item={item} selected={selected} tall={tall} />
+      {tall ? (
+        <ItemTextTall item={item} extra={extra} />
+      ) : (
+        <>
+          <ColorDots colors={item.colors} size={11} />
+          <ItemText item={item} />
+        </>
+      )}
     </Tag>
   )
 }

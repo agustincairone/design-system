@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-input",
+  "title": "search-input",
+  "description": "Buscador: el campo de texto con la lupa adelante y una cruz para borrar lo escrito.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "@ds/button",
+    "@ds/input"
+  ],
+  "files": [
+    {
+      "path": "registry/ds/ui/search-input.tsx",
+      "content": "import * as React from \"react\"\nimport { Search, X } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/components/ui/button\"\nimport { Input } from \"@/components/ui/input\"\n\n// Buscador: el campo de texto de siempre (mismo alto, borde y foco) con la lupa adelante\n// y una cruz para borrar lo escrito, que aparece sólo cuando hay algo.\nfunction SearchInput({\n  value,\n  onChange,\n  placeholder = \"Buscar...\",\n  className,\n  ...props\n}: Omit<React.ComponentProps<\"input\">, \"value\" | \"onChange\"> & { value: string; onChange: (value: string) => void }) {\n  return (\n    <div data-slot=\"search-input\" className={cn(\"relative w-full\", className)}>\n      <Search aria-hidden className=\"pointer-events-none absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-muted-foreground\" />\n      <Input\n        type=\"text\"\n        inputMode=\"search\"\n        enterKeyHint=\"search\"\n        value={value}\n        onChange={(e) => onChange(e.target.value)}\n        placeholder={placeholder}\n        className=\"pr-10 pl-10\"\n        {...props}\n      />\n      {value && (\n        <Button variant=\"ghost\" size=\"icon-xs\" aria-label=\"Borrar búsqueda\" className=\"absolute top-1/2 right-2 -translate-y-1/2\" onClick={() => onChange(\"\")}>\n          <X />\n        </Button>\n      )}\n    </div>\n  )\n}\n\nexport { SearchInput }\n",
+      "type": "registry:ui",
+      "target": "components/ui/search-input.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

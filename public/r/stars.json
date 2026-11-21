@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stars",
+  "title": "stars",
+  "description": "Estrellas: para mostrar un puntaje (14 o 16px) y para puntuar (28px). Llenas del color de la app, vacías con borde gris.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ds/ui/stars.tsx",
+      "content": "import * as React from \"react\"\nimport { Star } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\n// Estrellas (diseño de wine con los colores del sistema): llenas del color de la app,\n// vacías sólo con el borde gris.\n\n// Para mostrar un puntaje: 14px (en las fichas) o 16px (en el detalle)\nfunction Stars({ value, max = 5, size = \"sm\", className }: { value: number; max?: number; size?: \"sm\" | \"md\"; className?: string }) {\n  return (\n    <span role=\"img\" aria-label={`${value} de ${max} estrellas`} className={cn(\"inline-flex shrink-0 gap-0.5\", className)}>\n      {Array.from({ length: max }, (_, i) => (\n        <Star\n          key={i}\n          aria-hidden\n          strokeWidth={i < value ? 2 : 1.5}\n          className={cn(size === \"sm\" ? \"size-3.5\" : \"size-4\", i < value ? \"fill-current text-brand-text\" : \"text-muted-foreground\")}\n        />\n      ))}\n    </span>\n  )\n}\n\n// Para puntuar: estrellas de 28px; al pasar el mouse se ve cómo quedaría\nfunction StarRating({ value, onChange, max = 5, className }: { value: number; onChange: (value: number) => void; max?: number; className?: string }) {\n  const [hover, setHover] = React.useState(0)\n  const shown = hover || value\n  return (\n    <div role=\"radiogroup\" aria-label=\"Puntaje\" className={cn(\"flex gap-box-xs\", className)} onMouseLeave={() => setHover(0)}>\n      {Array.from({ length: max }, (_, i) => {\n        const n = i + 1\n        return (\n          <button\n            key={n}\n            type=\"button\"\n            role=\"radio\"\n            aria-checked={value === n}\n            aria-label={n === 1 ? \"1 estrella\" : `${n} estrellas`}\n            onMouseEnter={() => setHover(n)}\n            onClick={() => onChange(n)}\n            className=\"rounded-full p-1 outline-none focus-visible:ring-3 focus-visible:ring-ring/50\"\n          >\n            <Star strokeWidth={1.5} className={cn(\"size-7 transition-colors\", n <= shown ? \"fill-current text-brand-text\" : \"text-muted-foreground\")} />\n          </button>\n        )\n      })}\n    </div>\n  )\n}\n\nexport { Stars, StarRating }\n",
+      "type": "registry:ui",
+      "target": "components/ui/stars.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

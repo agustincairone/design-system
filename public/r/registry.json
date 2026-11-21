@@ -456,7 +456,7 @@
       "name": "chip",
       "type": "registry:ui",
       "title": "chip",
-      "description": "Chip que se prende y se apaga, con ícono y cruz opcionales.",
+      "description": "Chip que se prende y se apaga, con ícono y cruz opcionales; y el dato con puntaje (ej: Fruta | 4/5).",
       "registryDependencies": [
         "utils"
       ],
@@ -469,13 +469,33 @@
       ]
     },
     {
+      "name": "stars",
+      "type": "registry:ui",
+      "title": "stars",
+      "description": "Estrellas: para mostrar un puntaje (14 o 16px) y para puntuar (28px). Llenas del color de la app, vacías con borde gris.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/stars.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/stars.tsx"
+        }
+      ]
+    },
+    {
       "name": "bottom-sheet",
       "type": "registry:ui",
       "title": "bottom-sheet",
-      "description": "Hoja desde abajo con 16px de aire, título de 16px y cruz redonda; y la confirmación.",
+      "description": "Hoja desde abajo con 16px de aire, título y cruz redonda (con pasos opcionales: volver y Paso 2/3); la confirmación, el resumen en cajita gris y el filtro.",
       "registryDependencies": [
         "utils",
-        "@ds/button"
+        "@ds/button",
+        "@ds/chip"
       ],
       "files": [
         {
@@ -483,6 +503,10 @@
           "type": "registry:ui",
           "target": "components/ui/bottom-sheet.tsx"
         }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
       ]
     },
     {
@@ -590,10 +614,31 @@
       ]
     },
     {
+      "name": "search-input",
+      "type": "registry:ui",
+      "title": "search-input",
+      "description": "Buscador: el campo de texto con la lupa adelante y una cruz para borrar lo escrito.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@ds/button",
+        "@ds/input"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/search-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/search-input.tsx"
+        }
+      ]
+    },
+    {
       "name": "textarea",
       "type": "registry:ui",
       "title": "textarea",
-      "description": "Texto largo, redondeado.",
+      "description": "Campo de varias líneas: alto fijo, esquinas de caja S, no se agranda; con maxLength cuenta las letras.",
       "dependencies": [],
       "registryDependencies": [
         "utils"
@@ -688,7 +733,7 @@
       "name": "controls",
       "type": "registry:block",
       "title": "Controles",
-      "description": "Campo-slider, stepper, selector segmentado, fichas, número + slider y reparto entre dos. Sirven en cualquier app.",
+      "description": "Campo-slider, stepper, selector segmentado, fichas, número + slider y reparto entre dos. Sirven en cualquier app, escala corta de 1 a 5.",
       "dependencies": [
         "lucide-react"
       ],
@@ -761,6 +806,11 @@
           "path": "registry/ds/controls/bottom-nav.tsx",
           "type": "registry:component",
           "target": "components/controls/bottom-nav.tsx"
+        },
+        {
+          "path": "registry/ds/controls/scale-slider.tsx",
+          "type": "registry:component",
+          "target": "components/controls/scale-slider.tsx"
         }
       ]
     },
@@ -870,14 +920,16 @@
         "@ds/item-card",
         "@ds/bottom-sheet",
         "@ds/empty-state",
-        "@ds/field-label"
+        "@ds/field-label",
+        "@ds/search-input",
+        "@ds/stars"
       ]
     },
     {
       "name": "item-card",
       "type": "registry:component",
       "title": "item-card",
-      "description": "Fichas con foto, puntitos de color y texto (grilla, chiquita y fila).",
+      "description": "Fichas con foto, puntitos de color y texto (grilla cuadrada o alta, chiquita y fila).",
       "registryDependencies": [
         "utils"
       ],
