@@ -59,8 +59,10 @@ function SelectTrigger({
 function SelectContent({
   className,
   children,
-  position = "item-aligned",
-  align = "center",
+  // La lista se abre siempre debajo del campo, separada 4px y del mismo ancho (nunca encima, tapándolo).
+  // Si abajo no hay lugar, se abre arriba.
+  position = "popper",
+  align = "start",
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Content>) {
   return (
