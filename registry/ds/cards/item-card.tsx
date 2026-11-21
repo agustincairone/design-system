@@ -17,6 +17,8 @@ export type Item = {
   imageZoom?: number
   imagePanX?: number
   imagePanY?: number
+  /** "contain": la foto entera adentro del marco, sin recortar (ej: una botella). Por defecto la recorta para llenarlo */
+  imageFit?: "cover" | "contain"
   archived?: boolean
   colors?: { name?: string; hex: string }[]
 }
@@ -46,7 +48,7 @@ export function ItemPhoto({ item, className, gray, framed = true, selected, tall
           src={item.imageUrl}
           alt=""
           draggable={false}
-          className={cn("absolute inset-0 block size-full object-cover", gray && "grayscale")}
+          className={cn("absolute inset-0 block size-full", item.imageFit === "contain" ? "object-contain" : "object-cover", gray && "grayscale")}
           style={framed ? { transform: `scale(${item.imageZoom || 1}) translate(${item.imagePanX || 0}px, ${item.imagePanY || 0}px)`, transformOrigin: "center center" } : undefined}
         />
       ) : (
