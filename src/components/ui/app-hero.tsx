@@ -128,6 +128,8 @@ export function DotsLine({ className }: { className?: string }) {
 
 // Título de sección con su dato a la derecha (texto gris + número de puntitos).
 // `icon` (ej: el clima) va al mismo tamaño que el número.
+// Sin dato, igual reserva el lugar del número (invisible): así el título queda siempre a la
+// misma altura en todas las secciones, tengan número o no.
 export function SectionHeader({
   title,
   value,
@@ -146,12 +148,16 @@ export function SectionHeader({
   return (
     <div data-slot="section-header" className={cn("flex items-baseline justify-between gap-4", className)}>
       <h2 className="title-box min-w-0 truncate">{title}</h2>
-      {value != null && value !== "" && (
+      {value != null && value !== "" ? (
         <div className="flex shrink-0 items-baseline gap-2">
           {label && <span className="eyebrow">{label}</span>}
           {icon && <span className="text-2xl leading-none">{icon}</span>}
           <Readout value={value} digits={digits} className="text-2xl" />
         </div>
+      ) : (
+        <span aria-hidden className="invisible shrink-0">
+          <Readout value="0" className="text-2xl" />
+        </span>
       )}
     </div>
   )
