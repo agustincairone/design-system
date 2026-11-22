@@ -2,9 +2,11 @@ import { useTheme } from "@/components/theme-provider"
 import { Toaster as Sonner, type ToasterProps } from "sonner"
 import { CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon } from "lucide-react"
 
-// El aviso sale siempre abajo al centro. `aboveNav`: en las apps con barra de abajo, va encima de la barra
-// (la barra ocupa 80px desde el borde: 64 de alto + 16 de aire) con 16px de separación.
-const ABOVE_NAV = { bottom: 96 }
+// El aviso sale siempre abajo al centro, 16px arriba del borde (más la rayita de inicio del celular).
+// `aboveNav`: en las apps con barra de abajo, va encima de la barra (64 de alto + 16 de aire) con 16px de separación.
+const SAFE = "env(safe-area-inset-bottom)"
+const BOTTOM = { bottom: `calc(16px + ${SAFE})` }
+const ABOVE_NAV = { bottom: `calc(96px + ${SAFE})` }
 
 const Toaster = ({ aboveNav, ...props }: ToasterProps & { aboveNav?: boolean }) => {
   const { resolvedTheme } = useTheme()
@@ -44,7 +46,8 @@ const Toaster = ({ aboveNav, ...props }: ToasterProps & { aboveNav?: boolean }) 
         },
       }}
       position="bottom-center"
-      {...(aboveNav ? { offset: ABOVE_NAV, mobileOffset: ABOVE_NAV } : {})}
+      offset={aboveNav ? ABOVE_NAV : BOTTOM}
+      mobileOffset={aboveNav ? ABOVE_NAV : BOTTOM}
       {...props}
     />
   )

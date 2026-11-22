@@ -116,7 +116,9 @@
     --spacing-box-gap: 8px;
     --spacing-section: 40px;
     /* Lugar libre al final de cada pantalla, para que la barra de abajo y el botón flotante no tapen el contenido */
-    --spacing-screen-end: 112px;
+    --spacing-screen-end: calc(112px + env(safe-area-inset-bottom));
+    /* Aire de abajo de la pantalla: 16px, más el lugar de la rayita de inicio del celular cuando la app está instalada */
+    --spacing-screen-bottom: calc(16px + env(safe-area-inset-bottom));
     /* Alto máximo de la lista de un desplegable: 6 opciones de 47px más la flechita de 24px que avisa que hay más */
     --spacing-list: 306px;
 }

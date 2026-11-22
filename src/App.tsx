@@ -1197,8 +1197,10 @@ export function App() {
               <div>@import "@agustincairone/design-system/brands/pay-tracker.css";</div>
               <div className="pt-2 text-muted-foreground"># 3. cada pieza se importa así</div>
               <div>{'import { Button } from "@agustincairone/design-system/components/ui/button"'}</div>
-              <div className="pt-2 text-muted-foreground"># 4. en index.html: que el iPhone no haga zoom al tocar un campo</div>
-              <div>{'<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />'}</div>
+              <div className="pt-2 text-muted-foreground"># 4. en index.html: que el iPhone no haga zoom al tocar un campo y que la app instalada llegue hasta el borde (la rayita de abajo toma el color de la página)</div>
+              <div>{'<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover" />'}</div>
+              <div className="pt-2 text-muted-foreground"># 5. la barra de abajo va pegada al borde con el aire del sistema (la barra de la hora toma sola el color de la página)</div>
+              <div>{'<div className="fixed inset-x-0 bottom-0 z-50 px-box-m pb-screen-bottom"><BottomNav … /></div>'}</div>
             </div>
           </Section>
         </main>
