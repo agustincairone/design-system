@@ -85,7 +85,7 @@ export function SummaryFieldsDemo() {
   return (
     <BottomSheet inline open onOpenChange={() => {}} title="Agregar bookmark" step={{ current: 6, total: 6 }} onBack={() => {}}>
       <SheetSummary
-        image={<LinkPhoto link={l} className="aspect-video w-full" />}
+        image={<LinkPhoto link={l} small className="aspect-video w-full" />}
         fields={[
           { label: "Título", value: l.title, wide: true },
           { label: "Categoría", value: l.category },

@@ -102,24 +102,42 @@ function BottomSheet({
 // Resumen de algo en una cajita gris (ej: el vino que vas a borrar o el que ya tenías cargado).
 // Con `fields`, cada dato con su nombre arriba en gris, en dos columnas (ej: el último paso antes de guardar:
 // Título, Categoría, Subcategoría, Descripción). `wide` hace que un dato ocupe las dos columnas.
-// `image` suma la imagen apaisada (16:9) arriba de todo: una dirección, o la pieza ya armada (ej: LinkPhoto,
+// `image` suma una imagen apaisada (16:9) chica a la izquierda de lo primero (el título, o el primer
+// dato), así el resumen casi no crece: una dirección, o la pieza ya armada (ej: LinkPhoto `small`,
 // que sin foto muestra el logo del sitio).
 type SummaryField = { label: React.ReactNode; value: React.ReactNode; wide?: boolean }
 
-function SheetSummary({ title, lines, fields, image }: { title?: React.ReactNode; lines?: React.ReactNode[]; fields?: SummaryField[]; image?: React.ReactNode }) {
+function SummaryFieldItem({ field }: { field: SummaryField }) {
   return (
-    <div data-slot="sheet-summary" className="flex flex-col gap-box-2xs rounded-box-s bg-inset p-box-s">
-      {typeof image === "string" ? <img src={image} alt="" className="mb-box-xs aspect-video w-full rounded-sm bg-raised object-cover" /> : image ? <div className="mb-box-xs">{image}</div> : null}
+    <div className={cn("min-w-0", field.wide && "col-span-2")}>
+      <dt className="text-xs text-muted-foreground">{field.label}</dt>
+      <dd className="text-sm break-words">{field.value || "—"}</dd>
+    </div>
+  )
+}
+
+function SheetSummary({ title, lines, fields = [], image }: { title?: React.ReactNode; lines?: React.ReactNode[]; fields?: SummaryField[]; image?: React.ReactNode }) {
+  const head = title || lines?.length ? (
+    <div className="flex min-w-0 flex-col gap-box-2xs">
       {title && <p className="text-sm font-medium">{title}</p>}
       {lines?.filter(Boolean).map((l, i) => <p key={i} className="text-xs text-muted-foreground">{l}</p>)}
-      {fields && (
+    </div>
+  ) : null
+  const beside = image ? (head ?? (fields[0] && <dl><SummaryFieldItem field={fields[0]} /></dl>)) : null
+  const rest = image && !head ? fields.slice(1) : fields
+  return (
+    <div data-slot="sheet-summary" className="flex flex-col gap-box-xs rounded-box-s bg-inset p-box-s">
+      {image ? (
+        <div className="flex items-start gap-box-s">
+          <div className="w-24 shrink-0">
+            {typeof image === "string" ? <img src={image} alt="" className="aspect-video w-full rounded-sm bg-raised object-cover" /> : image}
+          </div>
+          <div className="min-w-0 flex-1">{beside}</div>
+        </div>
+      ) : head}
+      {rest.length > 0 && (
         <dl className="grid grid-cols-2 gap-x-box-s gap-y-box-xs">
-          {fields.map((f, i) => (
-            <div key={i} className={cn("min-w-0", f.wide && "col-span-2")}>
-              <dt className="text-xs text-muted-foreground">{f.label}</dt>
-              <dd className="text-sm break-words">{f.value || "—"}</dd>
-            </div>
-          ))}
+          {rest.map((f, i) => <SummaryFieldItem key={i} field={f} />)}
         </dl>
       )}
     </div>

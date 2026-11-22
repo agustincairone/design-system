@@ -54,7 +54,7 @@ export function SiteIcon({ url, className }: { url: string; className?: string }
 }
 
 // La imagen del link; sin imagen, el favicon de la página (o el logo del sitio) y el dominio.
-// Suelta (ej: en el resumen antes de guardar) va con `className="aspect-video w-full"`.
+// Suelta (ej: chica en el resumen antes de guardar) va con `small className="aspect-video w-full"`.
 export function LinkPhoto({ link, small, className }: { link: LinkItem; small?: boolean; className?: string }) {
   const [failed, setFailed] = React.useState(false)
   const site = siteOf(link.url)
