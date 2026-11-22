@@ -25,6 +25,7 @@ import {
   Wine,
   ChevronLeft,
   ChevronRight,
+  Bookmark,
 } from "lucide-react"
 
 import { useTheme } from "@/components/theme-provider"
@@ -59,6 +60,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { BRANDS, type BrandId, applyBrand } from "@/brands"
+import { BookmarksStyle } from "@/bookmarks-style"
 import { PALETTE, SHADES } from "@/palette"
 import { AudioPanel } from "@/components/audio/audio-panel"
 import { LevelMeter, paintMeter } from "@/components/audio/level-meter"
@@ -160,6 +162,7 @@ const NAV: [string, [string, string][]][] = [
   ["Fundamentos", [["reglas", "Reglas"], ["colores", "Colores"], ["tipografia", "Tipografía"], ["numeros", "Números en vivo"], ["cajas", "Espacios y cajas"]]],
   ["Componentes", [["fleje", "Fleje y títulos"], ["botones", "Botones"], ["formularios", "Formularios"], ["elegir", "Elegir opciones"], ["controles", "Controles"], ["listas", "Tarjetas y listas"], ["navegacion", "Navegación"], ["ventanas", "Ventanas y avisos"]]],
   ["Música", [["audio", "Audio (LOOP)"]]],
+  ["Para elegir", [["estilo-bookmarks", "Estilo bookmarks"]]],
   ["Uso", [["usar", "Cómo usarlo"]]],
 ]
 
@@ -194,6 +197,7 @@ const ICONS: Record<BrandId, typeof Music> = {
   "pay-tracker": Wallet,
   "outfit-tracker": Shirt,
   "wine-tracker": Wine,
+  bookmarks: Bookmark,
 }
 
 // Ceros a la izquierda atenuados: "007" -> <span dim>00</span>7
@@ -1182,6 +1186,14 @@ export function App() {
             <MoreControls />
             <h3 className="mt-10 mb-3 font-medium">Piezas de LOOP</h3>
             <LoopPiecesDemo />
+          </Section>
+
+          <Section
+            id="estilo-bookmarks"
+            title="Estilo bookmarks"
+            description="Temporal, para elegir. A la derecha, cada pieza de bookmarks tal cual está hoy; a la izquierda, cómo quedaría con lo que el sistema ya tiene, con el naranja de bookmarks. Elegí con cuál te quedás en cada una (o si querés las dos). Cuando elijas, lo elegido pasa a su sección y esta página se borra."
+          >
+            <BookmarksStyle />
           </Section>
 
           <Section

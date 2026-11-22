@@ -1,7 +1,7 @@
 // Acentos de cada app, sólo para previsualizarlos en esta guía.
 // La fuente de verdad para las apps es registry.json (items brand-*).
 
-export type BrandId = "neutral" | "loop" | "pay-tracker" | "outfit-tracker" | "wine-tracker"
+export type BrandId = "neutral" | "loop" | "pay-tracker" | "outfit-tracker" | "wine-tracker" | "bookmarks"
 
 type Vars = { brand: string; fg: string; text: string; strong: string; hover: string }
 
@@ -30,6 +30,11 @@ export const BRANDS: Record<BrandId, { name: string; light: Vars; dark: Vars }> 
     name: "wine-tracker (rose-900 / rose-700)",
     light: { brand: "oklch(41% 0.159 10.272)", fg: "oklch(100% 0 0)", text: "oklch(41% 0.159 10.272)", strong: "oklch(27.1% 0.105 12.094)", hover: "oklch(45.5% 0.188 13.697)" },
     dark: { brand: "oklch(51.4% 0.222 16.935)", fg: "oklch(100% 0 0)", text: "oklch(51.4% 0.222 16.935)", strong: "oklch(45.5% 0.188 13.697)", hover: "oklch(58.6% 0.253 17.585)" },
+  },
+  bookmarks: {
+    name: "bookmarks (orange-500)",
+    light: { brand: "oklch(70.5% 0.213 47.604)", fg: "oklch(100% 0 0)", text: "oklch(70.5% 0.213 47.604)", strong: "oklch(64.6% 0.222 41.116)", hover: "oklch(75% 0.183 55.934)" },
+    dark: { brand: "oklch(70.5% 0.213 47.604)", fg: "oklch(100% 0 0)", text: "oklch(70.5% 0.213 47.604)", strong: "oklch(64.6% 0.222 41.116)", hover: "oklch(75% 0.183 55.934)" },
   },
 }
 

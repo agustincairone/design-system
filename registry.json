@@ -399,6 +399,42 @@
       }
     },
     {
+      "name": "brand-bookmarks",
+      "type": "registry:theme",
+      "title": "Acento de bookmarks",
+      "description": "Naranja de bookmarks: orange-500 en modo claro y en oscuro, siempre con texto blanco encima.",
+      "cssVars": {
+        "light": {
+          "brand": "oklch(70.5% 0.213 47.604)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(70.5% 0.213 47.604)",
+          "primary": "oklch(70.5% 0.213 47.604)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(70.5% 0.213 47.604)",
+          "chart-1": "oklch(70.5% 0.213 47.604)",
+          "sidebar-primary": "oklch(70.5% 0.213 47.604)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(70.5% 0.213 47.604)",
+          "brand-strong": "oklch(64.6% 0.222 41.116)",
+          "brand-hover": "oklch(75% 0.183 55.934)"
+        },
+        "dark": {
+          "brand": "oklch(70.5% 0.213 47.604)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(70.5% 0.213 47.604)",
+          "primary": "oklch(70.5% 0.213 47.604)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(70.5% 0.213 47.604)",
+          "chart-1": "oklch(70.5% 0.213 47.604)",
+          "sidebar-primary": "oklch(70.5% 0.213 47.604)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(70.5% 0.213 47.604)",
+          "brand-strong": "oklch(64.6% 0.222 41.116)",
+          "brand-hover": "oklch(75% 0.183 55.934)"
+        }
+      }
+    },
+    {
       "name": "toaster",
       "type": "registry:ui",
       "title": "Notificaciones",
