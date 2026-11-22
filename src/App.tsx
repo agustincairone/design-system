@@ -1211,7 +1211,7 @@ export function App() {
           <Section
             id="estilo-bookmarks"
             title="Estilo bookmarks"
-            description="Temporal: lo único que falta decidir de bookmarks. A la derecha, su pantalla de categorías tal cual está hoy; a la izquierda, cómo quedaría con el sistema. Cuando lo charlemos y elijas, esta página se borra."
+            description="Temporal: lo único que falta decidir de bookmarks. A la derecha, su pantalla de categorías como está hoy; a la izquierda, con las filas que se abren del análisis de gastos de pay. Cuando lo charlemos y elijas, esta página se borra."
           >
             <BookmarksStyle />
           </Section>

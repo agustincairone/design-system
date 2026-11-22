@@ -1,73 +1,150 @@
-// Guía (temporal): "Estilo bookmarks". Ya se eligió todo menos la pantalla de categorías, que quedó
-// pendiente para charlar: acá está la de bookmarks tal cual (estilo 2) al lado de cómo quedaría con el
-// sistema (estilo 1). Cuando se decida, este archivo y bookmarks-original.tsx se borran.
+// Guía (temporal): "Estilo bookmarks". Falta decidir la pantalla de categorías: acá está cómo está hoy
+// en bookmarks (estilo 2, la forma original con los colores del sistema) al lado de cómo quedaría con
+// las filas que se abren del análisis de gastos de pay (estilo 1). Cuando se decida, este archivo se borra.
 import * as React from "react"
-import { Plus } from "lucide-react"
+import { Check, ChevronDown, Pencil, Plus, Trash2 } from "lucide-react"
 
+import { cn } from "@/lib/utils"
 import { useTheme } from "@/components/theme-provider"
 import { BRANDS } from "@/brands"
 import { SectionHeader } from "@/components/ui/app-hero"
-import { ExpandRow, ExpandRowItem } from "@/components/controls/expand-row"
 import { Button } from "@/components/ui/button"
-import { BM, BM_FONT, BmCategories } from "@/bookmarks-original"
 
-const CATS = [
-  { name: "Diseño", count: 2, subs: [{ name: "Componentes", count: 1 }, { name: "Videos", count: 1 }] },
-  { name: "Lecturas", count: 1, subs: [{ name: "Tipografía", count: 1 }] },
+type Cat = { name: string; count: number; subs: { name: string; count: number }[] }
+const CATS: Cat[] = [
+  { name: "Diseño", count: 3, subs: [{ name: "Componentes", count: 1 }, { name: "Herramientas", count: 1 }, { name: "Videos", count: 1 }] },
+  { name: "Lecturas", count: 2, subs: [{ name: "Referencia", count: 1 }, { name: "Tipografía", count: 1 }] },
   { name: "Recetas", count: 0, subs: [] },
 ]
-const plural = (n: number) => (n === 0 ? "sin bookmarks" : `${n} bookmark${n !== 1 ? "s" : ""}`)
+const bookmarksCount = (n: number) => `${n} bookmark${n !== 1 ? "s" : ""}`
+const subCount = (n: number) => (n === 0 ? "sin bookmarks" : bookmarksCount(n))
 
-function Compare({ name, use, oneNote, one, two, bare }: {
-  name: string; use: string; oneNote: string; one: React.ReactNode; two: React.ReactNode
-  /** sin caja (pantallas y hojas, que traen su propio fondo) */
-  bare?: boolean
-}) {
+// Editar (o confirmar, mientras se escribe) y borrar: los mismos botones que en las fichas
+function Actions({ editing, onEdit }: { editing?: boolean; onEdit?: () => void }) {
+  return (
+    <div className="-mr-1 flex shrink-0 items-center">
+      {editing
+        ? <Button variant="ghost" size="icon-sm" aria-label="Guardar" className="text-brand-text" onClick={onEdit}><Check className="size-3.5" /></Button>
+        : <Button variant="ghost" size="icon-sm" aria-label="Editar" className="text-muted-foreground" onClick={onEdit}><Pencil className="size-3.5" /></Button>}
+      <Button variant="ghost" size="icon-sm" aria-label="Borrar" className="text-destructive hover:text-destructive"><Trash2 className="size-3.5" /></Button>
+    </div>
+  )
+}
+
+// Estilo 1: la fila que se abre del análisis de pay (nombre con la cantidad abajo, el detalle en una
+// cajita gris) + lápiz y tacho en la fila
+function RowOne({ c, defaultOpen }: { c: Cat; defaultOpen?: boolean }) {
+  const [open, setOpen] = React.useState(!!defaultOpen)
+  return (
+    <div className="border-b border-border last:border-b-0">
+      <div className="flex items-center gap-3 px-4 py-3">
+        <button type="button" onClick={() => setOpen((o) => !o)} className="flex min-w-0 flex-1 items-center gap-3 text-left text-sm">
+          <div className="min-w-0 flex-1">
+            <div className="truncate"><span className="text-brand-text">✸</span> {c.name}</div>
+            <div className="mt-0.5 text-xs text-muted-foreground">{bookmarksCount(c.count)}</div>
+          </div>
+          <ChevronDown className={cn("size-4 shrink-0 text-muted-foreground transition-transform duration-200", open && "rotate-180")} />
+        </button>
+        <Actions />
+      </div>
+      {open && (
+        <div className="mx-4 mb-3 rounded-box-m bg-inset py-1">
+          {c.subs.map((s) => (
+            <div key={s.name} className="flex items-center gap-3 py-1 pr-2 pl-4 text-sm">
+              <div className="min-w-0 flex-1">
+                <div className="truncate">{s.name}</div>
+                <div className="mt-0.5 text-xs text-muted-foreground">{subCount(s.count)}</div>
+              </div>
+              <Actions />
+            </div>
+          ))}
+          <div className="px-box-xs py-box-2xs"><Button variant="dashed" size="sm" className="w-full"><Plus /> Agregar subcategoría</Button></div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function StyleOne() {
+  return (
+    <>
+      <div className="overflow-hidden rounded-box-l bg-card">
+        {CATS.map((c, i) => <RowOne key={c.name} c={c} defaultOpen={i === 0} />)}
+      </div>
+      <Button variant="dashed" className="w-full"><Plus className="size-4" /> Agregar categoría</Button>
+    </>
+  )
+}
+
+// Estilo 2: como está hoy en bookmarks (la forma original, ya con los colores del sistema)
+function RowTwo({ c, defaultOpen }: { c: Cat; defaultOpen?: boolean }) {
+  const [open, setOpen] = React.useState(!!defaultOpen)
+  const [editing, setEditing] = React.useState(false)
+  return (
+    <div className="border-b border-border">
+      <div className="flex min-h-14 items-center gap-3 px-4">
+        {editing ? (
+          <input autoFocus defaultValue={c.name} className="min-w-0 flex-1 bg-transparent font-medium caret-brand outline-none" />
+        ) : (
+          <button onClick={() => setOpen((o) => !o)} className="flex min-w-0 flex-1 items-center gap-1.5 self-stretch text-left">
+            <span className="shrink-0 text-brand-text">✸</span>
+            <span className="truncate font-medium">{c.name}</span>
+            <span className="shrink-0 text-xs text-muted-foreground">{bookmarksCount(c.count)}</span>
+            <ChevronDown className={cn("ml-auto size-4 shrink-0 text-muted-foreground transition-transform duration-200", open && "rotate-180")} />
+          </button>
+        )}
+        <Actions editing={editing} onEdit={() => setEditing((e) => !e)} />
+      </div>
+      {open && (
+        <div className="border-t border-border">
+          {c.subs.map((s) => (
+            <div key={s.name} className="flex min-h-14 items-center gap-3 border-b border-border pr-4 pl-8">
+              <span className="min-w-0 flex-1 text-muted-foreground">{s.name} <span className="text-xs">· {subCount(s.count)}</span></span>
+              <Actions />
+            </div>
+          ))}
+          <button className="flex min-h-14 w-full items-center bg-inset pr-4 pl-8 font-medium text-brand-text hover:bg-card-hover">+ Agregar nueva subcategoría</button>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function StyleTwo() {
+  return (
+    <div className="overflow-hidden rounded-box-l bg-card text-sm">
+      {CATS.map((c, i) => <RowTwo key={c.name} c={c} defaultOpen={i === 0} />)}
+      <button className="flex min-h-14 w-full items-center px-4 font-medium text-brand-text hover:bg-card-hover">+ Agregar nueva categoría</button>
+    </div>
+  )
+}
+
+export function BookmarksStyle() {
   const { resolvedTheme } = useTheme()
   const v = BRANDS.bookmarks[resolvedTheme === "dark" ? "dark" : "light"]
   const brand = {
     "--brand": v.brand, "--brand-text": v.text, "--brand-strong": v.strong, "--brand-hover": v.hover, "--brand-foreground": v.fg,
     "--primary": v.brand, "--primary-foreground": v.fg, "--ring": v.brand,
   } as React.CSSProperties
-  const box = bare ? "flex flex-col gap-3 overflow-hidden rounded-box-l" : "flex min-h-24 flex-col justify-center gap-3 rounded-box-l bg-card p-box-l"
-  return (
-    <div className="flex flex-col gap-3">
-      <div>
-        <div className="text-sm font-medium">{name}</div>
-        <div className="text-xs text-muted-foreground">{use}</div>
-      </div>
-      <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-2">
-        <div className="flex min-w-0 flex-col gap-2" style={brand}>
-          <span className="eyebrow">Estilo 1 · {oneNote}</span>
-          <div className={box}>{one}</div>
-        </div>
-        <div className="flex min-w-0 flex-col gap-2">
-          <span className="eyebrow">Estilo 2 · bookmarks (original)</span>
-          <div className={box} style={{ background: bare ? BM.bg : BM.white, fontFamily: BM_FONT, color: BM.text, padding: bare ? 0 : undefined }}>{two}</div>
-        </div>
+  const screen = (label: string, body: React.ReactNode) => (
+    <div className="flex min-w-0 flex-col gap-2" style={brand}>
+      <span className="eyebrow">{label}</span>
+      <div className="flex flex-col gap-box-s overflow-hidden rounded-box-l bg-background p-box-m">
+        <SectionHeader title="Categorías" label="categorías" value={CATS.length} />
+        {body}
       </div>
     </div>
   )
-}
-
-export function BookmarksStyle() {
   return (
-    <div className="flex flex-col gap-section">
-      <Compare name="Pantalla de categorías" use="Cada categoría se abre y muestra sus subcategorías. En bookmarks, cada fila tiene lápiz para cambiarle el nombre y tacho para borrarla." oneNote="filas que se abren (las del análisis de gastos de pay)" bare
-        one={<div className="flex flex-col gap-box-s bg-background p-box-m">
-          <SectionHeader title="Categorías" label="categorías" value={CATS.length} />
-          <div className="overflow-hidden rounded-box-l bg-card">
-            {CATS.map((c, i) => (
-              <ExpandRow key={c.name} title={c.name} sub={plural(c.count)} defaultOpen={i === 0}>
-                {c.subs.map((s) => <ExpandRowItem key={s.name} label={s.name} value={<span className="text-muted-foreground">{s.count}</span>} />)}
-                <div className="px-box-xs py-box-2xs"><Button variant="dashed" size="sm" className="w-full"><Plus /> Agregar subcategoría</Button></div>
-              </ExpandRow>
-            ))}
-          </div>
-          <Button variant="dashed" className="w-full"><Plus className="size-4" /> Agregar categoría</Button>
-          <p className="text-sm text-muted-foreground">El sistema no tiene lápiz y tacho en la fila. Se puede hacer con una hoja al tocar la categoría (nombre + Guardar + Eliminar), o sumamos los íconos a la fila.</p>
-        </div>}
-        two={<BmCategories cats={CATS} />} />
+    <div className="flex flex-col gap-3">
+      <div>
+        <div className="text-sm font-medium">Pantalla de categorías</div>
+        <div className="text-xs text-muted-foreground">Cada categoría se abre y muestra sus subcategorías; lápiz para cambiarle el nombre y tacho para borrarla. Tocá las filas para abrirlas.</div>
+      </div>
+      <div className="grid grid-cols-1 items-start gap-3 md:grid-cols-2">
+        {screen("Estilo 1 · como el análisis de gastos de pay", <StyleOne />)}
+        {screen("Estilo 2 · como está hoy en bookmarks", <StyleTwo />)}
+      </div>
     </div>
   )
 }
