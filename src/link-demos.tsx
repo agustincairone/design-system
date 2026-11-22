@@ -4,7 +4,7 @@ import * as React from "react"
 import { LayoutGrid, List, Plus } from "lucide-react"
 
 import { Segmented } from "@/components/controls/segmented"
-import { LinkCard, LinkRow, type LinkItem } from "@/components/cards/link-card"
+import { LinkCard, LinkPhoto, LinkRow, type LinkItem } from "@/components/cards/link-card"
 import { LineInput } from "@/components/ui/line-input"
 import { AiButton } from "@/components/ui/ai-button"
 import { FloatingButton } from "@/components/ui/floating-button"
@@ -85,7 +85,7 @@ export function SummaryFieldsDemo() {
   return (
     <BottomSheet inline open onOpenChange={() => {}} title="Agregar bookmark" step={{ current: 6, total: 6 }} onBack={() => {}}>
       <SheetSummary
-        image={l.thumbnail}
+        image={<LinkPhoto link={l} className="aspect-video w-full" />}
         fields={[
           { label: "Título", value: l.title, wide: true },
           { label: "Categoría", value: l.category },

@@ -113,6 +113,7 @@
     --spacing-section: 40px;
     /* Lugar libre al final de cada pantalla, para que la barra de abajo y el botón flotante no tapen el contenido */
     --spacing-screen-end: calc(112px + env(safe-area-inset-bottom));
+    --spacing-screen-end-float: calc(168px + env(safe-area-inset-bottom)); /* libre al final si hay botón flotante encima de la barra */
     /* Aire de abajo de la pantalla: 16px, más el lugar de la rayita de inicio del celular cuando la app está instalada */
     --spacing-screen-bottom: calc(16px + env(safe-area-inset-bottom));
     --spacing-above-nav: calc(96px + env(safe-area-inset-bottom)); /* encima de la barra de abajo, a 16px (aviso, botón flotante) */

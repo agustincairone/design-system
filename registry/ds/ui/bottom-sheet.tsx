@@ -102,13 +102,14 @@ function BottomSheet({
 // Resumen de algo en una cajita gris (ej: el vino que vas a borrar o el que ya tenías cargado).
 // Con `fields`, cada dato con su nombre arriba en gris, en dos columnas (ej: el último paso antes de guardar:
 // Título, Categoría, Subcategoría, Descripción). `wide` hace que un dato ocupe las dos columnas.
-// `image` suma la imagen apaisada (16:9) arriba de todo.
+// `image` suma la imagen apaisada (16:9) arriba de todo: una dirección, o la pieza ya armada (ej: LinkPhoto,
+// que sin foto muestra el logo del sitio).
 type SummaryField = { label: React.ReactNode; value: React.ReactNode; wide?: boolean }
 
-function SheetSummary({ title, lines, fields, image }: { title?: React.ReactNode; lines?: React.ReactNode[]; fields?: SummaryField[]; image?: string | null }) {
+function SheetSummary({ title, lines, fields, image }: { title?: React.ReactNode; lines?: React.ReactNode[]; fields?: SummaryField[]; image?: React.ReactNode }) {
   return (
     <div data-slot="sheet-summary" className="flex flex-col gap-box-2xs rounded-box-s bg-inset p-box-s">
-      {image && <img src={image} alt="" className="mb-box-xs aspect-video w-full rounded-sm bg-raised object-cover" />}
+      {typeof image === "string" ? <img src={image} alt="" className="mb-box-xs aspect-video w-full rounded-sm bg-raised object-cover" /> : image ? <div className="mb-box-xs">{image}</div> : null}
       {title && <p className="text-sm font-medium">{title}</p>}
       {lines?.filter(Boolean).map((l, i) => <p key={i} className="text-xs text-muted-foreground">{l}</p>)}
       {fields && (

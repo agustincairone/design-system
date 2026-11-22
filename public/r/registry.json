@@ -62,6 +62,7 @@
           "spacing-box-xs": "8px",
           "spacing-box-xl": "24px",
           "spacing-screen-end": "calc(112px + env(safe-area-inset-bottom))",
+          "spacing-screen-end-float": "calc(168px + env(safe-area-inset-bottom))",
           "spacing-screen-bottom": "calc(16px + env(safe-area-inset-bottom))",
           "spacing-above-nav": "calc(96px + env(safe-area-inset-bottom))",
           "spacing-list": "306px",

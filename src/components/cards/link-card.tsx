@@ -53,8 +53,9 @@ export function SiteIcon({ url, className }: { url: string; className?: string }
   return <Globe aria-hidden className={cn("text-muted-foreground", className)} />
 }
 
-// La imagen del link; sin imagen, el favicon de la página (o el logo del sitio) y el dominio
-function LinkPhoto({ link, small, className }: { link: LinkItem; small?: boolean; className?: string }) {
+// La imagen del link; sin imagen, el favicon de la página (o el logo del sitio) y el dominio.
+// Suelta (ej: en el resumen antes de guardar) va con `className="aspect-video w-full"`.
+export function LinkPhoto({ link, small, className }: { link: LinkItem; small?: boolean; className?: string }) {
   const [failed, setFailed] = React.useState(false)
   const site = siteOf(link.url)
   return (
@@ -160,7 +161,7 @@ export function LinkCard({ link, onEdit, onDelete, className }: { link: LinkItem
 
 export function LinkRow({ link, onEdit, onDelete, className }: { link: LinkItem; onEdit?: () => void; onDelete?: () => void; className?: string }) {
   return (
-    <div data-slot="link-row" className={cn("flex items-stretch gap-3 rounded-box-s bg-tile p-box-s", className)}>
+    <div data-slot="link-row" className={cn("flex min-w-0 items-stretch gap-3 rounded-box-s bg-tile p-box-s", className)}>
       <LinkPhoto link={link} small className="size-16 shrink-0" />
       <div className="flex min-w-0 flex-1 flex-col justify-between gap-box-2xs">
         <div className="flex items-center gap-box-xs">
