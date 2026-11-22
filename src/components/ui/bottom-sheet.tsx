@@ -100,16 +100,17 @@ function BottomSheet({
 }
 
 // Resumen de algo en una cajita gris (ej: el vino que vas a borrar o el que ya tenías cargado).
-// Con `fields`, cada dato con su nombre arriba en gris, en dos columnas (ej: el último paso antes de guardar:
-// Título, Categoría, Subcategoría, Descripción). `wide` hace que un dato ocupe las dos columnas.
-// `image` suma una imagen apaisada (16:9) chica a la izquierda de lo primero (el título, o el primer
-// dato), así el resumen casi no crece: una dirección, o la pieza ya armada (ej: LinkPhoto `small`,
-// que sin foto muestra el logo del sitio).
+// Con `fields`, cada dato con su nombre arriba en gris, uno al lado del otro (si no entra, baja a la línea
+// de abajo) (ej: el último paso antes de guardar: Título, Categoría, Subcategoría, Descripción). `wide` hace
+// que un dato ocupe toda la línea.
+// `image` lo arma en dos columnas: la imagen apaisada (16:9) chica a la izquierda y todos los datos a la
+// derecha. Puede ser una dirección o la pieza ya armada (ej: LinkPhoto `small`, que sin foto muestra el
+// logo del sitio).
 type SummaryField = { label: React.ReactNode; value: React.ReactNode; wide?: boolean }
 
 function SummaryFieldItem({ field }: { field: SummaryField }) {
   return (
-    <div className={cn("min-w-0", field.wide && "col-span-2")}>
+    <div className={cn(field.wide ? "min-w-0 basis-full" : "max-w-full")}>
       <dt className="text-xs text-muted-foreground">{field.label}</dt>
       <dd className="text-sm break-words">{field.value || "—"}</dd>
     </div>
@@ -117,28 +118,28 @@ function SummaryFieldItem({ field }: { field: SummaryField }) {
 }
 
 function SheetSummary({ title, lines, fields = [], image }: { title?: React.ReactNode; lines?: React.ReactNode[]; fields?: SummaryField[]; image?: React.ReactNode }) {
-  const head = title || lines?.length ? (
-    <div className="flex min-w-0 flex-col gap-box-2xs">
+  const content = (
+    <>
       {title && <p className="text-sm font-medium">{title}</p>}
       {lines?.filter(Boolean).map((l, i) => <p key={i} className="text-xs text-muted-foreground">{l}</p>)}
-    </div>
-  ) : null
-  const beside = image ? (head ?? (fields[0] && <dl><SummaryFieldItem field={fields[0]} /></dl>)) : null
-  const rest = image && !head ? fields.slice(1) : fields
+      {fields.length > 0 && (
+        <dl className="flex flex-wrap gap-x-box-m gap-y-box-xs">
+          {fields.map((f, i) => <SummaryFieldItem key={i} field={f} />)}
+        </dl>
+      )}
+    </>
+  )
   return (
-    <div data-slot="sheet-summary" className="flex flex-col gap-box-xs rounded-box-s bg-inset p-box-s">
+    <div data-slot="sheet-summary" className="rounded-box-s bg-inset p-box-s">
       {image ? (
         <div className="flex items-start gap-box-s">
           <div className="w-24 shrink-0">
             {typeof image === "string" ? <img src={image} alt="" className="aspect-video w-full rounded-sm bg-raised object-cover" /> : image}
           </div>
-          <div className="min-w-0 flex-1">{beside}</div>
+          <div className="flex min-w-0 flex-1 flex-col gap-box-2xs">{content}</div>
         </div>
-      ) : head}
-      {rest.length > 0 && (
-        <dl className="grid grid-cols-2 gap-x-box-s gap-y-box-xs">
-          {rest.map((f, i) => <SummaryFieldItem key={i} field={f} />)}
-        </dl>
+      ) : (
+        <div className="flex flex-col gap-box-2xs">{content}</div>
       )}
     </div>
   )
@@ -257,18 +258,21 @@ function FilterSheet({
 // (`base`, ej: Info), que se dibuja siempre aunque no se vea. Las otras pestañas ocupan
 // exactamente ese alto: lo de arriba (`top`, ej: sub-pestañas) queda fijo, el contenido se
 // desplaza si no entra (con el degradé que avisa que hay más abajo) y los botones (`footer`)
-// quedan siempre pegados abajo.
+// quedan siempre pegados abajo. Con `center` el contenido va centrado en el alto (los pasos con un
+// campo de texto, ej: Link, Título).
 function SheetPanels({
   base,
   showBase,
   top,
   footer,
+  center,
   children,
 }: {
   base: React.ReactNode
   showBase: boolean
   top?: React.ReactNode
   footer?: React.ReactNode
+  center?: boolean
   children?: React.ReactNode
 }) {
   return (
@@ -277,7 +281,7 @@ function SheetPanels({
       {!showBase && (
         <div className="absolute inset-0 flex flex-col gap-4">
           {top}
-          <PanelScroll>{children}</PanelScroll>
+          <PanelScroll center={center}>{children}</PanelScroll>
           {footer && <div className="flex gap-box-xs *:flex-1">{footer}</div>}
         </div>
       )}
@@ -287,12 +291,12 @@ function SheetPanels({
 
 // La zona que se desplaza de una pestaña, con el degradé abajo mientras quede más por ver.
 // 4px de aire arriba y abajo para que no se corte el borde de foco de los campos.
-function PanelScroll({ children }: { children?: React.ReactNode }) {
+function PanelScroll({ center, children }: { center?: boolean; children?: React.ReactNode }) {
   const more = useMoreBelow()
   return (
     <div className="relative -mx-box-l -my-1 min-h-0 flex-1">
-      <div ref={more.ref} onScroll={more.onScroll} className="h-full overflow-y-auto px-box-l py-1">
-        <div className="flex flex-col gap-4">{children}</div>
+      <div ref={more.ref} onScroll={more.onScroll} className="flex h-full flex-col overflow-y-auto px-box-l py-1">
+        <div className={cn("flex flex-col gap-4", center && "my-auto")}>{children}</div>
       </div>
       <ScrollFade show={more.show} />
     </div>
