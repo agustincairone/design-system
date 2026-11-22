@@ -1201,6 +1201,8 @@ export function App() {
               <div>{'<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover" />'}</div>
               <div className="pt-2 text-muted-foreground"># 5. la barra de abajo va pegada al borde con el aire del sistema (la barra de la hora toma sola el color de la página)</div>
               <div>{'<div className="fixed inset-x-0 bottom-0 z-50 px-box-m pb-screen-bottom"><BottomNav … /></div>'}</div>
+              <div className="pt-2 text-muted-foreground"># 6. en el manifest de la app instalable: sin theme_color (con un color fijo, Android pinta así la barra de abajo en claro y en oscuro)</div>
+              <div>{'{ "name": "…", "background_color": "#e7e5e4", "icons": […] }'}</div>
             </div>
           </Section>
         </main>
