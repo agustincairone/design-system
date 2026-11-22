@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-button",
+  "title": "floating-button",
+  "description": "Botón flotante para agregar: abajo al centro, sin sombra; encima de la barra de abajo con aboveNav.",
+  "registryDependencies": [
+    "utils",
+    "@ds/button"
+  ],
+  "files": [
+    {
+      "path": "registry/ds/ui/floating-button.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { Button } from \"@/components/ui/button\"\n\n// Botón flotante para agregar (diseño de pay): abajo al centro, fijo mientras se desplaza la página,\n// sin sombra. Abajo de todo (con la rayita de inicio del celular) o, con `aboveNav`, encima de la\n// barra de abajo, a 16px (a la misma altura que el aviso). Lleva ícono + texto (ej: \"+ Agregar gasto\").\n// `inline` lo dibuja en su lugar en vez de fijo (sólo para la guía).\nexport function FloatingButton({\n  aboveNav,\n  inline,\n  className,\n  ...props\n}: React.ComponentProps<typeof Button> & { aboveNav?: boolean; inline?: boolean }) {\n  return (\n    <Button\n      data-slot=\"floating-button\"\n      className={cn(!inline && \"fixed left-1/2 z-40 -translate-x-1/2\", !inline && (aboveNav ? \"bottom-above-nav\" : \"bottom-screen-bottom mb-box-xs\"), className)}\n      {...props}\n    />\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/floating-button.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

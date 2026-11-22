@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-button",
+  "title": "ai-button",
+  "description": "Generar con IA: botón chico gris con el destello del color de la app.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "@ds/button"
+  ],
+  "files": [
+    {
+      "path": "registry/ds/ui/ai-button.tsx",
+      "content": "import * as React from \"react\"\nimport { Sparkles } from \"lucide-react\"\n\nimport { Button } from \"@/components/ui/button\"\n\n// Generar con IA: el botón chico gris con el destello del color de la app (al pasar el mouse el botón\n// se pinta del color de la app y el destello pasa a blanco). Mientras trabaja (`busy`) queda apagado\n// y dice \"Generando...\". Va a la derecha del nombre del campo que completa (ej: título, descripción).\nexport function AiButton({\n  busy,\n  busyLabel = \"Generando...\",\n  children = \"Generar con IA\",\n  ...props\n}: Omit<React.ComponentProps<typeof Button>, \"variant\" | \"size\"> & { busy?: boolean; busyLabel?: string }) {\n  return (\n    <Button data-slot=\"ai-button\" variant=\"secondary\" size=\"sm\" disabled={busy || props.disabled} {...props}>\n      <Sparkles className=\"text-brand-text group-hover/button:text-current group-disabled/button:text-current\" />\n      {busy ? busyLabel : children}\n    </Button>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/ai-button.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

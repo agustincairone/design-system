@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "brand-bookmarks",
+  "title": "Acento de bookmarks",
+  "description": "Azul de bookmarks: blue-600 en modo claro y en oscuro, siempre con texto blanco encima.",
+  "cssVars": {
+    "light": {
+      "brand": "oklch(54.6% 0.245 262.881)",
+      "brand-foreground": "oklch(100% 0 0)",
+      "brand-text": "oklch(54.6% 0.245 262.881)",
+      "primary": "oklch(54.6% 0.245 262.881)",
+      "primary-foreground": "oklch(100% 0 0)",
+      "ring": "oklch(54.6% 0.245 262.881)",
+      "chart-1": "oklch(54.6% 0.245 262.881)",
+      "sidebar-primary": "oklch(54.6% 0.245 262.881)",
+      "sidebar-primary-foreground": "oklch(100% 0 0)",
+      "sidebar-ring": "oklch(54.6% 0.245 262.881)",
+      "brand-strong": "oklch(48.8% 0.243 264.376)",
+      "brand-hover": "oklch(62.3% 0.214 259.815)"
+    },
+    "dark": {
+      "brand": "oklch(54.6% 0.245 262.881)",
+      "brand-foreground": "oklch(100% 0 0)",
+      "brand-text": "oklch(54.6% 0.245 262.881)",
+      "primary": "oklch(54.6% 0.245 262.881)",
+      "primary-foreground": "oklch(100% 0 0)",
+      "ring": "oklch(54.6% 0.245 262.881)",
+      "chart-1": "oklch(54.6% 0.245 262.881)",
+      "sidebar-primary": "oklch(54.6% 0.245 262.881)",
+      "sidebar-primary-foreground": "oklch(100% 0 0)",
+      "sidebar-ring": "oklch(54.6% 0.245 262.881)",
+      "brand-strong": "oklch(48.8% 0.243 264.376)",
+      "brand-hover": "oklch(62.3% 0.214 259.815)"
+    }
+  },
+  "type": "registry:theme"
+}

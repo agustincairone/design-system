@@ -32,9 +32,9 @@ export const BRANDS: Record<BrandId, { name: string; light: Vars; dark: Vars }> 
     dark: { brand: "oklch(51.4% 0.222 16.935)", fg: "oklch(100% 0 0)", text: "oklch(51.4% 0.222 16.935)", strong: "oklch(45.5% 0.188 13.697)", hover: "oklch(58.6% 0.253 17.585)" },
   },
   bookmarks: {
-    name: "bookmarks (orange-500)",
-    light: { brand: "oklch(70.5% 0.213 47.604)", fg: "oklch(100% 0 0)", text: "oklch(70.5% 0.213 47.604)", strong: "oklch(64.6% 0.222 41.116)", hover: "oklch(75% 0.183 55.934)" },
-    dark: { brand: "oklch(70.5% 0.213 47.604)", fg: "oklch(100% 0 0)", text: "oklch(70.5% 0.213 47.604)", strong: "oklch(64.6% 0.222 41.116)", hover: "oklch(75% 0.183 55.934)" },
+    name: "bookmarks (blue-600)",
+    light: { brand: "oklch(54.6% 0.245 262.881)", fg: "oklch(100% 0 0)", text: "oklch(54.6% 0.245 262.881)", strong: "oklch(48.8% 0.243 264.376)", hover: "oklch(62.3% 0.214 259.815)" },
+    dark: { brand: "oklch(54.6% 0.245 262.881)", fg: "oklch(100% 0 0)", text: "oklch(54.6% 0.245 262.881)", strong: "oklch(48.8% 0.243 264.376)", hover: "oklch(62.3% 0.214 259.815)" },
   },
 }
 

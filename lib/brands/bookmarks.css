@@ -1,0 +1,30 @@
+/* Color de bookmarks. Importalo después de theme.css */
+:root {
+  --brand: oklch(54.6% 0.245 262.881);
+  --brand-foreground: oklch(100% 0 0);
+  --brand-text: oklch(54.6% 0.245 262.881);
+  --primary: oklch(54.6% 0.245 262.881);
+  --primary-foreground: oklch(100% 0 0);
+  --ring: oklch(54.6% 0.245 262.881);
+  --chart-1: oklch(54.6% 0.245 262.881);
+  --sidebar-primary: oklch(54.6% 0.245 262.881);
+  --sidebar-primary-foreground: oklch(100% 0 0);
+  --sidebar-ring: oklch(54.6% 0.245 262.881);
+  --brand-strong: oklch(48.8% 0.243 264.376);
+  --brand-hover: oklch(62.3% 0.214 259.815);
+}
+
+.dark {
+  --brand: oklch(54.6% 0.245 262.881);
+  --brand-foreground: oklch(100% 0 0);
+  --brand-text: oklch(54.6% 0.245 262.881);
+  --primary: oklch(54.6% 0.245 262.881);
+  --primary-foreground: oklch(100% 0 0);
+  --ring: oklch(54.6% 0.245 262.881);
+  --chart-1: oklch(54.6% 0.245 262.881);
+  --sidebar-primary: oklch(54.6% 0.245 262.881);
+  --sidebar-primary-foreground: oklch(100% 0 0);
+  --sidebar-ring: oklch(54.6% 0.245 262.881);
+  --brand-strong: oklch(48.8% 0.243 264.376);
+  --brand-hover: oklch(62.3% 0.214 259.815);
+}

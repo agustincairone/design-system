@@ -6,7 +6,7 @@ import { CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon
 // `aboveNav`: en las apps con barra de abajo, va encima de la barra (64 de alto + 16 de aire) con 16px de separación.
 const SAFE = "env(safe-area-inset-bottom)"
 const BOTTOM = { bottom: `calc(16px + ${SAFE})` }
-const ABOVE_NAV = { bottom: `calc(96px + ${SAFE})` }
+const ABOVE_NAV = { bottom: "var(--spacing-above-nav)" }
 
 const Toaster = ({ aboveNav, ...props }: ToasterProps & { aboveNav?: boolean }) => {
   const { resolvedTheme } = useTheme()

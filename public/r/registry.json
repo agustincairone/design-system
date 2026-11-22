@@ -63,6 +63,7 @@
           "spacing-box-xl": "24px",
           "spacing-screen-end": "calc(112px + env(safe-area-inset-bottom))",
           "spacing-screen-bottom": "calc(16px + env(safe-area-inset-bottom))",
+          "spacing-above-nav": "calc(96px + env(safe-area-inset-bottom))",
           "spacing-list": "306px",
           "color-card-hover": "var(--card-hover)",
           "color-secondary-hover": "var(--secondary-hover)",
@@ -395,6 +396,42 @@
           "sidebar-ring": "oklch(51.4% 0.222 16.935)",
           "brand-strong": "oklch(45.5% 0.188 13.697)",
           "brand-hover": "oklch(58.6% 0.253 17.585)"
+        }
+      }
+    },
+    {
+      "name": "brand-bookmarks",
+      "type": "registry:theme",
+      "title": "Acento de bookmarks",
+      "description": "Azul de bookmarks: blue-600 en modo claro y en oscuro, siempre con texto blanco encima.",
+      "cssVars": {
+        "light": {
+          "brand": "oklch(54.6% 0.245 262.881)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(54.6% 0.245 262.881)",
+          "primary": "oklch(54.6% 0.245 262.881)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(54.6% 0.245 262.881)",
+          "chart-1": "oklch(54.6% 0.245 262.881)",
+          "sidebar-primary": "oklch(54.6% 0.245 262.881)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(54.6% 0.245 262.881)",
+          "brand-strong": "oklch(48.8% 0.243 264.376)",
+          "brand-hover": "oklch(62.3% 0.214 259.815)"
+        },
+        "dark": {
+          "brand": "oklch(54.6% 0.245 262.881)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(54.6% 0.245 262.881)",
+          "primary": "oklch(54.6% 0.245 262.881)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(54.6% 0.245 262.881)",
+          "chart-1": "oklch(54.6% 0.245 262.881)",
+          "sidebar-primary": "oklch(54.6% 0.245 262.881)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(54.6% 0.245 262.881)",
+          "brand-strong": "oklch(48.8% 0.243 264.376)",
+          "brand-hover": "oklch(62.3% 0.214 259.815)"
         }
       }
     },
@@ -983,6 +1020,78 @@
           "path": "registry/ds/cards/item-card.tsx",
           "type": "registry:component",
           "target": "components/cards/item-card.tsx"
+        }
+      ]
+    },
+    {
+      "name": "line-input",
+      "type": "registry:ui",
+      "title": "line-input",
+      "description": "Campo de línea: sin caja, una línea abajo y el nombre abajo en gris; crece con el texto y cuenta las letras.",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/line-input.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/line-input.tsx"
+        }
+      ]
+    },
+    {
+      "name": "ai-button",
+      "type": "registry:ui",
+      "title": "ai-button",
+      "description": "Generar con IA: botón chico gris con el destello del color de la app.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "@ds/button"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/ai-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/ai-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "floating-button",
+      "type": "registry:ui",
+      "title": "floating-button",
+      "description": "Botón flotante para agregar: abajo al centro, sin sombra; encima de la barra de abajo con aboveNav.",
+      "registryDependencies": [
+        "utils",
+        "@ds/button"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/floating-button.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/floating-button.tsx"
+        }
+      ]
+    },
+    {
+      "name": "link-card",
+      "type": "registry:component",
+      "title": "link-card",
+      "description": "Fichas de un link guardado: grilla con imagen apaisada y fila de la lista, con ícono del sitio, editar, borrar y la categoría con estrellita.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "@ds/button"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/cards/link-card.tsx",
+          "type": "registry:component",
+          "target": "components/cards/link-card.tsx"
         }
       ]
     }

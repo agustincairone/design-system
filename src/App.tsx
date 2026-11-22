@@ -61,6 +61,7 @@ import {
 } from "@/components/ui/tooltip"
 import { BRANDS, type BrandId, applyBrand } from "@/brands"
 import { BookmarksStyle } from "@/bookmarks-style"
+import { AiButtonDemo, FloatingButtonDemo, LineInputDemo, LinkCardsDemo, SegmentedIconsDemo, SummaryFieldsDemo } from "@/link-demos"
 import { PALETTE, SHADES } from "@/palette"
 import { AudioPanel } from "@/components/audio/audio-panel"
 import { LevelMeter, paintMeter } from "@/components/audio/level-meter"
@@ -964,6 +965,12 @@ export function App() {
                 <Button variant="card" size="icon-sm" aria-label="Mes anterior"><ChevronLeft /></Button>
                 <Button variant="card" size="icon-sm" aria-label="Mes siguiente"><ChevronRight /></Button>
               </Demo>
+              <Demo label="Botón flotante para agregar: abajo al centro, con ícono y texto, sin sombra (con aboveNav, encima de la barra de abajo)">
+                <FloatingButtonDemo />
+              </Demo>
+              <Demo label="Generar con IA: botón chico gris con el destello del color de la app; mientras trabaja, apagado">
+                <AiButtonDemo />
+              </Demo>
             </div>
           </Section>
 
@@ -1019,6 +1026,9 @@ export function App() {
               <Demo label="Campo con + para agregar, y lo guardado como chips con cruz">
                 <SavedValuesDemo />
               </Demo>
+              <Demo label="Campo de línea: el otro campo de texto. Sin caja, una línea abajo y el nombre abajo en gris. Para los pasos de una hoja que piden un solo dato; crece con el texto y cuenta las letras" className="block">
+                <LineInputDemo />
+              </Demo>
             </div>
           </Section>
 
@@ -1030,6 +1040,9 @@ export function App() {
             <div className="grid gap-4">
               <Demo label="Píldora y pestañas: hasta 3 opciones, píldora; más de 3, pestañas de ancho completo pegadas arriba de la caja" className="block">
                 <TabsDemo />
+              </Demo>
+              <Demo label="Píldora con íconos: con texto o sólo el ícono (ej: ver en grilla o en lista)">
+                <SegmentedIconsDemo />
               </Demo>
               <Demo label="Fichas: compactas y a lo ancho (la elegida va del color de la app)" className="block">
                 <TilesDemo />
@@ -1065,6 +1078,9 @@ export function App() {
               </Demo>
               <Demo label="Ficha alta: grilla de 2, foto vertical y texto a la izquierda, con lugar para estrellas">
                 <TallCardsDemo />
+              </Demo>
+              <Demo label="Fichas de un link: grilla de 2 con la imagen apaisada y el botón para abrir, y fila de la lista. Ícono del sitio, editar y borrar, y la categoría con la estrellita del color de la app" className="block">
+                <LinkCardsDemo />
               </Demo>
               <Demo label="Estrellas (14px en las fichas, 16px en el detalle) y datos con puntaje: sólo muestran, no se tocan">
                 <ScoresDemo />
@@ -1124,6 +1140,9 @@ export function App() {
               </Demo>
               <Demo label="Más hojas: con pestañas, con pasos, filtro, borrar mostrando lo que se borra y aviso de repetido" className="block">
                 <MoreSheetsDemo />
+              </Demo>
+              <Demo label="Resumen antes de guardar: la imagen y cada dato con su nombre arriba, en dos columnas" className="block">
+                <SummaryFieldsDemo />
               </Demo>
               <Demo label="Pasos adentro de una caja de la página: el mismo encabezado de las hojas con pasos" className="block">
                 <div className="max-w-md rounded-box-l bg-card p-box-m">
@@ -1191,7 +1210,7 @@ export function App() {
           <Section
             id="estilo-bookmarks"
             title="Estilo bookmarks"
-            description="Temporal, para elegir. A la derecha, cada pieza de bookmarks tal cual está hoy; a la izquierda, cómo quedaría con lo que el sistema ya tiene, con el naranja de bookmarks. Elegí con cuál te quedás en cada una (o si querés las dos). Cuando elijas, lo elegido pasa a su sección y esta página se borra."
+            description="Temporal: lo único que falta decidir de bookmarks. A la derecha, su pantalla de categorías tal cual está hoy; a la izquierda, cómo quedaría con el sistema. Cuando lo charlemos y elijas, esta página se borra."
           >
             <BookmarksStyle />
           </Section>
