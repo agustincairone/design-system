@@ -75,6 +75,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Botón de volver: el chico redondo con borde (28px). Flechas para cambiar de mes o período: las chicas redondas rellenas de blanco (variante card; en modo oscuro, del color de las cajas), así se distinguen del volver. El mes en 15px y el año en gris.",
       "Elegir varias opciones = casillas (Checkbox) con su texto, cada una en su caja S, una abajo de la otra con 8px entre cajas. Toda la caja se puede tocar.",
       "Filas que se abren: el detalle aparece abajo en una caja M; si adentro hay otra fila que se abre, su detalle va en blanco.",
+      "Lista que se edita (para administrar una lista, ej: categorías): lápiz para cambiar el nombre ahí mismo y tacho para borrar, con confirmación. Las de adentro van a la altura del nombre, en gris. Acá agregar es la última fila con texto del color de la app (+ Agregar nueva…), no el botón punteado.",
       "Campo con emoji: el emoji va a la izquierda en un botón redondo con borde, del mismo alto que el campo.",
       "Lista de un desplegable: se abre debajo del campo, del mismo ancho, y muestra hasta 6 opciones; si hay más, se desplazan por dentro.",
       "Campo con sugerencias (predictivo): sin ningún ícono. Lo ya cargado que contiene lo escrito (hasta 6) aparece en la misma lista de los desplegables.",

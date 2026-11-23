@@ -814,13 +814,14 @@
       "name": "controls",
       "type": "registry:block",
       "title": "Controles",
-      "description": "Campo-slider, stepper, selector segmentado, fichas, número + slider y reparto entre dos. Sirven en cualquier app, escala corta de 1 a 5.",
+      "description": "Campo-slider, stepper, selector segmentado, fichas, número + slider, reparto entre dos y lista que se edita. Sirven en cualquier app, escala corta de 1 a 5.",
       "dependencies": [
         "lucide-react"
       ],
       "registryDependencies": [
         "utils",
-        "@ds/slider"
+        "@ds/slider",
+        "@ds/button"
       ],
       "files": [
         {
@@ -892,6 +893,11 @@
           "path": "registry/ds/controls/scale-slider.tsx",
           "type": "registry:component",
           "target": "components/controls/scale-slider.tsx"
+        },
+        {
+          "path": "registry/ds/controls/editable-list.tsx",
+          "type": "registry:component",
+          "target": "components/controls/editable-list.tsx"
         }
       ]
     },

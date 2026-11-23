@@ -1,10 +1,11 @@
 // Guía: ejemplos de las piezas que vinieron de bookmarks (ficha de link, campo de línea, botón de IA,
-// botón flotante, píldora con íconos y resumen con nombres).
+// botón flotante, píldora con íconos, resumen con nombres y lista que se edita).
 import * as React from "react"
 import { LayoutGrid, List, Plus } from "lucide-react"
 
 import { Segmented } from "@/components/controls/segmented"
 import { LinkCard, LinkPhoto, LinkRow, type LinkItem } from "@/components/cards/link-card"
+import { EditableList, type EditableItem } from "@/components/controls/editable-list"
 import { LineInput } from "@/components/ui/line-input"
 import { AiButton } from "@/components/ui/ai-button"
 import { FloatingButton } from "@/components/ui/floating-button"
@@ -95,5 +96,35 @@ export function SummaryFieldsDemo() {
       />
       <Button className="w-full">Guardar</Button>
     </BottomSheet>
+  )
+}
+
+// Lista que se edita: cambia de verdad (en una app, la lista viene de la base y borrar pide confirmación)
+const plural = (n: number) => `${n} bookmark${n !== 1 ? "s" : ""}`
+const sub = (name: string, n: number): EditableItem => ({ id: name, label: name, meta: n === 0 ? "sin bookmarks" : plural(n) })
+const cat = (name: string, subs: EditableItem[]): EditableItem => ({ id: name, label: name, icon: "✸", meta: plural(subs.length), children: subs })
+
+export function EditableListDemo() {
+  const [items, setItems] = React.useState<EditableItem[]>([
+    cat("Diseño", [sub("Componentes", 1), sub("Herramientas", 1), sub("Videos", 1)]),
+    cat("Lecturas", [sub("Referencia", 1), sub("Tipografía", 1)]),
+    cat("Recetas", []),
+  ])
+  const map = (fn: (list: EditableItem[]) => EditableItem[], parent?: EditableItem) =>
+    setItems((all) => (parent ? all.map((c) => (c.id === parent.id ? { ...c, children: fn(c.children ?? []) } : c)) : fn(all)))
+  return (
+    <div className="w-full max-w-md">
+      <EditableList
+        items={items}
+        addLabel="Agregar nueva categoría"
+        addChildLabel="Agregar nueva subcategoría"
+        addPlaceholder="Nueva categoría..."
+        addChildPlaceholder="Nueva subcategoría..."
+        empty="No hay categorías todavía"
+        onRename={(item, name, parent) => map((l) => l.map((x) => (x.id === item.id ? { ...x, id: name, label: name } : x)), parent)}
+        onDelete={(item, parent) => map((l) => l.filter((x) => x.id !== item.id), parent)}
+        onAdd={(name, parent) => map((l) => [...l, parent ? sub(name, 0) : cat(name, [])], parent)}
+      />
+    </div>
   )
 }

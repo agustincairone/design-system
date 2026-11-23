@@ -60,8 +60,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { BRANDS, type BrandId, applyBrand } from "@/brands"
-import { BookmarksStyle } from "@/bookmarks-style"
-import { AiButtonDemo, FloatingButtonDemo, LineInputDemo, LinkCardsDemo, SegmentedIconsDemo, SummaryFieldsDemo } from "@/link-demos"
+import { AiButtonDemo, EditableListDemo, FloatingButtonDemo, LineInputDemo, LinkCardsDemo, SegmentedIconsDemo, SummaryFieldsDemo } from "@/link-demos"
 import { PALETTE, SHADES } from "@/palette"
 import { AudioPanel } from "@/components/audio/audio-panel"
 import { LevelMeter, paintMeter } from "@/components/audio/level-meter"
@@ -163,7 +162,6 @@ const NAV: [string, [string, string][]][] = [
   ["Fundamentos", [["reglas", "Reglas"], ["colores", "Colores"], ["tipografia", "Tipografía"], ["numeros", "Números en vivo"], ["cajas", "Espacios y cajas"]]],
   ["Componentes", [["fleje", "Fleje y títulos"], ["botones", "Botones"], ["formularios", "Formularios"], ["elegir", "Elegir opciones"], ["controles", "Controles"], ["listas", "Tarjetas y listas"], ["navegacion", "Navegación"], ["ventanas", "Ventanas y avisos"]]],
   ["Música", [["audio", "Audio (LOOP)"]]],
-  ["Para elegir", [["estilo-bookmarks", "Estilo bookmarks"]]],
   ["Uso", [["usar", "Cómo usarlo"]]],
 ]
 
@@ -1071,7 +1069,7 @@ export function App() {
           <Section
             id="listas"
             title="Tarjetas y listas"
-            description="Para mostrar cosas: fichas con foto, filas que se abren, labels, estrellas y datos con puntaje."
+            description="Para mostrar cosas: fichas con foto, filas que se abren, labels, estrellas y datos con puntaje. Y la lista que se edita, para administrar una lista."
           >
             <div className="grid gap-4">
               <Demo label="Fichas de prenda: grilla de 3, chiquita y fila. La elegida con borde del color de la app (blanco en oscuro)">
@@ -1088,6 +1086,9 @@ export function App() {
               </Demo>
               <Demo label="Filas que se abren: el detalle aparece abajo en una caja M">
                 <ExpandRowsDemo />
+              </Demo>
+              <Demo label="Lista que se edita: para administrar una lista (ej: categorías y subcategorías). Lápiz para cambiar el nombre ahí mismo, tacho para borrar (la app pide confirmación), las de adentro se abren y + Agregar al final" className="block">
+                <EditableListDemo />
               </Demo>
               <Demo label="Labels: sólo muestran un estado o una categoría, no se tocan" className="block">
                 <LabelsDemo />
@@ -1208,13 +1209,6 @@ export function App() {
             <LoopPiecesDemo />
           </Section>
 
-          <Section
-            id="estilo-bookmarks"
-            title="Estilo bookmarks"
-            description="Temporal: lo único que falta decidir de bookmarks. A la derecha, su pantalla de categorías como está hoy; a la izquierda, con las filas que se abren del análisis de gastos de pay. Cuando lo charlemos y elijas, esta página se borra."
-          >
-            <BookmarksStyle />
-          </Section>
 
           <Section
             id="usar"
