@@ -1,0 +1,218 @@
+{
+  "apps": {
+    "pay": {
+      "version": "v0.36.0",
+      "pieces": [
+        "controls/bottom-nav",
+        "controls/editable-list",
+        "controls/expand-row",
+        "controls/segmented",
+        "controls/tab-bar",
+        "theme-provider",
+        "theme-toggle",
+        "ui/app-hero",
+        "ui/badge",
+        "ui/button",
+        "ui/checkbox",
+        "ui/chip",
+        "ui/dropdown-menu",
+        "ui/field-label",
+        "ui/input",
+        "ui/label",
+        "ui/select",
+        "ui/sonner"
+      ]
+    },
+    "outfit": {
+      "version": "v0.36.0",
+      "pieces": [
+        "cards/item-card",
+        "controls/bottom-nav",
+        "controls/color-swatches",
+        "controls/date-strip",
+        "controls/segmented",
+        "controls/tab-bar",
+        "theme-provider",
+        "theme-toggle",
+        "ui/app-hero",
+        "ui/bottom-sheet",
+        "ui/button",
+        "ui/chip",
+        "ui/empty-state",
+        "ui/field-label",
+        "ui/float-accordion",
+        "ui/input",
+        "ui/sonner"
+      ]
+    },
+    "wine": {
+      "version": "v0.36.0",
+      "pieces": [
+        "cards/item-card",
+        "controls/bottom-nav",
+        "controls/scale-slider",
+        "controls/segmented",
+        "controls/tab-bar",
+        "theme-provider",
+        "theme-toggle",
+        "ui/app-hero",
+        "ui/bottom-sheet",
+        "ui/button",
+        "ui/chip",
+        "ui/empty-state",
+        "ui/field-label",
+        "ui/input",
+        "ui/search-input",
+        "ui/select",
+        "ui/sonner",
+        "ui/stars",
+        "ui/suggest-input",
+        "ui/textarea"
+      ]
+    },
+    "loop": {
+      "version": "v0.36.0",
+      "pieces": [
+        "audio/audio-panel",
+        "audio/bar-fader",
+        "audio/dial",
+        "audio/level-meter",
+        "audio/param-buttons",
+        "audio/param-slider",
+        "audio/speaker-grille",
+        "audio/tuner",
+        "controls/field-column",
+        "controls/field-slider",
+        "controls/icon-tile",
+        "controls/split-slider",
+        "controls/tile-group",
+        "theme-provider",
+        "theme-toggle",
+        "ui/app-hero",
+        "ui/button",
+        "ui/slider",
+        "ui/sonner",
+        "ui/tooltip"
+      ]
+    },
+    "bookmarks": {
+      "version": "v0.36.0",
+      "pieces": [
+        "cards/link-card",
+        "controls/bottom-nav",
+        "controls/editable-list",
+        "controls/segmented",
+        "theme-provider",
+        "theme-toggle",
+        "ui/ai-button",
+        "ui/app-hero",
+        "ui/bottom-sheet",
+        "ui/button",
+        "ui/chip",
+        "ui/empty-state",
+        "ui/field-label",
+        "ui/floating-button",
+        "ui/line-input",
+        "ui/search-input",
+        "ui/sonner"
+      ]
+    }
+  },
+  "pieces": [
+    "audio/audio-panel",
+    "audio/bar-fader",
+    "audio/dial",
+    "audio/level-meter",
+    "audio/param-buttons",
+    "audio/param-slider",
+    "audio/rotary-knob",
+    "audio/round-toggle",
+    "audio/selector-knob",
+    "audio/speaker-grille",
+    "audio/tuner",
+    "audio/xy-pad",
+    "cards/item-card",
+    "cards/link-card",
+    "controls/bottom-nav",
+    "controls/color-swatches",
+    "controls/date-strip",
+    "controls/editable-list",
+    "controls/expand-row",
+    "controls/field-column",
+    "controls/field-slider",
+    "controls/icon-tile",
+    "controls/number-slider",
+    "controls/scale-slider",
+    "controls/segmented",
+    "controls/split-slider",
+    "controls/stepper",
+    "controls/tab-bar",
+    "controls/tile-group",
+    "theme-provider",
+    "theme-toggle",
+    "ui/ai-button",
+    "ui/app-hero",
+    "ui/badge",
+    "ui/bottom-sheet",
+    "ui/button",
+    "ui/checkbox",
+    "ui/chip",
+    "ui/dropdown-menu",
+    "ui/empty-state",
+    "ui/field-label",
+    "ui/float-accordion",
+    "ui/floating-button",
+    "ui/input",
+    "ui/label",
+    "ui/line-input",
+    "ui/scroll-fade",
+    "ui/search-input",
+    "ui/select",
+    "ui/slider",
+    "ui/sonner",
+    "ui/stars",
+    "ui/suggest-input",
+    "ui/textarea",
+    "ui/toggle",
+    "ui/tooltip"
+  ],
+  "inside": {
+    "audio/param-buttons": [
+      "audio/bar-fader",
+      "audio/param-slider",
+      "audio/rotary-knob"
+    ],
+    "ui/slider": [
+      "audio/param-slider",
+      "controls/number-slider",
+      "controls/scale-slider"
+    ],
+    "ui/button": [
+      "audio/tuner",
+      "cards/link-card",
+      "controls/editable-list",
+      "ui/ai-button",
+      "ui/bottom-sheet",
+      "ui/float-accordion",
+      "ui/floating-button",
+      "ui/search-input"
+    ],
+    "ui/bottom-sheet": [
+      "controls/editable-list"
+    ],
+    "theme-provider": [
+      "theme-toggle",
+      "ui/sonner"
+    ],
+    "ui/chip": [
+      "ui/bottom-sheet"
+    ],
+    "ui/scroll-fade": [
+      "ui/bottom-sheet"
+    ],
+    "ui/input": [
+      "ui/search-input",
+      "ui/suggest-input"
+    ]
+  }
+}
