@@ -60,7 +60,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { BRANDS, type BrandId, applyBrand } from "@/brands"
-import { RowsStyle } from "@/rows-style"
 import { AiButtonDemo, EditableListDemo, EditListSheetDemo, FloatingButtonDemo, LineInputDemo, LinkCardsDemo, SegmentedIconsDemo, SummaryFieldsDemo } from "@/link-demos"
 import { PALETTE, SHADES } from "@/palette"
 import { AudioPanel } from "@/components/audio/audio-panel"
@@ -163,7 +162,6 @@ const NAV: [string, [string, string][]][] = [
   ["Fundamentos", [["reglas", "Reglas"], ["colores", "Colores"], ["tipografia", "Tipografía"], ["numeros", "Números en vivo"], ["cajas", "Espacios y cajas"]]],
   ["Componentes", [["fleje", "Fleje y títulos"], ["botones", "Botones"], ["formularios", "Formularios"], ["elegir", "Elegir opciones"], ["controles", "Controles"], ["listas", "Tarjetas y listas"], ["navegacion", "Navegación"], ["ventanas", "Ventanas y avisos"]]],
   ["Música", [["audio", "Audio (LOOP)"]]],
-  ["Para elegir", [["estilo-filas", "Filas que se abren"]]],
   ["Uso", [["usar", "Cómo usarlo"]]],
 ]
 
@@ -1086,7 +1084,7 @@ export function App() {
               <Demo label="Estrellas (14px en las fichas, 16px en el detalle) y datos con puntaje: sólo muestran, no se tocan">
                 <ScoresDemo />
               </Demo>
-              <Demo label="Filas que se abren: el detalle aparece abajo en una caja M">
+              <Demo label="Filas que se abren: lo de adentro aparece abajo, con una línea entre fila y fila y corrido a la derecha (el tercer nivel en gris). Los montos quedan en una misma columna">
                 <ExpandRowsDemo />
               </Demo>
               <Demo label="Lista que se edita: para administrar una lista (ej: categorías y subcategorías). Lápiz para cambiar el nombre ahí mismo, tacho para borrar (la app pide confirmación), las de adentro se abren y + Agregar al final" className="block">
@@ -1214,14 +1212,6 @@ export function App() {
             <LoopPiecesDemo />
           </Section>
 
-
-          <Section
-            id="estilo-filas"
-            title="Filas que se abren"
-            description="Temporal: ¿el análisis de gastos de pay pasa al mismo estilo que la lista que se edita? A la izquierda como está hoy; a la derecha con líneas y sangría. Cuando elijas, esta página se borra."
-          >
-            <RowsStyle />
-          </Section>
 
           <Section
             id="usar"
