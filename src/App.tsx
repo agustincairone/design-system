@@ -60,6 +60,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { BRANDS, type BrandId, applyBrand } from "@/brands"
+import { RowsStyle } from "@/rows-style"
 import { AiButtonDemo, EditableListDemo, EditListSheetDemo, FloatingButtonDemo, LineInputDemo, LinkCardsDemo, SegmentedIconsDemo, SummaryFieldsDemo } from "@/link-demos"
 import { PALETTE, SHADES } from "@/palette"
 import { AudioPanel } from "@/components/audio/audio-panel"
@@ -162,6 +163,7 @@ const NAV: [string, [string, string][]][] = [
   ["Fundamentos", [["reglas", "Reglas"], ["colores", "Colores"], ["tipografia", "Tipografía"], ["numeros", "Números en vivo"], ["cajas", "Espacios y cajas"]]],
   ["Componentes", [["fleje", "Fleje y títulos"], ["botones", "Botones"], ["formularios", "Formularios"], ["elegir", "Elegir opciones"], ["controles", "Controles"], ["listas", "Tarjetas y listas"], ["navegacion", "Navegación"], ["ventanas", "Ventanas y avisos"]]],
   ["Música", [["audio", "Audio (LOOP)"]]],
+  ["Para elegir", [["estilo-filas", "Filas que se abren"]]],
   ["Uso", [["usar", "Cómo usarlo"]]],
 ]
 
@@ -1212,6 +1214,14 @@ export function App() {
             <LoopPiecesDemo />
           </Section>
 
+
+          <Section
+            id="estilo-filas"
+            title="Filas que se abren"
+            description="Temporal: ¿el análisis de gastos de pay pasa al mismo estilo que la lista que se edita? A la izquierda como está hoy; a la derecha con líneas y sangría. Cuando elijas, esta página se borra."
+          >
+            <RowsStyle />
+          </Section>
 
           <Section
             id="usar"
