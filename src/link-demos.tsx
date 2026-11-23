@@ -5,7 +5,7 @@ import { LayoutGrid, List, Plus } from "lucide-react"
 
 import { Segmented } from "@/components/controls/segmented"
 import { LinkCard, LinkPhoto, LinkRow, type LinkItem } from "@/components/cards/link-card"
-import { EditableList, type EditableItem } from "@/components/controls/editable-list"
+import { EditableList, EditListSheet, type EditableItem } from "@/components/controls/editable-list"
 import { LineInput } from "@/components/ui/line-input"
 import { AiButton } from "@/components/ui/ai-button"
 import { FloatingButton } from "@/components/ui/floating-button"
@@ -126,5 +126,32 @@ export function EditableListDemo() {
         onAdd={(name, parent) => map((l) => [...l, parent ? sub(name, 0) : cat(name, [])], parent)}
       />
     </div>
+  )
+}
+
+// La lista en una hoja con Cancelar y Confirmar (ej: los gastos fijos de pay)
+export function EditListSheetDemo() {
+  const [open, setOpen] = React.useState(false)
+  const [items, setItems] = React.useState<EditableItem[]>([
+    { id: "afip", label: "AFIP", icon: "🏦" },
+    { id: "telefono", label: "Teléfono", icon: "📞" },
+    { id: "deporte", label: "Deporte", icon: "🏋️" },
+  ])
+  return (
+    <>
+      <Button variant="secondary" onClick={() => setOpen(true)}>Mis gastos fijos</Button>
+      <span className="text-sm text-muted-foreground">{items.map((i) => i.label).join(" · ")}</span>
+      <EditListSheet
+        open={open}
+        onOpenChange={setOpen}
+        title="Mis gastos fijos"
+        items={items}
+        onSave={setItems}
+        newItem={(name) => ({ id: `${name}-${Date.now()}`, label: name, icon: "📌" })}
+        addLabel="Agregar gasto fijo"
+        addPlaceholder="Nuevo gasto fijo..."
+        empty="No hay gastos fijos"
+      />
+    </>
   )
 }

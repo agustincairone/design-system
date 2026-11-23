@@ -821,7 +821,8 @@
       "registryDependencies": [
         "utils",
         "@ds/slider",
-        "@ds/button"
+        "@ds/button",
+        "@ds/bottom-sheet"
       ],
       "files": [
         {

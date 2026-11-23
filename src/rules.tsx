@@ -76,6 +76,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Elegir varias opciones = casillas (Checkbox) con su texto, cada una en su caja S, una abajo de la otra con 8px entre cajas. Toda la caja se puede tocar.",
       "Filas que se abren: el detalle aparece abajo en una caja M; si adentro hay otra fila que se abre, su detalle va en blanco.",
       "Lista que se edita (para administrar una lista, ej: categorías): lápiz para cambiar el nombre ahí mismo y tacho para borrar, con confirmación. Las de adentro van a la altura del nombre, en gris. Acá agregar es la última fila con texto del color de la app (+ Agregar nueva…), no el botón punteado.",
+      "Lista que se edita en una hoja (ej: Mis gastos fijos): los cambios se juntan y recién se guardan con Confirmar. Cancelar (rojo suave), la cruz o tocar afuera, si hay cambios sin guardar, preguntan si estás seguro (Seguir editando / Salir sin guardar). Ahí borrar no pide confirmación, porque nada se guarda hasta Confirmar.",
       "Campo con emoji: el emoji va a la izquierda en un botón redondo con borde, del mismo alto que el campo.",
       "Lista de un desplegable: se abre debajo del campo, del mismo ancho, y muestra hasta 6 opciones; si hay más, se desplazan por dentro.",
       "Campo con sugerencias (predictivo): sin ningún ícono. Lo ya cargado que contiene lo escrito (hasta 6) aparece en la misma lista de los desplegables.",

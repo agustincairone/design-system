@@ -60,7 +60,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { BRANDS, type BrandId, applyBrand } from "@/brands"
-import { AiButtonDemo, EditableListDemo, FloatingButtonDemo, LineInputDemo, LinkCardsDemo, SegmentedIconsDemo, SummaryFieldsDemo } from "@/link-demos"
+import { AiButtonDemo, EditableListDemo, EditListSheetDemo, FloatingButtonDemo, LineInputDemo, LinkCardsDemo, SegmentedIconsDemo, SummaryFieldsDemo } from "@/link-demos"
 import { PALETTE, SHADES } from "@/palette"
 import { AudioPanel } from "@/components/audio/audio-panel"
 import { LevelMeter, paintMeter } from "@/components/audio/level-meter"
@@ -1089,6 +1089,9 @@ export function App() {
               </Demo>
               <Demo label="Lista que se edita: para administrar una lista (ej: categorías y subcategorías). Lápiz para cambiar el nombre ahí mismo, tacho para borrar (la app pide confirmación), las de adentro se abren y + Agregar al final" className="block">
                 <EditableListDemo />
+              </Demo>
+              <Demo label="Lista que se edita en una hoja: los cambios se juntan y se guardan con Confirmar. Cancelar (o la cruz) pregunta si estás seguro cuando hay cambios sin guardar">
+                <EditListSheetDemo />
               </Demo>
               <Demo label="Labels: sólo muestran un estado o una categoría, no se tocan" className="block">
                 <LabelsDemo />
