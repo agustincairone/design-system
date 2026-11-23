@@ -4,6 +4,11 @@ export type Version = { v: string; date: string; items: string[] }
 
 export const VERSIONS: Version[] = [
   {
+    v: "v0.37.0",
+    date: "23/11",
+    items: ["Número que gira al aparecer (efecto tragamonedas): en un segundo frena en el monto real. Lo usan la deuda y el total del mes de pay."],
+  },
+  {
     v: "v0.36.0",
     date: "22/11",
     items: [
