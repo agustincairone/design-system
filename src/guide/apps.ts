@@ -37,6 +37,7 @@ export const APPS: AppInfo[] = [
     id: "wine",
     name: "wine",
     brand: "wine-tracker",
+    url: "https://wine-tracker-sandy.vercel.app",
     pending: ["Probar en el iPhone, con la app instalada, si la barra de la hora toma el color de la página."],
   },
   {
