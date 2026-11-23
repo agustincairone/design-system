@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "splash",
+  "title": "splash",
+  "description": "Pantalla de carga al abrir la app: el ícono en un círculo blanco, igual a la del celular; la app la saca cuando está lista.",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ds/ui/splash.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n// Pantalla de carga, la misma en todas las apps: el ícono de la app en un círculo blanco sobre el gris\n// claro de la página. Copia la que arma el celular al abrir la app instalada (con el ícono y el\n// background_color del manifest), así se ve una sola pantalla de carga y no dos.\n//\n// Va escrita en el index.html de la app (SPLASH_HTML), así aparece desde el primer instante, antes de que\n// cargue nada. La app la saca cuando ya tiene qué mostrar, con useHideSplash(listo) en el componente de\n// arriba de todo, en lugar de mostrar un \"Cargando...\". Se va con un fundido corto.\n// Es siempre clara, como la del celular (el manifest no tiene color para oscuro).\n\n/** el fondo: el mismo que el background_color del manifest (el gris claro de la página) */\nexport const SPLASH_COLOR = \"#e7e5e4\"\n\n// Como en Android: el ícono de 240px recortado en un círculo de 160px\nconst SCREEN = `position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:${SPLASH_COLOR};transition:opacity .2s`\nconst CIRCLE = \"width:160px;height:160px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center\"\nconst ICON = \"width:240px;height:240px;flex:none\"\n\n/** lo que va en el index.html de la app, adentro de <body> y antes de <div id=\"root\"> */\nexport const SPLASH_HTML = `<div id=\"splash\" style=\"${SCREEN}\"><div style=\"${CIRCLE}\"><img src=\"/icon-512.png\" alt=\"\" style=\"${ICON}\" /></div></div>`\n\n/** saca la pantalla de carga con un fundido corto */\nexport function hideSplash() {\n  const el = document.getElementById(\"splash\")\n  if (!el || el.dataset.hiding) return\n  el.dataset.hiding = \"1\"\n  el.style.opacity = \"0\"\n  window.setTimeout(() => el.remove(), 250)\n}\n\n/** saca la pantalla de carga cuando `ready` pasa a true (ej: ya se sabe si hay sesión y están los datos) */\nexport function useHideSplash(ready: boolean) {\n  React.useEffect(() => {\n    if (ready) hideSplash()\n  }, [ready])\n}\n\n// \"position:fixed;inset:0\" → { position: \"fixed\", inset: \"0\" }\nconst toStyle = (css: string) =>\n  Object.fromEntries(\n    css.split(\";\").map((rule) => {\n      const [k, v] = rule.split(\":\")\n      return [k.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase()), v]\n    })\n  ) as React.CSSProperties\n\n/** Sólo para la guía: cómo se ve en un celular, dibujada en una caja a la mitad del tamaño real. */\nexport function SplashPreview({ icon, className }: { icon: string; className?: string }) {\n  return (\n    <div className={cn(\"relative h-[422px] w-[195px] shrink-0 overflow-hidden rounded-box-l\", className)}>\n      <div className=\"absolute top-0 left-0 h-[844px] w-[390px] origin-top-left scale-50\">\n        <div style={{ ...toStyle(SCREEN), position: \"absolute\" }}>\n          <div style={toStyle(CIRCLE)}>\n            <img src={icon} alt=\"\" style={toStyle(ICON)} />\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/splash.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

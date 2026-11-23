@@ -112,6 +112,7 @@ export const PIECES: Record<string, string> = {
   "ui/select": "Desplegable",
   "ui/slider": "Slider",
   "ui/sonner": "Aviso",
+  "ui/splash": "Pantalla de carga",
   "ui/stars": "Estrellas",
   "ui/suggest-input": "Campo con sugerencias",
   "ui/textarea": "Notas (varias líneas)",

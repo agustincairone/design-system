@@ -1,4 +1,5 @@
 // Guía, sección "Cómo usarlo".
+import { SPLASH_HTML } from "@/components/ui/splash"
 import { Section } from "@/guide/layout"
 
 export function UsarSection() {
@@ -24,6 +25,10 @@ export function UsarSection() {
         <div>{'{ "name": "…", "background_color": "#e7e5e4", "icons": […] }'}</div>
         <div className="pt-2 text-muted-foreground"># 7. después de pasar una app a otra versión, en la carpeta del sistema: así la guía sabe qué usa cada app (páginas Apps y Versiones, y el "Lo usan" de cada pieza)</div>
         <div>npm run usage</div>
+        <div className="pt-2 text-muted-foreground"># 8. pantalla de carga: en index.html, adentro de body y antes de div id="root" (necesita public/icon-512.png)</div>
+        <div className="break-all">{SPLASH_HTML}</div>
+        <div className="pt-2 text-muted-foreground"># y en el componente de arriba de todo, en vez de mostrar "Cargando...": se va cuando ya se sabe si hay sesión</div>
+        <div>{'useHideSplash(user !== undefined)  // y mientras tanto, return null'}</div>
       </div>
     </Section>
   )

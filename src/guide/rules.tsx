@@ -98,6 +98,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Aviso que se va solo: siempre abajo al centro, en todas las apps. Si la app tiene barra de abajo, va encima de la barra con 16px de aire (aboveNav).",
       "Título de 18px con peso 500, con una línea divisoria de lado a lado debajo. La cruz es un botón redondo gris sin borde.",
       "Acordeón flotante: caja con título, \"¿Qué es esto?\" (abre una hoja con la explicación) y chevron al final. Al abrirlo crece hacia arriba desde donde está, sobre la página, con el fondo desenfocado como las hojas.",
+      "Al abrir la app, una sola pantalla de carga: el ícono en un círculo blanco sobre el gris claro, igual a la que arma el celular. Va en el index.html y la app la saca cuando ya tiene qué mostrar. No se muestra \"Cargando...\".",
     ],
   },
 ]

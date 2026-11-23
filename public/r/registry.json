@@ -1100,6 +1100,22 @@
       ]
     },
     {
+      "name": "splash",
+      "type": "registry:ui",
+      "title": "splash",
+      "description": "Pantalla de carga al abrir la app: el ícono en un círculo blanco, igual a la del celular; la app la saca cuando está lista.",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/splash.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/splash.tsx"
+        }
+      ]
+    },
+    {
       "name": "link-card",
       "type": "registry:component",
       "title": "link-card",

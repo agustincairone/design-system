@@ -6,6 +6,7 @@ import { Bell } from "lucide-react"
 import { BottomSheet, ConfirmSheet, StepHeader } from "@/components/ui/bottom-sheet"
 import { Button } from "@/components/ui/button"
 import { FloatAccordion } from "@/components/ui/float-accordion"
+import { SplashPreview } from "@/components/ui/splash"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { Demo, Section } from "@/guide/layout"
 import { EmptyDemo, MoreSheetsDemo, SheetsDemo } from "@/guide/guide-demos"
@@ -66,6 +67,9 @@ export function VentanasSection() {
         </Demo>
         <Demo uses={["ui/empty-state"]} label="Estado vacío">
           <EmptyDemo />
+        </Demo>
+        <Demo uses={["ui/splash"]} label="Pantalla de carga al abrir la app: el ícono en un círculo blanco sobre el gris claro, igual a la que arma el celular. Se va con un fundido cuando la app tiene qué mostrar (acá, a la mitad del tamaño real)">
+          <SplashPreview icon="/splash-sample.png" />
         </Demo>
         <Demo uses={["ui/float-accordion"]} label="Acordeón flotante: tocalo y crece hacia arriba sobre la página">
           <div className="w-full max-w-md">
