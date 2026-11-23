@@ -4,6 +4,11 @@ export type Version = { v: string; date: string; items: string[] }
 
 export const VERSIONS: Version[] = [
   {
+    v: "v0.38.0",
+    date: "23/11",
+    items: ["Pantalla de carga al abrir la app, la misma en todas: un círculo que gira, el nombre de la app y su japonés, en claro y en oscuro. Reemplaza al \"Cargando...\"."],
+  },
+  {
     v: "v0.37.0",
     date: "23/11",
     items: ["Número que gira al aparecer (efecto tragamonedas): en un segundo frena en el monto real. Lo usan la deuda y el total del mes de pay."],
