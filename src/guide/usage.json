@@ -1,7 +1,7 @@
 {
   "apps": {
     "pay": {
-      "version": "v0.36.0",
+      "version": "v0.37.0",
       "pieces": [
         "controls/bottom-nav",
         "controls/editable-list",
@@ -19,6 +19,7 @@
         "ui/field-label",
         "ui/input",
         "ui/label",
+        "ui/roll-number",
         "ui/select",
         "ui/sonner"
       ]
@@ -165,6 +166,7 @@
     "ui/input",
     "ui/label",
     "ui/line-input",
+    "ui/roll-number",
     "ui/scroll-fade",
     "ui/search-input",
     "ui/select",
