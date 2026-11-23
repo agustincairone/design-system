@@ -2,25 +2,35 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-// Pantalla de carga, la misma en todas las apps: el ícono de la app en un círculo blanco sobre el gris
-// claro de la página. Copia la que arma el celular al abrir la app instalada (con el ícono y el
-// background_color del manifest), así se ve una sola pantalla de carga y no dos.
+// Pantalla de carga al abrir la app, la misma en todas: el fondo de la página (claro u oscuro) y tres
+// puntitos grises que laten suave en el centro. Sin logo. Los puntitos aparecen recién a los 0,3 s, así
+// si la app abre rápido sólo se ve el fondo, sin parpadeo.
 //
 // Va escrita en el index.html de la app (SPLASH_HTML), así aparece desde el primer instante, antes de que
-// cargue nada. La app la saca cuando ya tiene qué mostrar, con useHideSplash(listo) en el componente de
-// arriba de todo, en lugar de mostrar un "Cargando...". Se va con un fundido corto.
-// Es siempre clara, como la del celular (el manifest no tiene color para oscuro).
+// cargue nada. Trae también el aviso de claro u oscuro (el mismo que guarda ThemeProvider), para que salga
+// del color correcto. La app la saca cuando ya tiene qué mostrar, con useHideSplash(listo) en el
+// componente de arriba de todo, en lugar de mostrar un "Cargando...". Se va con un fundido corto.
 
-/** el fondo: el mismo que el background_color del manifest (el gris claro de la página) */
-export const SPLASH_COLOR = "#e7e5e4"
+// Los colores son los del sistema (fondo y gris del texto secundario). Los de respaldo son los mismos
+// valores, para el instante antes de que cargue el tema.
+const CSS =
+  ".ds-splash{--splash-bg:#e7e5e4;--splash-dot:#79716b;position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:var(--background,var(--splash-bg));transition:opacity .2s}" +
+  ".dark .ds-splash{--splash-bg:#0c0a09;--splash-dot:#a6a09b}" +
+  ".ds-splash span{display:flex;gap:8px;opacity:0;animation:ds-splash-in .3s .3s forwards}" +
+  ".ds-splash i{width:4px;height:4px;border-radius:9999px;background:var(--muted-foreground,var(--splash-dot));opacity:.25;animation:ds-splash-dot 1.2s infinite ease-in-out}" +
+  ".ds-splash i:nth-child(2){animation-delay:.2s}.ds-splash i:nth-child(3){animation-delay:.4s}" +
+  "@keyframes ds-splash-in{to{opacity:1}}" +
+  "@keyframes ds-splash-dot{0%,100%{opacity:.25}50%{opacity:.8}}" +
+  "@media (prefers-reduced-motion:reduce){.ds-splash i{animation:none;opacity:.5}}"
 
-// Como en Android: el ícono de 240px recortado en un círculo de 160px
-const SCREEN = `position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:${SPLASH_COLOR};transition:opacity .2s`
-const CIRCLE = "width:160px;height:160px;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center"
-const ICON = "width:240px;height:240px;flex:none"
+// Claro u oscuro antes de dibujar nada: lo guardado por ThemeProvider o, si no hay, lo del celular
+const THEME =
+  'try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.classList.add(t)}catch(e){}'
+
+const DOTS = "<span><i></i><i></i><i></i></span>"
 
 /** lo que va en el index.html de la app, adentro de <body> y antes de <div id="root"> */
-export const SPLASH_HTML = `<div id="splash" style="${SCREEN}"><div style="${CIRCLE}"><img src="/icon-512.png" alt="" style="${ICON}" /></div></div>`
+export const SPLASH_HTML = `<script>${THEME}</script><style>${CSS}</style><div id="splash" class="ds-splash">${DOTS}</div>`
 
 /** saca la pantalla de carga con un fundido corto */
 export function hideSplash() {
@@ -38,25 +48,17 @@ export function useHideSplash(ready: boolean) {
   }, [ready])
 }
 
-// "position:fixed;inset:0" → { position: "fixed", inset: "0" }
-const toStyle = (css: string) =>
-  Object.fromEntries(
-    css.split(";").map((rule) => {
-      const [k, v] = rule.split(":")
-      return [k.replace(/-([a-z])/g, (_, c: string) => c.toUpperCase()), v]
-    })
-  ) as React.CSSProperties
-
-/** Sólo para la guía: cómo se ve en un celular, dibujada en una caja a la mitad del tamaño real. */
-export function SplashPreview({ icon, className }: { icon: string; className?: string }) {
+/** Sólo para la guía: cómo se ve, dibujada en una caja con forma de celular (a la mitad del tamaño real). */
+export function SplashPreview({ className }: { className?: string }) {
   return (
     <div className={cn("relative h-[422px] w-[195px] shrink-0 overflow-hidden rounded-box-l", className)}>
-      <div className="absolute top-0 left-0 h-[844px] w-[390px] origin-top-left scale-50">
-        <div style={{ ...toStyle(SCREEN), position: "absolute" }}>
-          <div style={toStyle(CIRCLE)}>
-            <img src={icon} alt="" style={toStyle(ICON)} />
-          </div>
-        </div>
+      <style>{CSS}</style>
+      <div className="ds-splash" style={{ position: "absolute" }}>
+        <span>
+          <i />
+          <i />
+          <i />
+        </span>
       </div>
     </div>
   )
