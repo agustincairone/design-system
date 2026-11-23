@@ -68,8 +68,8 @@ export function VentanasSection() {
         <Demo uses={["ui/empty-state"]} label="Estado vacío">
           <EmptyDemo />
         </Demo>
-        <Demo uses={["ui/splash"]} label="Pantalla de carga al abrir la app: el fondo de la página y tres puntitos que laten suave, sin logo. Los puntitos aparecen a los 0,3 s; se va con un fundido cuando la app tiene qué mostrar. Probala en claro y en oscuro">
-          <SplashPreview className="border border-input" />
+        <Demo uses={["ui/splash"]} label="Pantalla de carga al abrir la app: el fondo de la página y, centrados a 16px uno del otro, un círculo que gira, el nombre de la app y su nombre en japonés con el color de la app. Aparece a los 0,3 s y se va con un fundido. Probala en claro y en oscuro y con el color de cada app">
+          <SplashPreview name="Pay" jp="ペイ — 家計簿" className="border border-input" />
         </Demo>
         <Demo uses={["ui/float-accordion"]} label="Acordeón flotante: tocalo y crece hacia arriba sobre la página">
           <div className="w-full max-w-md">
