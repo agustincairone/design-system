@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "roll-number",
+  "title": "roll-number",
+  "description": "Número que gira al aparecer (efecto tragamonedas) y frena en el valor real en un segundo.",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ds/ui/roll-number.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\n// Número que gira al aparecer (efecto tragamonedas): cada cifra pasa por números al azar y en un segundo\n// frena en la real, de izquierda a derecha. Lo demás ($, puntos) queda quieto. Vuelve a girar cuando\n// cambia el valor (ej: al pasar de mes). Con \"reducir movimiento\" en el celular, aparece directo.\n// Ej: la deuda y el total del mes de pay. Va con el tamaño y el color que le ponga la app.\n//\n// Las cifras se pintan directo sobre el texto (sin volver a dibujar la pantalla en cada cambio), así no\n// gasta batería. El lector de pantalla lee sólo el número final.\nexport function RollNumber({\n  value,\n  format = String,\n  duration = 1000,\n  className,\n}: {\n  value: number\n  /** cómo se escribe el número (ej: n => \"$\" + n.toLocaleString(\"es-AR\")) */\n  format?: (n: number) => string\n  /** cuánto tarda en frenar, en milisegundos */\n  duration?: number\n  className?: string\n}) {\n  const final = format(value)\n  const ref = React.useRef<HTMLSpanElement>(null)\n\n  React.useLayoutEffect(() => {\n    const el = ref.current\n    if (!el) return\n    const still = window.matchMedia?.(\"(prefers-reduced-motion: reduce)\").matches\n    if (still || duration <= 0) {\n      el.textContent = final\n      return\n    }\n    const chars = [...final]\n    const digits = chars.flatMap((c, i) => (c >= \"0\" && c <= \"9\" ? [i] : []))\n    const start = performance.now()\n    let timer = 0\n    const paint = () => {\n      const t = (performance.now() - start) / duration\n      if (t >= 1) {\n        el.textContent = final\n        window.clearInterval(timer)\n        return\n      }\n      const out = [...chars]\n      digits.forEach((pos, k) => {\n        // todas giran el primer 40% del tiempo; después frenan de a una, de izquierda a derecha\n        const stopsAt = 0.4 + (0.6 * (k + 1)) / digits.length\n        if (t < stopsAt) out[pos] = String(k === 0 ? 1 + Math.floor(Math.random() * 9) : Math.floor(Math.random() * 10))\n      })\n      el.textContent = out.join(\"\")\n    }\n    paint()\n    timer = window.setInterval(paint, 50)\n    return () => window.clearInterval(timer)\n  }, [final, duration])\n\n  return (\n    <span data-slot=\"roll-number\" className={cn(\"live-number\", className)}>\n      <span className=\"sr-only\">{final}</span>\n      <span ref={ref} aria-hidden />\n    </span>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/roll-number.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

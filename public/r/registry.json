@@ -1084,6 +1084,22 @@
       ]
     },
     {
+      "name": "roll-number",
+      "type": "registry:ui",
+      "title": "roll-number",
+      "description": "Número que gira al aparecer (efecto tragamonedas) y frena en el valor real en un segundo.",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/roll-number.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/roll-number.tsx"
+        }
+      ]
+    },
+    {
       "name": "link-card",
       "type": "registry:component",
       "title": "link-card",

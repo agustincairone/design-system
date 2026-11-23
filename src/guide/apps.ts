@@ -106,6 +106,7 @@ export const PIECES: Record<string, string> = {
   "ui/input": "Campo de texto",
   "ui/label": "Texto de la casilla",
   "ui/line-input": "Campo de línea",
+  "ui/roll-number": "Número que gira",
   "ui/scroll-fade": "Degradé al desplazar",
   "ui/search-input": "Buscador",
   "ui/select": "Desplegable",

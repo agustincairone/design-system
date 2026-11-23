@@ -3,7 +3,8 @@ import * as React from "react"
 import { Minus, Plus } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Section } from "@/guide/layout"
+import { RollNumber } from "@/components/ui/roll-number"
+import { Demo, Section } from "@/guide/layout"
 
 // Ceros a la izquierda atenuados: "007" -> <span dim>00</span>7
 function Dimmed({ value, digits }: { value: number; digits: number }) {
@@ -71,6 +72,27 @@ function LiveBpm() {
   )
 }
 
+// Número que gira al aparecer: como la deuda y el total del mes de pay
+const money = (n: number) => "$" + Math.round(n).toLocaleString("es-AR")
+const AMOUNTS = [758070, 1245300, 96480, 38250]
+
+function RollNumberDemo() {
+  const [spin, setSpin] = React.useState(0)
+  const [i, setI] = React.useState(0)
+  return (
+    <div className="flex w-full flex-wrap items-center gap-box-m">
+      <div className="w-full max-w-xs rounded-box-l bg-card p-box-m">
+        <div className="text-sm font-medium">Total del mes</div>
+        <RollNumber key={spin} value={AMOUNTS[i]} format={money} className="mt-box-2xs block text-2xl font-medium text-brand-text" />
+      </div>
+      <div className="flex gap-2">
+        <Button size="sm" variant="secondary" onClick={() => setSpin((x) => x + 1)}>Volver a girar</Button>
+        <Button size="sm" variant="secondary" onClick={() => setI((x) => (x + 1) % AMOUNTS.length)}>Cambiar de mes</Button>
+      </div>
+    </div>
+  )
+}
+
 export function NumerosSection() {
   return (
     <Section
@@ -81,6 +103,11 @@ export function NumerosSection() {
       <div className="grid gap-4 sm:grid-cols-2">
         <LiveClock />
         <LiveBpm />
+      </div>
+      <div className="mt-4">
+        <Demo uses={["ui/roll-number"]} label="Número que gira al aparecer: las cifras pasan por números al azar y en un segundo frenan en la real, de izquierda a derecha. Vuelve a girar cuando cambia el monto">
+          <RollNumberDemo />
+        </Demo>
       </div>
     </Section>
   )
