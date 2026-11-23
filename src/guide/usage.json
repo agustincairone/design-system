@@ -1,7 +1,7 @@
 {
   "apps": {
     "pay": {
-      "version": "v0.37.0",
+      "version": "v0.38.0",
       "pieces": [
         "controls/bottom-nav",
         "controls/editable-list",
@@ -21,11 +21,12 @@
         "ui/label",
         "ui/roll-number",
         "ui/select",
-        "ui/sonner"
+        "ui/sonner",
+        "ui/splash"
       ]
     },
     "outfit": {
-      "version": "v0.36.0",
+      "version": "v0.38.0",
       "pieces": [
         "cards/item-card",
         "controls/bottom-nav",
@@ -43,11 +44,12 @@
         "ui/field-label",
         "ui/float-accordion",
         "ui/input",
-        "ui/sonner"
+        "ui/sonner",
+        "ui/splash"
       ]
     },
     "wine": {
-      "version": "v0.36.0",
+      "version": "v0.38.0",
       "pieces": [
         "cards/item-card",
         "controls/bottom-nav",
@@ -66,13 +68,14 @@
         "ui/search-input",
         "ui/select",
         "ui/sonner",
+        "ui/splash",
         "ui/stars",
         "ui/suggest-input",
         "ui/textarea"
       ]
     },
     "loop": {
-      "version": "v0.36.0",
+      "version": "v0.38.0",
       "pieces": [
         "audio/audio-panel",
         "audio/bar-fader",
@@ -93,11 +96,12 @@
         "ui/button",
         "ui/slider",
         "ui/sonner",
+        "ui/splash",
         "ui/tooltip"
       ]
     },
     "bookmarks": {
-      "version": "v0.36.0",
+      "version": "v0.38.0",
       "pieces": [
         "cards/link-card",
         "controls/bottom-nav",
@@ -115,7 +119,8 @@
         "ui/floating-button",
         "ui/line-input",
         "ui/search-input",
-        "ui/sonner"
+        "ui/sonner",
+        "ui/splash"
       ]
     }
   },
@@ -172,6 +177,7 @@
     "ui/select",
     "ui/slider",
     "ui/sonner",
+    "ui/splash",
     "ui/stars",
     "ui/suggest-input",
     "ui/textarea",
