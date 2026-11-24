@@ -13,12 +13,13 @@ import { ScrollFade, useMoreBelow } from "@/components/ui/scroll-fade"
 // `inline` la dibuja dentro de la página en vez de flotando (sólo para la guía).
 // Pasos (ej: agregar un vino en 3 pasos): `step` suma "Paso 2/3" en gris antes de la cruz y `onBack`
 // la flecha para volver con borde a la izquierda del título (el mismo diseño que los pasos de outfit).
+// `action` pone un botón al lado de la cruz (ej: el micrófono para dictar el gasto en pay).
 
 type Step = { current: number; total: number }
 
 // Encabezado de un paso: volver (desde el paso 2), título de 18px, "Paso 2/3" y la cruz si se puede cerrar.
 // Es el mismo en las hojas y en los pasos que van adentro de una caja de la página (ej: cargar un outfit).
-function StepHeader({ title, onClose, onBack, step, className }: { title: React.ReactNode; onClose?: () => void; onBack?: () => void; step?: Step; className?: string }) {
+function StepHeader({ title, onClose, onBack, step, action, className }: { title: React.ReactNode; onClose?: () => void; onBack?: () => void; step?: Step; action?: React.ReactNode; className?: string }) {
   return (
     <div data-slot="step-header" className={cn("flex items-center gap-3", className)}>
       {onBack && (
@@ -28,6 +29,7 @@ function StepHeader({ title, onClose, onBack, step, className }: { title: React.
       )}
       <span className="min-w-0 flex-1 truncate text-lg font-medium tracking-tight">{title}</span>
       {step && <span className="shrink-0 text-xs text-muted-foreground">Paso {step.current}/{step.total}</span>}
+      {action && <div className="flex shrink-0 items-center">{action}</div>}
       {onClose && (
         <Button variant="secondary" size="icon-sm" aria-label="Cerrar" onClick={onClose}>
           <X className="size-4" />
@@ -37,9 +39,9 @@ function StepHeader({ title, onClose, onBack, step, className }: { title: React.
   )
 }
 
-function SheetHeaderRow({ title, onClose, onBack, step }: { title: React.ReactNode; onClose: () => void; onBack?: () => void; step?: Step }) {
+function SheetHeaderRow({ title, onClose, onBack, step, action }: { title: React.ReactNode; onClose: () => void; onBack?: () => void; step?: Step; action?: React.ReactNode }) {
   // en las hojas, con una línea divisoria de lado a lado debajo del título
-  return <StepHeader className="-mx-box-l border-b border-border px-box-l pb-4" title={title} onClose={onClose} onBack={onBack} step={step} />
+  return <StepHeader className="-mx-box-l border-b border-border px-box-l pb-4" title={title} onClose={onClose} onBack={onBack} step={step} action={action} />
 }
 
 const PANEL = "flex max-w-md flex-col gap-4 rounded-box-l bg-card p-box-l text-sm text-card-foreground shadow-lg"
@@ -53,6 +55,7 @@ function BottomSheet({
   className,
   onBack,
   step,
+  action,
 }: {
   open: boolean
   onOpenChange: (open: boolean) => void
@@ -64,13 +67,15 @@ function BottomSheet({
   onBack?: () => void
   /** "Paso 2/3" arriba a la derecha */
   step?: Step
+  /** un botón al lado de la cruz (ej: el micrófono) */
+  action?: React.ReactNode
 }) {
   if (inline) {
     if (!open) return null
     return (
       <div className="flex h-full items-end justify-center bg-overlay p-4">
         <div className={cn(PANEL, "w-full", className)}>
-          <SheetHeaderRow title={title} onClose={() => onOpenChange(false)} onBack={onBack} step={step} />
+          <SheetHeaderRow title={title} onClose={() => onOpenChange(false)} onBack={onBack} step={step} action={action} />
           {children}
         </div>
       </div>
@@ -90,7 +95,7 @@ function BottomSheet({
           )}
         >
           <SheetPrimitive.Title asChild>
-            <div><SheetHeaderRow title={title} onClose={() => onOpenChange(false)} onBack={onBack} step={step} /></div>
+            <div><SheetHeaderRow title={title} onClose={() => onOpenChange(false)} onBack={onBack} step={step} action={action} /></div>
           </SheetPrimitive.Title>
           {children}
         </SheetPrimitive.Content>

@@ -1,7 +1,7 @@
 // Guía, sección "Ventanas y avisos".
 import * as React from "react"
 import { toast } from "sonner"
-import { Bell } from "lucide-react"
+import { Bell, Mic } from "lucide-react"
 
 import { BottomSheet, ConfirmSheet, StepHeader } from "@/components/ui/bottom-sheet"
 import { Button } from "@/components/ui/button"
@@ -34,6 +34,14 @@ export function VentanasSection() {
         <Demo uses={["ui/bottom-sheet"]} label="Pasos adentro de una caja de la página: el mismo encabezado de las hojas con pasos" className="block">
           <div className="max-w-md rounded-box-l bg-card p-box-m">
             <StepHeader title="Zapatillas" step={{ current: 2, total: 6 }} onBack={() => {}} />
+          </div>
+        </Demo>
+        <Demo uses={["ui/bottom-sheet"]} label="Hoja con un botón al lado de la cruz (ej: el micrófono de pay para dictar el gasto)" className="block">
+          <div className="h-56 max-w-md overflow-hidden rounded-box-l">
+            <BottomSheet inline open onOpenChange={() => {}} title="Nuevo gasto personal"
+              action={<Button variant="outline" size="icon-sm" aria-label="Dictar el gasto"><Mic className="size-4" /></Button>}>
+              <p className="text-sm text-muted-foreground">Categoría, detalle y monto.</p>
+            </BottomSheet>
           </div>
         </Demo>
         <Demo uses={["ui/bottom-sheet", "ui/tooltip", "ui/sonner"]} label="Probalo: confirmación, hoja desde abajo, ayuda al pasar el mouse y aviso que se va solo (abajo al centro)">
