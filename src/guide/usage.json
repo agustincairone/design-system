@@ -1,7 +1,7 @@
 {
   "apps": {
     "pay": {
-      "version": "v0.38.0",
+      "version": "v0.39.0",
       "pieces": [
         "controls/bottom-nav",
         "controls/editable-list",
@@ -12,11 +12,13 @@
         "theme-toggle",
         "ui/app-hero",
         "ui/badge",
+        "ui/bottom-sheet",
         "ui/button",
         "ui/checkbox",
         "ui/chip",
         "ui/dropdown-menu",
         "ui/field-label",
+        "ui/floating-button",
         "ui/input",
         "ui/label",
         "ui/roll-number",
@@ -26,7 +28,7 @@
       ]
     },
     "outfit": {
-      "version": "v0.38.0",
+      "version": "v0.39.0",
       "pieces": [
         "cards/item-card",
         "controls/bottom-nav",
@@ -49,7 +51,7 @@
       ]
     },
     "wine": {
-      "version": "v0.38.0",
+      "version": "v0.39.0",
       "pieces": [
         "cards/item-card",
         "controls/bottom-nav",
@@ -75,7 +77,7 @@
       ]
     },
     "loop": {
-      "version": "v0.38.0",
+      "version": "v0.39.0",
       "pieces": [
         "audio/audio-panel",
         "audio/bar-fader",
@@ -101,7 +103,7 @@
       ]
     },
     "bookmarks": {
-      "version": "v0.38.0",
+      "version": "v0.39.0",
       "pieces": [
         "cards/link-card",
         "controls/bottom-nav",
