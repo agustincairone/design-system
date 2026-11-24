@@ -8,7 +8,7 @@ export const VERSIONS: Version[] = [
     date: "24/11",
     items: [
       "La hoja puede llevar un botón al lado de la cruz (el micrófono de pay). pay ya usa las hojas y el botón flotante del sistema.",
-      "Pasos que miden lo mismo: si uno no entra, la hoja crece lo justo en vez de desplazarse (el aviso de link repetido de bookmarks).",
+      "Hojas que miden siempre lo mismo: el caso más alto puede marcar el alto de todas (el aviso de link repetido de bookmarks), y lo que cambia mientras se mira se acomoda sin agrandar la hoja (al dictar un gasto en pay, el micrófono se achica).",
     ],
   },
   {

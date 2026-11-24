@@ -264,15 +264,20 @@ function FilterSheet({
 // exactamente ese alto: lo de arriba (`top`, ej: sub-pestañas) queda fijo, el contenido se
 // desplaza si no entra (con el degradé que avisa que hay más abajo) y los botones (`footer`)
 // quedan siempre pegados abajo. Con `center` el contenido va centrado en el alto (los pasos con un
-// campo de texto, ej: Link, Título). Con `grow`, si el contenido de una pestaña no entra en ese alto,
-// la hoja crece lo justo en vez de desplazarse (ej: el aviso de link repetido en el primer paso de bookmarks).
+// campo de texto, ej: Link, Título).
+// `sizer`: si otro caso es más alto que la pestaña principal, ese caso marca el alto de todas (se dibuja
+// sin verse), así la hoja no salta cuando aparece (ej: el aviso de link repetido en el primer paso de
+// bookmarks). Los botones de la pestaña principal quedan abajo de todo.
+// `fit`: el contenido no se desplaza; ocupa justo el alto y lo que se puede achicar se achica (ej: al
+// dictar un gasto en pay, el micrófono se achica a medida que aparecen los datos que reconoce).
 function SheetPanels({
   base,
   showBase,
   top,
   footer,
   center,
-  grow,
+  sizer,
+  fit,
   children,
 }: {
   base: React.ReactNode
@@ -280,33 +285,29 @@ function SheetPanels({
   top?: React.ReactNode
   footer?: React.ReactNode
   center?: boolean
-  /** si no entra, la hoja crece en vez de desplazarse */
-  grow?: boolean
+  /** el caso que marca el alto, si es más alto que la pestaña principal */
+  sizer?: React.ReactNode
+  /** sin desplazarse: el contenido se acomoda al alto */
+  fit?: boolean
   children?: React.ReactNode
 }) {
-  if (grow) {
-    // las dos capas en la misma celda: mide lo que mida la más alta (como mínimo, la principal)
-    return (
-      <div data-slot="sheet-panels" className="grid">
-        <div className={cn("col-start-1 row-start-1 flex flex-col gap-4", !showBase && "invisible")}>{base}</div>
-        {!showBase && (
-          <div className="col-start-1 row-start-1 flex flex-col gap-4">
-            {top}
-            <div className={cn("flex flex-1 flex-col gap-4", center && "justify-center")}>{children}</div>
-            {footer && <div className="flex gap-box-xs *:flex-1">{footer}</div>}
-          </div>
-        )}
-      </div>
-    )
-  }
+  const buttons = footer && <div className="flex gap-box-xs *:flex-1">{footer}</div>
   return (
-    <div data-slot="sheet-panels" className="relative">
-      <div className={cn("flex flex-col gap-4", !showBase && "invisible")}>{base}</div>
+    <div data-slot="sheet-panels" className="relative grid">
+      <div className={cn("col-start-1 row-start-1 flex flex-col gap-4", sizer && "[&>:last-child]:mt-auto", !showBase && "invisible")}>{base}</div>
+      {sizer && (
+        <div aria-hidden inert className="invisible col-start-1 row-start-1 flex flex-col gap-4">
+          {top}
+          <div className="flex flex-col gap-4">{sizer}</div>
+          {/* la fila de botones cuenta siempre, también en la pestaña principal (que trae los suyos) */}
+          {buttons || <div className="flex"><Button tabIndex={-1}>&nbsp;</Button></div>}
+        </div>
+      )}
       {!showBase && (
         <div className="absolute inset-0 flex flex-col gap-4">
           {top}
-          <PanelScroll center={center}>{children}</PanelScroll>
-          {footer && <div className="flex gap-box-xs *:flex-1">{footer}</div>}
+          {fit ? <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden">{children}</div> : <PanelScroll center={center}>{children}</PanelScroll>}
+          {buttons}
         </div>
       )}
     </div>
