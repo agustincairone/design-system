@@ -20,11 +20,7 @@ export const APPS: AppInfo[] = [
     name: "pay",
     brand: "pay-tracker",
     url: "https://pay-tracker-three.vercel.app",
-    pending: [
-      "Sus hojas son propias: todavía no usan las hojas del sistema.",
-      "El botón \"Agregar gasto\" está armado a mano: se ve igual al botón flotante, pero no usa la pieza.",
-      "Probar en el iPhone, con la app instalada, si la barra de la hora toma el color de la página.",
-    ],
+    pending: ["Probar en el iPhone, con la app instalada, si la barra de la hora toma el color de la página."],
   },
   {
     id: "outfit",
@@ -52,7 +48,7 @@ export const APPS: AppInfo[] = [
     name: "bookmarks",
     brand: "bookmarks",
     url: "https://bookmarks-pink.vercel.app",
-    pending: ["Si el link ya estaba guardado, el primer paso de la hoja no entra y hay que desplazarse."],
+    pending: ["Probar en el iPhone, con la app instalada, si la barra de la hora toma el color de la página."],
   },
 ]
 

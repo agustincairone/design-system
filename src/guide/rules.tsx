@@ -95,7 +95,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Zona que se desplaza con un botón pegado abajo: un degradé de 64px (de transparente al color de la caja) avisa que hay más para ver; aparece sólo si quedan más de 20px y se desvanece al llegar al final.",
       "El ⋮ de una fila abre el menú desplegable del DS, al lado del botón (Eliminar va en rojo). Las opciones más grandes, como configurar un grupo, abren una hoja desde abajo con sus botones.",
       "Flotan con 16px de aire a los costados y abajo, ocupando el ancho que queda.",
-      "Cargar algo de a pasos: el mismo encabezado en las hojas y en las cajas de la página (volver desde el paso 2, título de 18px y \"Paso 2/3\" a la derecha).",
+      "Cargar algo de a pasos: el mismo encabezado en las hojas y en las cajas de la página (volver desde el paso 2, título de 18px y \"Paso 2/3\" a la derecha). Si los pasos miden lo mismo y uno no entra (ej: el aviso de link repetido), la hoja crece lo justo en vez de desplazarse.",
       "Aviso que se va solo: siempre abajo al centro, en todas las apps. Si la app tiene barra de abajo, va encima de la barra con 16px de aire (aboveNav).",
       "Título de 18px con peso 500, con una línea divisoria de lado a lado debajo. La cruz es un botón redondo gris sin borde.",
       "Acordeón flotante: caja con título, \"¿Qué es esto?\" (abre una hoja con la explicación) y chevron al final. Al abrirlo crece hacia arriba desde donde está, sobre la página, con el fondo desenfocado como las hojas.",

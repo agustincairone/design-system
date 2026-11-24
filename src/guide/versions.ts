@@ -4,6 +4,14 @@ export type Version = { v: string; date: string; items: string[] }
 
 export const VERSIONS: Version[] = [
   {
+    v: "v0.39.0",
+    date: "24/11",
+    items: [
+      "La hoja puede llevar un botón al lado de la cruz (el micrófono de pay). pay ya usa las hojas y el botón flotante del sistema.",
+      "Pasos que miden lo mismo: si uno no entra, la hoja crece lo justo en vez de desplazarse (el aviso de link repetido de bookmarks).",
+    ],
+  },
+  {
     v: "v0.38.0",
     date: "23/11",
     items: ["Pantalla de carga al abrir la app, la misma en todas: un círculo que gira, el nombre de la app y su japonés, en claro y en oscuro. Reemplaza al \"Cargando...\"."],

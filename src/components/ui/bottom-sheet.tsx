@@ -264,13 +264,15 @@ function FilterSheet({
 // exactamente ese alto: lo de arriba (`top`, ej: sub-pestañas) queda fijo, el contenido se
 // desplaza si no entra (con el degradé que avisa que hay más abajo) y los botones (`footer`)
 // quedan siempre pegados abajo. Con `center` el contenido va centrado en el alto (los pasos con un
-// campo de texto, ej: Link, Título).
+// campo de texto, ej: Link, Título). Con `grow`, si el contenido de una pestaña no entra en ese alto,
+// la hoja crece lo justo en vez de desplazarse (ej: el aviso de link repetido en el primer paso de bookmarks).
 function SheetPanels({
   base,
   showBase,
   top,
   footer,
   center,
+  grow,
   children,
 }: {
   base: React.ReactNode
@@ -278,8 +280,25 @@ function SheetPanels({
   top?: React.ReactNode
   footer?: React.ReactNode
   center?: boolean
+  /** si no entra, la hoja crece en vez de desplazarse */
+  grow?: boolean
   children?: React.ReactNode
 }) {
+  if (grow) {
+    // las dos capas en la misma celda: mide lo que mida la más alta (como mínimo, la principal)
+    return (
+      <div data-slot="sheet-panels" className="grid">
+        <div className={cn("col-start-1 row-start-1 flex flex-col gap-4", !showBase && "invisible")}>{base}</div>
+        {!showBase && (
+          <div className="col-start-1 row-start-1 flex flex-col gap-4">
+            {top}
+            <div className={cn("flex flex-1 flex-col gap-4", center && "justify-center")}>{children}</div>
+            {footer && <div className="flex gap-box-xs *:flex-1">{footer}</div>}
+          </div>
+        )}
+      </div>
+    )
+  }
   return (
     <div data-slot="sheet-panels" className="relative">
       <div className={cn("flex flex-col gap-4", !showBase && "invisible")}>{base}</div>
