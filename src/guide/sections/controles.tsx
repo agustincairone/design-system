@@ -62,7 +62,7 @@ export function ControlesSection() {
     >
       <ControlsDemo />
       <div className="mt-4 flex flex-col gap-4">
-        <Demo uses={["controls/swipe-button"]} label="Botón para deslizar (de no-coke): para algo que no se deshace fácil. Se arrastra el círculo hasta el otro lado; si se suelta antes, vuelve. Mide como la barra de abajo y va en su lugar">
+        <Demo uses={["controls/swipe-button"]} label="Botón para deslizar (de no-coke): para algo que no se deshace fácil. El círculo sigue al dedo; si lo soltás antes, vuelve suave. Al llegar vibra y confirma enseguida. Mide como la barra de abajo">
           <SwipeButtonDemo />
         </Demo>
         <Demo uses={["controls/carousel"]} label="Carrusel de fichas (los hitos de no-coke): una al centro y asomando las de los costados. Se pasa con el dedo o con las flechas, que dicen en cuál vas">

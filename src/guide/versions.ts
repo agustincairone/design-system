@@ -4,6 +4,14 @@ export type Version = { v: string; date: string; items: string[] }
 
 export const VERSIONS: Version[] = [
   {
+    v: "v0.41.0",
+    date: "26/11",
+    items: [
+      "Letra de 96 para el número principal de una pantalla (los días de racha de no-coke).",
+      "Botón para deslizar más suave: el círculo sigue al dedo sin retraso, vuelve suave si lo soltás antes, y al llegar vibra y confirma enseguida.",
+    ],
+  },
+  {
     v: "v0.40.0",
     date: "26/11",
     items: [
