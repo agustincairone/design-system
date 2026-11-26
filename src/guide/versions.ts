@@ -4,6 +4,14 @@ export type Version = { v: string; date: string; items: string[] }
 
 export const VERSIONS: Version[] = [
   {
+    v: "v0.40.0",
+    date: "26/11",
+    items: [
+      "no-coke pasa al sistema, con su rojo (el mismo de borrar).",
+      "Piezas de no-coke: número grande que gira, barra de progreso, fichas de un dato, carrusel de fichas y botón para deslizar.",
+    ],
+  },
+  {
     v: "v0.39.0",
     date: "24/11",
     items: [

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hero-number",
+  "title": "hero-number",
+  "description": "Número grande de una pantalla: en puntitos, gira al aparecer, con qué cuenta y una nota abajo (los días de racha de no-coke).",
+  "registryDependencies": [
+    "utils",
+    "@ds/roll-number",
+    "@ds/badge"
+  ],
+  "files": [
+    {
+      "path": "registry/ds/ui/hero-number.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\nimport { RollNumber } from \"@/components/ui/roll-number\"\nimport { Badge } from \"@/components/ui/badge\"\n\n// Número grande de una pantalla (de no-coke: los días de racha). El número va en puntitos (como los del\n// fleje), con la letra de 48 de los números grandes, y gira al aparecer. Abajo, qué cuenta (puede llevar\n// una imagen, ej: el logo) y, si hace falta, una nota en píldora (ej: desde cuándo). Todo centrado, a 8px.\nexport function HeroNumber({\n  value,\n  label,\n  note,\n  className,\n}: {\n  value: number\n  label: React.ReactNode\n  note?: React.ReactNode\n  className?: string\n}) {\n  return (\n    <div data-slot=\"hero-number\" className={cn(\"flex flex-col items-center gap-box-xs text-center\", className)}>\n      <RollNumber value={value} className=\"font-readout text-5xl font-bold\" />\n      <div className=\"flex items-center gap-box-xs text-sm font-medium\">{label}</div>\n      {note && <Badge variant=\"secondary\">{note}</Badge>}\n    </div>\n  )\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/hero-number.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

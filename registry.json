@@ -437,6 +437,42 @@
       }
     },
     {
+      "name": "brand-no-coke-tracker",
+      "type": "registry:theme",
+      "title": "Color de no-coke-tracker",
+      "description": "Rojo de no-coke-tracker (red-600, un tono más claro al pasar el mouse).",
+      "cssVars": {
+        "light": {
+          "brand": "oklch(57.7% 0.245 27.325)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(57.7% 0.245 27.325)",
+          "primary": "oklch(57.7% 0.245 27.325)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(57.7% 0.245 27.325)",
+          "chart-1": "oklch(57.7% 0.245 27.325)",
+          "sidebar-primary": "oklch(57.7% 0.245 27.325)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(57.7% 0.245 27.325)",
+          "brand-strong": "oklch(50.5% 0.213 27.518)",
+          "brand-hover": "oklch(63.7% 0.237 25.331)"
+        },
+        "dark": {
+          "brand": "oklch(57.7% 0.245 27.325)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(57.7% 0.245 27.325)",
+          "primary": "oklch(57.7% 0.245 27.325)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(57.7% 0.245 27.325)",
+          "chart-1": "oklch(57.7% 0.245 27.325)",
+          "sidebar-primary": "oklch(57.7% 0.245 27.325)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(57.7% 0.245 27.325)",
+          "brand-strong": "oklch(50.5% 0.213 27.518)",
+          "brand-hover": "oklch(63.7% 0.237 25.331)"
+        }
+      }
+    },
+    {
       "name": "toaster",
       "type": "registry:ui",
       "title": "Notificaciones",
@@ -814,7 +850,7 @@
       "name": "controls",
       "type": "registry:block",
       "title": "Controles",
-      "description": "Campo-slider, stepper, selector segmentado, fichas, número + slider, reparto entre dos y lista que se edita. Sirven en cualquier app, escala corta de 1 a 5.",
+      "description": "Campo-slider, stepper, selector segmentado, fichas, número + slider, reparto entre dos y lista que se edita. Sirven en cualquier app, escala corta de 1 a 5. Carrusel de fichas y botón para deslizar (de no-coke).",
       "dependencies": [
         "lucide-react"
       ],
@@ -899,6 +935,16 @@
           "path": "registry/ds/controls/editable-list.tsx",
           "type": "registry:component",
           "target": "components/controls/editable-list.tsx"
+        },
+        {
+          "path": "registry/ds/controls/carousel.tsx",
+          "type": "registry:component",
+          "target": "components/controls/carousel.tsx"
+        },
+        {
+          "path": "registry/ds/controls/swipe-button.tsx",
+          "type": "registry:component",
+          "target": "components/controls/swipe-button.tsx"
         }
       ]
     },
@@ -1133,6 +1179,59 @@
           "type": "registry:component",
           "target": "components/cards/link-card.tsx"
         }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "progress",
+      "description": "Barra de progreso: riel gris y el avance del color de la app (el próximo hito de no-coke).",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/progress.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/progress.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hero-number",
+      "type": "registry:ui",
+      "title": "hero-number",
+      "description": "Número grande de una pantalla: en puntitos, gira al aparecer, con qué cuenta y una nota abajo (los días de racha de no-coke).",
+      "registryDependencies": [
+        "utils",
+        "@ds/roll-number",
+        "@ds/badge"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/hero-number.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/hero-number.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stat-card",
+      "type": "registry:component",
+      "title": "stat-card",
+      "description": "Ficha de un dato: número con unidad, qué es y una línea gris; se toca para ver la explicación (no-coke).",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/cards/stat-card.tsx",
+          "type": "registry:component",
+          "target": "components/cards/stat-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
       ]
     }
   ]

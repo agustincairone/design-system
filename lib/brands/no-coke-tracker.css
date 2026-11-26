@@ -1,0 +1,30 @@
+/* Color de no-coke-tracker. Importalo después de theme.css */
+:root {
+  --brand: oklch(57.7% 0.245 27.325);
+  --brand-foreground: oklch(100% 0 0);
+  --brand-text: oklch(57.7% 0.245 27.325);
+  --primary: oklch(57.7% 0.245 27.325);
+  --primary-foreground: oklch(100% 0 0);
+  --ring: oklch(57.7% 0.245 27.325);
+  --chart-1: oklch(57.7% 0.245 27.325);
+  --sidebar-primary: oklch(57.7% 0.245 27.325);
+  --sidebar-primary-foreground: oklch(100% 0 0);
+  --sidebar-ring: oklch(57.7% 0.245 27.325);
+  --brand-strong: oklch(50.5% 0.213 27.518);
+  --brand-hover: oklch(63.7% 0.237 25.331);
+}
+
+.dark {
+  --brand: oklch(57.7% 0.245 27.325);
+  --brand-foreground: oklch(100% 0 0);
+  --brand-text: oklch(57.7% 0.245 27.325);
+  --primary: oklch(57.7% 0.245 27.325);
+  --primary-foreground: oklch(100% 0 0);
+  --ring: oklch(57.7% 0.245 27.325);
+  --chart-1: oklch(57.7% 0.245 27.325);
+  --sidebar-primary: oklch(57.7% 0.245 27.325);
+  --sidebar-primary-foreground: oklch(100% 0 0);
+  --sidebar-ring: oklch(57.7% 0.245 27.325);
+  --brand-strong: oklch(50.5% 0.213 27.518);
+  --brand-hover: oklch(63.7% 0.237 25.331);
+}

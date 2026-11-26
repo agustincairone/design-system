@@ -50,10 +50,19 @@ export const APPS: AppInfo[] = [
     url: "https://bookmarks-pink.vercel.app",
     pending: ["Probar en el iPhone, con la app instalada, si la barra de la hora toma el color de la página."],
   },
+  {
+    id: "no-coke",
+    name: "no-coke",
+    brand: "no-coke-tracker",
+    pending: [
+      "Ícono nuevo: falta el emoji en PNG.",
+      "Probar en el iPhone, con la app instalada, si la barra de la hora toma el color de la página.",
+    ],
+  },
 ]
 
 /** apps que todavía no usan el sistema */
-export const OTHER_APPS = ["no-coke", "gesture"]
+export const OTHER_APPS = ["gesture"]
 
 export const PIECES: Record<string, string> = {
   "audio/audio-panel": "Panel de audio",
@@ -70,7 +79,9 @@ export const PIECES: Record<string, string> = {
   "audio/xy-pad": "Pad XY",
   "cards/item-card": "Fichas con foto",
   "cards/link-card": "Fichas de link",
+  "cards/stat-card": "Fichas de un dato",
   "controls/bottom-nav": "Barra de abajo",
+  "controls/carousel": "Carrusel",
   "controls/color-swatches": "Colores",
   "controls/date-strip": "Días",
   "controls/editable-list": "Lista que se edita",
@@ -83,6 +94,7 @@ export const PIECES: Record<string, string> = {
   "controls/segmented": "Píldora",
   "controls/split-slider": "Reparto entre dos",
   "controls/stepper": "Contador (− 1 +)",
+  "controls/swipe-button": "Botón para deslizar",
   "controls/tab-bar": "Pestañas",
   "controls/tile-group": "Fichas para elegir",
   "theme-provider": "Claro y oscuro",
@@ -99,9 +111,11 @@ export const PIECES: Record<string, string> = {
   "ui/field-label": "Nombre del campo",
   "ui/float-accordion": "Acordeón flotante",
   "ui/floating-button": "Botón flotante",
+  "ui/hero-number": "Número grande",
   "ui/input": "Campo de texto",
   "ui/label": "Texto de la casilla",
   "ui/line-input": "Campo de línea",
+  "ui/progress": "Barra de progreso",
   "ui/roll-number": "Número que gira",
   "ui/scroll-fade": "Degradé al desplazar",
   "ui/search-input": "Buscador",

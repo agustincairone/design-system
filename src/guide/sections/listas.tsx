@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Demo, Section } from "@/guide/layout"
 import { ItemCardsDemo, ScoresDemo, TallCardsDemo } from "@/guide/guide-demos"
 import { EditableListDemo, EditListSheetDemo, LinkCardsDemo } from "@/guide/link-demos"
+import { StatCardsDemo } from "@/guide/no-coke-demos"
 
 // Filas que se abren (ej: gastos por mes en Análisis de pay)
 function ExpandRowsDemo() {
@@ -74,6 +75,9 @@ export function ListasSection() {
         </Demo>
         <Demo uses={["cards/link-card"]} label="Fichas de un link: grilla de 2 con la imagen apaisada y el botón para abrir, y fila de la lista. Ícono del sitio, editar y borrar, y la categoría con la estrellita del color de la app" className="block">
           <LinkCardsDemo />
+        </Demo>
+        <Demo uses={["cards/stat-card"]} label="Fichas de un dato (de no-coke): número con unidad, qué es y una línea gris. Con explicación, toda la ficha se toca y lleva la (i)">
+          <StatCardsDemo />
         </Demo>
         <Demo uses={["ui/stars", "ui/chip"]} label="Estrellas (14px en las fichas, 16px en el detalle) y datos con puntaje: sólo muestran, no se tocan">
           <ScoresDemo />

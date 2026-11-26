@@ -124,6 +124,27 @@
         "ui/sonner",
         "ui/splash"
       ]
+    },
+    "no-coke": {
+      "version": "v0.39.0",
+      "pieces": [
+        "cards/stat-card",
+        "controls/carousel",
+        "controls/expand-row",
+        "controls/swipe-button",
+        "theme-provider",
+        "theme-toggle",
+        "ui/app-hero",
+        "ui/badge",
+        "ui/bottom-sheet",
+        "ui/button",
+        "ui/field-label",
+        "ui/hero-number",
+        "ui/input",
+        "ui/progress",
+        "ui/sonner",
+        "ui/splash"
+      ]
     }
   },
   "pieces": [
@@ -141,7 +162,9 @@
     "audio/xy-pad",
     "cards/item-card",
     "cards/link-card",
+    "cards/stat-card",
     "controls/bottom-nav",
+    "controls/carousel",
     "controls/color-swatches",
     "controls/date-strip",
     "controls/editable-list",
@@ -154,6 +177,7 @@
     "controls/segmented",
     "controls/split-slider",
     "controls/stepper",
+    "controls/swipe-button",
     "controls/tab-bar",
     "controls/tile-group",
     "theme-provider",
@@ -170,9 +194,11 @@
     "ui/field-label",
     "ui/float-accordion",
     "ui/floating-button",
+    "ui/hero-number",
     "ui/input",
     "ui/label",
     "ui/line-input",
+    "ui/progress",
     "ui/roll-number",
     "ui/scroll-fade",
     "ui/search-input",
@@ -200,6 +226,7 @@
     "ui/button": [
       "audio/tuner",
       "cards/link-card",
+      "controls/carousel",
       "controls/editable-list",
       "ui/ai-button",
       "ui/bottom-sheet",
@@ -219,6 +246,12 @@
     ],
     "ui/scroll-fade": [
       "ui/bottom-sheet"
+    ],
+    "ui/roll-number": [
+      "ui/hero-number"
+    ],
+    "ui/badge": [
+      "ui/hero-number"
     ],
     "ui/input": [
       "ui/search-input",

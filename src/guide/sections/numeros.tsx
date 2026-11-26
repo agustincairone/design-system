@@ -5,6 +5,7 @@ import { Minus, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { RollNumber } from "@/components/ui/roll-number"
 import { Demo, Section } from "@/guide/layout"
+import { HeroNumberDemo, ProgressDemo } from "@/guide/no-coke-demos"
 
 // Ceros a la izquierda atenuados: "007" -> <span dim>00</span>7
 function Dimmed({ value, digits }: { value: number; digits: number }) {
@@ -107,6 +108,14 @@ export function NumerosSection() {
       <div className="mt-4">
         <Demo uses={["ui/roll-number"]} label="Número que gira al aparecer: las cifras pasan por números al azar y en un segundo frenan en la real, de izquierda a derecha. Vuelve a girar cuando cambia el monto">
           <RollNumberDemo />
+        </Demo>
+      </div>
+      <div className="mt-4 flex flex-col gap-4">
+        <Demo uses={["ui/hero-number"]} label="Número grande de una pantalla (de no-coke): en puntitos, gira al aparecer, con qué cuenta y una nota en píldora. Todo centrado, a 8px">
+          <HeroNumberDemo />
+        </Demo>
+        <Demo uses={["ui/progress"]} label="Barra de progreso: riel gris y el avance del color de la app. Lo que va arriba y abajo lo escribe la app">
+          <ProgressDemo />
         </Demo>
       </div>
     </Section>
