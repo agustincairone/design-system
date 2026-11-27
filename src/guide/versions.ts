@@ -4,6 +4,11 @@ export type Version = { v: string; date: string; items: string[] }
 
 export const VERSIONS: Version[] = [
   {
+    v: "v0.43.0",
+    date: "27/11",
+    items: ["Todas las pantallas terminan con lo último a 8px de la barra de abajo (o del botón flotante), como entre cajas."],
+  },
+  {
     v: "v0.42.0",
     date: "27/11",
     items: [

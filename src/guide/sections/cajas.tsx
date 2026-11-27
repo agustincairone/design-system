@@ -11,8 +11,9 @@ const SPACE_SCALE: [number, string, string][] = [
   [24, "box-xl", ""],
   [40, "box-2xl", "Relleno del estado vacío"],
   [40, "section", "Entre bloques grandes"],
-  [112, "screen-end", "Libre al final de cada pantalla"],
-  [168, "screen-end-float", "Libre al final si hay botón flotante encima de la barra"],
+  [88, "screen-end", "Libre al final de cada pantalla: lo último a 8px de la barra"],
+  [144, "screen-end-float", "Lo mismo con botón flotante: lo último a 8px del botón"],
+  [72, "screen-end-button", "Sin barra, con el botón flotante abajo de todo: lo último a 8px del botón"],
 ]
 
 export function CajasSection() {

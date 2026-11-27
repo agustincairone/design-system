@@ -28,7 +28,7 @@ const RULES: { title: string; items: string[] }[] = [
       "Toda app arranca con el fleje: nombre, nombre en japonés (color de la app), un número general de puntitos y su etiqueta en mayúsculas, alineados con el nombre (número arriba, etiqueta abajo).",
       "En el celular, nombre y japonés van a la izquierda; números y etiquetas a la derecha.",
       "Margen de página igual en todas las apps: 20px arriba y 16px a los costados, así el fleje queda siempre en el mismo lugar.",
-      "Pantalla con una caja principal y algo debajo (ej: registrar el outfit y la sugerencia para hoy): la caja principal ocupa el alto que sobra y lo de abajo queda a 8px de la barra, la misma separación que entre cajas (screen-end-gap). Si la caja crece más que la pantalla, al final también quedan 8px.",
+      "Al final de cada pantalla, lo último queda a 8px de la barra de abajo, la misma separación que entre cajas (screen-end); con botón flotante, a 8px del botón (screen-end-float encima de la barra, screen-end-button si no hay barra). Si la pantalla tiene una caja principal (ej: registrar el outfit, la racha de no-coke), esa caja ocupa el alto que sobra.",
       "Abajo, lo que va pegado al borde (la barra, las hojas, el aviso) deja 16px más el lugar de la rayita de inicio del celular (screen-bottom). Así la app instalada se dibuja hasta el borde y la rayita queda sobre el color de la página.",
       "Las barras del celular no tienen un color fijo: la de arriba (la hora) toma el color de la página según el tema; la de abajo, en Android, va en claro u oscuro según el teléfono. Por eso el manifest de la app instalable no lleva theme_color.",
       "Ícono de la app instalada: el emoji de la app (o un PNG con fondo transparente) en el medio, sobre el gris claro de la página, ocupando la mitad del ícono, sin círculo blanco. Así la pantalla que pone Android al abrir es igual en todas: el emoji solo sobre el gris, del mismo tamaño y en el mismo lugar. Se dibuja con npm run icons (512, que en el manifest va como maskable, y 192).",
@@ -42,7 +42,7 @@ const RULES: { title: string; items: string[] }[] = [
     items: [
       "El color depende de dónde está la caja: sobre la página, blanca; adentro de otra caja, gris. El relleno se elige de las tres medidas del DS según lo que le quede mejor a la caja: L 20px (p-box-l), M 16px (p-box-m) o S 12px (p-box-s). Nunca otro número.",
       "Redondeos sólo del DS: cajas (box-s 12, box-m y box-l 16), píldoras (full) y barras de gráficos (bar, 4px). Ancho del contenido angosto: narrow (320px). La línea de puntos es la pieza DotsLine, del color dots.",
-      "Espacios (márgenes, separaciones, rellenos) sólo de la escala: 4 · 8 · 12 · 16 · 20 · 24px (box-2xs · box-xs · box-s · box-m · box-l · box-xl). Entre bloques grandes, 40px (section). Al final de cada pantalla, 112px libres (screen-end) para que la barra de abajo no tape nada.",
+      "Espacios (márgenes, separaciones, rellenos) sólo de la escala: 4 · 8 · 12 · 16 · 20 · 24px (box-2xs · box-xs · box-s · box-m · box-l · box-xl). Entre bloques grandes, 40px (section). Al final de cada pantalla, lo justo para que lo último quede a 8px de la barra de abajo (screen-end).",
       "Las cajas no tienen borde: se separan sólo por el color de fondo.",
       "8px de separación entre cajas.",
       "Nada de adornos: ni barras de color al costado ni títulos en mayúsculas.",
