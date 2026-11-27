@@ -3,9 +3,10 @@ import { Info } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-// Ficha de un dato (de no-coke): el número con su unidad, qué es y una línea gris abajo.
-// Con `onInfo`, toda la ficha se toca para abrir la explicación y lleva una (i) arriba a la derecha.
-// Van de a dos por fila: grid-cols-2 gap-box-gap.
+// Ficha de un dato (de no-coke): arriba a la izquierda el número con su unidad; abajo a la izquierda qué es
+// y una línea gris (ej: a cuánto equivale). Si la ficha es alta (ej: llenando la pantalla), el espacio libre
+// queda en el medio. Con `onInfo`, toda la ficha se toca para abrir la explicación y lleva una (i) arriba a
+// la derecha. Van de a dos por fila: grid-cols-2 gap-box-gap.
 export function StatCard({
   value,
   unit,
@@ -30,11 +31,13 @@ export function StatCard({
         </span>
         {onInfo && <Info aria-hidden className="mt-1 size-4 shrink-0 text-muted-foreground" />}
       </div>
-      <div className="text-xs font-medium">{title}</div>
-      {text && <div className="text-xs text-muted-foreground">{text}</div>}
+      <div className="mt-auto flex flex-col gap-1">
+        <div className="text-xs font-medium">{title}</div>
+        {text && <div className="text-xs text-muted-foreground">{text}</div>}
+      </div>
     </>
   )
-  const box = "flex flex-col gap-1 rounded-box-l bg-card p-box-m text-left"
+  const box = "flex flex-col gap-box-m rounded-box-l bg-card p-box-m text-left"
   return onInfo ? (
     <button type="button" data-slot="stat-card" onClick={onInfo} className={cn(box, "transition-colors hover:bg-card-hover", className)}>
       {body}

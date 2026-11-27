@@ -13,8 +13,8 @@ export function HeroNumberDemo() {
   const [spin, setSpin] = React.useState(0)
   return (
     <div className="flex w-full flex-wrap items-center gap-box-m">
-      <div className="w-full max-w-xs rounded-box-l bg-card p-box-l">
-        <HeroNumber key={spin} value={22} label="días sin tomar" note="Desde el 27 de septiembre" />
+      <div className="h-96 w-full max-w-xs rounded-box-l bg-card p-box-l">
+        <HeroNumber key={spin} value={22} label="días sin tomar" note="Desde el 27 de septiembre" action={<Button size="sm" variant="secondary">Ver mis recaídas</Button>} />
       </div>
       <Button size="sm" variant="secondary" onClick={() => setSpin((x) => x + 1)}>Volver a girar</Button>
     </div>
@@ -33,10 +33,11 @@ export function ProgressDemo() {
 
 export function StatCardsDemo() {
   return (
-    <div className="grid w-full max-w-sm grid-cols-2 gap-box-gap">
+    <div className="grid h-96 w-full max-w-sm grid-cols-2 grid-rows-2 gap-box-gap">
       <StatCard value="30,8" unit="L" title="Litros evitados" text="88 vasos menos" onInfo={() => {}} />
       <StatCard value="4048" unit="mg" title="Cafeína evitada" text="≈ 43 tazas de café" onInfo={() => {}} />
       <StatCard value="—" unit="mmol" title="Carga ácida" text="Sin botón de explicación" />
+      <StatCard value="88" unit="vasos" title="Vasos evitados" text="De 350 ml" />
     </div>
   )
 }

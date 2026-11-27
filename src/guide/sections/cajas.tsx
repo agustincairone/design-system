@@ -9,6 +9,7 @@ const SPACE_SCALE: [number, string, string][] = [
   [16, "box-m", "Relleno de caja M"],
   [20, "box-l", "Relleno de caja L"],
   [24, "box-xl", ""],
+  [40, "box-2xl", "Relleno del estado vacío"],
   [40, "section", "Entre bloques grandes"],
   [112, "screen-end", "Libre al final de cada pantalla"],
   [168, "screen-end-float", "Libre al final si hay botón flotante encima de la barra"],

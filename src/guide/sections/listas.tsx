@@ -76,7 +76,7 @@ export function ListasSection() {
         <Demo uses={["cards/link-card"]} label="Fichas de un link: grilla de 2 con la imagen apaisada y el botón para abrir, y fila de la lista. Ícono del sitio, editar y borrar, y la categoría con la estrellita del color de la app" className="block">
           <LinkCardsDemo />
         </Demo>
-        <Demo uses={["cards/stat-card"]} label="Fichas de un dato (de no-coke): número con unidad, qué es y una línea gris. Con explicación, toda la ficha se toca y lleva la (i)">
+        <Demo uses={["cards/stat-card"]} label="Fichas de un dato (de no-coke): el número con su unidad arriba a la izquierda; qué es y a cuánto equivale abajo a la izquierda, con el espacio libre en el medio. Con explicación, toda la ficha se toca y lleva la (i)">
           <StatCardsDemo />
         </Demo>
         <Demo uses={["ui/stars", "ui/chip"]} label="Estrellas (14px en las fichas, 16px en el detalle) y datos con puntaje: sólo muestran, no se tocan">

@@ -8,9 +8,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Escala de letra: 11 · 13 · 15 · 18 · 20 · 26 · 30 · 36 · 48 · 96 (más los títulos grandes).
+/* Escala de letra: 11 · 13 · 15 · 18 · 20 · 26 · 30 · 36 · 48 · 144 (más los títulos grandes).
    text-2xs 11 (piezas chicas: la nota de un paso, las fichas chicas, la tabla del historial) · text-xs 13 · text-sm 15 (texto base) · text-lg 18 · text-xl 20
-   · text-2xl 26 (montos importantes y el número del fleje) · text-3xl 30 (emoji de las filas del inicio) · text-4xl 36 (números de la placa) · text-5xl 48 (números grandes de pantalla) · text-6xl 96 (el número principal de una pantalla, ej: los días de racha de no-coke). */
+   · text-2xl 26 (montos importantes y el número del fleje) · text-3xl 30 (emoji de las filas del inicio) · text-4xl 36 (números de la placa) · text-5xl 48 (números grandes de pantalla) · text-hero 144 (el número principal de una pantalla, ej: los días de racha de no-coke; no usa text-6xl, que ya es el número del afinador de LOOP). */
 @theme {
     --text-sm: 0.9375rem;
     --text-sm--line-height: calc(1.375 / 0.9375);
@@ -26,8 +26,8 @@
     --text-4xl--line-height: calc(2.5 / 2.25);
     --text-5xl: 3rem;
     --text-5xl--line-height: 1;
-    --text-6xl: 6rem;
-    --text-6xl--line-height: 1;
+    --text-hero: 9rem;
+    --text-hero--line-height: 1;
     /* Emoji grande (pantallas especiales: login, error, unirse a un grupo): un solo tamaño, 48px */
     --text-emoji: 3rem;
     --text-emoji--line-height: 1;
@@ -95,13 +95,14 @@
     --radius-bar: 4px;
     /* Ancho del contenido angosto de las pantallas especiales (login, unirse a un grupo, micrófono) */
     --container-narrow: 320px;
-    /* Escala de espacios: 4 · 8 · 12 · 16 · 20 · 24 (box-2xs · box-xs · box-s · box-m · box-l · box-xl), más 40 entre bloques (section) */
+    /* Escala de espacios: 4 · 8 · 12 · 16 · 20 · 24 · 40 (box-2xs · box-xs · box-s · box-m · box-l · box-xl · box-2xl), más 40 entre bloques (section) */
     --spacing-box-2xs: 4px;
     --spacing-box-xs: 8px;
     --spacing-box-s: 12px;
     --spacing-box-m: 16px;
     --spacing-box-l: 20px;
     --spacing-box-xl: 24px;
+    --spacing-box-2xl: 40px; /* relleno del estado vacío */
     --color-inset: var(--inset);
     --color-tile: var(--tile);
     --color-raised: var(--raised);

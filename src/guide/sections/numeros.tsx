@@ -111,7 +111,7 @@ export function NumerosSection() {
         </Demo>
       </div>
       <div className="mt-4 flex flex-col gap-4">
-        <Demo uses={["ui/hero-number"]} label="Número grande de una pantalla (de no-coke): en puntitos de 96, gira al aparecer, con qué cuenta y una nota en píldora. Todo centrado, a 8px">
+        <Demo uses={["ui/hero-number"]} label="Número grande de una pantalla (de no-coke): llena su caja, con el número en el centro (Geist Pixel Circle de 144, gira al aparecer), qué cuenta y la nota pegados abajo y un botón opcional arriba a la derecha">
           <HeroNumberDemo />
         </Demo>
         <Demo uses={["ui/progress"]} label="Barra de progreso: riel gris y el avance del color de la app. Lo que va arriba y abajo lo escribe la app">
