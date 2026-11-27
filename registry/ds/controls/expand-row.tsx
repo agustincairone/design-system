@@ -11,14 +11,30 @@ import { cn } from "@/lib/utils"
 
 // En qué nivel está la fila (0 = la de afuera): lo sabe sola por estar adentro de otra
 const Level = React.createContext(0)
+// El borde de la fila lo marca la caja (ExpandList): 16px en una caja, 20px en una hoja (como el título).
+// Sin ExpandList, 16px.
 const INDENT = [
-  "pl-box-m",
-  "pl-[calc(var(--spacing-box-m)*2)]",
-  "pl-[calc(var(--spacing-box-m)*3)]",
-  "pl-[calc(var(--spacing-box-m)*4)]",
+  "pl-[var(--row-px,var(--spacing-box-m))]",
+  "pl-[calc(var(--row-px,var(--spacing-box-m))+var(--spacing-box-m))]",
+  "pl-[calc(var(--row-px,var(--spacing-box-m))+var(--spacing-box-m)*2)]",
+  "pl-[calc(var(--row-px,var(--spacing-box-m))+var(--spacing-box-m)*3)]",
 ]
 const indent = (level: number) => INDENT[Math.min(level, INDENT.length - 1)]
-const ROW = "flex w-full items-center gap-box-s py-box-s pr-box-m text-left text-sm"
+const ROW = "flex w-full items-center gap-box-s py-box-s pr-[var(--row-px,var(--spacing-box-m))] text-left text-sm"
+
+// La caja de las filas: blanca con las puntas redondas, o con `flush` adentro de una hoja, de lado a lado
+// (las líneas llegan a los bordes y el texto queda alineado con el título de la hoja), igual que la lista
+// que se edita.
+export function ExpandList({ flush, className, children }: { flush?: boolean; className?: string; children: React.ReactNode }) {
+  return (
+    <div
+      data-slot="expand-list"
+      className={cn(flush ? "-mx-box-l [--row-px:var(--spacing-box-l)]" : "overflow-hidden rounded-box-l bg-card [--row-px:var(--spacing-box-m)]", className)}
+    >
+      {children}
+    </div>
+  )
+}
 
 function RowText({ level, title, sub }: { level: number; title: React.ReactNode; sub?: React.ReactNode }) {
   return (

@@ -7,7 +7,8 @@ export const VERSIONS: Version[] = [
     v: "v0.42.0",
     date: "27/11",
     items: [
-      "Número principal de una pantalla más grande (144) y en la letra de puntitos de Geist: llena su caja, con el número al centro y lo de abajo pegado abajo. El número del afinador de LOOP vuelve a su tamaño.",
+      "Número principal de una pantalla de 108, en puntitos (Doto): llena su caja, con el número al centro y lo de abajo pegado abajo. El número del afinador de LOOP vuelve a su tamaño.",
+      "Filas que se abren adentro de una hoja: de lado a lado, como la lista que se edita (las recaídas de no-coke).",
       "Fichas de un dato: el número arriba a la izquierda y qué es abajo a la izquierda.",
       "Estado vacío con 40px de relleno, en todas las apps.",
     ],

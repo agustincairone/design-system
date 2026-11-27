@@ -2,7 +2,8 @@
 import * as React from "react"
 import { Check, Shirt, Wallet, X } from "lucide-react"
 
-import { ExpandRow, ExpandRowItem } from "@/components/controls/expand-row"
+import { ExpandList, ExpandRow, ExpandRowItem } from "@/components/controls/expand-row"
+import { BottomSheet } from "@/components/ui/bottom-sheet"
 import { Badge } from "@/components/ui/badge"
 import { Demo, Section } from "@/guide/layout"
 import { ItemCardsDemo, ScoresDemo, TallCardsDemo } from "@/guide/guide-demos"
@@ -59,6 +60,23 @@ function LabelsDemo() {
   )
 }
 
+// Filas que se abren adentro de una hoja: de lado a lado (ej: las recaídas de no-coke)
+function ExpandRowsSheetDemo() {
+  return (
+    <BottomSheet inline open onOpenChange={() => {}} title="Mis recaídas">
+      <ExpandList flush>
+        <ExpandRow defaultOpen title="03/11/2026" sub="14:00 hs · Dos semanas" right={<span className="font-medium text-brand-text">16 días</span>}>
+          <ExpandRowItem label="Litros evitados" value="22 L" />
+          <ExpandRowItem label="Cafeína evitada" value="1700 mg" />
+        </ExpandRow>
+        <ExpandRow title="17/10/2026" sub="21:00 hs · Dos semanas" right={<span className="font-medium text-brand-text">20 días</span>}>
+          <ExpandRowItem label="Litros evitados" value="28 L" />
+        </ExpandRow>
+      </ExpandList>
+    </BottomSheet>
+  )
+}
+
 export function ListasSection() {
   return (
     <Section
@@ -84,6 +102,9 @@ export function ListasSection() {
         </Demo>
         <Demo uses={["controls/expand-row"]} label="Filas que se abren: lo de adentro aparece abajo, con una línea entre fila y fila y corrido a la derecha (el tercer nivel en gris). Los montos quedan en una misma columna">
           <ExpandRowsDemo />
+        </Demo>
+        <Demo uses={["controls/expand-row"]} label="Filas que se abren en una hoja (ExpandList flush): de lado a lado, con el texto alineado con el título, como la lista que se edita en una hoja">
+          <ExpandRowsSheetDemo />
         </Demo>
         <Demo uses={["controls/editable-list"]} label="Lista que se edita: para administrar una lista (ej: categorías y subcategorías). Lápiz para cambiar el nombre ahí mismo, tacho para borrar (la app pide confirmación), las de adentro se abren y + Agregar al final" className="block">
           <EditableListDemo />

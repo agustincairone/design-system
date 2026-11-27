@@ -12,7 +12,7 @@ const TYPE_SCALE: [string, string, string][] = [
   ["30", "text-3xl", "Emoji de las filas del inicio"],
   ["36", "text-4xl", "Números de la placa de LOOP"],
   ["48", "text-5xl", "Tempo y reloj de LOOP"],
-  ["144", "text-hero", "Número principal de una pantalla: los días de racha de no-coke"],
+  ["108", "text-hero", "Número principal de una pantalla: los días de racha de no-coke"],
 ]
 
 export function TipografiaSection() {
@@ -45,7 +45,7 @@ export function TipografiaSection() {
           ["Monto importante", "Geist medium, 26px (text-2xl). Deuda, total del mes.", <div className="text-2xl font-medium text-brand-text">$758.070</div>],
           ["Número de la placa", "36px (text-4xl). Los números quietos de la placa de LOOP: canales y pasos.", <span className="live-number font-readout text-4xl leading-none font-bold">16</span>],
           ["Número grande de pantalla", "48px (text-5xl). El tempo y el reloj de LOOP.", <span className="live-number font-readout text-5xl font-bold">110</span>],
-          ["Número principal de pantalla", "Geist Pixel Circle, 144px (text-hero). Uno solo por pantalla: los días de racha de no-coke.", <span className="live-number font-clock text-hero">23</span>],
+          ["Número principal de pantalla", "Doto, 108px (text-hero). Uno solo por pantalla: los días de racha de no-coke.", <span className="live-number font-readout text-hero font-bold">23</span>],
           ["Nota mini", "11px (text-2xs). Sólo para piezas chicas: la nota de un paso de LOOP, las fichas chicas y la tabla del historial de outfit.", <span className="font-mono text-2xs font-semibold">C#2</span>],
           ["Emoji de fila", "30px (text-3xl). El emoji al principio de cada fila del inicio (los grupos de pay).", <span className="text-3xl leading-none">🏠</span>],
           ["Emoji grande", "48px (text-emoji). Un solo tamaño, para pantallas especiales: login, error, unirse a un grupo.", <span className="text-emoji">🔒</span>],
