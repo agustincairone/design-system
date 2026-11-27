@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-list",
+  "title": "icon-list",
+  "description": "Lista con ícono o emoji a la izquierda y texto (con título opcional) a la derecha (gesture).",
+  "registryDependencies": [
+    "utils"
+  ],
+  "files": [
+    {
+      "path": "registry/ds/ui/icon-list.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport type IconListItem = { icon: React.ReactNode; title?: React.ReactNode; text: React.ReactNode }\n\n// Lista con ícono (de gesture): cada fila lleva a la izquierda un ícono (del color de la app) o un emoji,\n// y a la derecha el texto. Con `title`, el título va arriba y el texto abajo en gris. Sirve para enumerar\n// ventajas con un tilde (el inicio de gesture) o para explicar pasos (la ayuda de gesture).\nexport function IconList({ items, className }: { items: IconListItem[]; className?: string }) {\n  return (\n    <ul data-slot=\"icon-list\" className={cn(\"flex flex-col gap-box-m\", className)}>\n      {items.map((item, i) => (\n        <li key={i} className=\"flex gap-box-s text-sm\">\n          <span aria-hidden className=\"flex h-5 w-6 shrink-0 items-center justify-center text-xl leading-none text-brand [&_svg]:size-5\">\n            {item.icon}\n          </span>\n          <div className=\"flex min-w-0 flex-col gap-1\">\n            {item.title && <span className=\"font-medium\">{item.title}</span>}\n            <span className={cn(item.title && \"text-muted-foreground\")}>{item.text}</span>\n          </div>\n        </li>\n      ))}\n    </ul>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/icon-list.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

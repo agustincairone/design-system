@@ -4,6 +4,14 @@ export type Version = { v: string; date: string; items: string[] }
 
 export const VERSIONS: Version[] = [
   {
+    v: "v0.44.0",
+    date: "27/11",
+    items: [
+      "gesture pasa al sistema, con su violeta. Ya no queda ninguna app afuera.",
+      "Piezas de gesture: caja para subir un archivo (grande, del color de la app) y lista con ícono.",
+    ],
+  },
+  {
     v: "v0.43.0",
     date: "27/11",
     items: ["Todas las pantallas terminan con lo último a 8px de la barra de abajo (o del botón flotante), como entre cajas."],

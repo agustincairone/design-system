@@ -473,6 +473,42 @@
       }
     },
     {
+      "name": "brand-gesture",
+      "type": "registry:theme",
+      "title": "Color de gesture",
+      "description": "Violeta de gesture (violet-600, un tono más claro al pasar el mouse).",
+      "cssVars": {
+        "light": {
+          "brand": "oklch(54.1% 0.281 293.009)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(54.1% 0.281 293.009)",
+          "primary": "oklch(54.1% 0.281 293.009)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(54.1% 0.281 293.009)",
+          "chart-1": "oklch(54.1% 0.281 293.009)",
+          "sidebar-primary": "oklch(54.1% 0.281 293.009)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(54.1% 0.281 293.009)",
+          "brand-strong": "oklch(49.1% 0.27 292.581)",
+          "brand-hover": "oklch(60.6% 0.25 292.717)"
+        },
+        "dark": {
+          "brand": "oklch(54.1% 0.281 293.009)",
+          "brand-foreground": "oklch(100% 0 0)",
+          "brand-text": "oklch(54.1% 0.281 293.009)",
+          "primary": "oklch(54.1% 0.281 293.009)",
+          "primary-foreground": "oklch(100% 0 0)",
+          "ring": "oklch(54.1% 0.281 293.009)",
+          "chart-1": "oklch(54.1% 0.281 293.009)",
+          "sidebar-primary": "oklch(54.1% 0.281 293.009)",
+          "sidebar-primary-foreground": "oklch(100% 0 0)",
+          "sidebar-ring": "oklch(54.1% 0.281 293.009)",
+          "brand-strong": "oklch(49.1% 0.27 292.581)",
+          "brand-hover": "oklch(60.6% 0.25 292.717)"
+        }
+      }
+    },
+    {
       "name": "toaster",
       "type": "registry:ui",
       "title": "Notificaciones",
@@ -1232,6 +1268,42 @@
       ],
       "dependencies": [
         "lucide-react"
+      ]
+    },
+    {
+      "name": "drop-zone",
+      "type": "registry:component",
+      "title": "drop-zone",
+      "description": "Caja para subir un archivo: grande, del color de la app, con línea punteada, botón blanco y \"o soltalo acá\" (gesture).",
+      "registryDependencies": [
+        "utils",
+        "@ds/button"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/drop-zone.tsx",
+          "type": "registry:component",
+          "target": "components/ui/drop-zone.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ]
+    },
+    {
+      "name": "icon-list",
+      "type": "registry:component",
+      "title": "icon-list",
+      "description": "Lista con ícono o emoji a la izquierda y texto (con título opcional) a la derecha (gesture).",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/icon-list.tsx",
+          "type": "registry:component",
+          "target": "components/ui/icon-list.tsx"
+        }
       ]
     }
   ]

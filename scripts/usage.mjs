@@ -7,7 +7,7 @@ import path from "node:path"
 import { fileURLToPath } from "node:url"
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
-const APPS = { pay: "pay-tracker", outfit: "outfit-tracker", wine: "wine-tracker", loop: "loop", bookmarks: "bookmarks", "no-coke": "no-coke-tracker" }
+const APPS = { pay: "pay-tracker", outfit: "outfit-tracker", wine: "wine-tracker", loop: "loop", bookmarks: "bookmarks", "no-coke": "no-coke-tracker", gesture: "gesture-presentation" }
 
 const walk = (dir) =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {

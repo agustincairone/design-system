@@ -56,10 +56,16 @@ export const APPS: AppInfo[] = [
     brand: "no-coke-tracker",
     pending: [],
   },
+  {
+    id: "gesture",
+    name: "gesture",
+    brand: "gesture",
+    pending: [],
+  },
 ]
 
 /** apps que todavía no usan el sistema */
-export const OTHER_APPS = ["gesture"]
+export const OTHER_APPS: string[] = []
 
 export const PIECES: Record<string, string> = {
   "audio/audio-panel": "Panel de audio",
@@ -104,11 +110,13 @@ export const PIECES: Record<string, string> = {
   "ui/checkbox": "Casilla",
   "ui/chip": "Chips",
   "ui/dropdown-menu": "Menú desplegable",
+  "ui/drop-zone": "Caja para subir un archivo",
   "ui/empty-state": "Estado vacío",
   "ui/field-label": "Nombre del campo",
   "ui/float-accordion": "Acordeón flotante",
   "ui/floating-button": "Botón flotante",
   "ui/hero-number": "Número grande",
+  "ui/icon-list": "Lista con ícono",
   "ui/input": "Campo de texto",
   "ui/label": "Texto de la casilla",
   "ui/line-input": "Campo de línea",

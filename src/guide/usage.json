@@ -147,6 +147,21 @@
         "ui/sonner",
         "ui/splash"
       ]
+    },
+    "gesture": {
+      "version": "v0.43.0",
+      "pieces": [
+        "cards/stat-card",
+        "theme-provider",
+        "theme-toggle",
+        "ui/app-hero",
+        "ui/badge",
+        "ui/bottom-sheet",
+        "ui/button",
+        "ui/drop-zone",
+        "ui/icon-list",
+        "ui/splash"
+      ]
     }
   },
   "pieces": [
@@ -191,12 +206,14 @@
     "ui/button",
     "ui/checkbox",
     "ui/chip",
+    "ui/drop-zone",
     "ui/dropdown-menu",
     "ui/empty-state",
     "ui/field-label",
     "ui/float-accordion",
     "ui/floating-button",
     "ui/hero-number",
+    "ui/icon-list",
     "ui/input",
     "ui/label",
     "ui/line-input",
@@ -232,6 +249,7 @@
       "controls/editable-list",
       "ui/ai-button",
       "ui/bottom-sheet",
+      "ui/drop-zone",
       "ui/float-accordion",
       "ui/floating-button",
       "ui/search-input"

@@ -75,7 +75,7 @@ export function AppsSection() {
         </div>
         <div className="flex flex-col gap-3 rounded-3xl bg-card p-5">
           <span className="font-medium">Sin el sistema</span>
-          <p className="text-sm text-muted-foreground">{OTHER_APPS.join(" y ")} todavía no usan el sistema.</p>
+          <p className="text-sm text-muted-foreground">{OTHER_APPS.length ? `${OTHER_APPS.join(" y ")} todavía no usan el sistema.` : "Todas las apps usan el sistema."}</p>
         </div>
       </div>
     </Section>

@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Demo, Section } from "@/guide/layout"
 import { SavedValuesDemo, SearchDemo, SuggestDemo } from "@/guide/guide-demos"
 import { LineInputDemo } from "@/guide/link-demos"
+import { DropZoneDemo } from "@/guide/gesture-demos"
 
 export function FormulariosSection() {
   const [volume, setVolume] = React.useState([70])
@@ -65,6 +66,9 @@ export function FormulariosSection() {
         </Demo>
         <Demo uses={["ui/input", "ui/chip"]} label="Campo con + para agregar, y lo guardado como chips con cruz">
           <SavedValuesDemo />
+        </Demo>
+        <Demo uses={["ui/drop-zone"]} label="Caja para subir un archivo (de gesture): grande, del color de la app, con una línea punteada adentro, el botón blanco y “o soltalo acá”. Se toca toda la caja o se suelta el archivo encima; al pasar el mouse se aclara un tono">
+          <DropZoneDemo />
         </Demo>
         <Demo uses={["ui/line-input"]} label="Campo de línea: el otro campo de texto. Sin caja, una línea abajo y el nombre abajo en gris. Para los pasos de una hoja que piden un solo dato; crece con el texto y cuenta las letras" className="block">
           <LineInputDemo />

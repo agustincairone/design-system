@@ -9,6 +9,7 @@ import { Demo, Section } from "@/guide/layout"
 import { ItemCardsDemo, ScoresDemo, TallCardsDemo } from "@/guide/guide-demos"
 import { EditableListDemo, EditListSheetDemo, LinkCardsDemo } from "@/guide/link-demos"
 import { StatCardsDemo } from "@/guide/no-coke-demos"
+import { IconListDemo } from "@/guide/gesture-demos"
 
 // Filas que se abren (ej: gastos por mes en Análisis de pay)
 function ExpandRowsDemo() {
@@ -93,6 +94,9 @@ export function ListasSection() {
         </Demo>
         <Demo uses={["cards/link-card"]} label="Fichas de un link: grilla de 2 con la imagen apaisada y el botón para abrir, y fila de la lista. Ícono del sitio, editar y borrar, y la categoría con la estrellita del color de la app" className="block">
           <LinkCardsDemo />
+        </Demo>
+        <Demo uses={["ui/icon-list"]} label="Lista con ícono (de gesture): el ícono del color de la app, o un emoji, a la izquierda y el texto a la derecha. Con título, el texto va abajo en gris">
+          <IconListDemo />
         </Demo>
         <Demo uses={["cards/stat-card"]} label="Fichas de un dato (de no-coke): el número con su unidad arriba a la izquierda; qué es y a cuánto equivale abajo a la izquierda, con el espacio libre en el medio. Con explicación, toda la ficha se toca y lleva la (i)">
           <StatCardsDemo />

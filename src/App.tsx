@@ -1,7 +1,7 @@
 // La guía del sistema: barra de arriba, índice, portada (elegir el color de una app) y las secciones.
 // Cada sección vive en su archivo, en src/guide/sections/.
 import * as React from "react"
-import { Bookmark, CupSoda, Music, Settings, Shirt, Wallet, Wine } from "lucide-react"
+import { Bookmark, CupSoda, Hand, Music, Settings, Shirt, Wallet, Wine } from "lucide-react"
 
 import { useTheme } from "@/components/theme-provider"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -16,6 +16,7 @@ const ICONS: Record<BrandId, typeof Music> = {
   "wine-tracker": Wine,
   bookmarks: Bookmark,
   "no-coke-tracker": CupSoda,
+  gesture: Hand,
 }
 
 export function App() {
