@@ -41,9 +41,9 @@ export const BRANDS: Record<BrandId, { name: string; light: Vars; dark: Vars }> 
     light: { brand: "oklch(57.7% 0.245 27.325)", fg: "oklch(100% 0 0)", text: "oklch(57.7% 0.245 27.325)", strong: "oklch(50.5% 0.213 27.518)", hover: "oklch(63.7% 0.237 25.331)" },
     dark: { brand: "oklch(57.7% 0.245 27.325)", fg: "oklch(100% 0 0)", text: "oklch(57.7% 0.245 27.325)", strong: "oklch(50.5% 0.213 27.518)", hover: "oklch(63.7% 0.237 25.331)" },
   },  gesture: {
-    name: "gesture (violet-600)",
-    light: { brand: "oklch(54.1% 0.281 293.009)", fg: "oklch(100% 0 0)", text: "oklch(54.1% 0.281 293.009)", strong: "oklch(49.1% 0.27 292.581)", hover: "oklch(60.6% 0.25 292.717)" },
-    dark: { brand: "oklch(54.1% 0.281 293.009)", fg: "oklch(100% 0 0)", text: "oklch(54.1% 0.281 293.009)", strong: "oklch(49.1% 0.27 292.581)", hover: "oklch(60.6% 0.25 292.717)" },
+    name: "gesture (teal-500)",
+    light: { brand: "oklch(70.4% 0.14 182.503)", fg: "oklch(100% 0 0)", text: "oklch(70.4% 0.14 182.503)", strong: "oklch(60% 0.118 184.704)", hover: "oklch(77.7% 0.152 181.912)" },
+    dark: { brand: "oklch(70.4% 0.14 182.503)", fg: "oklch(100% 0 0)", text: "oklch(70.4% 0.14 182.503)", strong: "oklch(60% 0.118 184.704)", hover: "oklch(77.7% 0.152 181.912)" },
   },
 }
 

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-preview",
+  "title": "file-preview",
+  "description": "Vista previa de un archivo: nombre, primera página, datos y botones; sin archivo, el estado vacío (gesture).",
+  "registryDependencies": [
+    "utils",
+    "@ds/empty-state"
+  ],
+  "files": [
+    {
+      "path": "registry/ds/ui/file-preview.tsx",
+      "content": "import * as React from \"react\"\n\nimport { EmptyState } from \"@/components/ui/empty-state\"\nimport { cn } from \"@/lib/utils\"\n\nexport type FileFact = { label: React.ReactNode; value: React.ReactNode }\n\n// Vista previa de un archivo (de gesture), en una caja: arriba el nombre; en el medio la primera página\n// (`preview`, ej: un canvas) sobre gris, en un recuadro horizontal; abajo los datos (páginas, peso…) en\n// columnas, con el nombre en gris arriba y el valor abajo; y al final los botones (`actions`, ej: Cancelar y\n// Presentar), que se reparten el ancho. Sin `name`, la misma caja muestra el estado vacío (`empty`).\n// Va al lado de la caja para subir un archivo (DropZone): md:grid-cols-2 gap-box-gap.\nexport function FilePreview({\n  name,\n  preview,\n  facts = [],\n  actions,\n  empty,\n  className,\n}: {\n  name?: React.ReactNode\n  preview?: React.ReactNode\n  facts?: FileFact[]\n  actions?: React.ReactNode\n  empty?: { icon: React.ReactNode; title: string; text?: React.ReactNode }\n  className?: string\n}) {\n  if (!name) {\n    return (\n      <div data-slot=\"file-preview\" className={cn(\"flex flex-col items-center justify-center rounded-box-l bg-card\", className)}>\n        {empty && <EmptyState icon={empty.icon} title={empty.title} text={empty.text} />}\n      </div>\n    )\n  }\n  return (\n    <div data-slot=\"file-preview\" className={cn(\"flex flex-col gap-box-m rounded-box-l bg-card p-box-l\", className)}>\n      <p className=\"truncate text-lg font-medium\">{name}</p>\n      <div className=\"flex aspect-video items-center justify-center overflow-hidden rounded-box-s bg-inset p-box-s\">{preview}</div>\n      {facts.length > 0 && (\n        <dl className=\"grid grid-cols-2 gap-box-s sm:grid-cols-4\">\n          {facts.map((f, i) => (\n            <div key={i} className=\"flex min-w-0 flex-col gap-1\">\n              <dt className=\"text-xs text-muted-foreground\">{f.label}</dt>\n              <dd className=\"truncate text-sm font-medium\">{f.value}</dd>\n            </div>\n          ))}\n        </dl>\n      )}\n      {actions && <div className=\"mt-auto flex gap-box-xs *:flex-1\">{actions}</div>}\n    </div>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/file-preview.tsx"
+    }
+  ],
+  "type": "registry:component"
+}

@@ -476,35 +476,35 @@
       "name": "brand-gesture",
       "type": "registry:theme",
       "title": "Color de gesture",
-      "description": "Violeta de gesture (violet-600, un tono más claro al pasar el mouse).",
+      "description": "Teal de gesture (teal-500, un tono más claro al pasar el mouse).",
       "cssVars": {
         "light": {
-          "brand": "oklch(54.1% 0.281 293.009)",
+          "brand": "oklch(70.4% 0.14 182.503)",
           "brand-foreground": "oklch(100% 0 0)",
-          "brand-text": "oklch(54.1% 0.281 293.009)",
-          "primary": "oklch(54.1% 0.281 293.009)",
+          "brand-text": "oklch(70.4% 0.14 182.503)",
+          "primary": "oklch(70.4% 0.14 182.503)",
           "primary-foreground": "oklch(100% 0 0)",
-          "ring": "oklch(54.1% 0.281 293.009)",
-          "chart-1": "oklch(54.1% 0.281 293.009)",
-          "sidebar-primary": "oklch(54.1% 0.281 293.009)",
+          "ring": "oklch(70.4% 0.14 182.503)",
+          "chart-1": "oklch(70.4% 0.14 182.503)",
+          "sidebar-primary": "oklch(70.4% 0.14 182.503)",
           "sidebar-primary-foreground": "oklch(100% 0 0)",
-          "sidebar-ring": "oklch(54.1% 0.281 293.009)",
-          "brand-strong": "oklch(49.1% 0.27 292.581)",
-          "brand-hover": "oklch(60.6% 0.25 292.717)"
+          "sidebar-ring": "oklch(70.4% 0.14 182.503)",
+          "brand-strong": "oklch(60% 0.118 184.704)",
+          "brand-hover": "oklch(77.7% 0.152 181.912)"
         },
         "dark": {
-          "brand": "oklch(54.1% 0.281 293.009)",
+          "brand": "oklch(70.4% 0.14 182.503)",
           "brand-foreground": "oklch(100% 0 0)",
-          "brand-text": "oklch(54.1% 0.281 293.009)",
-          "primary": "oklch(54.1% 0.281 293.009)",
+          "brand-text": "oklch(70.4% 0.14 182.503)",
+          "primary": "oklch(70.4% 0.14 182.503)",
           "primary-foreground": "oklch(100% 0 0)",
-          "ring": "oklch(54.1% 0.281 293.009)",
-          "chart-1": "oklch(54.1% 0.281 293.009)",
-          "sidebar-primary": "oklch(54.1% 0.281 293.009)",
+          "ring": "oklch(70.4% 0.14 182.503)",
+          "chart-1": "oklch(70.4% 0.14 182.503)",
+          "sidebar-primary": "oklch(70.4% 0.14 182.503)",
           "sidebar-primary-foreground": "oklch(100% 0 0)",
-          "sidebar-ring": "oklch(54.1% 0.281 293.009)",
-          "brand-strong": "oklch(49.1% 0.27 292.581)",
-          "brand-hover": "oklch(60.6% 0.25 292.717)"
+          "sidebar-ring": "oklch(70.4% 0.14 182.503)",
+          "brand-strong": "oklch(60% 0.118 184.704)",
+          "brand-hover": "oklch(77.7% 0.152 181.912)"
         }
       }
     },
@@ -1274,7 +1274,7 @@
       "name": "drop-zone",
       "type": "registry:component",
       "title": "drop-zone",
-      "description": "Caja para subir un archivo: grande, del color de la app, con línea punteada, botón blanco y \"o soltalo acá\" (gesture).",
+      "description": "Caja para subir un archivo: blanca, con línea punteada gris, el botón del color de la app y \"o soltalo acá\" (gesture).",
       "registryDependencies": [
         "utils",
         "@ds/button"
@@ -1288,6 +1288,23 @@
       ],
       "dependencies": [
         "lucide-react"
+      ]
+    },
+    {
+      "name": "file-preview",
+      "type": "registry:component",
+      "title": "file-preview",
+      "description": "Vista previa de un archivo: nombre, primera página, datos y botones; sin archivo, el estado vacío (gesture).",
+      "registryDependencies": [
+        "utils",
+        "@ds/empty-state"
+      ],
+      "files": [
+        {
+          "path": "registry/ds/ui/file-preview.tsx",
+          "type": "registry:component",
+          "target": "components/ui/file-preview.tsx"
+        }
       ]
     },
     {

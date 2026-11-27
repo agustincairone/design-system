@@ -7,8 +7,9 @@ export const VERSIONS: Version[] = [
     v: "v0.44.0",
     date: "27/11",
     items: [
-      "gesture pasa al sistema, con su violeta. Ya no queda ninguna app afuera.",
-      "Piezas de gesture: caja para subir un archivo (grande, del color de la app) y lista con ícono.",
+      "gesture pasa al sistema, con su teal. Ya no queda ninguna app afuera.",
+      "Piezas de gesture: caja para subir un archivo, vista previa del archivo (o el estado vacío si no hay ninguno) y lista con ícono.",
+      "El menú desplegable crece con lo que tiene adentro cuando se abre desde un botón de ícono (ej: el engranaje de gesture).",
     ],
   },
   {

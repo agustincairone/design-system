@@ -1,16 +1,35 @@
 // Guía: ejemplos de las piezas de gesture.
 import * as React from "react"
-import { CircleCheck } from "lucide-react"
+import { CircleCheck, FileText } from "lucide-react"
 
+import { Button } from "@/components/ui/button"
 import { DropZone } from "@/components/ui/drop-zone"
+import { FilePreview } from "@/components/ui/file-preview"
 import { IconList } from "@/components/ui/icon-list"
 
 export function DropZoneDemo() {
-  const [file, setFile] = React.useState<string | null>(null)
+  const [file, setFile] = React.useState<File | null>(null)
+  const kb = file ? file.size / 1024 : 0
   return (
-    <div className="flex w-full flex-col gap-box-s">
-      <DropZone accept=".pdf" label="Elegir PDF" onFile={(f) => setFile(f.name)} />
-      <p className="text-xs text-muted-foreground">{file ? `Elegiste: ${file}` : "Tocala o soltá un archivo encima."}</p>
+    <div className="grid w-full gap-box-gap md:grid-cols-2">
+      <DropZone accept=".pdf" label={file ? "Elegir otro PDF" : "Elegir PDF"} onFile={setFile} />
+      <FilePreview
+        name={file?.name}
+        preview={<div className="flex h-full w-full items-center justify-center bg-card text-sm">Primera página</div>}
+        facts={[
+          { label: "Páginas", value: "12" },
+          { label: "Peso", value: kb > 1024 ? `${(kb / 1024).toFixed(1).replace(".", ",")} MB` : `${Math.max(1, Math.round(kb))} KB` },
+          { label: "Formato", value: "Horizontal" },
+          { label: "Modificado", value: file ? new Date(file.lastModified).toLocaleDateString("es-AR") : "" },
+        ]}
+        actions={
+          <>
+            <Button variant="secondary" onClick={() => setFile(null)}>Cancelar</Button>
+            <Button>Presentar</Button>
+          </>
+        }
+        empty={{ icon: <FileText />, title: "Todavía no subiste ningún PDF", text: "Cuando lo subas, acá vas a ver la primera página antes de presentar." }}
+      />
     </div>
   )
 }

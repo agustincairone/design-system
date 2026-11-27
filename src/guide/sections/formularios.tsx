@@ -67,7 +67,7 @@ export function FormulariosSection() {
         <Demo uses={["ui/input", "ui/chip"]} label="Campo con + para agregar, y lo guardado como chips con cruz">
           <SavedValuesDemo />
         </Demo>
-        <Demo uses={["ui/drop-zone"]} label="Caja para subir un archivo (de gesture): grande, del color de la app, con una línea punteada adentro, el botón blanco y “o soltalo acá”. Se toca toda la caja o se suelta el archivo encima; al pasar el mouse se aclara un tono">
+        <Demo uses={["ui/drop-zone", "ui/file-preview"]} label="Caja para subir un archivo (de gesture): blanca, con línea punteada gris, el botón del color de la app y “o soltalo acá”; se toca toda la caja o se suelta el archivo encima. Al lado, la vista previa: sin archivo, el estado vacío; con archivo, el nombre, la primera página, los datos y Cancelar / Presentar">
           <DropZoneDemo />
         </Demo>
         <Demo uses={["ui/line-input"]} label="Campo de línea: el otro campo de texto. Sin caja, una línea abajo y el nombre abajo en gris. Para los pasos de una hoja que piden un solo dato; crece con el texto y cuenta las letras" className="block">

@@ -4,10 +4,11 @@ import { FileUp } from "lucide-react"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
-// Caja para subir un archivo (de gesture): grande, del color de la app, con una línea punteada adentro.
-// En el medio, el ícono, un botón blanco para elegir el archivo y "o soltalo acá". Se toca toda la caja
-// para elegir, o se suelta el archivo encima; al pasar el mouse o arrastrar algo encima, se aclara un tono.
-// Con `loading`, muestra el texto de carga en lugar del botón.
+// Caja para subir un archivo (de gesture): blanca (en oscuro, del color de las cajas), con una línea punteada
+// gris adentro. En el medio, el ícono gris, el botón del color de la app para elegir el archivo y "o soltalo
+// acá". Se toca toda la caja para elegir, o se suelta el archivo encima: al pasar el mouse se aclara un tono, y
+// al arrastrar algo encima la línea punteada toma el color de la app. Con `loading`, muestra el texto de carga
+// en lugar del botón. Al lado puede ir la vista previa del archivo (FilePreview), del mismo alto.
 export function DropZone({
   onFile,
   accept,
@@ -44,18 +45,18 @@ export function DropZone({
         if (file) onFile(file)
       }}
       className={cn(
-        "flex min-h-80 cursor-pointer rounded-box-l bg-brand p-box-s text-brand-foreground transition-colors hover:bg-brand-hover data-over:bg-brand-hover has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-brand",
+        "group flex min-h-80 cursor-pointer rounded-box-l bg-card p-box-s transition-colors hover:bg-card-hover data-over:bg-card-hover has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-brand",
         className,
       )}
     >
-      <div className="flex flex-1 flex-col items-center justify-center gap-box-m rounded-box-s border border-dashed border-brand-foreground p-box-2xl text-center">
-        {icon ?? <FileUp aria-hidden strokeWidth={1.5} className="size-12" />}
+      <div className="flex flex-1 flex-col items-center justify-center gap-box-m rounded-box-s border border-dashed border-input p-box-2xl text-center transition-colors group-data-over:border-brand">
+        {icon ?? <FileUp aria-hidden strokeWidth={1.5} className="size-12 text-muted-foreground" />}
         {loading ? (
-          <span className="text-sm">{loadingText}</span>
+          <span className="text-sm text-muted-foreground">{loadingText}</span>
         ) : (
           <>
-            <span className={cn(buttonVariants({ variant: "card" }), "pointer-events-none")}>{label}</span>
-            <span className="text-sm">{hint}</span>
+            <span className={cn(buttonVariants(), "pointer-events-none")}>{label}</span>
+            <span className="text-sm text-muted-foreground">{hint}</span>
           </>
         )}
       </div>

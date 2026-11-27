@@ -115,6 +115,7 @@ export const PIECES: Record<string, string> = {
   "ui/field-label": "Nombre del campo",
   "ui/float-accordion": "Acordeón flotante",
   "ui/floating-button": "Botón flotante",
+  "ui/file-preview": "Vista previa de un archivo",
   "ui/hero-number": "Número grande",
   "ui/icon-list": "Lista con ícono",
   "ui/input": "Campo de texto",

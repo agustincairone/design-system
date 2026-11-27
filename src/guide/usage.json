@@ -159,6 +159,8 @@
         "ui/bottom-sheet",
         "ui/button",
         "ui/drop-zone",
+        "ui/dropdown-menu",
+        "ui/file-preview",
         "ui/icon-list",
         "ui/splash"
       ]
@@ -210,6 +212,7 @@
     "ui/dropdown-menu",
     "ui/empty-state",
     "ui/field-label",
+    "ui/file-preview",
     "ui/float-accordion",
     "ui/floating-button",
     "ui/hero-number",
@@ -266,6 +269,9 @@
     ],
     "ui/scroll-fade": [
       "ui/bottom-sheet"
+    ],
+    "ui/empty-state": [
+      "ui/file-preview"
     ],
     "ui/roll-number": [
       "ui/hero-number"
